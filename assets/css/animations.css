@@ -136,6 +136,31 @@
   animation: shimmer-gold 5s linear infinite;
 }
 
+/* ── New Animations ── */
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-6px); }
+}
+
+@keyframes glow-pulse-green {
+  0%, 100% { box-shadow: 0 0 8px rgba(53, 160, 96, 0.3); }
+  50%       { box-shadow: 0 0 20px rgba(53, 160, 96, 0.65), 0 0 40px rgba(53, 160, 96, 0.2); }
+}
+
+@keyframes text-reveal {
+  from { clip-path: inset(0 100% 0 0); opacity: 0; }
+  to   { clip-path: inset(0 0% 0 0);   opacity: 1; }
+}
+
+@keyframes gold-sweep {
+  0%   { transform: translateX(-120%) skewX(-20deg); }
+  100% { transform: translateX(320%) skewX(-20deg); }
+}
+
+.brand-logo { animation: float 4s ease-in-out infinite; }
+.product-card__badge--bestseller { animation: glow-pulse-green 2.5s ease-in-out infinite; }
+
 /* ── Reduced Motion ── */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {

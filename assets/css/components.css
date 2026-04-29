@@ -17,11 +17,11 @@
   border-bottom: 1px solid transparent;
 }
 .site-header.scrolled {
-  background: rgba(11, 15, 20, 0.94);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
+  background: rgba(8, 14, 10, 0.92);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
   border-bottom-color: var(--border-subtle);
-  box-shadow: 0 4px 24px rgba(0,0,0,0.4);
+  box-shadow: 0 4px 32px rgba(0,0,0,0.5), 0 0 0 1px rgba(53,160,96,0.06);
 }
 
 .header-inner {
@@ -38,10 +38,24 @@
 /* ── Brand ── */
 .brand {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
   line-height: 1.1;
   text-decoration: none;
   flex-shrink: 0;
+}
+.brand-logo {
+  height: 42px;
+  width: 42px;
+  object-fit: contain;
+  mix-blend-mode: screen;
+  border-radius: 4px;
+  flex-shrink: 0;
+}
+.brand-text {
+  display: flex;
+  flex-direction: column;
 }
 .brand-arabic {
   font-family: var(--font-arabic);
@@ -473,7 +487,7 @@
   letter-spacing: 0.12em;
   text-transform: uppercase;
   padding: 0.75em 1.8em;
-  border-radius: var(--radius-sm);
+  border-radius: 100px;
   cursor: pointer;
   transition: background var(--dur-fast) ease,
               color var(--dur-fast) ease,
@@ -482,15 +496,32 @@
   white-space: nowrap;
   border: none;
 }
-.btn:active { transform: translateY(1px); }
+.btn:active { transform: translateY(1px) scale(0.98); }
 
 .btn-primary {
-  background: var(--clr-gold);
+  background: linear-gradient(135deg, var(--clr-gold) 0%, var(--clr-gold-light) 100%);
   color: var(--clr-ink);
 }
 .btn-primary:hover {
-  background: var(--clr-gold-light);
-  box-shadow: 0 4px 20px rgba(200, 151, 58, 0.38);
+  background: linear-gradient(135deg, var(--clr-gold-light) 0%, var(--clr-gold-pale) 100%);
+  box-shadow: 0 4px 24px rgba(200, 151, 58, 0.42), 0 0 0 1px rgba(200,151,58,0.2);
+}
+
+/* ── Scroll Progress Bar ── */
+#scrollProgress {
+  position: fixed;
+  top: 0; left: 0;
+  height: 2px;
+  width: 0%;
+  background: linear-gradient(90deg, var(--clr-emerald-glow), var(--clr-gold), var(--clr-emerald-glow));
+  background-size: 200% 100%;
+  z-index: 500;
+  transition: width 0.1s linear;
+  animation: progress-shimmer 3s linear infinite;
+}
+@keyframes progress-shimmer {
+  0%   { background-position: 0% center; }
+  100% { background-position: 200% center; }
 }
 
 .btn-ghost {
@@ -534,18 +565,18 @@
   letter-spacing: 0.10em;
   text-transform: uppercase;
   padding: 0.6em 1.1em;
-  background: var(--clr-gold);
+  background: linear-gradient(135deg, var(--clr-gold) 0%, var(--clr-gold-light) 100%);
   color: var(--clr-ink);
   border: none;
-  border-radius: var(--radius-sm);
+  border-radius: 100px;
   cursor: pointer;
   transition: background var(--dur-fast) ease,
               box-shadow var(--dur-mid) ease,
               transform var(--dur-fast) var(--ease-out);
 }
 .btn-add-cart:hover {
-  background: var(--clr-gold-light);
-  box-shadow: 0 4px 16px rgba(200, 151, 58, 0.35);
+  background: linear-gradient(135deg, var(--clr-gold-light) 0%, var(--clr-gold-pale) 100%);
+  box-shadow: 0 4px 16px rgba(200, 151, 58, 0.38);
 }
 .btn-add-cart:active { transform: scale(0.97); }
 .btn-add-cart svg { width: 13px; height: 13px; }
@@ -590,7 +621,7 @@
 }
 
 /* Category-specific gradients */
-.product-card__img[data-cat="buecher"]      { background: linear-gradient(135deg, #0D4A52 0%, #071e22 100%); }
+.product-card__img[data-cat="buecher"]      { background: linear-gradient(135deg, #1A5C3A 0%, #091f14 100%); }
 .product-card__img[data-cat="parfum"]       { background: linear-gradient(135deg, #1A5C3A 0%, #091f14 100%); }
 .product-card__img[data-cat="miswak"]       { background: linear-gradient(135deg, #4A3728 0%, #1e150e 100%); }
 .product-card__img[data-cat="abaya"]        { background: linear-gradient(135deg, #2D1B4E 0%, #120b1e 100%); }
@@ -739,7 +770,7 @@
 }
 
 /* Category backgrounds */
-.cat-bg-buecher       { background: linear-gradient(145deg, #0D4A52 0%, #071e22 100%); }
+.cat-bg-buecher       { background: linear-gradient(145deg, #1A5C3A 0%, #091f14 100%); }
 .cat-bg-parfum        { background: linear-gradient(145deg, #1A5C3A 0%, #091f14 100%); }
 .cat-bg-miswak        { background: linear-gradient(145deg, #4A3728 0%, #1e150e 100%); }
 .cat-bg-abaya         { background: linear-gradient(145deg, #2D1B4E 0%, #120b1e 100%); }

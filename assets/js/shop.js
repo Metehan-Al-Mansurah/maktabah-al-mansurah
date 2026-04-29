@@ -8,85 +8,113 @@ const PRODUCTS = [
   /* ── Bücher ── */
   {
     id: 1, category: 'buecher',
-    name: 'Riyadh as-Salihin',
-    subtitle: 'Gärten der Rechtschaffenen',
-    price: 24.90, badge: 'Bestseller',
-    description: 'Eine der bedeutendsten Hadith-Sammlungen, zusammengestellt von Imam an-Nawawi.'
+    name: 'Die Heilmittel zur Geduld gegen das Übel der Geschöpfe',
+    subtitle: 'Ibn Taymiyyah',
+    price: 7.99, badge: null,
+    description: 'Ein bedeutendes Werk des Gelehrten Ibn Taymiyyah über Geduld und den Umgang mit den Schwierigkeiten des Lebens.'
   },
   {
     id: 2, category: 'buecher',
-    name: 'Sahih al-Bukhari',
-    subtitle: 'Vollständige Ausgabe — 9 Bände',
-    price: 89.90, badge: null,
-    description: 'Die authentischste Hadith-Sammlung des Islams in einer vollständigen deutschen Ausgabe.'
+    name: 'An-Nawawīs vierzig Ḥadīṯe',
+    subtitle: 'Imam ʾAbū Zakariyyā an-Nawawī — Mit Notizfeldern',
+    price: 14.99, badge: 'Bestseller',
+    description: 'Die berühmten 40 Hadithe des Imam an-Nawawi — mit Notizfeldern für eigene Reflexionen.'
   },
   {
     id: 3, category: 'buecher',
-    name: 'Der edle Quran',
-    subtitle: 'Arabisch-Deutsch, Ledereinband',
-    price: 34.90, badge: 'Neu',
-    description: 'Der heilige Quran mit arabischem Original und deutscher Übersetzung, in hochwertigem Ledereinband.'
+    name: 'Mittel zum Erreichen eines glücklichen Familienlebens',
+    subtitle: 'Sheikh Ruhayli',
+    price: 13.99, badge: null,
+    description: 'Wertvolle Ratschläge des Gelehrten Sheikh Ruhayli für ein harmonisches Familienleben nach islamischen Werten.'
   },
   {
     id: 4, category: 'buecher',
-    name: 'Fiqh us-Sunnah',
-    subtitle: 'Islamisches Recht',
-    price: 42.00, badge: null,
-    description: 'Umfassendes Werk über islamische Rechtsprechung von Sayyid Sabiq.'
+    name: 'Die essenziellen Unterrichte für die muslimische Gemeinschaft',
+    subtitle: 'Sheikh Ibn Baz',
+    price: 8.99, badge: null,
+    description: 'Grundlegende Unterrichte des Großgelehrten Sheikh Ibn Baz für die muslimische Gemeinschaft.'
   },
   {
     id: 5, category: 'buecher',
-    name: 'Erläuterung der 40 Hadithe',
-    subtitle: 'Kommentar Imam an-Nawawi',
-    price: 18.90, badge: null,
-    description: 'Die berühmten 40 Hadithe mit detailliertem Kommentar.'
+    name: 'Die drei fundamentalen Grundlagen und ihre Beweise',
+    subtitle: 'Muhammad ibn Abdulwahab',
+    price: 8.99, badge: 'Bestseller',
+    description: 'Das klassische Werk über die drei fundamentalen Grundlagen des Islam und ihre Beweise aus Quran und Sunnah.'
   },
   {
     id: 6, category: 'buecher',
-    name: 'Tafsir Ibn Kathir',
-    subtitle: 'Quran-Kommentar, 10 Bände',
-    price: 119.00, badge: null,
-    description: 'Der klassische Qurankommentar des Imams Ibn Kathir in vollständiger Ausgabe.'
+    name: 'Kitāb-ut Tauḥīd — Das Buch des Monotheismus',
+    subtitle: 'Muḥammad Ibn ʿAbd-il Wahhāb',
+    price: 27.99, badge: null,
+    description: 'Das grundlegende Werk über Tauhid — eines der wichtigsten Bücher der islamischen Glaubenslehre.'
+  },
+  {
+    id: 7, category: 'buecher',
+    name: 'Erläuterung der Beschreibung des Gebets des Propheten ﷺ von Al-Albani',
+    subtitle: 'Scheich Sulayman Ar-Ruhayli',
+    price: 12.99, badge: 'Neu',
+    description: 'Eine ausführliche Erläuterung der Gebetsbeschreibung des Propheten Muhammad ﷺ von Scheich Ar-Ruhayli.'
+  },
+  {
+    id: 8, category: 'buecher',
+    name: 'Al-ʿUmdah fil-Ahkam — Taschenformat',
+    subtitle: 'Verlag Dar Al-Mirath An-Nabawi',
+    price: 7.99, badge: null,
+    description: 'Die wichtigsten Rechtsnormen in kompakter Taschenformat-Ausgabe — ideal für unterwegs.'
+  },
+  {
+    id: 9, category: 'buecher',
+    name: 'Erläuterung der Gedichtsammlung der Rechtsgrundsätze (As-Saʿdi)',
+    subtitle: 'Scheich Sulayman Ar-Ruhayli',
+    price: 12.99, badge: null,
+    description: 'Scheich Ar-Ruhaylis Erläuterung der Rechtsgrundsätze des Gelehrten Abdurrahman As-Saʿdi.'
+  },
+  {
+    id: 10, category: 'buecher',
+    name: 'Erläuterung der Grundlagen der islamischen Rechtswissenschaft',
+    subtitle: 'Scheich Sulayman Ar-Ruhayli — Usul al-Fiqh',
+    price: 12.99, badge: null,
+    description: 'Erläuterung der grundlegenden Abhandlung über die Prinzipien der islamischen Rechtswissenschaft des Gelehrten As-Saʿdi.'
   },
 
   /* ── Parfüm & Misk ── */
   {
-    id: 7, category: 'parfum',
+    id: 11, category: 'parfum',
     name: 'Misk al-Abyad',
     subtitle: 'Weißer Moschus — 12 ml',
     price: 18.90, badge: 'Bestseller',
     description: 'Reiner weißer Moschus, ungemischt und ohne Alkohol. Sanfter, anhaltender Duft.'
   },
   {
-    id: 8, category: 'parfum',
+    id: 12, category: 'parfum',
     name: 'Oud al-Khaleeji',
     subtitle: 'Arabisches Oud — 6 ml',
     price: 45.00, badge: null,
     description: 'Authentisches arabisches Oud aus dem Khaleeji-Stil mit warmem, holzigem Charakter.'
   },
   {
-    id: 9, category: 'parfum',
+    id: 13, category: 'parfum',
     name: 'Attar Rose Taif',
     subtitle: 'Rosenöl aus Taif — 3 ml',
     price: 38.00, badge: 'Neu',
     description: 'Hochwertiges Rosenöl aus der berühmten Taif-Rose, rein und konzentriert.'
   },
   {
-    id: 10, category: 'parfum',
+    id: 14, category: 'parfum',
     name: 'Misk Siyah',
     subtitle: 'Schwarzer Moschus — 10 ml',
     price: 22.50, badge: null,
     description: 'Intensiver schwarzer Moschus mit erdigen, herben Noten.'
   },
   {
-    id: 11, category: 'parfum',
+    id: 15, category: 'parfum',
     name: 'Bakhoor Al Haram',
     subtitle: 'Räucherholz-Chips — 40g',
     price: 14.90, badge: null,
     description: 'Premium Räucherholz-Chips für Bakhoor-Brenner. Langhaltender Duft.'
   },
   {
-    id: 12, category: 'parfum',
+    id: 16, category: 'parfum',
     name: 'Amber Oud',
     subtitle: 'Bernstein & Oud — 12 ml',
     price: 35.00, badge: null,
@@ -95,21 +123,21 @@ const PRODUCTS = [
 
   /* ── Miswak ── */
   {
-    id: 13, category: 'miswak',
+    id: 17, category: 'miswak',
     name: 'Miswak Premium',
     subtitle: 'Salvadora persica — 10er Pack',
     price: 12.90, badge: 'Bestseller',
     description: 'Natürliche Zahnbürste aus dem Arak-Baum (Salvadora persica). 10 Stück im Set.'
   },
   {
-    id: 14, category: 'miswak',
+    id: 18, category: 'miswak',
     name: 'Miswak XL',
     subtitle: 'Extra lang — 5er Pack',
     price: 8.90, badge: null,
     description: 'Extra lange Miswak-Stäbchen, frisch und hygienisch einzeln verpackt.'
   },
   {
-    id: 15, category: 'miswak',
+    id: 19, category: 'miswak',
     name: 'Miswak mit Behälter',
     subtitle: 'Hygienehalter inkl.',
     price: 6.90, badge: 'Neu',
@@ -118,21 +146,21 @@ const PRODUCTS = [
 
   /* ── Abayas ── */
   {
-    id: 16, category: 'abaya',
+    id: 20, category: 'abaya',
     name: 'Abaya Classic Schwarz',
     subtitle: 'Fließender Krepp — Gr. S–XXL',
     price: 69.90, badge: null,
     description: 'Elegante schwarze Abaya aus hochwertigem Krepp-Stoff, fließend und bequem.'
   },
   {
-    id: 17, category: 'abaya',
+    id: 21, category: 'abaya',
     name: 'Abaya Dubai Stil',
     subtitle: 'Butterfly-Schnitt',
     price: 89.00, badge: 'Neu',
     description: 'Modische Dubai-Abaya im Butterfly-Schnitt, leicht und elegant für jeden Anlass.'
   },
   {
-    id: 18, category: 'abaya',
+    id: 22, category: 'abaya',
     name: 'Abaya mit Stickerei',
     subtitle: 'Handbestickter Saum',
     price: 105.00, badge: null,
@@ -141,21 +169,21 @@ const PRODUCTS = [
 
   /* ── Gebetsteppiche ── */
   {
-    id: 19, category: 'gebetsteppich',
+    id: 23, category: 'gebetsteppich',
     name: 'Gebetsteppich Medina',
     subtitle: 'Samt, 60×110 cm',
     price: 29.90, badge: 'Bestseller',
     description: 'Hochwertiger Gebetsteppich aus weichem Samt mit Medina-Motiv, rutschfest.'
   },
   {
-    id: 20, category: 'gebetsteppich',
+    id: 24, category: 'gebetsteppich',
     name: 'Reise-Gebetsteppich',
     subtitle: 'Faltbar, 60×100 cm',
     price: 19.90, badge: null,
     description: 'Kompakter, faltbarer Gebetsteppich für unterwegs. Leicht und platzsparend.'
   },
   {
-    id: 21, category: 'gebetsteppich',
+    id: 25, category: 'gebetsteppich',
     name: 'Gebetsteppich Luxus',
     subtitle: 'Kaschmir-Mischung, 70×120 cm',
     price: 59.90, badge: null,
@@ -164,21 +192,21 @@ const PRODUCTS = [
 
   /* ── Tasbihs ── */
   {
-    id: 22, category: 'tasbih',
+    id: 26, category: 'tasbih',
     name: 'Tasbih Rosenholz',
     subtitle: '99 Perlen, 8mm',
     price: 14.90, badge: null,
     description: 'Hochwertiger Tasbih aus echtem Rosenholz, 99 Perlen, 8mm Durchmesser.'
   },
   {
-    id: 23, category: 'tasbih',
+    id: 27, category: 'tasbih',
     name: 'Tasbih Olivenholz',
     subtitle: '33 Perlen, handgefertigt',
     price: 11.90, badge: 'Bestseller',
     description: 'Handgefertigter Tasbih aus palästinensischem Olivenholz, 33 Perlen.'
   },
   {
-    id: 24, category: 'tasbih',
+    id: 28, category: 'tasbih',
     name: 'Tasbih Bernstein',
     subtitle: '99 Perlen, Baltischer Bernstein',
     price: 45.00, badge: null,
@@ -187,21 +215,21 @@ const PRODUCTS = [
 
   /* ── Sonstiges ── */
   {
-    id: 25, category: 'sonstiges',
+    id: 29, category: 'sonstiges',
     name: 'Islamische Wanddeko — Ayat al-Kursi',
     subtitle: 'Holzschnitt, 40×60 cm',
     price: 32.00, badge: null,
     description: 'Dekorativer Ayat al-Kursi-Holzschnitt in arabischer Kalligraphie, natur finish.'
   },
   {
-    id: 26, category: 'sonstiges',
+    id: 30, category: 'sonstiges',
     name: 'Kufi-Gebetsmütze',
     subtitle: 'Weiße Baumwolle, Einheitsgröße',
     price: 9.90, badge: null,
     description: 'Klassische weiße Kufi-Mütze aus weicher Baumwolle, bequem und langlebig.'
   },
   {
-    id: 27, category: 'sonstiges',
+    id: 31, category: 'sonstiges',
     name: 'Bakhoor-Brenner',
     subtitle: 'Keramik, handgefertigt',
     price: 24.00, badge: 'Neu',
@@ -312,6 +340,8 @@ function renderProducts(container, products) {
   container.innerHTML = products.map(createProductCardHTML).join('');
 
   if (window.initReveal) window.initReveal(container);
+  if (window.initProductStagger) window.initProductStagger(container);
+  if (window.initMagneticButtons) window.initMagneticButtons();
 
   container.querySelectorAll('.btn-add-cart').forEach(btn => {
     btn.addEventListener('click', e => {

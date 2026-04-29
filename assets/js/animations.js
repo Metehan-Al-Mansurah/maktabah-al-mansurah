@@ -55,10 +55,46 @@ function animateCounters() {
   });
 }
 
+/* ── Magnetic Hover on Buttons ── */
+function initMagneticButtons() {
+  document.querySelectorAll('.btn-primary, .btn-ghost').forEach(btn => {
+    btn.addEventListener('mousemove', e => {
+      const rect = btn.getBoundingClientRect();
+      const dx = e.clientX - rect.left - rect.width / 2;
+      const dy = e.clientY - rect.top - rect.height / 2;
+      btn.style.transform = `translate(${dx * 0.18}px, ${dy * 0.18}px)`;
+    });
+    btn.addEventListener('mouseleave', () => {
+      btn.style.transform = '';
+    });
+  });
+}
+
+/* ── Scroll Progress Bar ── */
+function initScrollProgress() {
+  const bar = document.getElementById('scrollProgress');
+  if (!bar) return;
+  window.addEventListener('scroll', () => {
+    const scrolled = window.scrollY;
+    const total = document.documentElement.scrollHeight - window.innerHeight;
+    bar.style.width = (total > 0 ? (scrolled / total) * 100 : 0) + '%';
+  }, { passive: true });
+}
+
+/* ── Staggered Product Grid ── */
+function initProductStagger(container) {
+  if (!container) return;
+  container.querySelectorAll('.product-card').forEach((card, i) => {
+    card.style.setProperty('--i', i);
+  });
+}
+
 /* ── Init ── */
 document.addEventListener('DOMContentLoaded', () => {
   initReveal();
   initHeroParallax();
+  initMagneticButtons();
+  initScrollProgress();
 
   /* Trigger counters when visible */
   const counterSection = document.querySelector('[data-count]');
@@ -72,3 +108,5 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 window.initReveal = initReveal;
+window.initMagneticButtons = initMagneticButtons;
+window.initProductStagger = initProductStagger;
