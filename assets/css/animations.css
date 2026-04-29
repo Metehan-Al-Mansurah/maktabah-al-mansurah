@@ -158,7 +158,7 @@
   100% { transform: translateX(320%) skewX(-20deg); }
 }
 
-.brand-logo { animation: float 4s ease-in-out infinite; }
+.brand-logo-wrap { animation: float 4s ease-in-out infinite; }
 .product-card__badge--bestseller { animation: glow-pulse-green 2.5s ease-in-out infinite; }
 
 /* ── Reduced Motion ── */
