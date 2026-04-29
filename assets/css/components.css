@@ -1950,7 +1950,7 @@
   overflow: hidden;
   padding-block: var(--sp-8);
   text-align: center;
-  background: var(--clr-ink-mid);
+  background: transparent;
 }
 
 .ayah-banner::before {
@@ -1958,18 +1958,9 @@
   position: absolute;
   inset: 0;
   background:
-    radial-gradient(ellipse 65% 80% at 50% 50%, rgba(200,151,58,0.07) 0%, transparent 65%),
-    radial-gradient(ellipse 35% 60% at 8% 50%, rgba(0,108,53,0.05) 0%, transparent 55%),
-    radial-gradient(ellipse 35% 60% at 92% 50%, rgba(0,108,53,0.05) 0%, transparent 55%);
-  pointer-events: none;
-}
-
-.ayah-banner::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background:
-    linear-gradient(to bottom, var(--clr-ink) 0%, transparent 18%, transparent 82%, var(--clr-ink) 100%);
+    radial-gradient(ellipse 70% 90% at 50% 50%, rgba(200,151,58,0.06) 0%, transparent 65%),
+    radial-gradient(ellipse 35% 60% at 8% 50%, rgba(0,108,53,0.04) 0%, transparent 55%),
+    radial-gradient(ellipse 35% 60% at 92% 50%, rgba(0,108,53,0.04) 0%, transparent 55%);
   pointer-events: none;
 }
 

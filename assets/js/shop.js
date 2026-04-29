@@ -372,6 +372,8 @@ function createProductCardHTML(product) {
    This bypasses CSS grid min-content expansion that caused the 1-col bug. */
 function forceGridLayout(container) {
   if (!container) return;
+  /* Skip the homepage swipe carousel — handled by CSS scroll-snap */
+  if (container.id === 'featuredGrid') return;
   if (window.innerWidth <= 640) {
     container.style.setProperty('display', 'flex', 'important');
     container.style.setProperty('flex-wrap', 'wrap', 'important');
