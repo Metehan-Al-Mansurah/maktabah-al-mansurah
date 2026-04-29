@@ -340,7 +340,7 @@ function createProductCardHTML(product) {
     : '';
 
   return `
-    <article class="product-card" data-id="${product.id}" data-category="${product.category}" data-reveal data-reveal-delay="${(product.id % 6) + 1}">
+    <a href="product.html?id=${product.id}" class="product-card" data-id="${product.id}" data-category="${product.category}" data-reveal data-reveal-delay="${(product.id % 6) + 1}" aria-label="${product.name}">
       <div class="product-card__media">
         <div class="product-card__img" data-cat="${product.iconKey || product.category}">
           <span class="product-card__icon">${getCategoryIcon(product.category, product.iconKey)}</span>
@@ -364,8 +364,21 @@ function createProductCardHTML(product) {
           </button>
         </div>
       </div>
-    </article>
+    </a>
   `;
+}
+
+/* Force 2-col grid on mobile — inline style beats any CSS caching */
+function forceGridLayout(container) {
+  if (!container) return;
+  if (window.innerWidth <= 640) {
+    container.style.setProperty('display', 'grid', 'important');
+    container.style.setProperty('grid-template-columns', 'repeat(2, 1fr)', 'important');
+    container.style.setProperty('gap', '8px', 'important');
+  } else {
+    container.style.removeProperty('grid-template-columns');
+    container.style.removeProperty('gap');
+  }
 }
 
 function renderProducts(container, products) {
@@ -377,10 +390,12 @@ function renderProducts(container, products) {
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z"/></svg>
         <p>Keine Produkte gefunden. Bitte ändere die Filter.</p>
       </div>`;
+    forceGridLayout(container);
     return;
   }
 
   container.innerHTML = products.map(createProductCardHTML).join('');
+  forceGridLayout(container);
 
   if (window.initReveal) window.initReveal(container);
   if (window.initProductStagger) window.initProductStagger(container);
@@ -389,6 +404,7 @@ function renderProducts(container, products) {
   container.querySelectorAll('.btn-add-cart').forEach(btn => {
     btn.addEventListener('click', e => {
       e.stopPropagation();
+      e.preventDefault();
       const id = parseInt(btn.dataset.productId);
       const product = PRODUCTS.find(p => p.id === id);
       if (product && window.Cart) window.Cart.add(product);
@@ -468,7 +484,17 @@ document.addEventListener('DOMContentLoaded', () => {
   initFeaturedProducts();
 });
 
+/* Re-apply grid layout on resize */
+window.addEventListener('resize', () => {
+  ['productsGrid', 'featuredGrid'].forEach(id => {
+    const g = document.getElementById(id);
+    if (g) forceGridLayout(g);
+  });
+}, { passive: true });
+
 window.PRODUCTS = PRODUCTS;
 window.formatPrice = formatPrice;
 window.getCategoryIcon = getCategoryIcon;
 window.getCategoryLabel = getCategoryLabel;
+window.renderProducts = renderProducts;
+window.forceGridLayout = forceGridLayout;

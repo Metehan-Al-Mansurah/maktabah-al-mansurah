@@ -167,6 +167,17 @@
   .shop-sidebar.is-open { display: block; }
 }
 
+/* ── Product Detail Layout ── */
+.product-detail-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--sp-6);
+  align-items: start;
+}
+@media (max-width: 720px) {
+  .product-detail-layout { grid-template-columns: 1fr; }
+}
+
 /* ── About Layout ── */
 .about-split {
   display: grid;
