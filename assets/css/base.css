@@ -5,11 +5,11 @@
    ================================================================ */
 
 :root {
-  /* ── Surfaces ── */
-  --clr-ink:         #080E0A;
-  --clr-ink-mid:     #0D1610;
-  --clr-ink-light:   #152018;
-  --clr-ink-lifted:  #1A2D1E;
+  /* ── Surfaces (Saudi-Green Palette) ── */
+  --clr-ink:         #050A05;
+  --clr-ink-mid:     #08100A;
+  --clr-ink-light:   #0F1C10;
+  --clr-ink-lifted:  #172618;
 
   /* ── Gold System ── */
   --clr-gold:        #C8973A;
@@ -18,17 +18,17 @@
   --clr-gold-muted:  rgba(200, 151, 58, 0.32);
   --clr-gold-ghost:  rgba(200, 151, 58, 0.09);
 
-  /* ── Jewel Accents ── */
-  --clr-emerald:     #1A5C3A;
-  --clr-emerald-mid: #256B45;
-  --clr-emerald-glow:#35A060;
-  --clr-teal:        #0D3D20;
-  --clr-teal-mid:    #1A5228;
+  /* ── Jewel Accents (Saudi Flag Green #006C35) ── */
+  --clr-emerald:     #005228;
+  --clr-emerald-mid: #006C35;
+  --clr-emerald-glow:#009142;
+  --clr-teal:        #003D1A;
+  --clr-teal-mid:    #005228;
   --clr-plum:        #2D1B4E;
   --clr-burgundy:    #4A1E3A;
   --clr-sienna:      #4A3728;
   --clr-navy:        #1A3A5C;
-  --clr-forest:      #152D18;
+  --clr-forest:      #002D12;
 
   /* ── Text ── */
   --clr-text-primary: #F0E6D3;

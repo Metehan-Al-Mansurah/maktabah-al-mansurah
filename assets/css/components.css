@@ -46,12 +46,16 @@
   flex-shrink: 0;
 }
 .brand-logo {
-  height: 42px;
-  width: 42px;
-  object-fit: contain;
-  mix-blend-mode: screen;
-  border-radius: 4px;
+  height: 44px;
+  width: 44px;
+  object-fit: cover;
+  border-radius: 8px;
   flex-shrink: 0;
+  box-shadow: 0 0 0 1px rgba(200,151,58,0.25), 0 2px 12px rgba(0,0,0,0.5);
+  transition: box-shadow var(--dur-mid) ease;
+}
+.brand:hover .brand-logo {
+  box-shadow: 0 0 0 1px rgba(200,151,58,0.5), 0 4px 20px rgba(200,151,58,0.15);
 }
 .brand-text {
   display: flex;
@@ -621,7 +625,7 @@
 }
 
 /* Category-specific gradients */
-.product-card__img[data-cat="buecher"]      { background: linear-gradient(135deg, #1A5C3A 0%, #091f14 100%); }
+.product-card__img[data-cat="buecher"]      { background: linear-gradient(135deg, #006C35 0%, #002D12 100%); }
 .product-card__img[data-cat="parfum"]       { background: linear-gradient(135deg, #1A5C3A 0%, #091f14 100%); }
 .product-card__img[data-cat="miswak"]       { background: linear-gradient(135deg, #4A3728 0%, #1e150e 100%); }
 .product-card__img[data-cat="abaya"]        { background: linear-gradient(135deg, #2D1B4E 0%, #120b1e 100%); }
@@ -770,7 +774,7 @@
 }
 
 /* Category backgrounds */
-.cat-bg-buecher       { background: linear-gradient(145deg, #1A5C3A 0%, #091f14 100%); }
+.cat-bg-buecher       { background: linear-gradient(145deg, #006C35 0%, #002D12 100%); }
 .cat-bg-parfum        { background: linear-gradient(145deg, #1A5C3A 0%, #091f14 100%); }
 .cat-bg-miswak        { background: linear-gradient(145deg, #4A3728 0%, #1e150e 100%); }
 .cat-bg-abaya         { background: linear-gradient(145deg, #2D1B4E 0%, #120b1e 100%); }

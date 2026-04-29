@@ -2,17 +2,84 @@
    MAKTABAH AL MANSURAH — Islamic Geometric Patterns
    ================================================================ */
 
-/* ── Hero SVG Pattern Layer ── */
-.hero-pattern-svg {
+/* ── Hero: New Modern Background ── */
+
+.hero-ambient {
   position: absolute;
   inset: 0;
-  width: 100%;
-  height: 100%;
   pointer-events: none;
-  opacity: 0.065;
-  will-change: transform;
-  animation: pattern-drift 140s linear infinite;
-  transform-origin: center center;
+  background:
+    radial-gradient(ellipse 70% 70% at 50% 55%, rgba(0,108,53,0.13) 0%, transparent 65%),
+    radial-gradient(ellipse 35% 50% at 15% 25%, rgba(200,151,58,0.05) 0%, transparent 55%),
+    radial-gradient(ellipse 40% 40% at 85% 75%, rgba(0,60,25,0.10) 0%, transparent 55%);
+}
+
+.hero-grid {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(rgba(200,151,58,0.55) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(200,151,58,0.55) 1px, transparent 1px);
+  background-size: 72px 72px;
+  opacity: 0.045;
+  -webkit-mask-image: radial-gradient(ellipse 85% 85% at 50% 50%, black 20%, transparent 80%);
+  mask-image: radial-gradient(ellipse 85% 85% at 50% 50%, black 20%, transparent 80%);
+}
+
+.hero-calligraphy {
+  position: absolute;
+  top: 50%;
+  right: -4%;
+  transform: translateY(-50%);
+  font-family: var(--font-arabic);
+  font-size: clamp(160px, 28vw, 360px);
+  line-height: 0.85;
+  color: transparent;
+  -webkit-text-stroke: 1.5px rgba(0,108,53,0.14);
+  direction: rtl;
+  pointer-events: none;
+  user-select: none;
+  z-index: 0;
+  white-space: nowrap;
+  filter: blur(1px);
+  letter-spacing: -0.02em;
+}
+
+.hero-corner-tl,
+.hero-corner-br {
+  position: absolute;
+  width: 120px;
+  height: 120px;
+  pointer-events: none;
+  z-index: 2;
+  opacity: 0.4;
+}
+.hero-corner-tl {
+  top: var(--sp-4);
+  left: var(--sp-4);
+  border-top: 1px solid var(--clr-gold);
+  border-left: 1px solid var(--clr-gold);
+}
+.hero-corner-br {
+  bottom: var(--sp-4);
+  right: var(--sp-4);
+  border-bottom: 1px solid var(--clr-gold);
+  border-right: 1px solid var(--clr-gold);
+}
+
+.hero-gold-line {
+  display: block;
+  width: 60px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--clr-gold), transparent);
+  margin: var(--sp-3) auto;
+  opacity: 0.7;
+}
+
+/* ── Legacy: keep for other pages ── */
+.hero-pattern-svg {
+  display: none;
 }
 
 /* ── Geometric Divider ── */
@@ -76,8 +143,8 @@
   position: absolute;
   inset: 0;
   background-image:
-    radial-gradient(circle at 20% 80%, rgba(26,92,58,0.08) 0%, transparent 50%),
-    radial-gradient(circle at 80% 20%, rgba(13,74,82,0.08) 0%, transparent 50%);
+    radial-gradient(circle at 20% 80%, rgba(0,108,53,0.07) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(0,80,40,0.06) 0%, transparent 50%);
   pointer-events: none;
 }
 
@@ -86,8 +153,8 @@
   position: absolute;
   inset: 0;
   background:
-    radial-gradient(ellipse at 50% 100%, rgba(11,15,20,0.7) 0%, transparent 60%),
-    linear-gradient(180deg, rgba(11,15,20,0.3) 0%, rgba(11,15,20,0.75) 100%);
+    radial-gradient(ellipse at 50% 100%, rgba(5,10,5,0.7) 0%, transparent 60%),
+    linear-gradient(180deg, rgba(5,10,5,0.3) 0%, rgba(5,10,5,0.75) 100%);
   pointer-events: none;
 }
 
@@ -96,8 +163,8 @@
   position: absolute;
   inset: 0;
   background:
-    radial-gradient(ellipse 120% 80% at 50% 50%, transparent 30%, rgba(11,15,20,0.55) 100%),
-    linear-gradient(180deg, rgba(11,15,20,0.15) 0%, transparent 40%, rgba(11,15,20,0.7) 100%);
+    radial-gradient(ellipse 120% 80% at 50% 50%, transparent 30%, rgba(5,10,5,0.6) 100%),
+    linear-gradient(180deg, rgba(5,10,5,0.2) 0%, transparent 40%, rgba(5,10,5,0.75) 100%);
   pointer-events: none;
   z-index: 1;
 }
