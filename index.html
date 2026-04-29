@@ -116,18 +116,21 @@
   <div class="hero-grid" aria-hidden="true"></div>
   <!-- Large Arabic calligraphy watermark -->
   <div class="hero-calligraphy" aria-hidden="true">المنصورة</div>
-  <!-- Floating book pages animation -->
+  <!-- Floating book pages animation — 3 directions -->
   <div class="book-leaves" aria-hidden="true">
-    <span class="book-leaf" style="left:7%;animation-delay:0s;animation-duration:9s;"></span>
-    <span class="book-leaf" style="left:17%;animation-delay:2.2s;animation-duration:11s;width:8px;height:11px;"></span>
-    <span class="book-leaf" style="left:29%;animation-delay:0.7s;animation-duration:8.5s;"></span>
-    <span class="book-leaf" style="left:42%;animation-delay:4.1s;animation-duration:12s;width:9px;height:13px;"></span>
-    <span class="book-leaf" style="left:54%;animation-delay:1.4s;animation-duration:10s;"></span>
-    <span class="book-leaf" style="left:65%;animation-delay:5.3s;animation-duration:9.5s;width:7px;height:10px;"></span>
-    <span class="book-leaf" style="left:76%;animation-delay:2.9s;animation-duration:11s;"></span>
-    <span class="book-leaf" style="left:87%;animation-delay:3.6s;animation-duration:8s;width:10px;height:14px;"></span>
-    <span class="book-leaf" style="left:22%;animation-delay:6.8s;animation-duration:10.5s;"></span>
-    <span class="book-leaf" style="left:60%;animation-delay:7.4s;animation-duration:9s;width:8px;height:12px;"></span>
+    <!-- Rising straight up from bottom -->
+    <span class="book-leaf" style="left:14%;bottom:-30px;animation:leaf-up 10s ease-in-out infinite;animation-delay:0s;width:22px;height:30px;"></span>
+    <span class="book-leaf" style="left:35%;bottom:-30px;animation:leaf-up 12s ease-in-out infinite;animation-delay:3.5s;width:18px;height:24px;"></span>
+    <span class="book-leaf" style="left:55%;bottom:-30px;animation:leaf-up 9.5s ease-in-out infinite;animation-delay:1.2s;width:28px;height:38px;"></span>
+    <span class="book-leaf" style="left:74%;bottom:-30px;animation:leaf-up 11.5s ease-in-out infinite;animation-delay:5.8s;width:20px;height:28px;"></span>
+    <!-- Sweeping in from the left -->
+    <span class="book-leaf" style="left:6%;top:68%;animation:leaf-from-left 11s ease-in-out infinite;animation-delay:2.0s;width:28px;height:38px;"></span>
+    <span class="book-leaf" style="left:4%;top:44%;animation:leaf-from-left 9.2s ease-in-out infinite;animation-delay:6.5s;width:22px;height:30px;"></span>
+    <span class="book-leaf" style="left:8%;top:26%;animation:leaf-from-left 13s ease-in-out infinite;animation-delay:4.0s;width:24px;height:34px;"></span>
+    <!-- Sweeping in from the right -->
+    <span class="book-leaf" style="left:86%;top:62%;animation:leaf-from-right 10.5s ease-in-out infinite;animation-delay:1.5s;width:26px;height:36px;"></span>
+    <span class="book-leaf" style="left:90%;top:38%;animation:leaf-from-right 12s ease-in-out infinite;animation-delay:7.2s;width:20px;height:28px;"></span>
+    <span class="book-leaf" style="left:84%;top:74%;animation:leaf-from-right 8.8s ease-in-out infinite;animation-delay:3.8s;width:24px;height:32px;"></span>
   </div>
   <!-- Vignette -->
   <div class="hero-vignette" aria-hidden="true"></div>
@@ -165,7 +168,7 @@
 <!-- ═══════════════════════════════════════════
      FEATURED PRODUCTS
 ════════════════════════════════════════════════ -->
-<section class="section section-border-top" id="featured" aria-label="Empfehlungen">
+<section class="section" id="featured" aria-label="Empfehlungen">
   <div class="container">
     <div class="section-header section-header--center" data-reveal>
       <span class="eyebrow">Unsere Auswahl</span>
@@ -199,6 +202,24 @@
   </svg>
   <div class="divider-geo__line"></div>
 </div>
+
+<!-- ═══════════════════════════════════════════
+     AYAH BANNER
+════════════════════════════════════════════════ -->
+<section class="ayah-banner" aria-label="Koranisches Zitat">
+  <div class="container ayah-banner__inner" data-reveal>
+    <span class="ayah-banner__arabic">وَقُل رَّبِّ زِدْنِي عِلْمًا</span>
+    <div class="ayah-banner__ornament">
+      <span class="ayah-banner__ornament-line"></span>
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" style="color:var(--clr-gold);opacity:0.75;flex-shrink:0;" aria-hidden="true">
+        <polygon points="12,2 13.6,8.4 20,7 15.6,11.6 20,17 13.6,15.6 12,22 10.4,15.6 4,17 8.4,11.6 4,7 10.4,8.4"/>
+      </svg>
+      <span class="ayah-banner__ornament-line"></span>
+    </div>
+    <p class="ayah-banner__translation">„Und sprich: Mein Herr, mehre mein Wissen."</p>
+    <span class="ayah-banner__source">Surah Ta-Ha &middot; Sure 20, Vers 114</span>
+  </div>
+</section>
 
 <!-- ═══════════════════════════════════════════
      CATEGORIES

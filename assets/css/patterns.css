@@ -105,18 +105,12 @@
   opacity: 0.7;
 }
 
-/* ── Section Top Border (gold geometric line) ── */
+/* ── Section Top Border (disabled — replaced by smooth gradient transitions) ── */
 .section-border-top {
   position: relative;
 }
 .section-border-top::before {
-  content: '';
-  position: absolute;
-  top: 0; left: 50%;
-  transform: translateX(-50%);
-  width: min(600px, 80%);
-  height: 1px;
-  background: linear-gradient(90deg, transparent 0%, var(--clr-gold-muted) 30%, var(--clr-gold) 50%, var(--clr-gold-muted) 70%, transparent 100%);
+  display: none;
 }
 
 /* ── Card Corner Accent ── */
