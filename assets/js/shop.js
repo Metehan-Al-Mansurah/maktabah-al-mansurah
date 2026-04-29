@@ -121,23 +121,23 @@ const PRODUCTS = [
     description: 'Eine luxuriöse Komposition aus Bernstein und Oud, warm und einladend.'
   },
 
-  /* ── Miswak ── */
+  /* ── Miswak (unter Sonstiges) ── */
   {
-    id: 17, category: 'miswak',
+    id: 17, category: 'sonstiges', iconKey: 'miswak',
     name: 'Miswak Premium',
     subtitle: 'Salvadora persica — 10er Pack',
     price: 12.90, badge: 'Bestseller',
     description: 'Natürliche Zahnbürste aus dem Arak-Baum (Salvadora persica). 10 Stück im Set.'
   },
   {
-    id: 18, category: 'miswak',
+    id: 18, category: 'sonstiges', iconKey: 'miswak',
     name: 'Miswak XL',
     subtitle: 'Extra lang — 5er Pack',
     price: 8.90, badge: null,
     description: 'Extra lange Miswak-Stäbchen, frisch und hygienisch einzeln verpackt.'
   },
   {
-    id: 19, category: 'miswak',
+    id: 19, category: 'sonstiges', iconKey: 'miswak',
     name: 'Miswak mit Behälter',
     subtitle: 'Hygienehalter inkl.',
     price: 6.90, badge: 'Neu',
@@ -167,46 +167,46 @@ const PRODUCTS = [
     description: 'Handgefertigte Abaya mit goldener Saumbestickung, ideal für besondere Anlässe.'
   },
 
-  /* ── Gebetsteppiche ── */
+  /* ── Gebetsteppiche (unter Sonstiges) ── */
   {
-    id: 23, category: 'gebetsteppich',
+    id: 23, category: 'sonstiges', iconKey: 'gebetsteppich',
     name: 'Gebetsteppich Medina',
     subtitle: 'Samt, 60×110 cm',
     price: 29.90, badge: 'Bestseller',
     description: 'Hochwertiger Gebetsteppich aus weichem Samt mit Medina-Motiv, rutschfest.'
   },
   {
-    id: 24, category: 'gebetsteppich',
+    id: 24, category: 'sonstiges', iconKey: 'gebetsteppich',
     name: 'Reise-Gebetsteppich',
     subtitle: 'Faltbar, 60×100 cm',
     price: 19.90, badge: null,
     description: 'Kompakter, faltbarer Gebetsteppich für unterwegs. Leicht und platzsparend.'
   },
   {
-    id: 25, category: 'gebetsteppich',
+    id: 25, category: 'sonstiges', iconKey: 'gebetsteppich',
     name: 'Gebetsteppich Luxus',
     subtitle: 'Kaschmir-Mischung, 70×120 cm',
     price: 59.90, badge: null,
     description: 'Luxuriöser Gebetsteppich aus Kaschmir-Mischgewebe mit orientalischem Muster.'
   },
 
-  /* ── Tasbihs ── */
+  /* ── Tasbihs (unter Sonstiges) ── */
   {
-    id: 26, category: 'tasbih',
+    id: 26, category: 'sonstiges', iconKey: 'tasbih',
     name: 'Tasbih Rosenholz',
     subtitle: '99 Perlen, 8mm',
     price: 14.90, badge: null,
     description: 'Hochwertiger Tasbih aus echtem Rosenholz, 99 Perlen, 8mm Durchmesser.'
   },
   {
-    id: 27, category: 'tasbih',
+    id: 27, category: 'sonstiges', iconKey: 'tasbih',
     name: 'Tasbih Olivenholz',
     subtitle: '33 Perlen, handgefertigt',
     price: 11.90, badge: 'Bestseller',
     description: 'Handgefertigter Tasbih aus palästinensischem Olivenholz, 33 Perlen.'
   },
   {
-    id: 28, category: 'tasbih',
+    id: 28, category: 'sonstiges', iconKey: 'tasbih',
     name: 'Tasbih Bernstein',
     subtitle: '99 Perlen, Baltischer Bernstein',
     price: 45.00, badge: null,
@@ -309,7 +309,7 @@ function initSubcatTabs() {
   });
 }
 
-function getCategoryIcon(cat) {
+function getCategoryIcon(cat, iconKey) {
   const icons = {
     buecher:       `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 6.042A8.967 8.967 0 0 0 6 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 0 1 6 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 0 1 6-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0 0 18 18a8.967 8.967 0 0 0-6 2.292m0-14.25v14.25"/></svg>`,
     parfum:        `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9.75 3.104v5.714a2.25 2.25 0 0 1-.659 1.591L5 14.5M9.75 3.104c-.251.023-.501.05-.75.082m.75-.082a24.301 24.301 0 0 1 4.5 0m0 0v5.714c0 .597.237 1.17.659 1.591L19.8 15m-15.6-.5c.59 1.24 1.248 2.439 1.96 3.596m13.68-3.096a19.81 19.81 0 0 1-1.96 3.596M5 19.5h14"/></svg>`,
@@ -319,15 +319,15 @@ function getCategoryIcon(cat) {
     tasbih:        `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="7" r="1.5" fill="currentColor"/><circle cx="16.24" cy="9.75" r="1.5" fill="currentColor"/><circle cx="16.24" cy="14.25" r="1.5" fill="currentColor"/><circle cx="12" cy="17" r="1.5" fill="currentColor"/><circle cx="7.76" cy="14.25" r="1.5" fill="currentColor"/><circle cx="7.76" cy="9.75" r="1.5" fill="currentColor"/></svg>`,
     sonstiges:     `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9.813 15.904 9 18.75l-.813-2.846a4.5 4.5 0 0 0-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 0 0 3.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 0 0 3.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 0 0-3.09 3.09Z"/></svg>`
   };
-  return icons[cat] || icons.sonstiges;
+  return icons[iconKey] || icons[cat] || icons.sonstiges;
 }
 
 function getCategoryLabel(cat) {
   const labels = {
-    buecher: 'Bücher', parfum: 'Parfüm & Misk', miswak: 'Miswak',
-    abaya: 'Abayas', gebetsteppich: 'Gebetsteppich', tasbih: 'Tasbih', sonstiges: 'Sonstiges'
+    buecher: 'Bücher', parfum: 'Parfüm & Misk',
+    abaya: 'Abayas', sonstiges: 'Sonstiges'
   };
-  return labels[cat] || cat;
+  return labels[cat] || 'Sonstiges';
 }
 
 function formatPrice(p) {
@@ -342,8 +342,8 @@ function createProductCardHTML(product) {
   return `
     <article class="product-card" data-id="${product.id}" data-category="${product.category}" data-reveal data-reveal-delay="${(product.id % 6) + 1}">
       <div class="product-card__media">
-        <div class="product-card__img" data-cat="${product.category}">
-          <span class="product-card__icon">${getCategoryIcon(product.category)}</span>
+        <div class="product-card__img" data-cat="${product.iconKey || product.category}">
+          <span class="product-card__icon">${getCategoryIcon(product.category, product.iconKey)}</span>
         </div>
         ${badge}
         <svg class="card-corner-accent" viewBox="0 0 48 48" fill="none" aria-hidden="true">

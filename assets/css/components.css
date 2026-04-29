@@ -642,11 +642,11 @@
 /* Category-specific gradients */
 .product-card__img[data-cat="buecher"]      { background: linear-gradient(135deg, #006C35 0%, #002D12 100%); }
 .product-card__img[data-cat="parfum"]       { background: linear-gradient(135deg, #1A5C3A 0%, #091f14 100%); }
-.product-card__img[data-cat="miswak"]       { background: linear-gradient(135deg, #4A3728 0%, #1e150e 100%); }
 .product-card__img[data-cat="abaya"]        { background: linear-gradient(135deg, #2D1B4E 0%, #120b1e 100%); }
+.product-card__img[data-cat="miswak"]       { background: linear-gradient(135deg, #4A3728 0%, #1e150e 100%); }
 .product-card__img[data-cat="gebetsteppich"]{ background: linear-gradient(135deg, #1A3A5C 0%, #0a1625 100%); }
 .product-card__img[data-cat="tasbih"]       { background: linear-gradient(135deg, #4A1E3A 0%, #1e0c17 100%); }
-.product-card__img[data-cat="sonstiges"]    { background: linear-gradient(135deg, #1F2A3C 0%, #0b0f14 100%); }
+.product-card__img[data-cat="sonstiges"]    { background: linear-gradient(135deg, #1F3A28 0%, #0b1410 100%); }
 
 .product-card__icon {
   width: 52px; height: 52px;
@@ -1455,6 +1455,179 @@
   font-size: var(--text-xs);
   letter-spacing: 0.16em;
   text-transform: uppercase;
+}
+
+
+/* ────────────────────────────────────────────────
+   BOOK LEAVES ANIMATION (hero)
+   ──────────────────────────────────────────────── */
+
+.book-leaves {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.book-leaf {
+  position: absolute;
+  bottom: -20px;
+  width: 11px;
+  height: 15px;
+  background: linear-gradient(160deg,
+    rgba(200,151,58,0.22) 0%,
+    rgba(0,108,53,0.15) 60%,
+    rgba(200,151,58,0.10) 100%);
+  border-radius: 1px 2px 1px 2px;
+  opacity: 0;
+  animation: book-leaf-float 10s ease-in-out infinite;
+  /* Subtle line texture to simulate page lines */
+  box-shadow:
+    inset 0 3px 0 rgba(255,255,255,0.06),
+    inset 0 6px 0 rgba(255,255,255,0.04),
+    inset 0 9px 0 rgba(255,255,255,0.03);
+}
+
+@keyframes book-leaf-float {
+  0% {
+    opacity: 0;
+    transform: translateY(0) rotate(-5deg) translateX(0);
+  }
+  10% { opacity: 0.14; }
+  40% {
+    transform: translateY(-35vh) rotate(12deg) translateX(18px);
+    opacity: 0.10;
+  }
+  70% {
+    transform: translateY(-65vh) rotate(-8deg) translateX(-12px);
+    opacity: 0.06;
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-95vh) rotate(20deg) translateX(25px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .book-leaf { animation: none; display: none; }
+}
+
+
+/* ────────────────────────────────────────────────
+   ISLAMISCHE WISSENSCHAFTEN SECTION
+   ──────────────────────────────────────────────── */
+
+.wissen-scroll {
+  overflow-x: auto;
+  scrollbar-width: none;
+  padding-bottom: var(--sp-2);
+  margin-inline: calc(-1 * var(--sp-2));
+  padding-inline: var(--sp-2);
+}
+.wissen-scroll::-webkit-scrollbar { display: none; }
+
+.wissen-inner {
+  display: flex;
+  gap: var(--sp-2);
+  min-width: max-content;
+  padding-block: var(--sp-1);
+}
+
+.wissen-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--sp-1);
+  padding: var(--sp-3) var(--sp-3);
+  border-radius: var(--radius-lg);
+  background: var(--clr-ink-lifted);
+  border: 1px solid var(--border-subtle);
+  text-decoration: none;
+  min-width: 110px;
+  text-align: center;
+  flex-shrink: 0;
+  position: relative;
+  overflow: hidden;
+  transition:
+    transform var(--dur-mid) var(--ease-out),
+    border-color var(--dur-mid) ease,
+    box-shadow var(--dur-mid) ease,
+    background var(--dur-mid) ease;
+}
+.wissen-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 70% 60% at 50% 100%, rgba(200,151,58,0.08) 0%, transparent 70%);
+  opacity: 0;
+  transition: opacity var(--dur-mid) ease;
+}
+.wissen-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--border-mid);
+  box-shadow: 0 0 20px rgba(200,151,58,0.12), var(--shadow-md);
+  background: var(--clr-ink-light);
+}
+.wissen-card:hover::before { opacity: 1; }
+
+.wissen-card__icon {
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--clr-gold-ghost);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  color: var(--clr-gold);
+  transition: background var(--dur-fast) ease, border-color var(--dur-fast) ease;
+  flex-shrink: 0;
+}
+.wissen-card:hover .wissen-card__icon {
+  background: rgba(200,151,58,0.14);
+  border-color: var(--border-mid);
+}
+.wissen-card__icon svg { width: 18px; height: 18px; }
+
+.wissen-card__name {
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--clr-text-primary);
+  line-height: 1.2;
+  transition: color var(--dur-fast) ease;
+}
+.wissen-card:hover .wissen-card__name { color: var(--clr-gold-pale); }
+
+.wissen-card__desc {
+  font-size: 0.62rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--clr-text-muted);
+}
+
+
+/* ────────────────────────────────────────────────
+   SMOOTH SECTION TRANSITIONS
+   ──────────────────────────────────────────────── */
+
+/* Remove harsh border on section-border-top — use soft gradient instead */
+.section-border-top::before {
+  background: linear-gradient(90deg,
+    transparent 0%,
+    var(--clr-gold-ghost) 20%,
+    var(--clr-gold-muted) 50%,
+    var(--clr-gold-ghost) 80%,
+    transparent 100%);
+}
+
+/* Newsletter section gradient fade top/bottom */
+.newsletter-section {
+  border-top: none;
+  border-bottom: none;
+  background:
+    linear-gradient(to bottom, var(--clr-ink) 0%, var(--clr-ink-mid) 15%, var(--clr-ink-mid) 85%, var(--clr-ink) 100%);
 }
 
 
