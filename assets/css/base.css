@@ -6,10 +6,10 @@
 
 :root {
   /* ── Surfaces (Saudi-Green Palette) ── */
-  --clr-ink:         #050A05;
-  --clr-ink-mid:     #08100A;
-  --clr-ink-light:   #0F1C10;
-  --clr-ink-lifted:  #172618;
+  --clr-ink:         #0D1A0F;
+  --clr-ink-mid:     #122016;
+  --clr-ink-light:   #1A2E1C;
+  --clr-ink-lifted:  #243D26;
 
   /* ── Gold System ── */
   --clr-gold:        #C8973A;
@@ -31,8 +31,8 @@
   --clr-forest:      #002D12;
 
   /* ── Text ── */
-  --clr-text-primary: #F0E6D3;
-  --clr-text-mid:     #B8A88E;
+  --clr-text-primary: #F5EFE4;
+  --clr-text-mid:     #C5B89E;
   --clr-text-muted:   #7A6A58;
   --clr-text-faint:   #4A3E30;
 
@@ -104,6 +104,7 @@ html {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
+  overflow-x: hidden;
 }
 
 body {

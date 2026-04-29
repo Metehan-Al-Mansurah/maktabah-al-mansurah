@@ -7,70 +7,70 @@
 const PRODUCTS = [
   /* ── Bücher ── */
   {
-    id: 1, category: 'buecher',
+    id: 1, category: 'buecher', subcat: 'tazkiyah',
     name: 'Die Heilmittel zur Geduld gegen das Übel der Geschöpfe',
     subtitle: 'Ibn Taymiyyah',
     price: 7.99, badge: null,
     description: 'Ein bedeutendes Werk des Gelehrten Ibn Taymiyyah über Geduld und den Umgang mit den Schwierigkeiten des Lebens.'
   },
   {
-    id: 2, category: 'buecher',
+    id: 2, category: 'buecher', subcat: 'hadith',
     name: 'An-Nawawīs vierzig Ḥadīṯe',
     subtitle: 'Imam ʾAbū Zakariyyā an-Nawawī — Mit Notizfeldern',
     price: 14.99, badge: 'Bestseller',
     description: 'Die berühmten 40 Hadithe des Imam an-Nawawi — mit Notizfeldern für eigene Reflexionen.'
   },
   {
-    id: 3, category: 'buecher',
+    id: 3, category: 'buecher', subcat: 'fiqh',
     name: 'Mittel zum Erreichen eines glücklichen Familienlebens',
     subtitle: 'Sheikh Ruhayli',
     price: 13.99, badge: null,
     description: 'Wertvolle Ratschläge des Gelehrten Sheikh Ruhayli für ein harmonisches Familienleben nach islamischen Werten.'
   },
   {
-    id: 4, category: 'buecher',
+    id: 4, category: 'buecher', subcat: 'aqidah',
     name: 'Die essenziellen Unterrichte für die muslimische Gemeinschaft',
     subtitle: 'Sheikh Ibn Baz',
     price: 8.99, badge: null,
     description: 'Grundlegende Unterrichte des Großgelehrten Sheikh Ibn Baz für die muslimische Gemeinschaft.'
   },
   {
-    id: 5, category: 'buecher',
+    id: 5, category: 'buecher', subcat: 'aqidah',
     name: 'Die drei fundamentalen Grundlagen und ihre Beweise',
     subtitle: 'Muhammad ibn Abdulwahab',
     price: 8.99, badge: 'Bestseller',
     description: 'Das klassische Werk über die drei fundamentalen Grundlagen des Islam und ihre Beweise aus Quran und Sunnah.'
   },
   {
-    id: 6, category: 'buecher',
+    id: 6, category: 'buecher', subcat: 'aqidah',
     name: 'Kitāb-ut Tauḥīd — Das Buch des Monotheismus',
     subtitle: 'Muḥammad Ibn ʿAbd-il Wahhāb',
     price: 27.99, badge: null,
     description: 'Das grundlegende Werk über Tauhid — eines der wichtigsten Bücher der islamischen Glaubenslehre.'
   },
   {
-    id: 7, category: 'buecher',
+    id: 7, category: 'buecher', subcat: 'fiqh',
     name: 'Erläuterung der Beschreibung des Gebets des Propheten ﷺ von Al-Albani',
     subtitle: 'Scheich Sulayman Ar-Ruhayli',
     price: 12.99, badge: 'Neu',
     description: 'Eine ausführliche Erläuterung der Gebetsbeschreibung des Propheten Muhammad ﷺ von Scheich Ar-Ruhayli.'
   },
   {
-    id: 8, category: 'buecher',
+    id: 8, category: 'buecher', subcat: 'hadith',
     name: 'Al-ʿUmdah fil-Ahkam — Taschenformat',
     subtitle: 'Verlag Dar Al-Mirath An-Nabawi',
     price: 7.99, badge: null,
     description: 'Die wichtigsten Rechtsnormen in kompakter Taschenformat-Ausgabe — ideal für unterwegs.'
   },
   {
-    id: 9, category: 'buecher',
+    id: 9, category: 'buecher', subcat: 'fiqh',
     name: 'Erläuterung der Gedichtsammlung der Rechtsgrundsätze (As-Saʿdi)',
     subtitle: 'Scheich Sulayman Ar-Ruhayli',
     price: 12.99, badge: null,
     description: 'Scheich Ar-Ruhaylis Erläuterung der Rechtsgrundsätze des Gelehrten Abdurrahman As-Saʿdi.'
   },
   {
-    id: 10, category: 'buecher',
+    id: 10, category: 'buecher', subcat: 'fiqh',
     name: 'Erläuterung der Grundlagen der islamischen Rechtswissenschaft',
     subtitle: 'Scheich Sulayman Ar-Ruhayli — Usul al-Fiqh',
     price: 12.99, badge: null,
@@ -244,7 +244,8 @@ const PRODUCTS = [
 var activeFilters = {
   categories: [],
   maxPrice: 200,
-  sort: 'default'
+  sort: 'default',
+  activeSubcat: 'alle'
 };
 
 function filterProducts() {
@@ -252,6 +253,10 @@ function filterProducts() {
 
   if (activeFilters.categories.length > 0) {
     results = results.filter(p => activeFilters.categories.includes(p.category));
+  }
+
+  if (activeFilters.activeSubcat && activeFilters.activeSubcat !== 'alle') {
+    results = results.filter(p => p.category !== 'buecher' || p.subcat === activeFilters.activeSubcat);
   }
 
   results = results.filter(p => p.price <= activeFilters.maxPrice);
@@ -264,6 +269,44 @@ function filterProducts() {
   }
 
   return results;
+}
+
+function updateSubcatBar() {
+  var bar = document.getElementById('subcatBar');
+  if (!bar) return;
+  var buecherActive = activeFilters.categories.includes('buecher') || activeFilters.categories.length === 0;
+  if (buecherActive) {
+    bar.classList.add('is-visible');
+  } else {
+    bar.classList.remove('is-visible');
+    activeFilters.activeSubcat = 'alle';
+    bar.querySelectorAll('.subcat-tab').forEach(function(t) {
+      t.classList.toggle('is-active', t.dataset.subcat === 'alle');
+      t.setAttribute('aria-selected', t.dataset.subcat === 'alle' ? 'true' : 'false');
+    });
+  }
+}
+
+function initSubcatTabs() {
+  var bar = document.getElementById('subcatBar');
+  if (!bar) return;
+  bar.classList.add('is-visible');
+  bar.querySelectorAll('.subcat-tab').forEach(function(tab) {
+    tab.addEventListener('click', function() {
+      activeFilters.activeSubcat = tab.dataset.subcat;
+      bar.querySelectorAll('.subcat-tab').forEach(function(t) {
+        t.classList.toggle('is-active', t === tab);
+        t.setAttribute('aria-selected', t === tab ? 'true' : 'false');
+      });
+      var grid = document.getElementById('productsGrid');
+      var countEl = document.getElementById('productCount');
+      var results = filterProducts();
+      renderProducts(grid, results);
+      if (countEl) {
+        countEl.innerHTML = '<strong>' + results.length + '</strong> Produkt' + (results.length !== 1 ? 'e' : '') + ' gefunden';
+      }
+    });
+  });
 }
 
 function getCategoryIcon(cat) {
@@ -379,6 +422,7 @@ function initShop() {
       activeFilters.categories = Array.from(
         document.querySelectorAll('.filter-cat:checked')
       ).map(el => el.value);
+      updateSubcatBar();
       update();
     });
   });
@@ -407,6 +451,7 @@ function initShop() {
     });
   }
 
+  initSubcatTabs();
   update();
 }
 

@@ -30,8 +30,8 @@
 .hero-calligraphy {
   position: absolute;
   top: 50%;
-  right: -4%;
-  transform: translateY(-50%);
+  left: 50%;
+  transform: translate(-50%, -50%);
   font-family: var(--font-arabic);
   font-size: clamp(160px, 28vw, 360px);
   line-height: 0.85;

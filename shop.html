@@ -167,6 +167,20 @@
           </div>
         </div>
 
+        <!-- Buch-Unterkategorien (nur bei Bücher-Filter sichtbar) -->
+        <div class="subcat-bar" id="subcatBar" role="tablist" aria-label="Buchkategorien">
+          <button class="subcat-tab is-active" data-subcat="alle" role="tab" aria-selected="true">Alle Bücher</button>
+          <button class="subcat-tab" data-subcat="aqidah" role="tab" aria-selected="false">Aqidah</button>
+          <button class="subcat-tab" data-subcat="sirah" role="tab" aria-selected="false">Sirah</button>
+          <button class="subcat-tab" data-subcat="fiqh" role="tab" aria-selected="false">Fiqh</button>
+          <button class="subcat-tab" data-subcat="hadith" role="tab" aria-selected="false">Hadith</button>
+          <button class="subcat-tab" data-subcat="tafsir" role="tab" aria-selected="false">Tafsir</button>
+          <button class="subcat-tab" data-subcat="tazkiyah" role="tab" aria-selected="false">Tazkiyah</button>
+          <button class="subcat-tab" data-subcat="arabisch" role="tab" aria-selected="false">Arabisch</button>
+          <button class="subcat-tab" data-subcat="geschichte" role="tab" aria-selected="false">Geschichte</button>
+          <button class="subcat-tab" data-subcat="kinderbuecher" role="tab" aria-selected="false">Kinderbücher</button>
+        </div>
+
         <div class="products-grid" id="productsGrid">
           <!-- Rendered by shop.js -->
         </div>
@@ -176,21 +190,6 @@
   </div>
 </section>
 
-<!-- Newsletter -->
-<section class="newsletter-section section section--sm" aria-label="Newsletter">
-  <div class="container">
-    <div class="newsletter-inner" data-reveal>
-      <span class="eyebrow">Newsletter</span>
-      <h2>Kein Angebot verpassen</h2>
-      <div class="gold-line gold-line--center"></div>
-      <p>Erhalte exklusive Angebote und Neuigkeiten direkt per E-Mail.</p>
-      <form class="newsletter-form-row" novalidate>
-        <input class="form-input" type="email" placeholder="deine@email.de" required aria-label="E-Mail-Adresse">
-        <button class="btn btn-primary" type="submit">Abonnieren</button>
-      </form>
-    </div>
-  </div>
-</section>
 
 </main>
 
@@ -288,7 +287,9 @@
         const priceDisplay = document.getElementById('priceDisplay');
         if (priceRange) { priceRange.value = 200; }
         if (priceDisplay) priceDisplay.textContent = 'bis 200,00 €';
-        activeFilters.categories = []; activeFilters.maxPrice = 200; activeFilters.sort = 'default';
+        activeFilters.categories = []; activeFilters.maxPrice = 200; activeFilters.sort = 'default'; activeFilters.activeSubcat = 'alle';
+        updateSubcatBar();
+        document.querySelectorAll('.subcat-tab').forEach(t => { t.classList.toggle('is-active', t.dataset.subcat === 'alle'); t.setAttribute('aria-selected', t.dataset.subcat === 'alle' ? 'true' : 'false'); });
         const sortSelect = document.getElementById('sortSelect');
         if (sortSelect) sortSelect.value = 'default';
         const grid = document.getElementById('productsGrid');
