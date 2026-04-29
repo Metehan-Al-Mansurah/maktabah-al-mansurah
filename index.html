@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Maktabah Al Mansurah — Islamische Bücher, Parfüm, Miswak, Abayas und mehr. Ihr islamischer Online-Shop in Deutschland.">
+  <title>Maktabah Al Mansurah — Islamischer Online-Shop</title>
+
+  <!-- Favicon: 8-pointed star -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%230B0F14'/><polygon points='16,3 17.6,11.4 24.5,7.5 20.6,14.4 29,16 20.6,17.6 24.5,24.5 17.6,20.6 16,29 14.4,20.6 7.5,24.5 11.4,17.6 3,16 11.4,14.4 7.5,7.5 14.4,11.4' fill='none' stroke='%23C8973A' stroke-width='0.8'/></svg>">
+
+  <link rel="stylesheet" href="assets/css/base.css">
+  <link rel="stylesheet" href="assets/css/animations.css">
+  <link rel="stylesheet" href="assets/css/patterns.css">
+  <link rel="stylesheet" href="assets/css/layout.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════
+     HEADER
+════════════════════════════════════════════════ -->
+<header class="site-header" id="siteHeader" role="banner">
+  <div class="header-inner">
+
+    <a href="index.html" class="brand" aria-label="Maktabah Al Mansurah – Startseite">
+      <span class="brand-arabic brand-shimmer">مكتبة المنصورة</span>
+      <span class="brand-latin">Maktabah Al Mansurah</span>
+    </a>
+
+    <nav class="nav-primary" role="navigation" aria-label="Hauptnavigation">
+      <a href="index.html">Startseite</a>
+      <a href="shop.html">Shop</a>
+      <a href="about.html">Über uns</a>
+      <a href="contact.html">Kontakt</a>
+    </nav>
+
+    <div class="header-actions">
+      <button class="cart-trigger" id="cartTrigger" aria-label="Warenkorb öffnen">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+          <path d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 0 0-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 0 0-16.536-1.84M7.5 14.25 5.106 5.272M6 20.25a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Zm12.75 0a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Z"/>
+        </svg>
+        <span class="cart-badge hidden" id="cartBadge" aria-live="polite" aria-label="Artikel im Warenkorb">0</span>
+      </button>
+
+      <button class="nav-toggle" id="navToggle" aria-label="Menü öffnen" aria-expanded="false" aria-controls="mobileNav">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+
+  </div>
+</header>
+
+<!-- ═══════════════════════════════════════════
+     MOBILE NAV
+════════════════════════════════════════════════ -->
+<div class="mobile-nav-overlay" id="menuOverlay" aria-hidden="true"></div>
+<nav class="mobile-nav" id="mobileNav" aria-label="Mobile Navigation" aria-hidden="true">
+  <div class="mobile-nav__header">
+    <a href="index.html" class="brand">
+      <span class="brand-arabic" style="font-size:1rem;color:var(--clr-gold-light);">مكتبة المنصورة</span>
+    </a>
+    <button class="mobile-nav__close" id="mobileNavClose" aria-label="Menü schließen">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 18 18 6M6 6l12 12"/></svg>
+    </button>
+  </div>
+  <div class="mobile-nav__links">
+    <a href="index.html">Startseite</a>
+    <a href="shop.html">Shop</a>
+    <a href="about.html">Über uns</a>
+    <a href="contact.html">Kontakt</a>
+  </div>
+  <div class="mobile-nav__footer">
+    <p class="mobile-nav__arabic">بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ</p>
+  </div>
+</nav>
+
+<!-- ═══════════════════════════════════════════
+     CART DRAWER
+════════════════════════════════════════════════ -->
+<div class="cart-overlay" id="cartOverlay" aria-hidden="true"></div>
+<aside class="cart-drawer" id="cartDrawer" aria-label="Warenkorb" aria-hidden="true">
+  <div class="cart-drawer__header">
+    <h2 class="cart-drawer__title">Warenkorb</h2>
+    <button class="cart-drawer__close" id="cartClose" aria-label="Warenkorb schließen">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 18 18 6M6 6l12 12"/></svg>
+    </button>
+  </div>
+  <div class="cart-drawer__items"></div>
+  <div class="cart-drawer__footer">
+    <div class="cart-drawer__subtotal">
+      <span>Zwischensumme</span>
+      <strong class="cart-drawer__total-amount">0,00 €</strong>
+    </div>
+    <button class="btn btn-primary btn-full">Zur Kasse</button>
+    <p class="cart-drawer__note">Versandkosten werden an der Kasse berechnet.</p>
+  </div>
+</aside>
+
+<!-- ═══════════════════════════════════════════
+     HERO
+════════════════════════════════════════════════ -->
+<main id="main-content">
+<section class="hero" aria-label="Willkommen">
+
+  <!-- Atmospheric background -->
+  <div class="hero__bg" aria-hidden="true"></div>
+
+  <!-- Islamic geometric pattern (inline SVG tessellation) -->
+  <svg class="hero-pattern-svg" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <pattern id="khatam" x="0" y="0" width="100" height="100" patternUnits="userSpaceOnUse">
+        <!-- 8-pointed star (khatam) -->
+        <polygon points="50,5 57.1,31.7 75.9,18.4 64.6,42.9 92,50 64.6,57.1 75.9,81.6 57.1,68.3 50,95 42.9,68.3 24.1,81.6 35.4,57.1 8,50 35.4,42.9 24.1,18.4 42.9,31.7"
+          fill="none" stroke="#C8973A" stroke-width="0.7" opacity="0.9"/>
+        <!-- Connecting squares -->
+        <rect x="1" y="1" width="98" height="98" fill="none" stroke="#C8973A" stroke-width="0.25" opacity="0.35"/>
+        <!-- Corner diamonds -->
+        <polygon points="0,50 8,42 16,50 8,58" fill="none" stroke="#C8973A" stroke-width="0.4" opacity="0.5"/>
+        <polygon points="50,0 58,8 50,16 42,8" fill="none" stroke="#C8973A" stroke-width="0.4" opacity="0.5"/>
+        <polygon points="100,50 92,42 84,50 92,58" fill="none" stroke="#C8973A" stroke-width="0.4" opacity="0.5"/>
+        <polygon points="50,100 58,92 50,84 42,92" fill="none" stroke="#C8973A" stroke-width="0.4" opacity="0.5"/>
+      </pattern>
+    </defs>
+    <rect width="100%" height="100%" fill="url(#khatam)"/>
+  </svg>
+
+  <!-- Vignette overlay -->
+  <div class="hero-vignette" aria-hidden="true"></div>
+
+  <!-- Content -->
+  <div class="hero__content">
+    <span class="hero-eyebrow eyebrow">Islamischer Online-Shop</span>
+    <span class="hero__eyebrow-arabic hero-eyebrow" aria-hidden="true">بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ</span>
+
+    <h1 class="hero-title" style="color:var(--clr-gold-pale);">
+      Maktabah<br>Al Mansurah
+    </h1>
+
+    <p class="hero-tagline" style="color:var(--clr-text-mid);font-size:clamp(1rem,2vw,1.25rem);margin-top:1.25rem;max-width:520px;margin-inline:auto;">
+      Islamische Literatur, edle Düfte, Miswak, Abayas und mehr — authentisch, hochwertig, aus einer Hand.
+    </p>
+
+    <div class="hero-cta-group hero-cta">
+      <a href="shop.html" class="btn btn-primary">Zum Shop</a>
+      <a href="about.html" class="btn btn-ghost">Über uns</a>
+    </div>
+  </div>
+
+  <!-- Scroll indicator -->
+  <div class="hero-scroll-indicator hero-scroll" aria-hidden="true">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="m19 9-7 7-7-7"/>
+    </svg>
+    <span>Entdecken</span>
+  </div>
+
+</section>
+
+<!-- ═══════════════════════════════════════════
+     FEATURED PRODUCTS
+════════════════════════════════════════════════ -->
+<section class="section section-border-top" id="featured" aria-label="Empfehlungen">
+  <div class="container">
+    <div class="section-header section-header--center" data-reveal>
+      <span class="eyebrow">Unsere Auswahl</span>
+      <h2>Ausgewählte Produkte</h2>
+      <div class="gold-line gold-line--center"></div>
+    </div>
+
+    <div class="products-grid" id="featuredGrid">
+      <!-- Rendered by shop.js -->
+    </div>
+
+    <div style="text-align:center;margin-top:var(--sp-5);" data-reveal>
+      <a href="shop.html" class="btn btn-ghost">Alle Produkte ansehen</a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     DIVIDER
+════════════════════════════════════════════════ -->
+<div class="divider-geo container" aria-hidden="true">
+  <div class="divider-geo__line"></div>
+  <svg class="divider-geo__star" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1">
+    <polygon points="12,2 13.6,8.4 20,7 15.6,11.6 20,17 13.6,15.6 12,22 10.4,15.6 4,17 8.4,11.6 4,7 10.4,8.4"/>
+  </svg>
+  <div class="divider-geo__line"></div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     CATEGORIES
+════════════════════════════════════════════════ -->
+<section class="section" id="categories" aria-label="Kategorien">
+  <div class="container">
+    <div class="section-header section-header--center" data-reveal>
+      <span class="eyebrow">Sortiment</span>
+      <h2>Unsere Kategorien</h2>
+      <div class="gold-line gold-line--center"></div>
+    </div>
+
+    <div class="categories-grid">
+
+      <a href="shop.html?cat=buecher" class="category-card" data-reveal data-reveal-delay="1" style="--category-glow:rgba(13,74,82,0.3);">
+        <div class="category-card__bg cat-bg-buecher"></div>
+        <div class="category-card__icon-wrap">
+          <svg class="category-card__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 6.042A8.967 8.967 0 0 0 6 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 0 1 6 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 0 1 6-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0 0 18 18a8.967 8.967 0 0 0-6 2.292m0-14.25v14.25"/></svg>
+        </div>
+        <div class="category-card__body">
+          <p class="category-card__name">Bücher</p>
+          <p class="category-card__count">Quran, Hadith, Fiqh & mehr</p>
+        </div>
+      </a>
+
+      <a href="shop.html?cat=parfum" class="category-card" data-reveal data-reveal-delay="2" style="--category-glow:rgba(26,92,58,0.3);">
+        <div class="category-card__bg cat-bg-parfum"></div>
+        <div class="category-card__icon-wrap">
+          <svg class="category-card__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9.75 3.104v5.714a2.25 2.25 0 0 1-.659 1.591L5 14.5M9.75 3.104c-.251.023-.501.05-.75.082m.75-.082a24.301 24.301 0 0 1 4.5 0m0 0v5.714c0 .597.237 1.17.659 1.591L19.8 15m-15.6-.5c.59 1.24 1.248 2.439 1.96 3.596m13.68-3.096a19.81 19.81 0 0 1-1.96 3.596M5 19.5h14"/></svg>
+        </div>
+        <div class="category-card__body">
+          <p class="category-card__name">Parfüm & Misk</p>
+          <p class="category-card__count">Oud, Moschus, Attar & Bakhoor</p>
+        </div>
+      </a>
+
+      <a href="shop.html?cat=miswak" class="category-card" data-reveal data-reveal-delay="3" style="--category-glow:rgba(74,55,40,0.4);">
+        <div class="category-card__bg cat-bg-miswak"></div>
+        <div class="category-card__icon-wrap">
+          <svg class="category-card__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 12h3.75M9 15h3.75M9 18h3.75m3 .75H18a2.25 2.25 0 0 0 2.25-2.25V6.108c0-1.135-.845-2.098-1.976-2.192a48.424 48.424 0 0 0-1.123-.08m-5.801 0c-.065.21-.1.433-.1.664 0 .414.336.75.75.75h4.5a.75.75 0 0 0 .75-.75 2.25 2.25 0 0 0-.1-.664m-5.8 0A2.251 2.251 0 0 1 13.5 2.25H15c1.012 0 1.867.668 2.15 1.586m-5.8 0c-.376.023-.75.05-1.124.08C9.095 4.01 8.25 4.973 8.25 6.108V8.25m0 0H4.875c-.621 0-1.125.504-1.125 1.125v11.25c0 .621.504 1.125 1.125 1.125h9.75c.621 0 1.125-.504 1.125-1.125V9.375c0-.621-.504-1.125-1.125-1.125H8.25Z"/></svg>
+        </div>
+        <div class="category-card__body">
+          <p class="category-card__name">Miswak</p>
+          <p class="category-card__count">Natürliche Zahnpflege</p>
+        </div>
+      </a>
+
+      <a href="shop.html?cat=abaya" class="category-card" data-reveal data-reveal-delay="4" style="--category-glow:rgba(45,27,78,0.4);">
+        <div class="category-card__bg cat-bg-abaya"></div>
+        <div class="category-card__icon-wrap">
+          <svg class="category-card__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z"/></svg>
+        </div>
+        <div class="category-card__body">
+          <p class="category-card__name">Abayas</p>
+          <p class="category-card__count">Islamische Kleidung für Damen</p>
+        </div>
+      </a>
+
+      <a href="shop.html?cat=gebetsteppich" class="category-card" data-reveal data-reveal-delay="5" style="--category-glow:rgba(26,58,92,0.4);">
+        <div class="category-card__bg cat-bg-gebetsteppich"></div>
+        <div class="category-card__icon-wrap">
+          <svg class="category-card__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3.75 6A2.25 2.25 0 0 1 6 3.75h2.25A2.25 2.25 0 0 1 10.5 6v2.25a2.25 2.25 0 0 1-2.25 2.25H6a2.25 2.25 0 0 1-2.25-2.25V6ZM3.75 15.75A2.25 2.25 0 0 1 6 13.5h2.25a2.25 2.25 0 0 1 2.25 2.25V18a2.25 2.25 0 0 1-2.25 2.25H6A2.25 2.25 0 0 1 3.75 18v-2.25ZM13.5 6a2.25 2.25 0 0 1 2.25-2.25H18A2.25 2.25 0 0 1 20.25 6v2.25A2.25 2.25 0 0 1 18 10.5h-2.25a2.25 2.25 0 0 1-2.25-2.25V6ZM13.5 15.75a2.25 2.25 0 0 1 2.25-2.25H18a2.25 2.25 0 0 1 2.25 2.25V18A2.25 2.25 0 0 1 18 20.25h-2.25A2.25 2.25 0 0 1 13.5 18v-2.25Z"/></svg>
+        </div>
+        <div class="category-card__body">
+          <p class="category-card__name">Gebetsteppiche</p>
+          <p class="category-card__count">Sajjada — Premium Qualität</p>
+        </div>
+      </a>
+
+      <a href="shop.html?cat=tasbih" class="category-card" data-reveal data-reveal-delay="6" style="--category-glow:rgba(74,30,58,0.4);">
+        <div class="category-card__bg cat-bg-tasbih"></div>
+        <div class="category-card__icon-wrap">
+          <svg class="category-card__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="7.5" r="1.2" fill="currentColor"/><circle cx="15.9" cy="9.75" r="1.2" fill="currentColor"/><circle cx="15.9" cy="14.25" r="1.2" fill="currentColor"/><circle cx="12" cy="16.5" r="1.2" fill="currentColor"/><circle cx="8.1" cy="14.25" r="1.2" fill="currentColor"/><circle cx="8.1" cy="9.75" r="1.2" fill="currentColor"/></svg>
+        </div>
+        <div class="category-card__body">
+          <p class="category-card__name">Tasbihs</p>
+          <p class="category-card__count">Gebetsketten aus edlen Materialien</p>
+        </div>
+      </a>
+
+      <a href="shop.html?cat=sonstiges" class="category-card" data-reveal data-reveal-delay="7" style="--category-glow:rgba(31,42,60,0.5);">
+        <div class="category-card__bg cat-bg-sonstiges"></div>
+        <div class="category-card__icon-wrap">
+          <svg class="category-card__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9.813 15.904 9 18.75l-.813-2.846a4.5 4.5 0 0 0-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 0 0 3.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 0 0 3.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 0 0-3.09 3.09Z"/></svg>
+        </div>
+        <div class="category-card__body">
+          <p class="category-card__name">Sonstiges</p>
+          <p class="category-card__count">Dekoration, Kufi & mehr</p>
+        </div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     DIVIDER
+════════════════════════════════════════════════ -->
+<div class="divider-geo container" aria-hidden="true">
+  <div class="divider-geo__line"></div>
+  <svg class="divider-geo__star" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1">
+    <polygon points="12,2 13.6,8.4 20,7 15.6,11.6 20,17 13.6,15.6 12,22 10.4,15.6 4,17 8.4,11.6 4,7 10.4,8.4"/>
+  </svg>
+  <div class="divider-geo__line"></div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     ABOUT TEASER
+════════════════════════════════════════════════ -->
+<section class="section section--sm" aria-label="Über uns">
+  <div class="container">
+    <div class="about-teaser" data-reveal>
+
+      <div class="about-teaser__panel about-geo-panel">
+        <!-- Mini pattern SVG in panel -->
+        <svg aria-hidden="true" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <pattern id="mini-khatam" x="0" y="0" width="50" height="50" patternUnits="userSpaceOnUse">
+              <polygon points="25,3 27.8,16.4 37.8,10.2 32.4,22 46,25 32.4,28 37.8,39.8 27.8,33.6 25,47 22.2,33.6 12.2,39.8 17.6,28 4,25 17.6,22 12.2,10.2 22.2,16.4"
+                fill="none" stroke="#C8973A" stroke-width="0.5" opacity="0.8"/>
+            </pattern>
+          </defs>
+          <rect width="200" height="200" fill="url(#mini-khatam)"/>
+        </svg>
+        <span class="about-teaser__panel-arabic" aria-label="Islamisches Zitat">
+          اقْرَأْ<br>بِاسْمِ رَبِّكَ
+        </span>
+      </div>
+
+      <div class="about-teaser__content">
+        <span class="eyebrow">Über uns</span>
+        <h2>Islamisches Wissen &amp; Qualität</h2>
+        <p>
+          Maktabah Al Mansurah wurde mit der Vision gegründet, der muslimischen Gemeinschaft in Deutschland hochwertige islamische Produkte zugänglich zu machen — von sorgfältig ausgewählten Büchern bis hin zu authentischen Düften und traditionellen Produkten.
+        </p>
+        <p style="margin-top:var(--sp-2);">
+          Unser Name bedeutet „Die Siegreiche Bibliothek" — ein Ausdruck unseres Engagements für Wissen, Authentizität und Qualität.
+        </p>
+        <a href="about.html" class="btn btn-ghost" style="margin-top:var(--sp-4);">Mehr erfahren</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     NEWSLETTER
+════════════════════════════════════════════════ -->
+<section class="newsletter-section section" aria-label="Newsletter">
+  <div class="container">
+    <div class="newsletter-inner" data-reveal>
+      <span class="eyebrow">Newsletter</span>
+      <h2>Neuigkeiten &amp; Angebote</h2>
+      <div class="gold-line gold-line--center"></div>
+      <p>Erhalte als Erster Informationen über neue Produkte, exklusive Angebote und islamische Inhalte.</p>
+      <form class="newsletter-form-row" novalidate aria-label="Newsletter-Anmeldung">
+        <input class="form-input" type="email" placeholder="deine@email.de" required aria-label="E-Mail-Adresse">
+        <button class="btn btn-primary" type="submit">Abonnieren</button>
+      </form>
+      <span class="newsletter-note">Kein Spam. Jederzeit abmeldbar. Kein Alkohol, keine Haram-Produkte.</span>
+    </div>
+  </div>
+</section>
+
+</main><!-- /main-content -->
+
+<!-- ═══════════════════════════════════════════
+     FOOTER
+════════════════════════════════════════════════ -->
+<footer class="site-footer" role="contentinfo">
+  <div class="footer-geo-band"></div>
+  <div class="container">
+    <div class="footer-main">
+
+      <div class="footer-brand">
+        <p class="footer-brand__name">مكتبة المنصورة</p>
+        <p class="footer-brand__tagline">Islamische Bücher, Düfte & mehr — für die muslimische Gemeinschaft in Deutschland.</p>
+        <div class="footer-social">
+          <a href="#" aria-label="Instagram">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+          </a>
+          <a href="#" aria-label="Facebook">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+          </a>
+          <a href="mailto:maktaba.al-mansurah@outlook.com" aria-label="E-Mail">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <div>
+        <p class="footer-col-title">Shop</p>
+        <ul class="footer-nav-list">
+          <li><a href="shop.html?cat=buecher">Bücher</a></li>
+          <li><a href="shop.html?cat=parfum">Parfüm & Misk</a></li>
+          <li><a href="shop.html?cat=miswak">Miswak</a></li>
+          <li><a href="shop.html?cat=abaya">Abayas</a></li>
+          <li><a href="shop.html?cat=gebetsteppich">Gebetsteppiche</a></li>
+          <li><a href="shop.html?cat=tasbih">Tasbihs</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <p class="footer-col-title">Kontakt</p>
+        <div class="footer-contact-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+          <span><a href="mailto:maktaba.al-mansurah@outlook.com">maktaba.al-mansurah<br>@outlook.com</a></span>
+        </div>
+        <div class="footer-contact-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18Z"/><path d="M12 7v5l3 3"/></svg>
+          <span>Mo–Sa: 9:00–18:00 Uhr</span>
+        </div>
+      </div>
+
+      <div class="footer-newsletter">
+        <p class="footer-col-title">Newsletter</p>
+        <p>Aktuelle Angebote direkt in dein Postfach.</p>
+        <form class="footer-newsletter-form" novalidate>
+          <input class="form-input" type="email" placeholder="E-Mail-Adresse" required aria-label="E-Mail für Newsletter">
+          <button class="btn btn-primary btn-sm" type="submit">Anmelden</button>
+        </form>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="footer-geo-band" style="opacity:0.3;"></div>
+
+  <div class="container">
+    <div class="footer-legal">
+      <p>© 2026 Maktabah Al Mansurah. Alle Rechte vorbehalten.</p>
+      <div class="footer-legal-links">
+        <a href="#">Impressum</a>
+        <a href="#">Datenschutz</a>
+        <a href="#">AGB</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/js/animations.js"></script>
+<script src="assets/js/shop.js"></script>
+<script src="assets/js/cart.js"></script>
+<script src="assets/js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,186 @@
+/* ================================================================
+   MAKTABAH AL MANSURAH — Islamic Geometric Patterns
+   ================================================================ */
+
+/* ── Hero SVG Pattern Layer ── */
+.hero-pattern-svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  opacity: 0.065;
+  will-change: transform;
+  animation: pattern-drift 140s linear infinite;
+  transform-origin: center center;
+}
+
+/* ── Geometric Divider ── */
+.divider-geo {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-3);
+  margin: var(--sp-5) auto;
+  max-width: 360px;
+}
+
+.divider-geo__line {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--border-strong), transparent);
+}
+
+.divider-geo__star {
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  color: var(--clr-gold);
+  opacity: 0.7;
+}
+
+/* ── Section Top Border (gold geometric line) ── */
+.section-border-top {
+  position: relative;
+}
+.section-border-top::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 50%;
+  transform: translateX(-50%);
+  width: min(600px, 80%);
+  height: 1px;
+  background: linear-gradient(90deg, transparent 0%, var(--clr-gold-muted) 30%, var(--clr-gold) 50%, var(--clr-gold-muted) 70%, transparent 100%);
+}
+
+/* ── Card Corner Accent ── */
+.card-corner-accent {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 48px;
+  height: 48px;
+  pointer-events: none;
+  opacity: 0.25;
+  transition: opacity var(--dur-mid) var(--ease-out);
+}
+.product-card:hover .card-corner-accent {
+  opacity: 0.65;
+}
+
+/* ── Background Texture (dark surfaces) ── */
+.bg-texture {
+  position: relative;
+}
+.bg-texture::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(circle at 20% 80%, rgba(26,92,58,0.08) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(13,74,82,0.08) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+/* ── Page Hero Overlay ── */
+.page-hero-overlay {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 50% 100%, rgba(11,15,20,0.7) 0%, transparent 60%),
+    linear-gradient(180deg, rgba(11,15,20,0.3) 0%, rgba(11,15,20,0.75) 100%);
+  pointer-events: none;
+}
+
+/* ── Hero Vignette ── */
+.hero-vignette {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 120% 80% at 50% 50%, transparent 30%, rgba(11,15,20,0.55) 100%),
+    linear-gradient(180deg, rgba(11,15,20,0.15) 0%, transparent 40%, rgba(11,15,20,0.7) 100%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* ── Arabesque Border (section frames) ── */
+.arabesque-border {
+  border: 1px solid var(--border-subtle);
+  position: relative;
+}
+.arabesque-border::before,
+.arabesque-border::after {
+  content: '';
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  border-color: var(--clr-gold);
+  border-style: solid;
+  opacity: 0.45;
+}
+.arabesque-border::before {
+  top: -1px; left: -1px;
+  border-width: 2px 0 0 2px;
+}
+.arabesque-border::after {
+  bottom: -1px; right: -1px;
+  border-width: 0 2px 2px 0;
+}
+
+/* ── Footer Pattern Band ── */
+.footer-geo-band {
+  height: 5px;
+  background: repeating-linear-gradient(
+    90deg,
+    transparent            0px,
+    transparent            6px,
+    var(--clr-gold-muted)  6px,
+    var(--clr-gold-muted)  8px,
+    transparent            8px,
+    transparent            16px,
+    var(--clr-gold)        16px,
+    var(--clr-gold)        20px,
+    transparent            20px,
+    transparent            28px,
+    var(--clr-gold-muted)  28px,
+    var(--clr-gold-muted)  30px,
+    transparent            30px,
+    transparent            36px
+  );
+  opacity: 0.6;
+}
+
+/* ── About Panel (geometric fill) ── */
+.about-geo-panel {
+  position: relative;
+  background: var(--clr-ink-light);
+  overflow: hidden;
+}
+.about-geo-panel::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 30% 50%, rgba(200,151,58,0.06) 0%, transparent 65%),
+    radial-gradient(circle at 70% 20%, rgba(26,92,58,0.10) 0%, transparent 50%);
+}
+.about-geo-panel svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.05;
+}
+
+/* ── Category Card Glow ── */
+.category-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: var(--radius-lg);
+  opacity: 0;
+  transition: opacity var(--dur-mid) var(--ease-out);
+  background: radial-gradient(ellipse at 50% 100%, var(--category-glow, rgba(200,151,58,0.2)) 0%, transparent 65%);
+}
+.category-card:hover::after {
+  opacity: 1;
+}

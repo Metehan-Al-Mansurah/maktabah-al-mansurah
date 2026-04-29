@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Kontakt zu Maktabah Al Mansurah — schreib uns eine Nachricht oder wende dich per E-Mail an uns.">
+  <title>Kontakt — Maktabah Al Mansurah</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%230B0F14'/><polygon points='16,3 17.6,11.4 24.5,7.5 20.6,14.4 29,16 20.6,17.6 24.5,24.5 17.6,20.6 16,29 14.4,20.6 7.5,24.5 11.4,17.6 3,16 11.4,14.4 7.5,7.5 14.4,11.4' fill='none' stroke='%23C8973A' stroke-width='0.8'/></svg>">
+  <link rel="stylesheet" href="assets/css/base.css">
+  <link rel="stylesheet" href="assets/css/animations.css">
+  <link rel="stylesheet" href="assets/css/patterns.css">
+  <link rel="stylesheet" href="assets/css/layout.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+</head>
+<body>
+
+<!-- Header -->
+<header class="site-header" id="siteHeader" role="banner">
+  <div class="header-inner">
+    <a href="index.html" class="brand" aria-label="Maktabah Al Mansurah – Startseite">
+      <span class="brand-arabic brand-shimmer">مكتبة المنصورة</span>
+      <span class="brand-latin">Maktabah Al Mansurah</span>
+    </a>
+    <nav class="nav-primary" role="navigation" aria-label="Hauptnavigation">
+      <a href="index.html">Startseite</a>
+      <a href="shop.html">Shop</a>
+      <a href="about.html">Über uns</a>
+      <a href="contact.html">Kontakt</a>
+    </nav>
+    <div class="header-actions">
+      <button class="cart-trigger" id="cartTrigger" aria-label="Warenkorb öffnen">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 0 0-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 0 0-16.536-1.84M7.5 14.25 5.106 5.272M6 20.25a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Zm12.75 0a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Z"/></svg>
+        <span class="cart-badge hidden" id="cartBadge" aria-live="polite">0</span>
+      </button>
+      <button class="nav-toggle" id="navToggle" aria-label="Menü öffnen" aria-expanded="false" aria-controls="mobileNav">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div class="mobile-nav-overlay" id="menuOverlay" aria-hidden="true"></div>
+<nav class="mobile-nav" id="mobileNav" aria-label="Mobile Navigation" aria-hidden="true">
+  <div class="mobile-nav__header">
+    <a href="index.html" class="brand"><span class="brand-arabic" style="font-size:1rem;color:var(--clr-gold-light);">مكتبة المنصورة</span></a>
+    <button class="mobile-nav__close" id="mobileNavClose" aria-label="Menü schließen"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 18 18 6M6 6l12 12"/></svg></button>
+  </div>
+  <div class="mobile-nav__links">
+    <a href="index.html">Startseite</a><a href="shop.html">Shop</a><a href="about.html">Über uns</a><a href="contact.html">Kontakt</a>
+  </div>
+  <div class="mobile-nav__footer"><p class="mobile-nav__arabic">بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ</p></div>
+</nav>
+
+<div class="cart-overlay" id="cartOverlay" aria-hidden="true"></div>
+<aside class="cart-drawer" id="cartDrawer" aria-label="Warenkorb" aria-hidden="true">
+  <div class="cart-drawer__header">
+    <h2 class="cart-drawer__title">Warenkorb</h2>
+    <button class="cart-drawer__close" id="cartClose" aria-label="Warenkorb schließen"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 18 18 6M6 6l12 12"/></svg></button>
+  </div>
+  <div class="cart-drawer__items"></div>
+  <div class="cart-drawer__footer">
+    <div class="cart-drawer__subtotal"><span>Zwischensumme</span><strong class="cart-drawer__total-amount">0,00 €</strong></div>
+    <button class="btn btn-primary btn-full">Zur Kasse</button>
+    <p class="cart-drawer__note">Versandkosten werden an der Kasse berechnet.</p>
+  </div>
+</aside>
+
+<!-- ═══════════════════════════════════════════
+     PAGE HERO
+════════════════════════════════════════════════ -->
+<main id="main-content">
+<div class="page-hero" aria-label="Kontakt">
+  <div class="page-hero__bg" aria-hidden="true"></div>
+  <svg style="position:absolute;inset:0;width:100%;height:100%;opacity:0.04;pointer-events:none;" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+    <defs><pattern id="contact-pattern" x="0" y="0" width="80" height="80" patternUnits="userSpaceOnUse"><polygon points="40,5 45.7,25.3 60.5,15.5 51.7,33.5 74,40 51.7,46.5 60.5,64.5 45.7,54.7 40,75 34.3,54.7 19.5,64.5 28.3,46.5 6,40 28.3,33.5 19.5,15.5 34.3,25.3" fill="none" stroke="#C8973A" stroke-width="0.6"/></pattern></defs>
+    <rect width="100%" height="100%" fill="url(#contact-pattern)"/>
+  </svg>
+  <div class="page-hero-overlay" aria-hidden="true"></div>
+  <div class="container page-hero__content">
+    <span class="eyebrow">Wir helfen gerne</span>
+    <h1>Kontakt</h1>
+    <p style="color:var(--clr-text-muted);margin-top:var(--sp-2);max-width:440px;">Hast du Fragen zu Produkten, einer Bestellung oder einer Zusammenarbeit? Schreib uns — wir antworten schnell.</p>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     CONTACT MAIN
+════════════════════════════════════════════════ -->
+<section class="section">
+  <div class="container">
+    <div class="contact-layout">
+
+      <!-- Form -->
+      <div data-reveal>
+        <span class="eyebrow" style="margin-bottom:var(--sp-3);display:block;">Schreib uns</span>
+
+        <div id="formSuccess" class="form-success" role="alert" aria-live="assertive">
+          <div class="form-success__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m4.5 12.75 6 6 9-13.5"/></svg>
+          </div>
+          <h3>Nachricht gesendet!</h3>
+          <p>Vielen Dank für deine Nachricht. Wir werden uns so schnell wie möglich bei dir melden, inschallah.</p>
+          <span style="font-family:var(--font-arabic);font-size:1.1rem;color:var(--clr-gold-muted);direction:rtl;">جَزَاكَ اللَّهُ خَيْرًا</span>
+        </div>
+
+        <form id="contactForm" novalidate>
+          <div class="form-group">
+            <label class="form-label" for="contact-name">Name *</label>
+            <input class="form-input" type="text" id="contact-name" name="name" placeholder="Dein Name" required autocomplete="name">
+            <span class="form-error">Bitte gib deinen Namen ein.</span>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="contact-email">E-Mail *</label>
+            <input class="form-input" type="email" id="contact-email" name="email" placeholder="deine@email.de" required autocomplete="email">
+            <span class="form-error">Bitte gib eine gültige E-Mail-Adresse ein.</span>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="contact-subject">Betreff *</label>
+            <input class="form-input" type="text" id="contact-subject" name="subject" placeholder="Worum geht es?" required>
+            <span class="form-error">Bitte gib einen Betreff ein.</span>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="contact-message">Nachricht *</label>
+            <textarea class="form-textarea" id="contact-message" name="message" placeholder="Deine Nachricht…" required rows="6"></textarea>
+            <span class="form-error">Bitte gib eine Nachricht ein.</span>
+          </div>
+          <button class="btn btn-primary" type="submit" style="min-width:180px;">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="flex-shrink:0;"><path d="M6 12 3.269 3.125A59.769 59.769 0 0 1 21.485 12 59.768 59.768 0 0 1 3.27 20.875L5.999 12Zm0 0h7.5"/></svg>
+            Nachricht senden
+          </button>
+          <p style="font-size:var(--text-xs);color:var(--clr-text-faint);margin-top:var(--sp-2);">* Pflichtfelder</p>
+        </form>
+      </div>
+
+      <!-- Info -->
+      <div data-reveal data-reveal="right" data-reveal-delay="2">
+        <div class="contact-info-card">
+          <h3>Kontaktdaten</h3>
+
+          <div class="contact-info-item">
+            <div class="contact-info-item__icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+            </div>
+            <div>
+              <p class="contact-info-item__label">E-Mail</p>
+              <p class="contact-info-item__value">
+                <a href="mailto:maktaba.al-mansurah@outlook.com">maktaba.al-mansurah@outlook.com</a>
+              </p>
+            </div>
+          </div>
+
+          <div class="contact-info-item">
+            <div class="contact-info-item__icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/></svg>
+            </div>
+            <div>
+              <p class="contact-info-item__label">Öffnungszeiten</p>
+              <p class="contact-info-item__value">Mo – Sa: 9:00 – 18:00 Uhr<br>So: Geschlossen</p>
+            </div>
+          </div>
+
+          <div class="contact-info-item">
+            <div class="contact-info-item__icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M7.5 8.25h9m-9 3H12m-9.75 1.51c0 1.6 1.123 2.994 2.707 3.227 1.129.166 2.27.293 3.423.379.35.026.67.21.865.501L12 21l2.755-4.133a1.14 1.14 0 0 1 .865-.501 48.172 48.172 0 0 0 3.423-.379c1.584-.233 2.707-1.626 2.707-3.228V6.741c0-1.602-1.123-2.995-2.707-3.228A48.394 48.394 0 0 0 12 3c-2.392 0-4.744.175-7.043.513C3.373 3.746 2.25 5.14 2.25 6.741v6.018Z"/></svg>
+            </div>
+            <div>
+              <p class="contact-info-item__label">Antwortzeit</p>
+              <p class="contact-info-item__value">In der Regel innerhalb von 24 Stunden, inschallah.</p>
+            </div>
+          </div>
+
+          <div class="contact-info-item">
+            <div class="contact-info-item__icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M13.19 8.688a4.5 4.5 0 0 1 1.242 7.244l-4.5 4.5a4.5 4.5 0 0 1-6.364-6.364l1.757-1.757m13.35-.622 1.757-1.757a4.5 4.5 0 0 0-6.364-6.364l-4.5 4.5a4.5 4.5 0 0 0 1.242 7.244"/></svg>
+            </div>
+            <div>
+              <p class="contact-info-item__label">Social Media</p>
+              <p class="contact-info-item__value">
+                <a href="#">Instagram</a> &nbsp;·&nbsp; <a href="#">Facebook</a>
+              </p>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Arabic blessing -->
+        <div style="margin-top:var(--sp-4);padding:var(--sp-4);background:var(--clr-ink-light);border:1px solid var(--border-subtle);border-radius:var(--radius-lg);text-align:center;">
+          <p style="font-family:var(--font-arabic);font-size:1.3rem;color:var(--clr-gold-muted);direction:rtl;line-height:2;margin-bottom:var(--sp-2);">
+            بَارَكَ اللَّهُ فِيكَ
+          </p>
+          <p style="font-size:var(--text-xs);color:var(--clr-text-faint);">„Möge Allah dich segnen"</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- FAQ teaser -->
+<section class="section section--sm" style="background:var(--clr-ink-mid);border-top:1px solid var(--border-subtle);">
+  <div class="container">
+    <div class="section-header section-header--center" data-reveal>
+      <span class="eyebrow">Häufige Fragen</span>
+      <h2>Was wir oft gefragt werden</h2>
+      <div class="gold-line gold-line--center"></div>
+    </div>
+    <div style="max-width:720px;margin-inline:auto;display:grid;gap:var(--sp-3);">
+
+      <details style="background:var(--clr-ink-light);border:1px solid var(--border-subtle);border-radius:var(--radius-lg);padding:var(--sp-3) var(--sp-4);" data-reveal>
+        <summary style="cursor:pointer;font-family:var(--font-display);font-size:1rem;color:var(--clr-text-primary);list-style:none;display:flex;justify-content:space-between;align-items:center;">
+          Wie lange dauert der Versand?
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--clr-gold)" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
+        </summary>
+        <p style="margin-top:var(--sp-2);font-size:var(--text-sm);">Bestellungen werden in der Regel innerhalb von 1–3 Werktagen verschickt. Die Lieferzeit innerhalb Deutschlands beträgt 2–4 Werktage, inschallah.</p>
+      </details>
+
+      <details style="background:var(--clr-ink-light);border:1px solid var(--border-subtle);border-radius:var(--radius-lg);padding:var(--sp-3) var(--sp-4);" data-reveal>
+        <summary style="cursor:pointer;font-family:var(--font-display);font-size:1rem;color:var(--clr-text-primary);list-style:none;display:flex;justify-content:space-between;align-items:center;">
+          Sind alle Produkte halal?
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--clr-gold)" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
+        </summary>
+        <p style="margin-top:var(--sp-2);font-size:var(--text-sm);">Ja, absolut. Wir bieten ausschließlich Produkte an, die mit islamischen Grundsätzen vereinbar sind. Unsere Parfüms sind alkoholfrei, und alle Produkte wurden sorgfältig geprüft.</p>
+      </details>
+
+      <details style="background:var(--clr-ink-light);border:1px solid var(--border-subtle);border-radius:var(--radius-lg);padding:var(--sp-3) var(--sp-4);" data-reveal>
+        <summary style="cursor:pointer;font-family:var(--font-display);font-size:1rem;color:var(--clr-text-primary);list-style:none;display:flex;justify-content:space-between;align-items:center;">
+          Kann ich Produkte zurückgeben?
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--clr-gold)" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
+        </summary>
+        <p style="margin-top:var(--sp-2);font-size:var(--text-sm);">Ja, du kannst unbenutzte Produkte innerhalb von 14 Tagen zurücksenden. Kontaktiere uns vor der Rücksendung per E-Mail, damit wir den Prozess reibungslos gestalten können.</p>
+      </details>
+
+      <details style="background:var(--clr-ink-light);border:1px solid var(--border-subtle);border-radius:var(--radius-lg);padding:var(--sp-3) var(--sp-4);" data-reveal>
+        <summary style="cursor:pointer;font-family:var(--font-display);font-size:1rem;color:var(--clr-text-primary);list-style:none;display:flex;justify-content:space-between;align-items:center;">
+          Bietet ihr Mengenrabatte an?
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--clr-gold)" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
+        </summary>
+        <p style="margin-top:var(--sp-2);font-size:var(--text-sm);">Für Moscheen, islamische Vereine oder Großbestellungen bieten wir Sonderpreise an. Schreib uns einfach eine E-Mail mit deinem Bedarf — wir freuen uns darauf!</p>
+      </details>
+
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- Footer -->
+<footer class="site-footer" role="contentinfo">
+  <div class="footer-geo-band"></div>
+  <div class="container">
+    <div class="footer-main">
+      <div class="footer-brand">
+        <p class="footer-brand__name">مكتبة المنصورة</p>
+        <p class="footer-brand__tagline">Islamische Bücher, Düfte & mehr — für die muslimische Gemeinschaft in Deutschland.</p>
+        <div class="footer-social">
+          <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>
+          <a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+          <a href="mailto:maktaba.al-mansurah@outlook.com" aria-label="E-Mail"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg></a>
+        </div>
+      </div>
+      <div><p class="footer-col-title">Shop</p><ul class="footer-nav-list"><li><a href="shop.html?cat=buecher">Bücher</a></li><li><a href="shop.html?cat=parfum">Parfüm & Misk</a></li><li><a href="shop.html?cat=miswak">Miswak</a></li><li><a href="shop.html?cat=abaya">Abayas</a></li></ul></div>
+      <div><p class="footer-col-title">Seiten</p><ul class="footer-nav-list"><li><a href="index.html">Startseite</a></li><li><a href="shop.html">Shop</a></li><li><a href="about.html">Über uns</a></li><li><a href="contact.html">Kontakt</a></li></ul></div>
+      <div class="footer-newsletter">
+        <p class="footer-col-title">Newsletter</p>
+        <p>Aktuelle Angebote direkt in dein Postfach.</p>
+        <form class="footer-newsletter-form" novalidate>
+          <input class="form-input" type="email" placeholder="E-Mail-Adresse" required aria-label="E-Mail für Newsletter">
+          <button class="btn btn-primary btn-sm" type="submit">Anmelden</button>
+        </form>
+      </div>
+    </div>
+  </div>
+  <div class="footer-geo-band" style="opacity:0.3;"></div>
+  <div class="container">
+    <div class="footer-legal">
+      <p>© 2026 Maktabah Al Mansurah. Alle Rechte vorbehalten.</p>
+      <div class="footer-legal-links"><a href="#">Impressum</a><a href="#">Datenschutz</a><a href="#">AGB</a></div>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/js/animations.js"></script>
+<script src="assets/js/shop.js"></script>
+<script src="assets/js/cart.js"></script>
+<script src="assets/js/main.js"></script>
+</body>
+</html>
