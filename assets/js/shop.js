@@ -369,7 +369,8 @@ function createProductCardHTML(product) {
 }
 
 /* Force 2-col on mobile using flexbox + explicit calc widths on each card.
-   This bypasses CSS grid min-content expansion that caused the 1-col bug. */
+   CSS grid min-content expansion ignores !important on grid-template-columns;
+   flexbox with explicit calc widths is the reliable cross-browser fix. */
 function forceGridLayout(container) {
   if (!container) return;
   /* Skip the homepage swipe carousel — handled by CSS scroll-snap */
@@ -377,10 +378,10 @@ function forceGridLayout(container) {
   if (window.innerWidth <= 640) {
     container.style.setProperty('display', 'flex', 'important');
     container.style.setProperty('flex-wrap', 'wrap', 'important');
-    container.style.setProperty('gap', '8px', 'important');
+    container.style.setProperty('gap', '12px', 'important');
     container.style.setProperty('width', '100%', 'important');
     container.querySelectorAll(':scope > *').forEach(function(card) {
-      card.style.setProperty('width', 'calc(50% - 4px)', 'important');
+      card.style.setProperty('width', 'calc(50% - 6px)', 'important');
       card.style.setProperty('min-width', '0', 'important');
       card.style.setProperty('flex', 'none', 'important');
       card.style.setProperty('overflow', 'hidden', 'important');
@@ -504,7 +505,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 /* Re-apply grid layout on resize */
 window.addEventListener('resize', () => {
-  ['productsGrid', 'featuredGrid'].forEach(id => {
+  ['productsGrid', 'featuredGrid', 'relatedGrid'].forEach(id => {
     const g = document.getElementById(id);
     if (g) forceGridLayout(g);
   });
