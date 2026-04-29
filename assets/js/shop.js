@@ -368,16 +368,32 @@ function createProductCardHTML(product) {
   `;
 }
 
-/* Force 2-col grid on mobile — inline style beats any CSS caching */
+/* Force 2-col on mobile using flexbox + explicit calc widths on each card.
+   This bypasses CSS grid min-content expansion that caused the 1-col bug. */
 function forceGridLayout(container) {
   if (!container) return;
   if (window.innerWidth <= 640) {
-    container.style.setProperty('display', 'grid', 'important');
-    container.style.setProperty('grid-template-columns', 'repeat(2, 1fr)', 'important');
+    container.style.setProperty('display', 'flex', 'important');
+    container.style.setProperty('flex-wrap', 'wrap', 'important');
     container.style.setProperty('gap', '8px', 'important');
+    container.style.setProperty('width', '100%', 'important');
+    container.querySelectorAll(':scope > *').forEach(function(card) {
+      card.style.setProperty('width', 'calc(50% - 4px)', 'important');
+      card.style.setProperty('min-width', '0', 'important');
+      card.style.setProperty('flex', 'none', 'important');
+      card.style.setProperty('overflow', 'hidden', 'important');
+    });
   } else {
-    container.style.removeProperty('grid-template-columns');
+    container.style.removeProperty('display');
+    container.style.removeProperty('flex-wrap');
     container.style.removeProperty('gap');
+    container.style.removeProperty('width');
+    container.querySelectorAll(':scope > *').forEach(function(card) {
+      card.style.removeProperty('width');
+      card.style.removeProperty('min-width');
+      card.style.removeProperty('flex');
+      card.style.removeProperty('overflow');
+    });
   }
 }
 

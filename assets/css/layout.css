@@ -121,14 +121,27 @@
   grid-template-columns: repeat(4, 1fr);
   gap: var(--sp-3);
 }
+/* Grid items must not expand beyond their allotted column */
+.products-grid > * {
+  min-width: 0;
+  overflow: hidden;
+}
 @media (max-width: 1100px) {
   .products-grid { grid-template-columns: repeat(3, 1fr); }
 }
 @media (max-width: 780px) {
   .products-grid { grid-template-columns: repeat(2, 1fr); }
 }
-@media (max-width: 480px) {
-  .products-grid { grid-template-columns: repeat(2, 1fr); gap: var(--sp-2); }
+@media (max-width: 640px) {
+  .products-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 8px !important;
+  }
+  .products-grid > * {
+    min-width: 0 !important;
+    overflow: hidden !important;
+    width: 100% !important;
+  }
 }
 
 /* ── Categories Grid (4 Kategorien: 3-col desktop) ── */

@@ -1,0 +1,1603 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<meta name="theme-color" content="#050807">
+<title>M & O — Dashboard</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #050807;
+    --bg-soft: #0a100d;
+    --bg-card: #0e1612;
+    --bg-card-hover: #131e18;
+    --ink: #e6ede8;
+    --ink-soft: #8ea394;
+    --ink-muted: #5a6b60;
+    --accent: #4a8f6b;
+    --accent-bright: #5fa882;
+    --accent-soft: #1a3024;
+    --accent-glow: rgba(74, 143, 107, 0.18);
+    --line: #1a2520;
+    --line-soft: #111815;
+    --done: #2d4a38;
+    --warn: #c89968;
+    --high: #d97a5e;
+    --shadow: 0 4px 24px rgba(0, 0, 0, 0.5);
+    --radius: 14px;
+    --radius-sm: 10px;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    background-image:
+      radial-gradient(circle at 15% 0%, rgba(74, 143, 107, 0.06) 0%, transparent 45%),
+      radial-gradient(circle at 85% 100%, rgba(74, 143, 107, 0.04) 0%, transparent 50%);
+    background-attachment: fixed;
+    color: var(--ink);
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    min-height: 100vh;
+    padding: 24px 20px 40px;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+
+  .container { max-width: 880px; margin: 0 auto; }
+
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+  @keyframes slideIn {
+    from { opacity: 0; transform: translateX(-12px); }
+    to { opacity: 1; transform: translateX(0); }
+  }
+  @keyframes pop {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.15); }
+    100% { transform: scale(1); }
+  }
+  @keyframes checkPop {
+    0% { transform: scale(0) rotate(45deg); }
+    60% { transform: scale(1.2) rotate(45deg); }
+    100% { transform: scale(1) rotate(45deg); }
+  }
+  @keyframes ringPulse {
+    0% { box-shadow: 0 0 0 0 var(--accent-glow); }
+    70% { box-shadow: 0 0 0 12px transparent; }
+    100% { box-shadow: 0 0 0 0 transparent; }
+  }
+  @keyframes shimmer {
+    0% { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+  }
+  @keyframes slideOut {
+    to { opacity: 0; transform: translateX(20px); height: 0; padding: 0; margin: 0; border: 0; }
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.6; transform: scale(0.9); }
+  }
+  @keyframes spin {
+    to { transform: rotate(360deg); }
+  }
+  @keyframes overdueShake {
+    0%, 100% { transform: translateX(0); }
+    20% { transform: translateX(-3px); }
+    40% { transform: translateX(3px); }
+    60% { transform: translateX(-2px); }
+    80% { transform: translateX(2px); }
+  }
+
+  /* Setup screen */
+  .setup-screen {
+    max-width: 540px;
+    margin: 60px auto;
+    background: var(--bg-card);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 32px 28px;
+    animation: fadeInUp 0.5s ease-out;
+  }
+  .setup-screen h2 {
+    font-family: 'Instrument Serif', serif;
+    font-size: 32px;
+    font-weight: 400;
+    margin-bottom: 8px;
+  }
+  .setup-screen p {
+    color: var(--ink-soft);
+    font-size: 14px;
+    line-height: 1.6;
+    margin-bottom: 16px;
+  }
+  .setup-screen ol {
+    margin: 16px 0 20px 20px;
+    color: var(--ink-soft);
+    font-size: 14px;
+    line-height: 1.8;
+  }
+  .setup-screen ol li { margin-bottom: 6px; }
+  .setup-screen code {
+    background: var(--bg-soft);
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 12px;
+    color: var(--accent-bright);
+  }
+  .setup-screen a { color: var(--accent-bright); text-decoration: underline; }
+  .setup-input {
+    width: 100%;
+    padding: 12px 14px;
+    background: var(--bg-soft);
+    border: 1px solid var(--line);
+    color: var(--ink);
+    border-radius: var(--radius-sm);
+    font-family: inherit;
+    font-size: 14px;
+    margin-bottom: 12px;
+    outline: none;
+    transition: border-color 0.2s;
+  }
+  .setup-input:focus { border-color: var(--accent); }
+  .setup-btn {
+    width: 100%;
+    padding: 12px 18px;
+    background: var(--accent);
+    border: none;
+    color: var(--bg);
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    font-family: inherit;
+    font-weight: 600;
+    font-size: 14px;
+    transition: all 0.2s;
+  }
+  .setup-btn:hover { background: var(--accent-bright); }
+  .setup-error { color: var(--high); font-size: 13px; margin-top: 8px; display: none; }
+
+  /* Header */
+  header { margin-bottom: 28px; animation: fadeInUp 0.6s ease-out; }
+  .header-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+  }
+  .logo { display: flex; align-items: center; gap: 10px; }
+  .logo-mark {
+    width: 36px;
+    height: 36px;
+    background: linear-gradient(135deg, var(--accent-bright) 0%, var(--accent) 100%);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Instrument Serif', serif;
+    font-style: italic;
+    font-size: 16px;
+    color: var(--bg);
+    font-weight: 600;
+    box-shadow: 0 4px 16px var(--accent-glow);
+  }
+  .logo-text { font-size: 13px; color: var(--ink-soft); font-weight: 500; }
+  .date-pill {
+    background: var(--bg-card);
+    border: 1px solid var(--line);
+    padding: 6px 12px;
+    border-radius: 999px;
+    font-size: 11px;
+    color: var(--ink-soft);
+    font-weight: 500;
+  }
+  h1 {
+    font-family: 'Instrument Serif', serif;
+    font-weight: 400;
+    font-size: clamp(36px, 8vw, 52px);
+    line-height: 1;
+    letter-spacing: -0.01em;
+    margin-bottom: 8px;
+  }
+  h1 .amp { color: var(--accent-bright); font-style: italic; }
+  .subtitle { color: var(--ink-muted); font-size: 14px; }
+
+  /* Tabs */
+  .tabs {
+    display: flex;
+    gap: 6px;
+    background: var(--bg-card);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-sm);
+    padding: 4px;
+    margin-bottom: 24px;
+    animation: fadeInUp 0.6s ease-out 0.05s both;
+  }
+  .tab-btn {
+    flex: 1;
+    padding: 10px 14px;
+    background: transparent;
+    border: none;
+    color: var(--ink-soft);
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 500;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+  }
+  .tab-btn:hover { color: var(--ink); }
+  .tab-btn.active { background: var(--accent); color: var(--bg); font-weight: 600; }
+  .tab-content { display: none; }
+  .tab-content.active { display: block; animation: fadeIn 0.3s ease-out; }
+
+  /* Stats */
+  .stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 8px;
+    margin-bottom: 24px;
+  }
+  .stat {
+    background: var(--bg-card);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-sm);
+    padding: 14px 12px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+  }
+  .stat:hover { border-color: var(--accent-soft); transform: translateY(-2px); }
+  .stat-label {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--ink-muted);
+    margin-bottom: 6px;
+    font-weight: 600;
+  }
+  .stat-value {
+    font-family: 'Instrument Serif', serif;
+    font-size: 28px;
+    font-weight: 400;
+    line-height: 1;
+    transition: color 0.3s;
+  }
+  .stat-value.accent { color: var(--accent-bright); }
+  .stat-value.bump { animation: pop 0.4s ease-out; }
+
+  .progress-bar {
+    height: 4px;
+    background: var(--bg-soft);
+    border-radius: 4px;
+    margin-bottom: 24px;
+    overflow: hidden;
+  }
+  .progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--accent) 0%, var(--accent-bright) 100%);
+    border-radius: 4px;
+    width: 0%;
+    transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+  }
+  .progress-fill::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    background-size: 200% 100%;
+    animation: shimmer 2s infinite;
+  }
+
+  /* Add form */
+  .add-form {
+    background: var(--bg-card);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 14px;
+    margin-bottom: 20px;
+    transition: border-color 0.3s, box-shadow 0.3s;
+  }
+  .add-form:focus-within {
+    border-color: var(--accent-soft);
+    box-shadow: 0 0 0 4px var(--accent-glow);
+  }
+  .input-wrap { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
+  .input-icon {
+    width: 22px;
+    height: 22px;
+    flex-shrink: 0;
+    color: var(--ink-muted);
+    transition: color 0.3s;
+  }
+  .add-form:focus-within .input-icon { color: var(--accent-bright); }
+  .add-form input[type="text"], .add-form textarea {
+    flex: 1;
+    font-family: inherit;
+    font-size: 16px;
+    background: transparent;
+    border: none;
+    color: var(--ink);
+    outline: none;
+    font-weight: 500;
+    min-width: 0;
+    resize: none;
+  }
+  .add-form textarea {
+    width: 100%;
+    min-height: 60px;
+    line-height: 1.5;
+    margin-bottom: 10px;
+  }
+  .add-form input[type="text"]::placeholder,
+  .add-form textarea::placeholder { color: var(--ink-muted); font-weight: 400; }
+
+  .form-controls { display: flex; gap: 8px; flex-wrap: wrap; }
+  .select-wrap { flex: 1; min-width: 0; position: relative; }
+  .select-wrap::after {
+    content: '▾';
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--ink-muted);
+    pointer-events: none;
+    font-size: 10px;
+  }
+  select {
+    width: 100%;
+    font-family: inherit;
+    font-size: 13px;
+    padding: 10px 30px 10px 14px;
+    background: var(--bg-soft);
+    border: 1px solid var(--line);
+    color: var(--ink);
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    appearance: none;
+    -webkit-appearance: none;
+    transition: all 0.2s;
+    font-weight: 500;
+  }
+  select:hover { border-color: var(--accent-soft); }
+  select:focus { outline: none; border-color: var(--accent); }
+
+  /* Date input */
+  .date-wrap { flex: 1; min-width: 0; }
+  input[type="date"] {
+    width: 100%;
+    font-family: inherit;
+    font-size: 13px;
+    padding: 10px 14px;
+    background: var(--bg-soft);
+    border: 1px solid var(--line);
+    color: var(--ink);
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    transition: all 0.2s;
+    font-weight: 500;
+    color-scheme: dark;
+  }
+  input[type="date"]:hover { border-color: var(--accent-soft); }
+  input[type="date"]:focus { outline: none; border-color: var(--accent); }
+  input[type="date"]::-webkit-calendar-picker-indicator { filter: invert(0.6); cursor: pointer; }
+
+  .add-btn {
+    font-family: inherit;
+    font-size: 13px;
+    padding: 10px 18px;
+    background: var(--accent);
+    border: none;
+    color: var(--bg);
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    white-space: nowrap;
+  }
+  .add-btn:hover { background: var(--accent-bright); transform: translateY(-1px); box-shadow: 0 4px 12px var(--accent-glow); }
+  .add-btn:active { transform: translateY(0); }
+  .add-btn:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
+
+  /* Filters */
+  .filters {
+    display: flex;
+    gap: 6px;
+    margin-bottom: 20px;
+    overflow-x: auto;
+    scrollbar-width: none;
+    padding-bottom: 4px;
+  }
+  .filters::-webkit-scrollbar { display: none; }
+  .filter-btn {
+    font-family: inherit;
+    font-size: 12px;
+    padding: 7px 14px;
+    background: var(--bg-card);
+    border: 1px solid var(--line);
+    color: var(--ink-soft);
+    cursor: pointer;
+    border-radius: 999px;
+    transition: all 0.2s;
+    font-weight: 500;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+  .filter-btn:hover { border-color: var(--accent-soft); color: var(--ink); }
+  .filter-btn.active { background: var(--accent); color: var(--bg); border-color: var(--accent); font-weight: 600; }
+
+  /* Overdue alert bar */
+  .overdue-bar {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: rgba(217, 122, 94, 0.07);
+    border: 1px solid rgba(217, 122, 94, 0.25);
+    border-radius: var(--radius-sm);
+    padding: 11px 16px;
+    margin-bottom: 16px;
+    font-size: 13px;
+    color: var(--high);
+    font-weight: 500;
+    animation: slideIn 0.3s ease-out;
+  }
+  .overdue-bar-icon { font-size: 15px; flex-shrink: 0; }
+
+  /* Sections */
+  .tasks-section { margin-bottom: 24px; }
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 12px;
+    padding: 0 4px;
+    flex-wrap: wrap;
+  }
+  .section-title {
+    font-family: 'Instrument Serif', serif;
+    font-style: italic;
+    font-size: 22px;
+    font-weight: 400;
+  }
+  .section-count {
+    font-size: 11px;
+    color: var(--ink-muted);
+    background: var(--bg-card);
+    padding: 3px 10px;
+    border-radius: 999px;
+    font-weight: 500;
+  }
+  .section-action {
+    margin-left: auto;
+    background: transparent;
+    border: 1px solid var(--line);
+    color: var(--ink-soft);
+    font-family: inherit;
+    font-size: 12px;
+    padding: 6px 12px;
+    border-radius: 999px;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-weight: 500;
+  }
+  .section-action:hover { border-color: var(--accent); color: var(--accent-bright); }
+
+  /* Task */
+  .task-list { display: flex; flex-direction: column; gap: 8px; }
+  .task {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 16px;
+    background: var(--bg-card);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    animation: slideIn 0.3s ease-out;
+    overflow: hidden;
+  }
+  .task:hover {
+    background: var(--bg-card-hover);
+    border-color: var(--accent-soft);
+    transform: translateY(-1px);
+    box-shadow: var(--shadow);
+  }
+  .task.overdue {
+    border-color: rgba(217, 122, 94, 0.38);
+    background: rgba(217, 122, 94, 0.03);
+  }
+  .task.overdue:hover {
+    border-color: rgba(217, 122, 94, 0.55);
+    background: rgba(217, 122, 94, 0.06);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 20px rgba(217, 122, 94, 0.12);
+  }
+  .task.removing { animation: slideOut 0.3s ease-in forwards; }
+  .task.done { opacity: 0.55; }
+  .task.done:hover { opacity: 0.8; }
+
+  .checkbox {
+    width: 24px;
+    height: 24px;
+    border: 2px solid var(--line);
+    border-radius: 8px;
+    cursor: pointer;
+    position: relative;
+    flex-shrink: 0;
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .checkbox:hover {
+    border-color: var(--accent);
+    background: var(--accent-glow);
+    animation: ringPulse 0.6s ease-out;
+  }
+  .task.done .checkbox { background: var(--accent); border-color: var(--accent); }
+  .task.done .checkbox::after {
+    content: '';
+    position: absolute;
+    left: 7px;
+    top: 2px;
+    width: 6px;
+    height: 12px;
+    border: solid var(--bg);
+    border-width: 0 2.5px 2.5px 0;
+    transform: rotate(45deg);
+    animation: checkPop 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+
+  .task-content { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 6px; }
+  .task-text {
+    font-size: 15px;
+    line-height: 1.4;
+    color: var(--ink);
+    font-weight: 500;
+    word-break: break-word;
+  }
+  .task.done .task-text {
+    text-decoration: line-through;
+    text-decoration-thickness: 1.5px;
+    color: var(--ink-soft);
+  }
+  .task-meta { display: flex; gap: 6px; align-items: center; flex-wrap: wrap; }
+
+  .tag {
+    font-size: 10px;
+    padding: 3px 9px;
+    border-radius: 999px;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+  }
+  .tag::before {
+    content: '';
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: currentColor;
+  }
+  .tag-metehan { background: rgba(200, 153, 104, 0.12); color: var(--warn); }
+  .tag-oualid { background: rgba(74, 143, 107, 0.18); color: var(--accent-bright); }
+  .tag-beide { background: rgba(150, 130, 190, 0.12); color: #9d88c4; }
+
+  .prio { font-size: 10px; padding: 3px 8px; border-radius: 999px; font-weight: 600; }
+  .prio-hoch { background: rgba(217, 122, 94, 0.12); color: var(--high); }
+  .prio-mittel { background: rgba(200, 153, 104, 0.10); color: var(--warn); }
+  .prio-niedrig { background: rgba(90, 107, 96, 0.18); color: var(--ink-muted); }
+
+  /* Deadline badges */
+  .deadline-badge {
+    font-size: 10px;
+    padding: 3px 8px;
+    border-radius: 999px;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 3px;
+    white-space: nowrap;
+  }
+  .deadline-ok { background: rgba(74, 143, 107, 0.12); color: var(--accent-bright); }
+  .deadline-soon { background: rgba(200, 153, 104, 0.12); color: var(--warn); }
+  .deadline-overdue { background: rgba(217, 122, 94, 0.14); color: var(--high); }
+
+  /* Journal day countdown */
+  .journal-countdown {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: var(--bg-card);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 16px 20px;
+    margin-bottom: 20px;
+  }
+  .journal-countdown-label {
+    font-size: 12px;
+    color: var(--ink-muted);
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+  .journal-countdown-timer {
+    font-family: 'Instrument Serif', serif;
+    font-size: 32px;
+    font-weight: 400;
+    color: var(--accent-bright);
+    font-variant-numeric: tabular-nums;
+    letter-spacing: 0.04em;
+    line-height: 1;
+  }
+  .journal-countdown-timer.expiring {
+    color: var(--warn);
+    animation: pulse 1.5s infinite;
+  }
+  .journal-countdown-timer.urgent {
+    color: var(--high);
+    animation: pulse 0.8s infinite;
+  }
+  .journal-countdown-sub {
+    font-size: 11px;
+    color: var(--ink-muted);
+    margin-top: 4px;
+    text-align: right;
+  }
+
+  .delete-btn {
+    background: transparent;
+    border: none;
+    color: var(--ink-muted);
+    cursor: pointer;
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+    flex-shrink: 0;
+  }
+  .delete-btn:hover { background: rgba(217, 122, 94, 0.10); color: var(--high); }
+
+  .empty {
+    text-align: center;
+    padding: 36px 20px;
+    color: var(--ink-muted);
+    font-family: 'Instrument Serif', serif;
+    font-style: italic;
+    font-size: 18px;
+    border: 1px dashed var(--line);
+    border-radius: var(--radius);
+  }
+  .empty-icon { font-size: 32px; margin-bottom: 8px; opacity: 0.5; }
+
+  /* Journal entry */
+  .journal-entry {
+    background: var(--bg-card);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 18px 20px;
+    margin-bottom: 12px;
+    animation: slideIn 0.3s ease-out;
+    transition: all 0.25s;
+  }
+  .journal-entry:hover {
+    background: var(--bg-card-hover);
+    border-color: var(--accent-soft);
+  }
+  .journal-entry-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .journal-entry-meta {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+  .journal-entry-time { font-size: 12px; color: var(--ink-muted); font-weight: 500; }
+  .journal-entry-author { font-size: 11px; padding: 3px 10px; border-radius: 999px; font-weight: 600; }
+  .journal-entry-text {
+    color: var(--ink);
+    font-size: 15px;
+    line-height: 1.6;
+    white-space: pre-wrap;
+    word-break: break-word;
+  }
+  .journal-entry-actions { display: flex; gap: 6px; margin-top: 10px; }
+
+  .journal-day { margin-bottom: 28px; }
+  .journal-day-header {
+    font-family: 'Instrument Serif', serif;
+    font-style: italic;
+    font-size: 18px;
+    color: var(--accent-bright);
+    margin-bottom: 12px;
+    padding-bottom: 6px;
+    border-bottom: 1px solid var(--line);
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+  }
+  .journal-day-count {
+    font-size: 11px;
+    color: var(--ink-muted);
+    font-style: normal;
+    font-family: 'Inter', sans-serif;
+  }
+
+  /* Footer */
+  footer {
+    margin-top: 32px;
+    padding-top: 20px;
+    border-top: 1px solid var(--line);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 11px;
+    color: var(--ink-muted);
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  .sync-indicator { display: flex; align-items: center; gap: 8px; }
+  .sync-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--accent);
+    box-shadow: 0 0 8px var(--accent-glow);
+    animation: pulse 2s infinite;
+  }
+  .sync-dot.error { background: var(--high); box-shadow: 0 0 8px rgba(217, 122, 94, 0.4); }
+  .sync-dot.syncing { animation: spin 1s linear infinite; background: var(--warn); border-radius: 0; width: 10px; height: 10px; }
+
+  .hidden { display: none !important; }
+
+  /* Modal */
+  .modal-backdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(4px);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    z-index: 100;
+    animation: fadeIn 0.2s ease-out;
+  }
+  .modal-backdrop.active { display: flex; }
+  .modal {
+    background: var(--bg-card);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 24px;
+    max-width: 400px;
+    width: 100%;
+    animation: fadeInUp 0.3s ease-out;
+  }
+  .modal h3 { font-family: 'Instrument Serif', serif; font-size: 22px; font-weight: 400; margin-bottom: 8px; }
+  .modal p { color: var(--ink-soft); font-size: 14px; margin-bottom: 16px; line-height: 1.5; }
+  .modal-actions { display: flex; gap: 8px; justify-content: flex-end; }
+  .modal-btn { padding: 10px 18px; border: none; border-radius: var(--radius-sm); font-family: inherit; font-size: 13px; font-weight: 600; cursor: pointer; transition: all 0.2s; }
+  .modal-btn-cancel { background: var(--bg-soft); color: var(--ink); border: 1px solid var(--line); }
+  .modal-btn-cancel:hover { border-color: var(--ink-muted); }
+  .modal-btn-confirm { background: var(--high); color: var(--bg); }
+  .modal-btn-confirm:hover { opacity: 0.9; }
+
+  /* Mobile */
+  @media (max-width: 600px) {
+    body { padding: 16px 14px 32px; }
+    .stats { grid-template-columns: repeat(2, 1fr); gap: 8px; }
+    .form-controls { flex-direction: column; }
+    .select-wrap, .date-wrap { width: 100%; }
+    .add-btn { width: 100%; justify-content: center; padding: 12px 18px; }
+    .task { padding: 12px 14px; gap: 10px; }
+    .task-text { font-size: 14px; }
+    h1 { font-size: 38px; }
+    .delete-btn { width: 28px; height: 28px; }
+    .tab-btn { padding: 10px 8px; font-size: 12px; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+</style>
+</head>
+<body>
+
+<!-- Setup screen -->
+<div class="container" id="setupContainer" style="display:none;">
+  <div class="setup-screen">
+    <h2>Einrichtung</h2>
+    <p>Damit du und Oualid die gleiche Liste seht, brauchen wir einen kostenlosen Cloud-Speicher. Das ist einmalig in 3 Minuten erledigt:</p>
+    <ol>
+      <li>Geh auf <a href="https://jsonbin.io" target="_blank" rel="noopener">jsonbin.io</a> und erstell einen kostenlosen Account</li>
+      <li>Klick oben rechts auf dein Profil → <code>API Keys</code></li>
+      <li>Kopier deinen <strong>Master Key</strong> (langer Code, beginnt mit <code>$2a$...</code>)</li>
+      <li>Füg ihn hier ein und klick auf "Verbinden"</li>
+    </ol>
+    <p style="font-size:12px;color:var(--ink-muted);">Dein Schlüssel wird nur lokal in diesem Browser gespeichert. Oualid braucht den gleichen Schlüssel — schick ihn ihm einfach.</p>
+    <input type="password" class="setup-input" id="apiKeyInput" placeholder="Master Key einfügen ($2a$...)">
+    <input type="text" class="setup-input" id="binIdInput" placeholder="Optional: Bin-ID falls schon vorhanden (sonst leer lassen)">
+    <button class="setup-btn" id="setupBtn">Verbinden &amp; starten</button>
+    <div class="setup-error" id="setupError"></div>
+  </div>
+</div>
+
+<!-- Main app -->
+<div class="container" id="appContainer" style="display:none;">
+
+  <header>
+    <div class="header-top">
+      <div class="logo">
+        <div class="logo-mark">M&amp;O</div>
+        <div class="logo-text">Dashboard</div>
+      </div>
+      <div class="date-pill" id="datePill">—</div>
+    </div>
+    <h1>Metehan <span class="amp">&amp;</span> Oualid</h1>
+    <div class="subtitle" id="greeting">Lass uns was schaffen heute.</div>
+  </header>
+
+  <div class="tabs">
+    <button class="tab-btn active" data-tab="tasks">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="9 11 12 14 22 4"></polyline>
+        <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path>
+      </svg>
+      Aufgaben
+    </button>
+    <button class="tab-btn" data-tab="journal">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+        <polyline points="14 2 14 8 20 8"></polyline>
+      </svg>
+      Tagebuch
+    </button>
+  </div>
+
+  <!-- TASKS TAB -->
+  <div class="tab-content active" id="tab-tasks">
+    <section class="stats">
+      <div class="stat">
+        <div class="stat-label">Offen</div>
+        <div class="stat-value accent" id="statOpen">0</div>
+      </div>
+      <div class="stat">
+        <div class="stat-label">Erledigt</div>
+        <div class="stat-value" id="statDone">0</div>
+      </div>
+      <div class="stat">
+        <div class="stat-label">Gesamt</div>
+        <div class="stat-value" id="statTotal">0</div>
+      </div>
+      <div class="stat">
+        <div class="stat-label">Fortschritt</div>
+        <div class="stat-value" id="statProgress">0%</div>
+      </div>
+    </section>
+
+    <div class="progress-bar">
+      <div class="progress-fill" id="progressFill"></div>
+    </div>
+
+    <form class="add-form" id="addForm" onsubmit="return false;">
+      <div class="input-wrap">
+        <svg class="input-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="10"></circle>
+          <line x1="12" y1="8" x2="12" y2="16"></line>
+          <line x1="8" y1="12" x2="16" y2="12"></line>
+        </svg>
+        <input type="text" id="taskInput" placeholder="Was muss erledigt werden?" maxlength="200" required autocomplete="off">
+      </div>
+      <div class="form-controls">
+        <div class="select-wrap">
+          <select id="taskAssignee">
+            <option value="beide">👥 Beide</option>
+            <option value="metehan">👤 Metehan</option>
+            <option value="oualid">👤 Oualid</option>
+          </select>
+        </div>
+        <div class="select-wrap">
+          <select id="taskPriority">
+            <option value="mittel">Mittel</option>
+            <option value="hoch">Hohe Prio</option>
+            <option value="niedrig">Niedrige Prio</option>
+          </select>
+        </div>
+        <div class="date-wrap">
+          <input type="date" id="taskDueDate" title="Fälligkeitsdatum (optional)">
+        </div>
+        <button type="submit" class="add-btn" id="addBtn">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="12" y1="5" x2="12" y2="19"></line>
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+          </svg>
+          Hinzufügen
+        </button>
+      </div>
+    </form>
+
+    <div class="filters">
+      <button class="filter-btn active" data-filter="alle">Alle</button>
+      <button class="filter-btn" data-filter="metehan">Metehan</button>
+      <button class="filter-btn" data-filter="oualid">Oualid</button>
+      <button class="filter-btn" data-filter="beide">Beide</button>
+      <button class="filter-btn" data-filter="hoch">🔥 Hohe Prio</button>
+    </div>
+
+    <!-- Overdue alert bar -->
+    <div class="overdue-bar hidden" id="overdueBar">
+      <span class="overdue-bar-icon">⚠</span>
+      <span id="overdueMsg"></span>
+    </div>
+
+    <section class="tasks-section">
+      <div class="section-header">
+        <span class="section-title">Offen</span>
+        <span class="section-count" id="openCount">0</span>
+      </div>
+      <div class="task-list" id="openTasks"></div>
+    </section>
+
+    <section class="tasks-section">
+      <div class="section-header">
+        <span class="section-title">Erledigt</span>
+        <span class="section-count" id="doneCount">0</span>
+      </div>
+      <div class="task-list" id="doneTasks"></div>
+    </section>
+  </div>
+
+  <!-- JOURNAL TAB -->
+  <div class="tab-content" id="tab-journal">
+
+    <div class="journal-countdown">
+      <div>
+        <div class="journal-countdown-label">Zeit für heute</div>
+      </div>
+      <div style="text-align:right;">
+        <div class="journal-countdown-timer" id="journalCountdownTimer">--:--:--</div>
+        <div class="journal-countdown-sub" id="journalCountdownSub">verbleibend bis Mitternacht</div>
+      </div>
+    </div>
+
+    <form class="add-form" id="journalForm" onsubmit="return false;">
+      <textarea id="journalInput" placeholder="Was hast du heute gemacht? Was lief gut, was nicht?" maxlength="2000"></textarea>
+      <div class="form-controls">
+        <div class="select-wrap">
+          <select id="journalAuthor">
+            <option value="metehan">👤 Metehan</option>
+            <option value="oualid">👤 Oualid</option>
+          </select>
+        </div>
+        <button type="submit" class="add-btn" id="journalBtn">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="12" y1="5" x2="12" y2="19"></line>
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+          </svg>
+          Eintragen
+        </button>
+      </div>
+    </form>
+
+    <section class="tasks-section">
+      <div class="section-header">
+        <span class="section-title">Heute</span>
+        <span class="section-count" id="todayCount">0</span>
+      </div>
+      <div id="todayEntries"></div>
+    </section>
+
+    <section class="tasks-section" id="archiveSection">
+      <div class="section-header">
+        <span class="section-title">Archiv</span>
+        <span class="section-count" id="archiveCount">0</span>
+        <button class="section-action" id="toggleArchiveBtn">Anzeigen</button>
+      </div>
+      <div id="archiveEntries" class="hidden"></div>
+    </section>
+  </div>
+
+  <footer>
+    <div class="sync-indicator">
+      <span class="sync-dot" id="syncDot"></span>
+      <span id="syncStatus">Cloud-Sync aktiv</span>
+    </div>
+    <div>
+      <a href="#" id="resetBtn" style="color:var(--ink-muted);text-decoration:none;">Einstellungen</a>
+      · v3.1
+    </div>
+  </footer>
+
+</div>
+
+<!-- Confirm Modal -->
+<div class="modal-backdrop" id="modalBackdrop">
+  <div class="modal">
+    <h3 id="modalTitle">Wirklich löschen?</h3>
+    <p id="modalText">Das kann nicht rückgängig gemacht werden.</p>
+    <div class="modal-actions">
+      <button class="modal-btn modal-btn-cancel" id="modalCancel">Abbrechen</button>
+      <button class="modal-btn modal-btn-confirm" id="modalConfirm">Löschen</button>
+    </div>
+  </div>
+</div>
+
+<script>
+  // ============ STATE ============
+  let state = { tasks: [], journal: [] };
+  let currentFilter = 'alle';
+  let currentTab = 'tasks';
+  let prevOpen = 0, prevDone = 0;
+  let saveTimeout = null;
+  let modalCallback = null;
+
+  // ============ JSONBin Cloud Sync ============
+  const CONFIG_KEY = 'mo-dashboard-config';
+  let config = JSON.parse(localStorage.getItem(CONFIG_KEY) || 'null');
+  const JSONBIN_BASE = 'https://api.jsonbin.io/v3/b';
+
+  async function createBin(apiKey) {
+    const res = await fetch(JSONBIN_BASE, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'X-Master-Key': apiKey,
+        'X-Bin-Name': 'mo-dashboard'
+      },
+      body: JSON.stringify({ tasks: [], journal: [] })
+    });
+    if (!res.ok) throw new Error('Bin konnte nicht erstellt werden');
+    const data = await res.json();
+    return data.metadata.id;
+  }
+
+  async function loadFromCloud() {
+    if (!config) return;
+    setSyncStatus('syncing', 'Lade…');
+    try {
+      const res = await fetch(`${JSONBIN_BASE}/${config.binId}/latest`, {
+        headers: { 'X-Master-Key': config.apiKey }
+      });
+      if (!res.ok) throw new Error('Load failed');
+      const data = await res.json();
+      const record = data.record || {};
+      state.tasks = Array.isArray(record.tasks) ? record.tasks : [];
+      state.journal = Array.isArray(record.journal) ? record.journal : [];
+      setSyncStatus('ok', 'Cloud-Sync aktiv');
+      render();
+    } catch (e) {
+      console.error(e);
+      setSyncStatus('error', 'Sync-Fehler — versuche es erneut');
+    }
+  }
+
+  async function saveToCloud() {
+    if (!config) return;
+    setSyncStatus('syncing', 'Speichere…');
+    try {
+      const res = await fetch(`${JSONBIN_BASE}/${config.binId}`, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+          'X-Master-Key': config.apiKey
+        },
+        body: JSON.stringify(state)
+      });
+      if (!res.ok) throw new Error('Save failed');
+      setSyncStatus('ok', 'Cloud-Sync aktiv');
+    } catch (e) {
+      console.error(e);
+      setSyncStatus('error', 'Speichern fehlgeschlagen');
+    }
+  }
+
+  function queueSave() {
+    if (saveTimeout) clearTimeout(saveTimeout);
+    saveTimeout = setTimeout(saveToCloud, 400);
+  }
+
+  function setSyncStatus(type, text) {
+    const dot = document.getElementById('syncDot');
+    const status = document.getElementById('syncStatus');
+    dot.classList.remove('error', 'syncing');
+    if (type === 'error') dot.classList.add('error');
+    if (type === 'syncing') dot.classList.add('syncing');
+    status.textContent = text;
+  }
+
+  // ============ Setup Flow ============
+  function showSetup() {
+    document.getElementById('setupContainer').style.display = 'block';
+    document.getElementById('appContainer').style.display = 'none';
+  }
+
+  function showApp() {
+    document.getElementById('setupContainer').style.display = 'none';
+    document.getElementById('appContainer').style.display = 'block';
+  }
+
+  document.getElementById('setupBtn').addEventListener('click', async () => {
+    const apiKey = document.getElementById('apiKeyInput').value.trim();
+    const existingBinId = document.getElementById('binIdInput').value.trim();
+    const errorEl = document.getElementById('setupError');
+    const btn = document.getElementById('setupBtn');
+
+    errorEl.style.display = 'none';
+    if (!apiKey || !apiKey.startsWith('$2')) {
+      errorEl.textContent = 'Master Key ungültig. Er beginnt mit "$2a$..." oder "$2b$..."';
+      errorEl.style.display = 'block';
+      return;
+    }
+
+    btn.disabled = true;
+    btn.textContent = 'Verbinde…';
+
+    try {
+      let binId;
+      if (existingBinId) {
+        const res = await fetch(`${JSONBIN_BASE}/${existingBinId}/latest`, {
+          headers: { 'X-Master-Key': apiKey }
+        });
+        if (!res.ok) throw new Error('Bin-ID oder Schlüssel falsch');
+        binId = existingBinId;
+      } else {
+        binId = await createBin(apiKey);
+      }
+      config = { apiKey, binId };
+      localStorage.setItem(CONFIG_KEY, JSON.stringify(config));
+      showApp();
+      await loadFromCloud();
+      if (!existingBinId) {
+        setTimeout(() => {
+          alert(`Verbunden! Damit Oualid die gleiche Liste sieht, gib ihm beides:\n\n1. Master Key:\n${apiKey}\n\n2. Bin-ID:\n${binId}\n\n(Schreib dir die Bin-ID auf, du brauchst sie nicht nochmal.)`);
+        }, 300);
+      }
+    } catch (e) {
+      errorEl.textContent = 'Fehler: ' + (e.message || 'Verbindung fehlgeschlagen. Prüf den Master Key.');
+      errorEl.style.display = 'block';
+      btn.disabled = false;
+      btn.textContent = 'Verbinden & starten';
+    }
+  });
+
+  document.getElementById('resetBtn').addEventListener('click', (e) => {
+    e.preventDefault();
+    showConfirm(
+      'Einstellungen zurücksetzen?',
+      'Die Daten in der Cloud bleiben erhalten. Du musst Master Key und Bin-ID neu eingeben.',
+      'Zurücksetzen',
+      () => {
+        localStorage.removeItem(CONFIG_KEY);
+        config = null;
+        location.reload();
+      }
+    );
+  });
+
+  // ============ Date / Greeting ============
+  function updateDate() {
+    const now = new Date();
+    const days = ['Sonntag','Montag','Dienstag','Mittwoch','Donnerstag','Freitag','Samstag'];
+    const months = ['Jan','Feb','Mär','Apr','Mai','Jun','Jul','Aug','Sep','Okt','Nov','Dez'];
+    const el = document.getElementById('datePill');
+    if (el) el.textContent = `${days[now.getDay()].slice(0,2)}. ${now.getDate()}. ${months[now.getMonth()]}`;
+    const h = now.getHours();
+    let greet = 'Lass uns was schaffen heute.';
+    if (h < 11) greet = 'Guten Morgen — auf geht\'s.';
+    else if (h < 14) greet = 'Mittag — was steht an?';
+    else if (h < 18) greet = 'Nachmittag — Fokus.';
+    else if (h < 22) greet = 'Abend — was hast du geschafft?';
+    else greet = 'Spät dran — bis morgen.';
+    const g = document.getElementById('greeting');
+    if (g) g.textContent = greet;
+  }
+
+  // ============ Tabs ============
+  document.querySelectorAll('.tab-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+      btn.classList.add('active');
+      currentTab = btn.dataset.tab;
+      document.getElementById('tab-' + currentTab).classList.add('active');
+    });
+  });
+
+  // ============ Deadline Helpers ============
+  function isOverdue(task) {
+    if (!task.dueDate || task.done) return false;
+    return new Date() > new Date(task.dueDate + 'T23:59:59');
+  }
+
+  function getDeadlineHTML(task) {
+    if (!task.dueDate || task.done) return '';
+    const due = new Date(task.dueDate + 'T23:59:59');
+    const now = new Date();
+    const diff = due - now;
+    const diffDays = Math.ceil(diff / 86400000);
+
+    if (diff < 0) {
+      const daysOver = Math.ceil(-diff / 86400000);
+      const label = daysOver <= 1 ? 'Gestern fällig' : `${daysOver} Tage überfällig`;
+      return `<span class="deadline-badge deadline-overdue">⚠ ${label}</span>`;
+    }
+    if (diffDays === 0) return `<span class="deadline-badge deadline-soon">⏰ Heute fällig</span>`;
+    if (diffDays === 1) return `<span class="deadline-badge deadline-soon">Morgen fällig</span>`;
+    if (diffDays <= 3) return `<span class="deadline-badge deadline-soon">In ${diffDays} Tagen</span>`;
+    const dateStr = new Date(task.dueDate).toLocaleDateString('de-DE', { day: 'numeric', month: 'short' });
+    return `<span class="deadline-badge deadline-ok">Bis ${dateStr}</span>`;
+  }
+
+  // ============ Tasks ============
+  document.getElementById('addForm').addEventListener('submit', () => {
+    const input = document.getElementById('taskInput');
+    const text = input.value.trim();
+    if (!text) return;
+    const task = {
+      id: Date.now() + '-' + Math.random().toString(36).slice(2, 7),
+      text,
+      assignee: document.getElementById('taskAssignee').value,
+      priority: document.getElementById('taskPriority').value,
+      dueDate: document.getElementById('taskDueDate').value || null,
+      done: false,
+      createdAt: new Date().toISOString()
+    };
+    state.tasks.unshift(task);
+    input.value = '';
+    document.getElementById('taskDueDate').value = '';
+    render();
+    queueSave();
+  });
+
+  window.toggleTask = function(id) {
+    const t = state.tasks.find(t => t.id === id);
+    if (!t) return;
+    t.done = !t.done;
+    t.completedAt = t.done ? new Date().toISOString() : null;
+    render();
+    queueSave();
+  };
+
+  window.deleteTask = function(id) {
+    showConfirm('Aufgabe löschen?', 'Das kann nicht rückgängig gemacht werden.', 'Löschen', () => {
+      const el = document.querySelector(`[data-task-id="${id}"]`);
+      if (el) {
+        el.classList.add('removing');
+        setTimeout(() => {
+          state.tasks = state.tasks.filter(t => t.id !== id);
+          render();
+          queueSave();
+        }, 280);
+      } else {
+        state.tasks = state.tasks.filter(t => t.id !== id);
+        render();
+        queueSave();
+      }
+    });
+  };
+
+  document.querySelectorAll('.filter-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      currentFilter = btn.dataset.filter;
+      renderTasks();
+    });
+  });
+
+  function applyFilter(taskList) {
+    if (currentFilter === 'alle') return taskList;
+    if (currentFilter === 'hoch') return taskList.filter(t => t.priority === 'hoch');
+    return taskList.filter(t => t.assignee === currentFilter);
+  }
+
+  function bumpStat(id) {
+    const el = document.getElementById(id);
+    el.classList.remove('bump');
+    void el.offsetWidth;
+    el.classList.add('bump');
+  }
+
+  function renderTasks() {
+    const open = applyFilter(state.tasks.filter(t => !t.done));
+    const done = applyFilter(state.tasks.filter(t => t.done));
+    const allOpen = state.tasks.filter(t => !t.done).length;
+    const allDone = state.tasks.filter(t => t.done).length;
+    const total = state.tasks.length;
+    const progress = total === 0 ? 0 : Math.round((allDone / total) * 100);
+
+    document.getElementById('statOpen').textContent = allOpen;
+    document.getElementById('statDone').textContent = allDone;
+    document.getElementById('statTotal').textContent = total;
+    document.getElementById('statProgress').textContent = progress + '%';
+    document.getElementById('progressFill').style.width = progress + '%';
+
+    if (allOpen !== prevOpen) bumpStat('statOpen');
+    if (allDone !== prevDone) bumpStat('statDone');
+    prevOpen = allOpen; prevDone = allDone;
+
+    document.getElementById('openCount').textContent = open.length;
+    document.getElementById('doneCount').textContent = done.length;
+
+    // Overdue bar
+    const overdueCount = state.tasks.filter(t => isOverdue(t)).length;
+    const overdueBar = document.getElementById('overdueBar');
+    if (overdueCount > 0) {
+      overdueBar.classList.remove('hidden');
+      document.getElementById('overdueMsg').textContent =
+        overdueCount === 1
+          ? '1 Aufgabe ist überfällig'
+          : `${overdueCount} Aufgaben sind überfällig`;
+    } else {
+      overdueBar.classList.add('hidden');
+    }
+
+    const prioOrder = { hoch: 0, mittel: 1, niedrig: 2 };
+    // Sort open: overdue first, then by priority
+    open.sort((a, b) => {
+      const aOver = isOverdue(a) ? 0 : 1;
+      const bOver = isOverdue(b) ? 0 : 1;
+      if (aOver !== bOver) return aOver - bOver;
+      return prioOrder[a.priority] - prioOrder[b.priority];
+    });
+    done.sort((a, b) => new Date(b.completedAt || 0) - new Date(a.completedAt || 0));
+
+    document.getElementById('openTasks').innerHTML = open.length
+      ? open.map(taskHTML).join('')
+      : `<div class="empty"><div class="empty-icon">✨</div>Alles erledigt. Mashallah.</div>`;
+    document.getElementById('doneTasks').innerHTML = done.length
+      ? done.map(taskHTML).join('')
+      : `<div class="empty"><div class="empty-icon">✓</div>Noch nichts abgehakt.</div>`;
+  }
+
+  function taskHTML(t) {
+    const assigneeLabel = { metehan: 'Metehan', oualid: 'Oualid', beide: 'Beide' }[t.assignee];
+    const prioLabel = { hoch: 'Hoch', mittel: 'Mittel', niedrig: 'Niedrig' }[t.priority];
+    const overdueClass = isOverdue(t) ? ' overdue' : '';
+    const deadlineHTML = getDeadlineHTML(t);
+    return `
+      <div class="task ${t.done ? 'done' : ''}${overdueClass}" data-task-id="${t.id}">
+        <div class="checkbox" onclick="toggleTask('${t.id}')"></div>
+        <div class="task-content">
+          <div class="task-text">${escapeHTML(t.text)}</div>
+          <div class="task-meta">
+            <span class="tag tag-${t.assignee}">${assigneeLabel}</span>
+            <span class="prio prio-${t.priority}">${prioLabel}</span>
+            ${deadlineHTML}
+          </div>
+        </div>
+        <button class="delete-btn" onclick="deleteTask('${t.id}')" aria-label="Löschen">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="3 6 5 6 21 6"></polyline>
+            <path d="M19 6l-2 14a2 2 0 0 1-2 2H9a2 2 0 0 1-2-2L5 6"></path>
+            <path d="M10 11v6M14 11v6"></path>
+          </svg>
+        </button>
+      </div>
+    `;
+  }
+
+  // ============ Journal Day Countdown ============
+  function updateJournalCountdown() {
+    const el = document.getElementById('journalCountdownTimer');
+    const sub = document.getElementById('journalCountdownSub');
+    if (!el) return;
+    const now = new Date();
+    const midnight = new Date(now);
+    midnight.setHours(24, 0, 0, 0);
+    const remaining = midnight - now;
+    const h = Math.floor(remaining / 3600000);
+    const m = Math.floor((remaining % 3600000) / 60000);
+    const s = Math.floor((remaining % 60000) / 1000);
+    el.textContent = `${String(h).padStart(2,'0')}:${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;
+    el.className = 'journal-countdown-timer';
+    if (remaining < 3600000) {
+      el.classList.add('urgent');
+      sub.textContent = 'Beeile dich — fast Mitternacht';
+    } else if (remaining < 3 * 3600000) {
+      el.classList.add('expiring');
+      sub.textContent = 'Weniger als 3 Stunden';
+    } else {
+      sub.textContent = 'verbleibend bis Mitternacht';
+    }
+  }
+
+  setInterval(updateJournalCountdown, 1000);
+  updateJournalCountdown();
+
+  // ============ Journal ============
+  document.getElementById('journalForm').addEventListener('submit', () => {
+    const input = document.getElementById('journalInput');
+    const text = input.value.trim();
+    if (!text) return;
+    const entry = {
+      id: Date.now() + '-' + Math.random().toString(36).slice(2, 7),
+      text,
+      author: document.getElementById('journalAuthor').value,
+      createdAt: new Date().toISOString()
+    };
+    state.journal.unshift(entry);
+    input.value = '';
+    renderJournal();
+    queueSave();
+  });
+
+  window.deleteJournal = function(id) {
+    showConfirm('Eintrag löschen?', 'Das kann nicht rückgängig gemacht werden.', 'Löschen', () => {
+      state.journal = state.journal.filter(j => j.id !== id);
+      renderJournal();
+      queueSave();
+    });
+  };
+
+  document.getElementById('toggleArchiveBtn').addEventListener('click', () => {
+    const archive = document.getElementById('archiveEntries');
+    const btn = document.getElementById('toggleArchiveBtn');
+    if (archive.classList.contains('hidden')) {
+      archive.classList.remove('hidden');
+      btn.textContent = 'Verbergen';
+    } else {
+      archive.classList.add('hidden');
+      btn.textContent = 'Anzeigen';
+    }
+  });
+
+  function isToday(isoDate) {
+    const d = new Date(isoDate);
+    const now = new Date();
+    return d.toDateString() === now.toDateString();
+  }
+
+  function formatDayHeader(isoDate) {
+    const d = new Date(isoDate);
+    const now = new Date();
+    const yesterday = new Date(now);
+    yesterday.setDate(yesterday.getDate() - 1);
+    if (d.toDateString() === yesterday.toDateString()) return 'Gestern';
+    const days = ['Sonntag','Montag','Dienstag','Mittwoch','Donnerstag','Freitag','Samstag'];
+    const months = ['Januar','Februar','März','April','Mai','Juni','Juli','August','September','Oktober','November','Dezember'];
+    return `${days[d.getDay()]}, ${d.getDate()}. ${months[d.getMonth()]}`;
+  }
+
+  function formatTime(iso) {
+    const d = new Date(iso);
+    return d.toLocaleTimeString('de-DE', { hour: '2-digit', minute: '2-digit' });
+  }
+
+  function renderJournal() {
+    const sorted = [...state.journal].sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+    const today = sorted.filter(e => isToday(e.createdAt));
+    const past = sorted.filter(e => !isToday(e.createdAt));
+
+    document.getElementById('todayCount').textContent = today.length;
+    document.getElementById('archiveCount').textContent = past.length;
+
+    document.getElementById('todayEntries').innerHTML = today.length
+      ? today.map(journalHTML).join('')
+      : `<div class="empty"><div class="empty-icon">📝</div>Was hast du heute gemacht? Trag's ein.</div>`;
+
+    const groups = {};
+    for (const entry of past) {
+      const day = new Date(entry.createdAt).toDateString();
+      if (!groups[day]) groups[day] = [];
+      groups[day].push(entry);
+    }
+    const groupKeys = Object.keys(groups).sort((a, b) => new Date(b) - new Date(a));
+    const archiveHTML = groupKeys.length
+      ? groupKeys.map(day => `
+          <div class="journal-day">
+            <div class="journal-day-header">
+              <span>${formatDayHeader(groups[day][0].createdAt)}</span>
+              <span class="journal-day-count">${groups[day].length} ${groups[day].length === 1 ? 'Eintrag' : 'Einträge'}</span>
+            </div>
+            ${groups[day].map(journalHTML).join('')}
+          </div>
+        `).join('')
+      : `<div class="empty"><div class="empty-icon">📚</div>Noch keine vergangenen Einträge.</div>`;
+    document.getElementById('archiveEntries').innerHTML = archiveHTML;
+  }
+
+  function journalHTML(e) {
+    const authorLabel = { metehan: 'Metehan', oualid: 'Oualid' }[e.author];
+    const authorClass = `tag-${e.author}`;
+    return `
+      <div class="journal-entry">
+        <div class="journal-entry-header">
+          <span class="journal-entry-author tag ${authorClass}">${authorLabel}</span>
+          <div class="journal-entry-meta">
+            <span class="journal-entry-time">${formatTime(e.createdAt)}</span>
+          </div>
+        </div>
+        <div class="journal-entry-text">${escapeHTML(e.text)}</div>
+        <div class="journal-entry-actions">
+          <button class="delete-btn" onclick="deleteJournal('${e.id}')" aria-label="Löschen">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="3 6 5 6 21 6"></polyline>
+              <path d="M19 6l-2 14a2 2 0 0 1-2 2H9a2 2 0 0 1-2-2L5 6"></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+    `;
+  }
+
+  // ============ Modal ============
+  function showConfirm(title, text, confirmText, callback) {
+    document.getElementById('modalTitle').textContent = title;
+    document.getElementById('modalText').textContent = text;
+    document.getElementById('modalConfirm').textContent = confirmText;
+    modalCallback = callback;
+    document.getElementById('modalBackdrop').classList.add('active');
+  }
+
+  document.getElementById('modalCancel').addEventListener('click', () => {
+    document.getElementById('modalBackdrop').classList.remove('active');
+    modalCallback = null;
+  });
+  document.getElementById('modalConfirm').addEventListener('click', () => {
+    document.getElementById('modalBackdrop').classList.remove('active');
+    if (modalCallback) modalCallback();
+    modalCallback = null;
+  });
+  document.getElementById('modalBackdrop').addEventListener('click', (e) => {
+    if (e.target === document.getElementById('modalBackdrop')) {
+      document.getElementById('modalBackdrop').classList.remove('active');
+      modalCallback = null;
+    }
+  });
+
+  // ============ Render & Boot ============
+  function escapeHTML(s) {
+    return s.replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  }
+
+  function render() {
+    renderTasks();
+    renderJournal();
+  }
+
+  // Auto-refresh from cloud every 20s
+  setInterval(() => {
+    if (config && currentTab) loadFromCloud();
+  }, 20000);
+
+  document.addEventListener('visibilitychange', () => {
+    if (!document.hidden && config) loadFromCloud();
+  });
+
+  // Boot
+  if (config && config.apiKey && config.binId) {
+    showApp();
+    updateDate();
+    setInterval(updateDate, 60000);
+    loadFromCloud();
+  } else {
+    showSetup();
+  }
+</script>
+
+</body>
+</html>

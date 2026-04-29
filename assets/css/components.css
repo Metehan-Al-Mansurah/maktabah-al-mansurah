@@ -692,6 +692,9 @@
   line-height: 1.25;
   margin-bottom: 4px;
   transition: color var(--dur-fast) ease;
+  overflow-wrap: break-word;
+  word-break: break-word;
+  overflow: hidden;
 }
 .product-card:hover .product-card__title { color: var(--clr-gold-pale); }
 
@@ -700,6 +703,8 @@
   color: var(--clr-text-muted);
   line-height: 1.4;
   margin-bottom: var(--sp-2);
+  overflow: hidden;
+  overflow-wrap: break-word;
 }
 
 .product-card__footer {
