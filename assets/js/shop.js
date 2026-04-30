@@ -9,9 +9,15 @@
       id: 'buecher', label: 'Islamische Bücher',
       icon: '<path d="M12 6.042A8.967 8.967 0 0 0 6 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 0 1 6 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 0 1 6-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0 0 18 18a8.967 8.967 0 0 0-6 2.292m0-14.25v14.25"/>',
       subcats: [
-        { id: 'aqidah', label: 'Aqidah & Tawhid' },
-        { id: 'fiqh',   label: 'Fiqh & Usul' },
-        { id: 'hadith', label: 'Hadith' }
+        { id: 'deutsch',  label: 'Deutsche Bücher' },
+        { id: 'arabisch', label: 'Arabische Bücher' }
+      ]
+    },
+    {
+      id: 'kleidung', label: 'Kleidung',
+      icon: '<path d="M20.38 3.46 16 2a4 4 0 0 1-8 0L3.62 3.46a2 2 0 0 0-1.34 2.23l.58 3.57a1 1 0 0 0 .99.84H6v10c0 1.1.9 2 2 2h8a2 2 0 0 0 2-2V10h2.15a1 1 0 0 0 .99-.84l.58-3.57a2 2 0 0 0-1.34-2.23z"/>',
+      subcats: [
+        { id: 'shemaghs', label: 'Saudi Shemaghs' }
       ]
     }
   ];
@@ -22,7 +28,7 @@
   var PRODUCTS = [
     {
       id: 1,
-      mainCat: 'buecher', subcat: 'aqidah',
+      mainCat: 'buecher', subcat: 'deutsch',
       name: 'Die Heilmittel zur Geduld gegen das Übel der Geschöpfe',
       subtitle: 'Ibn Taymiyyah',
       price: 7.99,
@@ -32,7 +38,7 @@
     },
     {
       id: 2,
-      mainCat: 'buecher', subcat: 'hadith',
+      mainCat: 'buecher', subcat: 'deutsch',
       name: 'An-Nawawīs vierzig Ḥadīṯe',
       subtitle: 'Imam Abū Zakariyyā an-Nawawī · Mit Notizfeldern',
       price: 14.99,
@@ -42,7 +48,7 @@
     },
     {
       id: 3,
-      mainCat: 'buecher', subcat: 'fiqh',
+      mainCat: 'buecher', subcat: 'deutsch',
       name: 'Mittel zum Erreichen eines glücklichen Familienlebens',
       subtitle: 'Scheich Sulayman Ar-Ruhayli',
       price: 13.99,
@@ -52,7 +58,7 @@
     },
     {
       id: 4,
-      mainCat: 'buecher', subcat: 'aqidah',
+      mainCat: 'buecher', subcat: 'deutsch',
       name: 'Die essenziellen Unterrichte für die muslimische Gemeinschaft',
       subtitle: 'Scheich Ibn Baz',
       price: 8.99,
@@ -62,7 +68,7 @@
     },
     {
       id: 5,
-      mainCat: 'buecher', subcat: 'aqidah',
+      mainCat: 'buecher', subcat: 'deutsch',
       name: 'Die drei fundamentalen Grundlagen und ihre Beweise',
       subtitle: 'Muhammad ibn Abdulwahhab',
       price: 8.99,
@@ -72,7 +78,7 @@
     },
     {
       id: 6,
-      mainCat: 'buecher', subcat: 'aqidah',
+      mainCat: 'buecher', subcat: 'deutsch',
       name: 'Kitāb-ut Tauḥīd — Das Buch des Monotheismus',
       subtitle: 'Muḥammad Ibn ʿAbd-il Wahhāb',
       price: 27.99,
@@ -82,7 +88,7 @@
     },
     {
       id: 7,
-      mainCat: 'buecher', subcat: 'fiqh',
+      mainCat: 'buecher', subcat: 'deutsch',
       name: 'Erläuterung der Zusammenfassung der Beschreibung des Gebets des Propheten ﷺ',
       subtitle: 'Scheich Sulayman Ar-Ruhayli',
       price: 12.99,
@@ -92,7 +98,7 @@
     },
     {
       id: 8,
-      mainCat: 'buecher', subcat: 'hadith',
+      mainCat: 'buecher', subcat: 'deutsch',
       name: 'Al-ʿUmdah fil-Aḥkām',
       subtitle: 'Dar Al-Mirath An-Nabawi · Taschenformat',
       price: 7.99,
@@ -102,7 +108,7 @@
     },
     {
       id: 9,
-      mainCat: 'buecher', subcat: 'fiqh',
+      mainCat: 'buecher', subcat: 'deutsch',
       name: 'Erläuterung der Gedichtsammlung der Rechtsgrundsätze des Gelehrten Abdurrahman As-Saʿdī',
       subtitle: 'Scheich Sulayman Ar-Ruhayli',
       price: 12.99,
@@ -112,13 +118,43 @@
     },
     {
       id: 10,
-      mainCat: 'buecher', subcat: 'fiqh',
+      mainCat: 'buecher', subcat: 'deutsch',
       name: 'Erläuterung der Abhandlung über die Grundlagen der Rechtswissenschaft (Usūl al-Fiqh) des Gelehrten As-Saʿdī',
       subtitle: 'Scheich Sulayman Ar-Ruhayli',
       price: 12.99,
       badge: null,
       coverFrom: '#1E2018', coverTo: '#0A0B09',
       description: 'Eine umfassende Erläuterung der Grundlagen der islamischen Rechtswissenschaft (Usul al-Fiqh) auf Basis des klassischen Werkes des Gelehrten As-Sa\'di. Für Studierende und Interessierte der islamischen Wissenschaften, die die Methodik der Rechtsableitung verstehen möchten.'
+    },
+    {
+      id: 11,
+      mainCat: 'kleidung', subcat: 'shemaghs',
+      name: 'Saudi Shemagh Weiß',
+      subtitle: 'Saudi Shemagh · Klassisch & zeitlos',
+      price: 8.99,
+      badge: null,
+      coverFrom: '#1e1a14', coverTo: '#0a0905',
+      description: 'Der klassische weiße Saudi Shemagh — ein Symbol islamischer Tradition und zeitloser Eleganz. Hergestellt aus hochwertigem, atmungsaktivem Gewebe für maximalen Tragekomfort. Universell einsetzbar im Alltag, beim Gebet und bei besonderen Anlässen. Ein Must-Have für jeden Muslim.'
+    },
+    {
+      id: 12,
+      mainCat: 'kleidung', subcat: 'shemaghs',
+      name: 'Saudi Shemagh Rot-Weiß',
+      subtitle: 'Saudi Shemagh · Traditionell & markant',
+      price: 8.99,
+      badge: null,
+      coverFrom: '#2a0a0a', coverTo: '#0e0505',
+      description: 'Der rot-weiße Saudi Shemagh — eines der bekanntesten Symbole arabischer und islamischer Tradition. Das klassische Karomuster in Rot und Weiß vereint Authentizität mit Stil. Aus hochwertigem Baumwollgewebe gefertigt, angenehm zu tragen und langlebig. Für den Alltag genauso geeignet wie für besondere Anlässe.'
+    },
+    {
+      id: 13,
+      mainCat: 'kleidung', subcat: 'shemaghs',
+      name: 'Saudi Shemagh Schwarz-Weiß',
+      subtitle: 'Saudi Shemagh · Modern & klassisch',
+      price: 8.99,
+      badge: null,
+      coverFrom: '#111111', coverTo: '#050505',
+      description: 'Der schwarz-weiße Saudi Shemagh — modern, edel und zeitlos. Das dezente Schwarz-Weiß-Muster macht diesen Shemagh zum vielseitigsten der Kollektion. Lässt sich zu vielen Outfits kombinieren und verleiht jedem Look eine islamisch-traditionelle Note. Aus hochwertigem Gewebe für angenehmen Tragekomfort.'
     }
   ];
 

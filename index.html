@@ -127,9 +127,11 @@
 
     <span class="hero-gold-line" aria-hidden="true"></span>
 
-    <p class="hero-tagline" style="color:var(--clr-text-mid);font-size:clamp(1rem,2vw,1.2rem);margin-top:0;max-width:500px;margin-inline:auto;">
-      Islamische Literatur, edle Düfte, Miswak, Abayas und mehr — authentisch, hochwertig, aus einer Hand.
-    </p>
+    <div class="hero-verse-block">
+      <p class="hero-verse-ar" lang="ar">وَقُل رَّبِّ زِدْنِي عِلْمًا</p>
+      <p class="hero-verse-de">„Und sprich: Mein Herr, mehre mich an Wissen."</p>
+      <p class="hero-verse-src">Surah Ta-Ha (20:114)</p>
+    </div>
 
     <div class="hero-cta-group hero-cta">
       <a href="shop.html" class="btn btn-primary">Zum Shop</a>
@@ -146,89 +148,234 @@
 
 </section>
 
-<!-- ═══════════════════════════════════════════
-     AYAH BANNER
-════════════════════════════════════════════════ -->
-<section class="ayah-banner" aria-label="Koranisches Zitat">
-  <div class="container ayah-banner__inner" data-reveal>
-    <span class="ayah-banner__arabic">وَقُل رَّبِّ زِدْنِي عِلْمًا</span>
-    <div class="ayah-banner__ornament">
-      <span class="ayah-banner__ornament-line"></span>
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" style="color:var(--clr-gold);opacity:0.75;flex-shrink:0;" aria-hidden="true">
-        <polygon points="12,2 13.6,8.4 20,7 15.6,11.6 20,17 13.6,15.6 12,22 10.4,15.6 4,17 8.4,11.6 4,7 10.4,8.4"/>
-      </svg>
-      <span class="ayah-banner__ornament-line"></span>
-    </div>
-    <p class="ayah-banner__translation">„Und sprich: Mein Herr, mehre mein Wissen."</p>
-    <span class="ayah-banner__source">Surah Ta-Ha &middot; Sure 20, Vers 114</span>
-  </div>
-</section>
+<style>
+.hero-title {
+  transition: text-shadow 0.5s cubic-bezier(.25,.8,.25,1);
+}
+.hero-title:hover {
+  text-shadow: 0 0 28px rgba(200,151,58,0.5), 0 0 70px rgba(200,151,58,0.18), 0 0 120px rgba(200,151,58,0.08);
+  cursor: default;
+}
+.hero-verse-block {
+  text-align: center;
+  margin: 0 auto;
+  max-width: 500px;
+}
+.hero-verse-ar {
+  font-family: var(--font-arabic);
+  font-size: clamp(1.5rem, 3.5vw, 2.1rem);
+  color: var(--clr-gold-light);
+  direction: rtl;
+  margin: 0 0 0.55em;
+  line-height: 1.9;
+  letter-spacing: 0.02em;
+}
+.hero-verse-de {
+  font-size: clamp(0.82rem, 1.6vw, 0.97rem);
+  color: var(--clr-text-mid);
+  font-style: italic;
+  margin: 0 0 0.45em;
+  line-height: 1.7;
+}
+.hero-verse-src {
+  font-size: 0.68rem;
+  color: var(--clr-text-faint);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin: 0;
+}
+</style>
 
 <!-- ═══════════════════════════════════════════
-     TRUST BADGES
+     BESTSELLER
 ════════════════════════════════════════════════ -->
-<section class="trust-section" aria-label="Vertrauensmerkmale">
+<section class="section" aria-label="Bestseller">
   <div class="container">
-    <ul class="trust-list">
-      <li class="trust-item">
-        <span class="trust-item__icon">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>
-        </span>
-        <span class="trust-item__label">Halal zertifiziert</span>
-      </li>
-      <li class="trust-item">
-        <span class="trust-item__icon">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-        </span>
-        <span class="trust-item__label">Sichere Zahlung</span>
-      </li>
-      <li class="trust-item">
-        <span class="trust-item__icon">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5 17H3a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11a2 2 0 0 1 2 2v3"/><rect x="9" y="11" width="14" height="10" rx="1"/><circle cx="12" cy="21" r="1"/><circle cx="20" cy="21" r="1"/></svg>
-        </span>
-        <span class="trust-item__label">Versand 3–5 Werktage</span>
-      </li>
-      <li class="trust-item">
-        <span class="trust-item__icon">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></svg>
-        </span>
-        <span class="trust-item__label">14 Tage Rückgabe</span>
-      </li>
-      <li class="trust-item">
-        <span class="trust-item__icon">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-        </span>
-        <span class="trust-item__label">Premium Qualität</span>
-      </li>
-    </ul>
+    <div class="section-header" data-reveal>
+      <span class="eyebrow">Empfohlen</span>
+      <h2>Bestseller</h2>
+      <div class="gold-line gold-line--center"></div>
+    </div>
+    <div class="hp-product-grid" data-reveal>
+
+      <div class="hp-product-card">
+        <div class="hp-product-card__badge hp-badge--bestseller">Bestseller</div>
+        <div class="hp-product-card__icon">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+        </div>
+        <div class="hp-product-card__body">
+          <p class="hp-product-card__subtitle">Imam Abū Zakariyyā an-Nawawī</p>
+          <h3 class="hp-product-card__name">An-Nawawīs vierzig Ḥadīṯe</h3>
+          <p class="hp-product-card__desc">Die berühmteste Hadithsammlung — mit Notizfeldern für persönliche Reflexion.</p>
+        </div>
+        <div class="hp-product-card__footer">
+          <span class="hp-product-card__price">14,99 €</span>
+          <button class="btn btn-primary btn-sm hp-add-btn" data-product-id="2"><span class="btn-label-full">In den Warenkorb</span><span class="btn-label-short">Kaufen</span></button>
+        </div>
+      </div>
+
+      <div class="hp-product-card">
+        <div class="hp-product-card__badge hp-badge--premium">Premium</div>
+        <div class="hp-product-card__icon">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+        </div>
+        <div class="hp-product-card__body">
+          <p class="hp-product-card__subtitle">Muḥammad Ibn ʿAbd-il Wahhāb</p>
+          <h3 class="hp-product-card__name">Kitāb-ut Tauḥīd</h3>
+          <p class="hp-product-card__desc">Das wichtigste Werk zur Glaubenslehre des Tawhid — Standardwerk jeder Bibliothek.</p>
+        </div>
+        <div class="hp-product-card__footer">
+          <span class="hp-product-card__price">27,99 €</span>
+          <button class="btn btn-primary btn-sm hp-add-btn" data-product-id="6"><span class="btn-label-full">In den Warenkorb</span><span class="btn-label-short">Kaufen</span></button>
+        </div>
+      </div>
+
+      <div class="hp-product-card">
+        <div class="hp-product-card__icon">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+        </div>
+        <div class="hp-product-card__body">
+          <p class="hp-product-card__subtitle">Muhammad ibn Abdulwahhab</p>
+          <h3 class="hp-product-card__name">Die drei fundamentalen Grundlagen</h3>
+          <p class="hp-product-card__desc">Die drei fundamentalen Fragen des Glaubens mit Beweisen aus Quran und Sunnah.</p>
+        </div>
+        <div class="hp-product-card__footer">
+          <span class="hp-product-card__price">8,99 €</span>
+          <button class="btn btn-primary btn-sm hp-add-btn" data-product-id="5"><span class="btn-label-full">In den Warenkorb</span><span class="btn-label-short">Kaufen</span></button>
+        </div>
+      </div>
+
+      <div class="hp-product-card">
+        <div class="hp-product-card__icon">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+        </div>
+        <div class="hp-product-card__body">
+          <p class="hp-product-card__subtitle">Ibn Taymiyyah</p>
+          <h3 class="hp-product-card__name">Die Heilmittel zur Geduld</h3>
+          <p class="hp-product-card__desc">Zeitloses Werk über Geduld, Vergebung und Gottvertrauen beim Unrecht der Menschen.</p>
+        </div>
+        <div class="hp-product-card__footer">
+          <span class="hp-product-card__price">7,99 €</span>
+          <button class="btn btn-primary btn-sm hp-add-btn" data-product-id="1"><span class="btn-label-full">In den Warenkorb</span><span class="btn-label-short">Kaufen</span></button>
+        </div>
+      </div>
+
+    </div>
+    <div style="text-align:center;margin-top:var(--sp-5);" data-reveal>
+      <a href="shop.html" class="btn btn-ghost">Alle Produkte ansehen</a>
+    </div>
   </div>
 </section>
 
 <style>
-.trust-section {
-  border-top: 1px solid var(--border-subtle);
-  border-bottom: 1px solid var(--border-subtle);
-  padding: var(--sp-4) 0;
-  background: var(--clr-ink-light);
+.hp-product-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--sp-3);
+  margin-top: var(--sp-5);
 }
-.trust-list {
+.hp-product-grid--2 {
+  grid-template-columns: repeat(2, 1fr);
+  max-width: 720px;
+  margin-left: auto;
+  margin-right: auto;
+}
+@media (max-width: 900px) {
+  .hp-product-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 500px) {
+  .hp-product-grid { grid-template-columns: repeat(2, 1fr); gap: var(--sp-2); }
+  .hp-product-card { padding: var(--sp-3) var(--sp-2) var(--sp-3); gap: var(--sp-1); }
+  .hp-product-card__name { font-size: 0.82rem; }
+  .hp-product-card__subtitle { font-size: 0.68rem; }
+  .hp-product-card__desc { font-size: 0.72rem; }
+  .hp-product-card__price { font-size: 0.95rem; }
+  .hp-product-card__icon { width: 38px; height: 38px; }
+  .btn-sm { padding: .32rem .55rem; font-size: .7rem; }
+}
+@media (max-width: 680px) { .hp-product-grid--2 { grid-template-columns: 1fr; } }
+.btn-label-short { display: none; }
+@media (max-width: 900px) {
+  .btn-label-full { display: none; }
+  .btn-label-short { display: inline; }
+}
+.hp-product-card {
+  position: relative;
   display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: var(--sp-3) var(--sp-5);
-  list-style: none;
-  margin: 0; padding: 0;
+  flex-direction: column;
+  background: var(--clr-ink-light);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-xl, 1.25rem);
+  padding: var(--sp-5) var(--sp-4) var(--sp-4);
+  gap: var(--sp-2);
+  transition: border-color .2s, transform .2s;
+  min-width: 0;
+  overflow: hidden;
 }
-.trust-item {
+.hp-product-card:hover { border-color: var(--clr-gold-muted); transform: translateY(-3px); }
+.hp-product-card__badge {
+  position: absolute;
+  top: var(--sp-3);
+  right: var(--sp-3);
+  font-size: .65rem;
+  font-weight: 700;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  padding: .2rem .5rem;
+  border-radius: 99px;
+}
+.hp-badge--bestseller { background: rgba(200,151,58,.18); color: var(--clr-gold-light); border: 1px solid var(--clr-gold-muted); }
+.hp-badge--premium { background: rgba(200,151,58,.25); color: var(--clr-gold-pale); border: 1px solid rgba(200,151,58,.5); }
+.hp-product-card__icon {
+  width: 48px; height: 48px;
+  border-radius: 50%;
+  background: rgba(200,151,58,.08);
+  border: 1px solid var(--border-subtle);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--clr-gold);
+  flex-shrink: 0;
+}
+.hp-product-card__body { flex: 1; min-width: 0; }
+.hp-product-card__subtitle { font-size: .72rem; color: var(--clr-text-muted); margin: 0 0 .2rem; text-transform: uppercase; letter-spacing: .06em; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.hp-product-card__name { font-family: var(--font-display); font-size: var(--text-base); color: var(--clr-text-primary); margin: 0 0 var(--sp-1); line-height: 1.35; }
+.hp-product-card__desc { font-size: var(--text-sm); color: var(--clr-text-mid); line-height: 1.55; margin: 0; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.hp-product-card__footer {
   display: flex;
   align-items: center;
-  gap: .55rem;
-  color: var(--clr-text-mid);
-  font-size: var(--text-sm);
+  justify-content: space-between;
+  gap: var(--sp-1);
+  margin-top: var(--sp-2);
+  padding-top: var(--sp-2);
+  border-top: 1px solid var(--border-subtle);
+  flex-wrap: wrap;
 }
-.trust-item__icon { color: var(--clr-gold); display: flex; }
-.trust-item__label { white-space: nowrap; }
+.hp-product-card__price { font-size: var(--text-lg); font-weight: 700; color: var(--clr-gold-light); white-space: nowrap; }
+.btn-sm { padding: .42rem .85rem; font-size: var(--text-sm); }
 </style>
+
+<script>
+(function() {
+  document.querySelectorAll('.hp-add-btn').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      var id = parseInt(btn.dataset.productId);
+      if (!window.PRODUCTS) return;
+      var p = window.PRODUCTS.find(function(x) { return x.id === id; });
+      if (!p) return;
+      var key = 'mam_cart_v2';
+      var cart = [];
+      try { cart = JSON.parse(localStorage.getItem(key) || '[]'); } catch(e) {}
+      var existing = cart.find(function(x) { return x.id === id; });
+      if (existing) { existing.qty++; } else { cart.push({ id: p.id, name: p.name, subtitle: p.subtitle, price: p.price, qty: 1, mainCat: p.mainCat }); }
+      localStorage.setItem(key, JSON.stringify(cart));
+      if (typeof window.updateCartUI === 'function') window.updateCartUI();
+      var orig = btn.textContent;
+      btn.textContent = 'Hinzugefügt ✓';
+      btn.disabled = true;
+      setTimeout(function() { btn.textContent = orig; btn.disabled = false; }, 1800);
+    });
+  });
+})();
+</script>
 
 <!-- ═══════════════════════════════════════════
      KATEGORIEN ENTDECKEN
@@ -306,208 +453,6 @@
 </style>
 
 <!-- ═══════════════════════════════════════════
-     BESTSELLER
-════════════════════════════════════════════════ -->
-<section class="section" aria-label="Bestseller">
-  <div class="container">
-    <div class="section-header" data-reveal>
-      <span class="eyebrow">Empfohlen</span>
-      <h2>Bestseller</h2>
-      <div class="gold-line gold-line--center"></div>
-    </div>
-    <div class="hp-product-grid" data-reveal>
-
-      <div class="hp-product-card">
-        <div class="hp-product-card__badge hp-badge--bestseller">Bestseller</div>
-        <div class="hp-product-card__icon">
-          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
-        </div>
-        <div class="hp-product-card__body">
-          <p class="hp-product-card__subtitle">Imam Abū Zakariyyā an-Nawawī</p>
-          <h3 class="hp-product-card__name">An-Nawawīs vierzig Ḥadīṯe</h3>
-          <p class="hp-product-card__desc">Die berühmteste Hadithsammlung des Imam an-Nawawi — mit Notizfeldern für persönliche Reflexion.</p>
-        </div>
-        <div class="hp-product-card__footer">
-          <span class="hp-product-card__price">14,99 €</span>
-          <button class="btn btn-primary btn-sm hp-add-btn" data-product-id="2">In den Warenkorb</button>
-        </div>
-      </div>
-
-      <div class="hp-product-card">
-        <div class="hp-product-card__badge hp-badge--premium">Premium</div>
-        <div class="hp-product-card__icon">
-          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
-        </div>
-        <div class="hp-product-card__body">
-          <p class="hp-product-card__subtitle">Muḥammad Ibn ʿAbd-il Wahhāb</p>
-          <h3 class="hp-product-card__name">Kitāb-ut Tauḥīd</h3>
-          <p class="hp-product-card__desc">Das wichtigste Werk zur islamischen Glaubenslehre des Tawhid — ein Standardwerk jeder islamischen Bibliothek.</p>
-        </div>
-        <div class="hp-product-card__footer">
-          <span class="hp-product-card__price">27,99 €</span>
-          <button class="btn btn-primary btn-sm hp-add-btn" data-product-id="6">In den Warenkorb</button>
-        </div>
-      </div>
-
-      <div class="hp-product-card">
-        <div class="hp-product-card__icon">
-          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
-        </div>
-        <div class="hp-product-card__body">
-          <p class="hp-product-card__subtitle">Muhammad ibn Abdulwahhab</p>
-          <h3 class="hp-product-card__name">Die drei fundamentalen Grundlagen</h3>
-          <p class="hp-product-card__desc">Die drei fundamentalen Fragen des islamischen Glaubens — mit klaren Beweisen aus Quran und Sunnah.</p>
-        </div>
-        <div class="hp-product-card__footer">
-          <span class="hp-product-card__price">8,99 €</span>
-          <button class="btn btn-primary btn-sm hp-add-btn" data-product-id="5">In den Warenkorb</button>
-        </div>
-      </div>
-
-    </div>
-    <div style="text-align:center;margin-top:var(--sp-5);" data-reveal>
-      <a href="shop.html" class="btn btn-ghost">Alle Produkte ansehen</a>
-    </div>
-  </div>
-</section>
-
-<!-- ═══════════════════════════════════════════
-     NEU EINGETROFFEN
-════════════════════════════════════════════════ -->
-<section class="section" style="padding-top:0;" aria-label="Neu eingetroffen">
-  <div class="container">
-    <div class="section-header" data-reveal>
-      <span class="eyebrow">Neu</span>
-      <h2>Neu eingetroffen</h2>
-      <div class="gold-line gold-line--center"></div>
-    </div>
-    <div class="hp-product-grid hp-product-grid--2" data-reveal>
-
-      <div class="hp-product-card">
-        <div class="hp-product-card__icon">
-          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
-        </div>
-        <div class="hp-product-card__body">
-          <p class="hp-product-card__subtitle">Ibn Taymiyyah</p>
-          <h3 class="hp-product-card__name">Die Heilmittel zur Geduld gegen das Übel der Geschöpfe</h3>
-          <p class="hp-product-card__desc">Zeitloses Werk über Geduld, Vergebung und Gottvertrauen beim Umgang mit dem Unrecht der Menschen.</p>
-        </div>
-        <div class="hp-product-card__footer">
-          <span class="hp-product-card__price">7,99 €</span>
-          <button class="btn btn-primary btn-sm hp-add-btn" data-product-id="1">In den Warenkorb</button>
-        </div>
-      </div>
-
-      <div class="hp-product-card">
-        <div class="hp-product-card__icon">
-          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
-        </div>
-        <div class="hp-product-card__body">
-          <p class="hp-product-card__subtitle">Scheich Sulayman Ar-Ruhayli</p>
-          <h3 class="hp-product-card__name">Mittel zum Erreichen eines glücklichen Familienlebens</h3>
-          <p class="hp-product-card__desc">Praktische Ratschläge für ein harmonisches Familienleben auf Grundlage von Quran und Sunnah.</p>
-        </div>
-        <div class="hp-product-card__footer">
-          <span class="hp-product-card__price">13,99 €</span>
-          <button class="btn btn-primary btn-sm hp-add-btn" data-product-id="3">In den Warenkorb</button>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<style>
-.hp-product-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: var(--sp-3);
-  margin-top: var(--sp-5);
-}
-.hp-product-grid--2 {
-  grid-template-columns: repeat(2, 1fr);
-  max-width: 720px;
-  margin-left: auto;
-  margin-right: auto;
-}
-@media (max-width: 760px) { .hp-product-grid { grid-template-columns: 1fr; } }
-@media (max-width: 680px) { .hp-product-grid--2 { grid-template-columns: 1fr; } }
-.hp-product-card {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  background: var(--clr-ink-light);
-  border: 1px solid var(--border-subtle);
-  border-radius: var(--radius-xl, 1.25rem);
-  padding: var(--sp-5) var(--sp-4) var(--sp-4);
-  gap: var(--sp-2);
-  transition: border-color .2s, transform .2s;
-}
-.hp-product-card:hover { border-color: var(--clr-gold-muted); transform: translateY(-3px); }
-.hp-product-card__badge {
-  position: absolute;
-  top: var(--sp-3);
-  right: var(--sp-3);
-  font-size: .68rem;
-  font-weight: 700;
-  letter-spacing: .06em;
-  text-transform: uppercase;
-  padding: .2rem .55rem;
-  border-radius: 99px;
-}
-.hp-badge--bestseller { background: rgba(200,151,58,.18); color: var(--clr-gold-light); border: 1px solid var(--clr-gold-muted); }
-.hp-badge--premium { background: rgba(200,151,58,.25); color: var(--clr-gold-pale); border: 1px solid rgba(200,151,58,.5); }
-.hp-badge--neu { background: rgba(100,180,100,.15); color: #7ecf7e; border: 1px solid rgba(100,180,100,.3); }
-.hp-product-card__icon {
-  width: 52px; height: 52px;
-  border-radius: 50%;
-  background: rgba(200,151,58,.08);
-  border: 1px solid var(--border-subtle);
-  display: flex; align-items: center; justify-content: center;
-  color: var(--clr-gold);
-}
-.hp-product-card__body { flex: 1; }
-.hp-product-card__subtitle { font-size: .75rem; color: var(--clr-text-muted); margin: 0 0 .2rem; text-transform: uppercase; letter-spacing: .06em; }
-.hp-product-card__name { font-family: var(--font-display); font-size: var(--text-lg); color: var(--clr-text-primary); margin: 0 0 var(--sp-2); }
-.hp-product-card__desc { font-size: var(--text-sm); color: var(--clr-text-mid); line-height: 1.6; margin: 0; }
-.hp-product-card__footer {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: var(--sp-2);
-  margin-top: var(--sp-2);
-  padding-top: var(--sp-2);
-  border-top: 1px solid var(--border-subtle);
-}
-.hp-product-card__price { font-size: var(--text-lg); font-weight: 700; color: var(--clr-gold-light); }
-.btn-sm { padding: .45rem .9rem; font-size: var(--text-sm); }
-</style>
-
-<script>
-(function() {
-  document.querySelectorAll('.hp-add-btn').forEach(function(btn) {
-    btn.addEventListener('click', function() {
-      var id = parseInt(btn.dataset.productId);
-      if (!window.PRODUCTS) return;
-      var p = window.PRODUCTS.find(function(x) { return x.id === id; });
-      if (!p) return;
-      var key = 'mam_cart_v2';
-      var cart = [];
-      try { cart = JSON.parse(localStorage.getItem(key) || '[]'); } catch(e) {}
-      var existing = cart.find(function(x) { return x.id === id; });
-      if (existing) { existing.qty++; } else { cart.push({ id: p.id, name: p.name, subtitle: p.subtitle, price: p.price, qty: 1, mainCat: p.mainCat }); }
-      localStorage.setItem(key, JSON.stringify(cart));
-      if (typeof window.updateCartUI === 'function') window.updateCartUI();
-      var orig = btn.textContent;
-      btn.textContent = 'Hinzugefügt ✓';
-      btn.disabled = true;
-      setTimeout(function() { btn.textContent = orig; btn.disabled = false; }, 1800);
-    });
-  });
-})();
-</script>
-
-<!-- ═══════════════════════════════════════════
      ABOUT TEASER
 ════════════════════════════════════════════════ -->
 <section class="section section--sm" aria-label="Über uns">
@@ -531,12 +476,12 @@
 
       <div class="about-teaser__content">
         <span class="eyebrow">Über uns</span>
-        <h2>Islamisches Wissen &amp; Qualität</h2>
+        <h2>Al Mansurah — Die Bibliothek der Siegreichen</h2>
         <p>
-          Maktabah Al Mansurah wurde mit der Vision gegründet, der muslimischen Gemeinschaft in Deutschland hochwertige islamische Produkte zugänglich zu machen — von sorgfältig ausgewählten Büchern bis hin zu authentischen Düften und traditionellen Produkten.
+          Diese Plattform entstand nicht aus einem Businessplan — sie entstand aus einem Bedürfnis. Dem Bedürfnis, authentisches islamisches Wissen zugänglich zu machen. Für Familien. Für Suchende. Für die Gemeinde.
         </p>
         <p style="margin-top:var(--sp-2);">
-          Unser Name bedeutet „die Bibliothek der Siegreichen" — ein Ausdruck unseres Engagements für Wissen, Authentizität und Qualität.
+          Wir glauben, dass Wissen verpflichtet — und dass der Zugang dazu ein Geschenk ist, das weitergegeben werden muss.
         </p>
         <a href="about.html" class="btn btn-ghost" style="margin-top:var(--sp-4);">Mehr erfahren</a>
       </div>
