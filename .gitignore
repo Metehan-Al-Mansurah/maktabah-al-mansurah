@@ -2,3 +2,11 @@
 .agents/
 CLAUDE.md
 skills-lock.json
+node_modules/
+temporary screenshots/
+temp_scroll_shot.mjs
+package.json
+package-lock.json
+serve.mjs
+screenshot.mjs
+*.png
