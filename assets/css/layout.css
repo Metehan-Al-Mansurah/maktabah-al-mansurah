@@ -2,6 +2,9 @@
    MAKTABAH AL MANSURAH — Layout & Grid
    ================================================================ */
 
+/* Prevent horizontal scroll on all screens */
+html, body { max-width: 100%; overflow-x: hidden; }
+
 /* ── Container ── */
 .container {
   width: 100%;

@@ -66,18 +66,16 @@
   }
 
   function openCart() {
+    document.body.classList.add('cart-open');
     var d = document.getElementById('cartDrawer');
-    var o = document.getElementById('cartOverlay');
-    if (d) { d.classList.add('is-open'); d.setAttribute('aria-hidden', 'false'); }
-    if (o) { o.classList.add('is-visible'); }
+    if (d) d.setAttribute('aria-hidden', 'false');
     document.body.style.overflow = 'hidden';
   }
 
   function closeCart() {
+    document.body.classList.remove('cart-open');
     var d = document.getElementById('cartDrawer');
-    var o = document.getElementById('cartOverlay');
-    if (d) { d.classList.remove('is-open'); d.setAttribute('aria-hidden', 'true'); }
-    if (o) { o.classList.remove('is-visible'); }
+    if (d) d.setAttribute('aria-hidden', 'true');
     document.body.style.overflow = '';
   }
 

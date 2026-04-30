@@ -8,43 +8,10 @@
     {
       id: 'buecher', label: 'Islamische Bücher',
       icon: '<path d="M12 6.042A8.967 8.967 0 0 0 6 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 0 1 6 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 0 1 6-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0 0 18 18a8.967 8.967 0 0 0-6 2.292m0-14.25v14.25"/>',
-      subcatGroups: [
-        { label: 'Sprache',        ids: ['deutsch', 'arabisch'] },
-        { label: 'Wissenschaften', ids: ['aqidah', 'fiqh', 'sirah', 'hadith', 'tafsir', 'arabische-sprache', 'kinderbucher'] }
-      ],
       subcats: [
-        { id: 'deutsch',           label: 'Deutsche Bücher' },
-        { id: 'arabisch',          label: 'Arabische Bücher' },
-        { id: 'aqidah',            label: 'Aqidah & Tawhid' },
-        { id: 'fiqh',              label: 'Fiqh' },
-        { id: 'sirah',             label: 'Sirah' },
-        { id: 'hadith',            label: 'Hadith' },
-        { id: 'tafsir',            label: 'Tafsir' },
-        { id: 'arabische-sprache', label: 'Arab. Sprache' },
-        { id: 'kinderbucher',      label: 'Kinderbücher' }
-      ]
-    },
-    {
-      id: 'kleidung', label: 'Kleidung & Tradition',
-      icon: '<path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z"/>',
-      subcats: [
-        { id: 'shemagh-weiss',         label: 'Shemagh Weiß' },
-        { id: 'shemagh-rot-weiss',     label: 'Shemagh Rot-Weiß' },
-        { id: 'shemagh-schwarz-weiss', label: 'Shemagh Schwarz-Weiß' },
-        { id: 'thobes',                label: 'Thobes' },
-        { id: 'kufis',                 label: 'Kufis' },
-        { id: 'abayas',                label: 'Abayas' }
-      ]
-    },
-    {
-      id: 'duefte', label: 'Düfte & Sunnah',
-      icon: '<path stroke-linecap="round" stroke-linejoin="round" d="M9.75 3.104v5.714a2.25 2.25 0 0 1-.659 1.591L5 14.5M9.75 3.104A24 24 0 0 1 14.25 3.1m0 0v5.714c0 .597.237 1.17.659 1.591L19.8 15m-15.6-.5c.59 1.24 1.248 2.44 1.96 3.596m13.68-3.097A19.81 19.81 0 0 1 18 18.6M5 19.5h14"/>',
-      subcats: [
-        { id: 'misk',         label: 'Misk' },
-        { id: 'oud',          label: 'Oud' },
-        { id: 'miswak',       label: 'Miswak / Siwak' },
-        { id: 'pflegeoel',    label: 'Pflegeöle' },
-        { id: 'geschenksets', label: 'Geschenksets' }
+        { id: 'aqidah', label: 'Aqidah & Tawhid' },
+        { id: 'fiqh',   label: 'Fiqh & Usul' },
+        { id: 'hadith', label: 'Hadith' }
       ]
     }
   ];
@@ -53,66 +20,106 @@
      PRODUCTS
   ════════════════════════════════════════ */
   var PRODUCTS = [
-    /* ── Bücher · Deutsch */
-    { id:1,  mainCat:'buecher', subcat:'deutsch',           name:'Riad as-Salihin',         subtitle:'Gärten der Rechtschaffenen',  price:14.99, badge:null,         description:'Die berühmte Hadithsammlung von Imam an-Nawawi in vollständiger deutscher Übersetzung. Ein unverzichtbares Standardwerk.' },
-    { id:2,  mainCat:'buecher', subcat:'deutsch',           name:'Der versiegelte Nektar',   subtitle:'Ar-Raheeq Al-Makhtum',        price:16.99, badge:'Bestseller', description:'Die preisgekrönte Biografie des Propheten Muhammad ﷺ — vollständige deutsche Übersetzung der Weltbestseller-Sirah.' },
-    { id:3,  mainCat:'buecher', subcat:'deutsch',           name:'Die Vierzig Hadithe',      subtitle:'Imam an-Nawawi',              price:8.99,  badge:null,         description:'Die bekannteste Hadithsammlung — zweisprachig Deutsch/Arabisch, ideal für Anfänger und Fortgeschrittene.' },
-    { id:4,  mainCat:'buecher', subcat:'deutsch',           name:'Aqidah at-Tahawiyya',      subtitle:'Islamische Glaubenslehre',    price:12.99, badge:null,         description:'Die klassische Darstellung des sunnitischen Glaubens von Imam at-Tahawi mit ausführlichem Kommentar.' },
-    /* ── Bücher · Arabisch */
-    { id:5,  mainCat:'buecher', subcat:'arabisch',          name:'رياض الصالحين',            subtitle:'للإمام النووي',               price:12.99, badge:null,         description:'كتاب رياض الصالحين للإمام أبي زكريا يحيى بن شرف النووي الدمشقي — طبعة فاخرة.' },
-    { id:6,  mainCat:'buecher', subcat:'arabisch',          name:'الأربعون النووية',         subtitle:'مع شرح موجز',                price:7.99,  badge:null,         description:'متن الأربعين حديثاً النووية مع شرح مختصر ومفيد للطلاب والعلماء.' },
-    { id:7,  mainCat:'buecher', subcat:'arabisch',          name:'المقدمة الآجرومية',        subtitle:'في النحو العربي',             price:9.99,  badge:null,         description:'المتن الشهير في علم النحو العربي للإمام الآجروم — أفضل مقدمة للمبتدئين.' },
-    /* ── Bücher · Aqidah */
-    { id:8,  mainCat:'buecher', subcat:'aqidah',            name:'Die drei Grundprinzipien', subtitle:'Usul at-Thalatha',            price:6.99,  badge:null,         description:'Die drei grundlegenden Fragen des islamischen Glaubens von Imam Muhammad ibn Abd al-Wahhab.' },
-    { id:9,  mainCat:'buecher', subcat:'aqidah',            name:'القواعد الأربع',           subtitle:'محمد بن عبد الوهاب',          price:5.99,  badge:null,         description:'Die vier Grundregeln des Tawhid — kompakt, präzise, tiefgründig.' },
-    { id:10, mainCat:'buecher', subcat:'aqidah',            name:"Lum'atul-I'tiqad",         subtitle:'Die Glaubenslehre',           price:11.99, badge:null,         description:'Klassisches Werk der hanbali Aqidah von Ibn Qudama al-Maqdisi, zweisprachig.' },
-    /* ── Bücher · Fiqh */
-    { id:11, mainCat:'buecher', subcat:'fiqh',              name:'Fiqh as-Sunnah',           subtitle:'Sayyid Sabiq',               price:18.99, badge:'Neu',        description:'Das umfassende Fiqh-Werk von Sayyid Sabiq — vollständig auf Basis von Quran und Sunnah.' },
-    { id:12, mainCat:'buecher', subcat:'fiqh',              name:'Umdat al-Fiqh',            subtitle:'Ibn Qudama',                 price:15.99, badge:null,         description:'Ein klassisches hanbali Rechtsbuch — kompakt, präzise, für Anfänger und Gelehrte.' },
-    /* ── Bücher · Sirah */
-    { id:13, mainCat:'buecher', subcat:'sirah',             name:'Muhammad ﷺ — Sein Leben',  subtitle:'Muhammad H. Haykal',         price:13.99, badge:null,         description:'Eine der wichtigsten wissenschaftlichen Biographien des Propheten Muhammad ﷺ auf Deutsch.' },
-    { id:14, mainCat:'buecher', subcat:'sirah',             name:'Gefährten des Propheten',  subtitle:'Biographien der Sahaba',     price:15.99, badge:null,         description:'Inspirierende Biographien der Gefährten des Propheten ﷺ — für jung und alt.' },
-    /* ── Bücher · Hadith */
-    { id:15, mainCat:'buecher', subcat:'hadith',            name:'Sahih al-Bukhari',         subtitle:'Deutsche Übersetzung',       price:34.99, badge:'Premium',    description:'Die vollständige deutsche Übersetzung des Sahih al-Bukhari — die authentischste Hadithsammlung der Welt.' },
-    { id:16, mainCat:'buecher', subcat:'hadith',            name:'Bulugh al-Maram',          subtitle:'Ibn Hajar al-Asqalani',     price:16.99, badge:null,         description:'Ausgewählte Hadithe zu Fiqh und Ibadah — ein Standardwerk für Hadithlernende.' },
-    /* ── Bücher · Tafsir */
-    { id:17, mainCat:'buecher', subcat:'tafsir',            name:'Die Bedeutungen des Quran', subtitle:'Zweisprachige Ausgabe',     price:24.99, badge:null,         description:'Vollständige deutsche Übersetzung mit arabischem Original — hochwertige Leineneinband-Ausgabe.' },
-    { id:18, mainCat:'buecher', subcat:'tafsir',            name:'Tafsir Ibn Kathir',        subtitle:'Ausgewählte Suren',          price:22.99, badge:null,         description:'Ausgewählte Kapitel aus dem klassischen Tafsir von Imam Ibn Kathir auf Deutsch.' },
-    /* ── Bücher · Arabische Sprache */
-    { id:19, mainCat:'buecher', subcat:'arabische-sprache', name:'Madinah Arabic Book 1',    subtitle:'Arabisch für Anfänger',      price:14.99, badge:'Bestseller', description:'Das weltweit bekannteste Arabischlehrbuch der Islamischen Universität Madinah.' },
-    { id:20, mainCat:'buecher', subcat:'arabische-sprache', name:'Arabisch-Grammatik',       subtitle:'Intensivkurs',               price:12.99, badge:null,         description:'Strukturierter Arabischkurs für deutschsprachige Lernende — mit Übungsaufgaben.' },
-    /* ── Bücher · Kinderbücher */
-    { id:21, mainCat:'buecher', subcat:'kinderbucher',      name:'Die 99 Namen Allahs',      subtitle:'Illustriertes Kinderbuch',   price:9.99,  badge:null,         description:'Kindgerecht illustriertes Buch zu den 99 schönen Namen Allahs — ab 4 Jahren.' },
-    { id:22, mainCat:'buecher', subcat:'kinderbucher',      name:'Prophetengeschichten',      subtitle:'Für Kinder erzählt',         price:8.99,  badge:null,         description:'Islamische Prophetengeschichten kindgerecht erzählt — spannend und lehrreich.' },
-    { id:23, mainCat:'buecher', subcat:'kinderbucher',      name:'Alif Baa für Kinder',      subtitle:'Arabisches Alphabet',        price:7.99,  badge:'Neu',        description:'Das arabische Alphabet kindgerecht und spielerisch lernen — mit Bildern und Übungen.' },
-    /* ── Kleidung · Shemagh */
-    { id:24, mainCat:'kleidung', subcat:'shemagh-weiss',         name:'Saudi Shemagh', subtitle:'Klassisch Weiß',       price:19.99, badge:null,      color:'#D4CFC6', description:'Hochwertiger weißer Saudi Shemagh aus 100% Baumwolle. Leicht, atmungsaktiv, traditionell.' },
-    { id:25, mainCat:'kleidung', subcat:'shemagh-rot-weiss',     name:'Saudi Shemagh', subtitle:'Traditionell Rot-Weiß', price:19.99, badge:'Beliebt', color:'#B52626', description:'Der klassische arabische Shemagh in Rot-Weiß — authentisch und hochwertig verarbeitet.' },
-    { id:26, mainCat:'kleidung', subcat:'shemagh-schwarz-weiss', name:'Saudi Shemagh', subtitle:'Elegant Schwarz-Weiß',  price:19.99, badge:null,      color:'#222222', description:'Eleganter Shemagh in Schwarz-Weiß — zeitlos, vielseitig, premium Qualität.' },
-    /* ── Kleidung · Thobes */
-    { id:27, mainCat:'kleidung', subcat:'thobes',  name:'Sunnah Thobe',    subtitle:'Klassisch Weiß',  price:44.99, badge:null,      description:'Traditionelles weißes Thobe aus reiner Baumwolle — für Freitagsgebet und besondere Anlässe.' },
-    { id:28, mainCat:'kleidung', subcat:'thobes',  name:'Premium Thobe',   subtitle:'Feiner Stoff',    price:59.99, badge:'Premium', description:'Hochwertiges Thobe aus feinstem Stoff — edler Schnitt, zeitloser Stil.' },
-    /* ── Kleidung · Kufis */
-    { id:29, mainCat:'kleidung', subcat:'kufis',   name:'Kufi Weiß',       subtitle:'Klassische Form', price:12.99, badge:null,      description:'Klassischer weißer Kufi aus 100% Baumwolle — leicht, bequem, authentisch.' },
-    { id:30, mainCat:'kleidung', subcat:'kufis',   name:'Kufi Schwarz',    subtitle:'Gestrickt',       price:12.99, badge:null,      description:'Hochwertiger schwarzer gestrickter Kufi — für alle Jahreszeiten geeignet.' },
-    /* ── Kleidung · Abayas */
-    { id:31, mainCat:'kleidung', subcat:'abayas',  name:'Abaya Premium',   subtitle:'Klassisch Schwarz', price:54.99, badge:null,       description:'Elegante schwarze Abaya aus hochwertigem Stoff — fließend, modest, zeitlos.' },
-    { id:32, mainCat:'kleidung', subcat:'abayas',  name:'Abaya Stickerei', subtitle:'Gold-Stickerei',    price:69.99, badge:'Exklusiv', description:'Premium Abaya mit feiner Goldstickerei — für besondere Anlässe und das Freitagsgebet.' },
-    /* ── Düfte · Misk */
-    { id:33, mainCat:'duefte', subcat:'misk',        name:'Misk al-Haramain', subtitle:'Weißer Moschus',   price:22.99, badge:'Bestseller', description:'Reiner weißer Moschus — der Duft des Paradieses. Alkoholfrei, halal, langanhaltend.' },
-    { id:34, mainCat:'duefte', subcat:'misk',        name:'Misk al-Janah',    subtitle:'Schwarzer Moschus', price:18.99, badge:null,         description:'Schwarzer Moschus mit holzigen Untertönen — tief, warm, langanhaltend.' },
-    /* ── Düfte · Oud */
-    { id:35, mainCat:'duefte', subcat:'oud',         name:'Oud al-Madinah',   subtitle:'Arabisches Oud',    price:34.99, badge:'Premium', description:'Authentisches arabisches Oud — edel, intensiv, der König der Düfte.' },
-    { id:36, mainCat:'duefte', subcat:'oud',         name:'Rose Oud',         subtitle:'Oud & Rose',         price:28.99, badge:null,      description:'Harmonische Verbindung von echtem Oud und Rose — für besondere Momente.' },
-    /* ── Düfte · Miswak */
-    { id:37, mainCat:'duefte', subcat:'miswak',      name:'Miswak Natur',     subtitle:'3er Set',            price:6.99,  badge:null,      description:'100% natürlicher Miswak (Siwak) — die Sunnah der Mundhygiene. 3 Stück im Set.' },
-    { id:38, mainCat:'duefte', subcat:'miswak',      name:'Miswak Premium',   subtitle:'5er Set',            price:12.99, badge:'Beliebt', description:'Premium Miswak-Set — natürlich, antibakteriell, nach der Sunnah. 5 Stück.' },
-    /* ── Düfte · Pflegeöle */
-    { id:39, mainCat:'duefte', subcat:'pflegeoel',   name:'Schwarzkümmelöl',  subtitle:'250ml · kaltgepresst', price:8.99,  badge:null, description:'Reines kaltgepresstes Schwarzkümmelöl — „Heilung für jede Krankheit außer dem Tod" (Hadith).' },
-    { id:40, mainCat:'duefte', subcat:'pflegeoel',   name:'Arganöl Premium',  subtitle:'100ml · rein',          price:14.99, badge:null, description:'Reines marokkanisches Arganöl — für Haut, Haar und Bart. Hochwertig und natürlich.' },
-    /* ── Düfte · Geschenksets */
-    { id:41, mainCat:'duefte', subcat:'geschenksets', name:'Geschenkset Premium', subtitle:'Düfte & Pflege',      price:49.99, badge:'Beliebt', description:'Hochwertiges Geschenkset mit Misk, Oud, Schwarzkümmelöl und Miswak — perfekt zum Verschenken.' },
-    { id:42, mainCat:'duefte', subcat:'geschenksets', name:'Misk & Miswak Set',   subtitle:'Kompaktes Geschenkset', price:29.99, badge:null,      description:'Kompaktes Geschenkset mit weißem Moschus und Miswak — Sunnah pur.' }
+    {
+      id: 1,
+      mainCat: 'buecher', subcat: 'aqidah',
+      name: 'Die Heilmittel zur Geduld gegen das Übel der Geschöpfe',
+      subtitle: 'Ibn Taymiyyah',
+      price: 7.99,
+      badge: null,
+      coverFrom: '#1A4030', coverTo: '#061510',
+      description: 'Ibn Taymiyyahs zeitloses Werk über die Tugend der Geduld und den Umgang mit dem Unrecht der Menschen. Der Gläubige lernt, durch Geduld, Vergebung und Gottvertrauen innere Stärke zu erlangen — ein unverzichtbarer Ratgeber für jeden Muslim.'
+    },
+    {
+      id: 2,
+      mainCat: 'buecher', subcat: 'hadith',
+      name: 'An-Nawawīs vierzig Ḥadīṯe',
+      subtitle: 'Imam Abū Zakariyyā an-Nawawī · Mit Notizfeldern',
+      price: 14.99,
+      badge: 'Bestseller',
+      coverFrom: '#0F2840', coverTo: '#061525',
+      description: 'Die berühmteste Hadithsammlung des Imam an-Nawawi — 42 ausgewählte Hadithe, die den Islam in seiner Gesamtheit zusammenfassen. Diese besondere Ausgabe beinhaltet Notizfelder für eigene Reflexionen und persönliche Anmerkungen.'
+    },
+    {
+      id: 3,
+      mainCat: 'buecher', subcat: 'fiqh',
+      name: 'Mittel zum Erreichen eines glücklichen Familienlebens',
+      subtitle: 'Scheich Sulayman Ar-Ruhayli',
+      price: 13.99,
+      badge: null,
+      coverFrom: '#2A1A0A', coverTo: '#0E0805',
+      description: 'Praktische und zeitgemäße Ratschläge für ein harmonisches Familienleben auf der Grundlage von Quran und Sunnah. Scheich Ar-Ruhayli erläutert die islamischen Prinzipien für eine glückliche Ehe, gegenseitigen Respekt und verantwortungsvolle Familienfürsorge.'
+    },
+    {
+      id: 4,
+      mainCat: 'buecher', subcat: 'aqidah',
+      name: 'Die essenziellen Unterrichte für die muslimische Gemeinschaft',
+      subtitle: 'Scheich Ibn Baz',
+      price: 8.99,
+      badge: null,
+      coverFrom: '#142A1A', coverTo: '#06100A',
+      description: 'Grundlegende Lektionen für den muslimischen Alltag vom renommierten Großgelehrten Scheich Ibn Baz. Ein kompaktes Werk mit wesentlichen Prinzipien des islamischen Glaubens, der Ibadah und der praktischen Lebensführung nach Quran und Sunnah.'
+    },
+    {
+      id: 5,
+      mainCat: 'buecher', subcat: 'aqidah',
+      name: 'Die drei fundamentalen Grundlagen und ihre Beweise',
+      subtitle: 'Muhammad ibn Abdulwahhab',
+      price: 8.99,
+      badge: null,
+      coverFrom: '#162E20', coverTo: '#070E0A',
+      description: 'Das grundlegende Werk zur islamischen Glaubenslehre. Die drei fundamentalen Fragen — Wer ist dein Herr? Was ist deine Religion? Wer ist dein Prophet? — werden mit klaren Beweisen aus Quran und Sunnah beantwortet. Pflichtlektüre für jeden Muslim.'
+    },
+    {
+      id: 6,
+      mainCat: 'buecher', subcat: 'aqidah',
+      name: 'Kitāb-ut Tauḥīd — Das Buch des Monotheismus',
+      subtitle: 'Muḥammad Ibn ʿAbd-il Wahhāb',
+      price: 27.99,
+      badge: 'Premium',
+      coverFrom: '#1E1A06', coverTo: '#0A0905',
+      description: 'Das wichtigste Werk zur islamischen Glaubenslehre des Tawhid — einer der bedeutendsten Texte der islamischen Literatur überhaupt. Eine umfassende und tiefgründige Abhandlung über den reinen Monotheismus, seine Grundlagen und die Verwerfung jeglichen Schirks.'
+    },
+    {
+      id: 7,
+      mainCat: 'buecher', subcat: 'fiqh',
+      name: 'Erläuterung der Zusammenfassung der Beschreibung des Gebets des Propheten ﷺ',
+      subtitle: 'Scheich Sulayman Ar-Ruhayli',
+      price: 12.99,
+      badge: null,
+      coverFrom: '#0F2828', coverTo: '#051010',
+      description: 'Eine detaillierte Erläuterung der prophetischen Art des Gebets — von der rituellen Reinheit bis zum abschließenden Tasleem. Scheich Ar-Ruhayli erklärt jeden Schritt des Gebets auf Basis der authentischen Sunnah, sodass jeder Muslim das Gebet korrekt verrichten kann.'
+    },
+    {
+      id: 8,
+      mainCat: 'buecher', subcat: 'hadith',
+      name: 'Al-ʿUmdah fil-Aḥkām',
+      subtitle: 'Dar Al-Mirath An-Nabawi · Taschenformat',
+      price: 7.99,
+      badge: null,
+      coverFrom: '#1A1A2A', coverTo: '#080810',
+      description: 'Ein kompaktes Taschenformat des klassischen Werkes Al-Umdah fil-Ahkam — sorgfältig ausgewählte authentische Hadithe zu Ibadah, Reinheit, Gebet und islamischen Rechtsfragen. Ideal für das tägliche Studium und den praktischen Gebrauch unterwegs.'
+    },
+    {
+      id: 9,
+      mainCat: 'buecher', subcat: 'fiqh',
+      name: 'Erläuterung der Gedichtsammlung der Rechtsgrundsätze des Gelehrten Abdurrahman As-Saʿdī',
+      subtitle: 'Scheich Sulayman Ar-Ruhayli',
+      price: 12.99,
+      badge: null,
+      coverFrom: '#1A2820', coverTo: '#080D0A',
+      description: 'Eine ausführliche Erläuterung der Gedichtsammlung über die islamischen Rechtsgrundsätze (Al-Qawa\'id al-Fiqhiyyah) des Gelehrten As-Sa\'di. Scheich Ar-Ruhayli erschließt die tiefgründigen Grundprinzipien des islamischen Rechts auf verständliche und anwendbare Weise.'
+    },
+    {
+      id: 10,
+      mainCat: 'buecher', subcat: 'fiqh',
+      name: 'Erläuterung der Abhandlung über die Grundlagen der Rechtswissenschaft (Usūl al-Fiqh) des Gelehrten As-Saʿdī',
+      subtitle: 'Scheich Sulayman Ar-Ruhayli',
+      price: 12.99,
+      badge: null,
+      coverFrom: '#1E2018', coverTo: '#0A0B09',
+      description: 'Eine umfassende Erläuterung der Grundlagen der islamischen Rechtswissenschaft (Usul al-Fiqh) auf Basis des klassischen Werkes des Gelehrten As-Sa\'di. Für Studierende und Interessierte der islamischen Wissenschaften, die die Methodik der Rechtsableitung verstehen möchten.'
+    }
   ];
 
   window.PRODUCTS = PRODUCTS;
@@ -121,7 +128,7 @@
   /* ═══════════════════════════════════════
      STATE
   ════════════════════════════════════════ */
-  var activeFilters = { mainCat: '', subcat: '', search: '', maxPrice: 200, sort: 'default' };
+  var activeFilters = { mainCat: '', subcat: '', search: '', maxPrice: 30, sort: 'default' };
   var wishlist = [];
   var searchTimer = null;
 
@@ -143,11 +150,28 @@
       .replace(/\s+/g,'-');
   }
 
-  function cardBg(product) {
-    if (product.subcat === 'shemagh-weiss')         return 'background:linear-gradient(135deg,#3A3428 0%,#161208 100%);';
-    if (product.subcat === 'shemagh-rot-weiss')     return 'background:linear-gradient(135deg,#6B1515 0%,#2A0505 100%);';
-    if (product.subcat === 'shemagh-schwarz-weiss') return 'background:linear-gradient(135deg,#242424 0%,#080808 100%);';
-    return '';
+  /* ═══════════════════════════════════════
+     BOOK COVER HTML
+  ════════════════════════════════════════ */
+  var STAR_POINTS = '20,1 22.2,13.2 32,7 26.2,16.5 39,20 26.2,23.5 32,33 22.2,26.8 20,39 17.8,26.8 8,33 13.8,23.5 1,20 13.8,16.5 8,7 17.8,13.2';
+
+  function bookCoverHtml(product, large) {
+    var titleStyle = large ? 'font-size:0.88rem;-webkit-line-clamp:6;' : '';
+    return '<div class="book-cvr' + (large ? ' book-cvr--lg' : '') + '" aria-hidden="true">' +
+      '<svg class="book-cvr__star" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">' +
+        '<polygon points="' + STAR_POINTS + '" fill="none" stroke="currentColor" stroke-width="0.9"/>' +
+      '</svg>' +
+      '<div class="book-cvr__text">' +
+        '<p class="book-cvr__title"' + (titleStyle ? ' style="' + titleStyle + '"' : '') + '>' + esc(product.name) + '</p>' +
+        '<span class="book-cvr__rule"></span>' +
+        '<p class="book-cvr__author">' + esc(product.subtitle || '') + '</p>' +
+      '</div>' +
+      '<p class="book-cvr__pub">مكتبة المنصورة</p>' +
+    '</div>';
+  }
+
+  function coverStyle(product) {
+    return 'background:linear-gradient(155deg,' + (product.coverFrom || '#0D2016') + ' 0%,' + (product.coverTo || '#040A08') + ' 100%);';
   }
 
   /* ═══════════════════════════════════════
@@ -181,23 +205,16 @@
     var subLabel  = sub ? sub.label : '';
     var isWished  = wishlist.indexOf(product.id) !== -1;
     var price     = fmt(product.price);
-    var iconPath  = cat ? cat.icon : '';
-    var bg        = cardBg(product);
 
     var badgeHtml = product.badge
       ? '<span class="product-card__badge product-card__badge--' + badgeSlug(product.badge) + '">' + esc(product.badge) + '</span>'
       : '';
 
-    var swatchHtml = product.color
-      ? '<span class="product-card__swatch" style="--swatch:' + product.color + ';"></span>'
-      : '';
-
     return '<article class="product-card" data-id="' + product.id + '">' +
       '<div class="product-card__media">' +
-        '<a href="product.html?id=' + product.id + '" class="product-card__img" data-cat="' + product.mainCat + '"' + (bg ? ' style="' + bg + '"' : '') + '>' +
+        '<a href="product.html?id=' + product.id + '" class="product-card__img" data-cat="' + product.mainCat + '" style="' + coverStyle(product) + '">' +
           badgeHtml +
-          '<svg class="product-card__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" aria-hidden="true">' + iconPath + '</svg>' +
-          swatchHtml +
+          bookCoverHtml(product, false) +
         '</a>' +
         '<button class="wishlist-btn' + (isWished ? ' is-active' : '') + '" data-id="' + product.id + '" aria-label="Favorit" type="button">' +
           '<svg width="14" height="14" viewBox="0 0 24 24" fill="' + (isWished ? 'currentColor' : 'none') + '" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>' +
@@ -270,11 +287,11 @@
   }
 
   function resetFilters() {
-    activeFilters = { mainCat: '', subcat: '', search: '', maxPrice: 200, sort: 'default' };
+    activeFilters = { mainCat: '', subcat: '', search: '', maxPrice: 30, sort: 'default' };
     var pr = document.getElementById('priceRange');
-    if (pr) pr.value = 200;
+    if (pr) pr.value = 30;
     var pd = document.getElementById('priceDisplay');
-    if (pd) pd.textContent = 'bis 200,00 €';
+    if (pd) pd.textContent = 'bis 30,00 €';
     var si = document.getElementById('shopSearch');
     if (si) si.value = '';
     var ss = document.getElementById('sortSelect');
@@ -301,20 +318,9 @@
         '</button>' +
         '<div class="cat-item__body' + (isOpen ? ' is-open' : '') + '">';
 
-      if (cat.subcatGroups) {
-        cat.subcatGroups.forEach(function (grp) {
-          html += '<span class="cat-group-label">' + grp.label + '</span>';
-          grp.ids.forEach(function (sid) {
-            var sub = cat.subcats.find(function (s) { return s.id === sid; });
-            if (!sub) return;
-            html += '<button class="cat-sub-item' + (activeFilters.subcat === sub.id ? ' is-active' : '') + '" data-subcat="' + sub.id + '">' + sub.label + '</button>';
-          });
-        });
-      } else {
-        cat.subcats.forEach(function (sub) {
-          html += '<button class="cat-sub-item' + (activeFilters.subcat === sub.id ? ' is-active' : '') + '" data-subcat="' + sub.id + '">' + sub.label + '</button>';
-        });
-      }
+      cat.subcats.forEach(function (sub) {
+        html += '<button class="cat-sub-item' + (activeFilters.subcat === sub.id ? ' is-active' : '') + '" data-subcat="' + sub.id + '">' + sub.label + '</button>';
+      });
 
       html += '</div></div>';
     });
@@ -380,7 +386,6 @@
 
     loadWishlist();
 
-    /* URL param */
     var urlCat = new URLSearchParams(window.location.search).get('cat');
     if (urlCat) activeFilters.mainCat = urlCat;
 
@@ -458,32 +463,26 @@
     var sub = getSub(product.mainCat, product.subcat);
     var catLabel = cat ? cat.label : '';
     var subLabel = sub ? sub.label : '';
-    var bg = cardBg(product);
     var isWished = wishlist.indexOf(product.id) !== -1;
 
     var badgeHtml = product.badge
       ? '<span class="product-card__badge product-card__badge--' + badgeSlug(product.badge) + '" style="position:static;display:inline-block;margin-bottom:12px;">' + esc(product.badge) + '</span>'
       : '';
 
-    var swatchHtml = product.color
-      ? '<span class="product-card__swatch" style="--swatch:' + product.color + ';position:absolute;bottom:16px;right:16px;width:28px;height:28px;"></span>'
-      : '';
-
     container.innerHTML =
       '<div class="product-detail-layout">' +
-        '<div class="product-detail__media" data-cat="' + product.mainCat + '"' + (bg ? ' style="' + bg + '"' : '') + '>' +
-          '<svg class="product-detail__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.1" aria-hidden="true">' + (cat ? cat.icon : '') + '</svg>' +
-          swatchHtml +
+        '<div class="product-detail__media" data-cat="' + product.mainCat + '" style="' + coverStyle(product) + '">' +
+          bookCoverHtml(product, true) +
         '</div>' +
         '<div class="product-detail__info">' +
           '<span class="eyebrow">' + esc(catLabel) + (subLabel ? ' · ' + esc(subLabel) : '') + '</span>' +
           (badgeHtml ? '<div style="margin-top:8px;">' + badgeHtml + '</div>' : '') +
-          '<h1 style="margin-top:var(--sp-2);font-size:clamp(1.5rem,3vw,2rem);color:var(--clr-gold-pale);">' + esc(product.name) + '</h1>' +
-          '<p style="color:var(--clr-text-muted);margin-top:4px;">' + esc(product.subtitle || '') + '</p>' +
+          '<h1 style="margin-top:var(--sp-2);font-size:clamp(1.3rem,2.5vw,1.8rem);color:var(--clr-gold-pale);line-height:1.35;">' + esc(product.name) + '</h1>' +
+          '<p style="color:var(--clr-text-muted);margin-top:6px;font-size:var(--text-sm);">' + esc(product.subtitle || '') + '</p>' +
           '<p style="font-family:var(--font-display);font-size:1.6rem;color:var(--clr-gold-light);margin-top:var(--sp-3);font-weight:700;">' + fmt(product.price) + '</p>' +
           '<p style="font-size:var(--text-sm);color:var(--clr-text-faint);margin-top:4px;">inkl. MwSt. · zzgl. Versandkosten</p>' +
           '<div style="height:1px;background:var(--border-subtle);margin:var(--sp-4) 0;"></div>' +
-          '<p style="font-size:var(--text-sm);color:var(--clr-text-mid);line-height:1.7;">' + esc(product.description || '') + '</p>' +
+          '<p style="font-size:var(--text-sm);color:var(--clr-text-mid);line-height:1.75;">' + esc(product.description || '') + '</p>' +
           '<div style="height:1px;background:var(--border-subtle);margin:var(--sp-4) 0;"></div>' +
           '<div class="product-detail__qty-row">' +
             '<div class="qty-control">' +
