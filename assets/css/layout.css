@@ -22,12 +22,16 @@
 /* ── Section Spacing ── */
 .section {
   padding-block: var(--sp-7);
+  overflow-x: clip;
 }
 .section--sm {
   padding-block: var(--sp-5);
 }
 .section--lg {
   padding-block: var(--sp-8);
+}
+.page-hero {
+  overflow-x: clip;
 }
 
 /* ── Section Header ── */

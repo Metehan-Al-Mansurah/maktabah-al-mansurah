@@ -152,6 +152,8 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: 700;
   line-height: 1.15;
   color: var(--clr-text-primary);
+  overflow-wrap: break-word;
+  word-break: break-word;
 }
 
 h1 { font-size: clamp(var(--text-2xl), 5vw,   var(--text-4xl)); }
