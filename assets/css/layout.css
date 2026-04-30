@@ -147,7 +147,7 @@
   }
 }
 
-/* ── Categories Grid (4 Kategorien: 3-col desktop) ── */
+/* ── Categories Grid (5 Kategorien: 3-col desktop) ── */
 .categories-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -156,18 +156,13 @@
 .categories-grid .category-card:first-child {
   grid-column: span 2;
 }
-.categories-grid .category-card:nth-child(4) {
-  grid-column: span 2;
-}
 @media (max-width: 820px) {
   .categories-grid { grid-template-columns: repeat(2, 1fr); }
-  .categories-grid .category-card:first-child,
-  .categories-grid .category-card:nth-child(4) { grid-column: span 1; }
+  .categories-grid .category-card:first-child { grid-column: span 1; }
 }
 @media (max-width: 400px) {
   .categories-grid { grid-template-columns: 1fr; }
-  .categories-grid .category-card:first-child,
-  .categories-grid .category-card:nth-child(4) { grid-column: span 1; }
+  .categories-grid .category-card:first-child { grid-column: span 1; }
 }
 
 /* ── Shop Layout ── */

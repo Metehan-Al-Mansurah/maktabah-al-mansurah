@@ -107,7 +107,7 @@
   <div class="container page-hero__content">
     <span class="eyebrow">Unser Sortiment</span>
     <h1>Islamischer Shop</h1>
-    <p style="color:var(--clr-text-muted);margin-top:var(--sp-2);max-width:480px;">Bücher, Parfüm, Miswak, Abayas und mehr — alles für dein islamisches Leben.</p>
+    <p style="color:var(--clr-text-muted);margin-top:var(--sp-2);max-width:480px;">Islamische Bücher, Düfte, Kleidung, Gebet & Accessoires — alles aus einer Hand.</p>
   </div>
 </div>
 
@@ -116,17 +116,24 @@
 ════════════════════════════════════════════════ -->
 <section class="section section--sm">
   <div class="container">
+    <div class="sidebar-overlay" id="sidebarOverlay" aria-hidden="true"></div>
     <div class="shop-layout">
 
       <!-- Sidebar -->
       <aside class="shop-sidebar" id="shopSidebar" aria-label="Produktfilter">
 
         <div class="filter-section">
+          <div class="shop-search-wrap">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z"/></svg>
+            <input class="shop-search-input" type="search" id="shopSearch" placeholder="Suchen…" autocomplete="off" aria-label="Produkte suchen">
+          </div>
+        </div>
+
+        <div class="filter-section">
           <p class="filter-title">Kategorien</p>
-          <label class="filter-option"><input type="checkbox" class="filter-cat" value="buecher"> <span>Bücher</span><span class="count">10</span></label>
-          <label class="filter-option"><input type="checkbox" class="filter-cat" value="parfum"> <span>Parfüm &amp; Misk</span><span class="count">6</span></label>
-          <label class="filter-option"><input type="checkbox" class="filter-cat" value="abaya"> <span>Abayas</span><span class="count">3</span></label>
-          <label class="filter-option"><input type="checkbox" class="filter-cat" value="sonstiges"> <span>Sonstiges</span><span class="count">12</span></label>
+          <div class="cat-accordion" id="catAccordion">
+            <!-- Rendered by shop.js -->
+          </div>
         </div>
 
         <div class="filter-section">
@@ -135,19 +142,24 @@
           <p class="price-display" id="priceDisplay">bis 200,00 €</p>
         </div>
 
-        <div class="filter-section">
-          <p class="filter-title">Sortierung</p>
-          <label class="filter-option"><input type="radio" name="sort" value="default" checked> <span>Empfohlen</span></label>
-          <label class="filter-option"><input type="radio" name="sort" value="price-asc"> <span>Preis aufsteigend</span></label>
-          <label class="filter-option"><input type="radio" name="sort" value="price-desc"> <span>Preis absteigend</span></label>
-          <label class="filter-option"><input type="radio" name="sort" value="name-asc"> <span>Name A–Z</span></label>
-        </div>
-
         <button class="btn btn-ghost btn-full" id="resetFilters" style="margin-top:var(--sp-2);">Filter zurücksetzen</button>
       </aside>
 
       <!-- Main content -->
       <div>
+
+        <!-- Mobile Category Navigation -->
+        <div class="mob-cat-nav" id="mobCatNav" aria-label="Kategorien">
+          <div class="mob-cat-scroll" id="mobCatScroll" role="tablist">
+            <!-- Rendered by shop.js -->
+          </div>
+          <div class="mob-subcat-wrap" id="mobSubcatWrap" style="display:none;">
+            <div class="mob-subcat-scroll" id="mobSubcatScroll" role="tablist">
+              <!-- Rendered by shop.js -->
+            </div>
+          </div>
+        </div>
+
         <div class="shop-toolbar">
           <p class="shop-count" id="productCount"><strong>27</strong> Produkte gefunden</p>
           <div style="display:flex;gap:var(--sp-2);align-items:center;flex-wrap:wrap;">
@@ -162,20 +174,6 @@
               <option value="name-asc">Name A–Z</option>
             </select>
           </div>
-        </div>
-
-        <!-- Buch-Unterkategorien (nur bei Bücher-Filter sichtbar) -->
-        <div class="subcat-bar" id="subcatBar" role="tablist" aria-label="Buchkategorien">
-          <button class="subcat-tab is-active" data-subcat="alle" role="tab" aria-selected="true">Alle Bücher</button>
-          <button class="subcat-tab" data-subcat="aqidah" role="tab" aria-selected="false">Aqidah</button>
-          <button class="subcat-tab" data-subcat="sirah" role="tab" aria-selected="false">Sirah</button>
-          <button class="subcat-tab" data-subcat="fiqh" role="tab" aria-selected="false">Fiqh</button>
-          <button class="subcat-tab" data-subcat="hadith" role="tab" aria-selected="false">Hadith</button>
-          <button class="subcat-tab" data-subcat="tafsir" role="tab" aria-selected="false">Tafsir</button>
-          <button class="subcat-tab" data-subcat="tazkiyah" role="tab" aria-selected="false">Tazkiyah</button>
-          <button class="subcat-tab" data-subcat="arabisch" role="tab" aria-selected="false">Arabisch</button>
-          <button class="subcat-tab" data-subcat="geschichte" role="tab" aria-selected="false">Geschichte</button>
-          <button class="subcat-tab" data-subcat="kinderbuecher" role="tab" aria-selected="false">Kinderbücher</button>
         </div>
 
         <div class="products-grid" id="productsGrid">
@@ -207,12 +205,11 @@
       <div>
         <p class="footer-col-title">Shop</p>
         <ul class="footer-nav-list">
-          <li><a href="shop.html?cat=buecher">Bücher</a></li>
-          <li><a href="shop.html?cat=parfum">Parfüm & Misk</a></li>
-          <li><a href="shop.html?cat=miswak">Miswak</a></li>
-          <li><a href="shop.html?cat=abaya">Abayas</a></li>
-          <li><a href="shop.html?cat=gebetsteppich">Gebetsteppiche</a></li>
-          <li><a href="shop.html?cat=tasbih">Tasbihs</a></li>
+          <li><a href="shop.html?cat=buecher">Islamische Bücher</a></li>
+          <li><a href="shop.html?cat=kleidung">Islamische Kleidung</a></li>
+          <li><a href="shop.html?cat=duefte">Düfte &amp; Pflege</a></li>
+          <li><a href="shop.html?cat=gebet">Gebet &amp; Ibadah</a></li>
+          <li><a href="shop.html?cat=accessoires">Accessoires</a></li>
         </ul>
       </div>
       <div>
@@ -246,57 +243,5 @@
 <script src="assets/js/shop.js"></script>
 <script src="assets/js/cart.js"></script>
 <script src="assets/js/main.js"></script>
-<script>
-  /* Apply URL param filter on load */
-  document.addEventListener('DOMContentLoaded', () => {
-    const params = new URLSearchParams(window.location.search);
-    const cat = params.get('cat');
-    if (cat) {
-      const cb = document.querySelector(`.filter-cat[value="${cat}"]`);
-      if (cb) {
-        cb.checked = true;
-        cb.dispatchEvent(new Event('change', { bubbles: true }));
-      }
-    }
-
-    /* Sort radio buttons */
-    document.querySelectorAll('input[name="sort"]').forEach(radio => {
-      radio.addEventListener('change', () => {
-        const sortSelect = document.getElementById('sortSelect');
-        if (sortSelect) sortSelect.value = radio.value;
-        activeFilters.sort = radio.value;
-        if (window.filterProducts && window.renderProducts) {
-          const grid = document.getElementById('productsGrid');
-          const countEl = document.getElementById('productCount');
-          const results = filterProducts();
-          renderProducts(grid, results);
-          if (countEl) countEl.innerHTML = `<strong>${results.length}</strong> Produkt${results.length !== 1 ? 'e' : ''} gefunden`;
-        }
-      });
-    });
-
-    /* Reset filters */
-    const resetBtn = document.getElementById('resetFilters');
-    if (resetBtn) {
-      resetBtn.addEventListener('click', () => {
-        document.querySelectorAll('.filter-cat').forEach(cb => cb.checked = false);
-        const priceRange = document.getElementById('priceRange');
-        const priceDisplay = document.getElementById('priceDisplay');
-        if (priceRange) { priceRange.value = 200; }
-        if (priceDisplay) priceDisplay.textContent = 'bis 200,00 €';
-        activeFilters.categories = []; activeFilters.maxPrice = 200; activeFilters.sort = 'default'; activeFilters.activeSubcat = 'alle';
-        updateSubcatBar();
-        document.querySelectorAll('.subcat-tab').forEach(t => { t.classList.toggle('is-active', t.dataset.subcat === 'alle'); t.setAttribute('aria-selected', t.dataset.subcat === 'alle' ? 'true' : 'false'); });
-        const sortSelect = document.getElementById('sortSelect');
-        if (sortSelect) sortSelect.value = 'default';
-        const grid = document.getElementById('productsGrid');
-        const countEl = document.getElementById('productCount');
-        const results = filterProducts();
-        renderProducts(grid, results);
-        if (countEl) countEl.innerHTML = `<strong>${results.length}</strong> Produkte gefunden`;
-      });
-    }
-  });
-</script>
 </body>
 </html>

@@ -192,10 +192,11 @@
       <div>
         <p class="footer-col-title">Shop</p>
         <ul class="footer-nav-list">
-          <li><a href="shop.html?cat=buecher">Bücher</a></li>
-          <li><a href="shop.html?cat=parfum">Parfüm & Misk</a></li>
-          <li><a href="shop.html?cat=abaya">Abayas</a></li>
-          <li><a href="shop.html?cat=sonstiges">Sonstiges</a></li>
+          <li><a href="shop.html?cat=buecher">Islamische Bücher</a></li>
+          <li><a href="shop.html?cat=kleidung">Islamische Kleidung</a></li>
+          <li><a href="shop.html?cat=duefte">Düfte &amp; Pflege</a></li>
+          <li><a href="shop.html?cat=gebet">Gebet &amp; Ibadah</a></li>
+          <li><a href="shop.html?cat=accessoires">Accessoires</a></li>
         </ul>
       </div>
       <div>
@@ -245,14 +246,14 @@ document.addEventListener('DOMContentLoaded', () => {
   const heroTitle = document.getElementById('productHeroTitle');
   const heroCat   = document.getElementById('productHeroCat');
   if (heroTitle) heroTitle.textContent = product.name;
-  if (heroCat)   heroCat.textContent  = window.getCategoryLabel ? window.getCategoryLabel(product.category) : product.category;
+  if (heroCat)   heroCat.textContent  = window.getCategoryLabel ? window.getCategoryLabel(product.mainCat) : product.mainCat;
 
   /* Product image area */
   const productImg  = document.getElementById('productImg');
   const productIcon = document.getElementById('productIcon');
-  if (productImg)  productImg.setAttribute('data-cat', product.iconKey || product.category);
+  if (productImg)  productImg.setAttribute('data-cat', product.mainCat);
   if (productIcon && window.getCategoryIcon) {
-    productIcon.innerHTML = window.getCategoryIcon(product.category, product.iconKey);
+    productIcon.innerHTML = window.getCategoryIcon(product.mainCat);
   }
 
   /* Badge */
@@ -267,7 +268,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   /* Info fields */
   const el = id => document.getElementById(id);
-  if (el('productCat'))      el('productCat').textContent      = window.getCategoryLabel ? window.getCategoryLabel(product.category) : '';
+  if (el('productCat'))      el('productCat').textContent      = window.getCategoryLabel ? window.getCategoryLabel(product.mainCat) : '';
   if (el('productName'))     el('productName').textContent     = product.name;
   if (el('productSubtitle')) el('productSubtitle').textContent = product.subtitle;
   if (el('productPrice'))    el('productPrice').textContent    = window.formatPrice ? window.formatPrice(product.price) : product.price + ' €';
@@ -289,7 +290,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   /* Related products */
   if (window.PRODUCTS && window.renderProducts) {
-    const related = window.PRODUCTS.filter(p => p.category === product.category && p.id !== product.id).slice(0, 4);
+    const related = window.PRODUCTS.filter(p => p.mainCat === product.mainCat && p.id !== product.id).slice(0, 4);
     if (related.length > 0) {
       const section = document.getElementById('relatedSection');
       const relGrid = document.getElementById('relatedGrid');
