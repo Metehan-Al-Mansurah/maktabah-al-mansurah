@@ -30,15 +30,10 @@
     </a>
     <nav class="nav-primary" role="navigation" aria-label="Hauptnavigation">
       <a href="index.html">Startseite</a>
-      <a href="shop.html">Shop</a>
       <a href="about.html">Über uns</a>
       <a href="contact.html">Kontakt</a>
     </nav>
     <div class="header-actions">
-      <button class="cart-trigger" id="cartTrigger" aria-label="Warenkorb öffnen">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 0 0-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 0 0-16.536-1.84M7.5 14.25 5.106 5.272M6 20.25a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Zm12.75 0a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Z"/></svg>
-        <span class="cart-badge hidden" id="cartBadge" aria-live="polite">0</span>
-      </button>
       <button class="nav-toggle" id="navToggle" aria-label="Menü öffnen" aria-expanded="false" aria-controls="mobileNav">
         <span></span><span></span><span></span>
       </button>
@@ -53,24 +48,10 @@
     <button class="mobile-nav__close" id="mobileNavClose" aria-label="Menü schließen"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 18 18 6M6 6l12 12"/></svg></button>
   </div>
   <div class="mobile-nav__links">
-    <a href="index.html">Startseite</a><a href="shop.html">Shop</a><a href="about.html">Über uns</a><a href="contact.html">Kontakt</a>
+    <a href="index.html">Startseite</a><a href="about.html">Über uns</a><a href="contact.html">Kontakt</a>
   </div>
   <div class="mobile-nav__footer"><p class="mobile-nav__arabic">بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ</p></div>
 </nav>
-
-<div class="cart-overlay" id="cartOverlay" aria-hidden="true"></div>
-<aside class="cart-drawer" id="cartDrawer" aria-label="Warenkorb" aria-hidden="true">
-  <div class="cart-drawer__header">
-    <h2 class="cart-drawer__title">Warenkorb</h2>
-    <button class="cart-drawer__close" id="cartClose" aria-label="Warenkorb schließen"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 18 18 6M6 6l12 12"/></svg></button>
-  </div>
-  <div class="cart-drawer__items"></div>
-  <div class="cart-drawer__footer">
-    <div class="cart-drawer__subtotal"><span>Zwischensumme</span><strong class="cart-drawer__total-amount">0,00 €</strong></div>
-    <button class="btn btn-primary btn-full">Zur Kasse</button>
-    <p class="cart-drawer__note">Versandkosten werden an der Kasse berechnet.</p>
-  </div>
-</aside>
 
 <!-- ═══════════════════════════════════════════
      PAGE HERO
@@ -190,7 +171,6 @@
 
         </div>
 
-        <!-- Arabic blessing -->
         <div style="margin-top:var(--sp-4);padding:var(--sp-4);background:var(--clr-ink-light);border:1px solid var(--border-subtle);border-radius:var(--radius-lg);text-align:center;">
           <p style="font-family:var(--font-arabic);font-size:1.3rem;color:var(--clr-gold-muted);direction:rtl;line-height:2;margin-bottom:var(--sp-2);">
             بَارَكَ اللَّهُ فِيكَ
@@ -265,8 +245,14 @@
           <a href="mailto:maktaba.al-mansurah@outlook.com" aria-label="E-Mail"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg></a>
         </div>
       </div>
-      <div><p class="footer-col-title">Shop</p><ul class="footer-nav-list"><li><a href="shop.html?cat=buecher">Islamische Bücher</a></li><li><a href="shop.html?cat=kleidung">Islamische Kleidung</a></li><li><a href="shop.html?cat=duefte">Düfte &amp; Pflege</a></li><li><a href="shop.html?cat=gebet">Gebet &amp; Ibadah</a></li><li><a href="shop.html?cat=accessoires">Accessoires</a></li></ul></div>
-      <div><p class="footer-col-title">Seiten</p><ul class="footer-nav-list"><li><a href="index.html">Startseite</a></li><li><a href="shop.html">Shop</a></li><li><a href="about.html">Über uns</a></li><li><a href="contact.html">Kontakt</a></li></ul></div>
+      <div>
+        <p class="footer-col-title">Seiten</p>
+        <ul class="footer-nav-list">
+          <li><a href="index.html">Startseite</a></li>
+          <li><a href="about.html">Über uns</a></li>
+          <li><a href="contact.html">Kontakt</a></li>
+        </ul>
+      </div>
       <div class="footer-newsletter">
         <p class="footer-col-title">Newsletter</p>
         <p>Aktuelle Angebote direkt in dein Postfach.</p>
@@ -287,8 +273,6 @@
 </footer>
 
 <script src="assets/js/animations.js"></script>
-<script src="assets/js/shop.js"></script>
-<script src="assets/js/cart.js"></script>
 <script src="assets/js/main.js"></script>
 </body>
 </html>
