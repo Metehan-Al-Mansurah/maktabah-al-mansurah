@@ -80,35 +80,96 @@ function initMobileMenu() {
 
 /* ── Newsletter forms ── */
 function initNewsletterForms() {
-  document.querySelectorAll('.newsletter-form-row').forEach(form => {
+  document.querySelectorAll('.newsletter-form-row, .footer-newsletter-form').forEach(form => {
     form.addEventListener('submit', e => {
       e.preventDefault();
-      const input = form.querySelector('.form-input');
-      const btn   = form.querySelector('button');
-      if (!input || !input.value.includes('@')) return;
+      const input    = form.querySelector('input[type="email"]');
+      const checkbox = form.querySelector('input[type="checkbox"]');
+      const btn      = form.querySelector('button[type="submit"]');
+      if (!input) return;
+
+      let valid = true;
+      if (!input.value.trim() || !input.value.includes('@')) {
+        input.classList.add('input-error');
+        valid = false;
+      } else {
+        input.classList.remove('input-error');
+      }
+      if (checkbox && !checkbox.checked) {
+        checkbox.closest('.newsletter-gdpr')?.classList.add('gdpr-error');
+        valid = false;
+      } else {
+        checkbox?.closest('.newsletter-gdpr')?.classList.remove('gdpr-error');
+      }
+      if (!valid || !btn) return;
+
       const orig = btn.textContent;
-      btn.textContent = 'Danke! ✓';
+      btn.textContent = 'Angemeldet ✓';
       btn.disabled = true;
       input.value = '';
-      setTimeout(() => { btn.textContent = orig; btn.disabled = false; }, 3000);
+      if (checkbox) checkbox.checked = false;
+      setTimeout(() => { btn.textContent = orig; btn.disabled = false; }, 4000);
+    });
+    /* Clear error on input */
+    form.querySelector('input[type="email"]')?.addEventListener('input', function () {
+      this.classList.remove('input-error');
     });
   });
+}
 
-  /* Footer newsletter */
-  const footerForm = document.querySelector('.footer-newsletter-form');
-  if (footerForm) {
-    footerForm.addEventListener('submit', e => {
-      e.preventDefault();
-      const input = footerForm.querySelector('.form-input');
-      const btn   = footerForm.querySelector('button');
-      if (!input || !input.value.includes('@')) return;
-      const orig = btn.textContent;
-      btn.textContent = 'Danke! ✓';
-      btn.disabled = true;
-      input.value = '';
-      setTimeout(() => { btn.textContent = orig; btn.disabled = false; }, 3000);
-    });
+/* ── Cookie Banner ── */
+function initCookieBanner() {
+  if (localStorage.getItem('mam_cookie_consent')) return;
+
+  const banner = document.createElement('div');
+  banner.id = 'cookieBanner';
+  banner.setAttribute('role', 'dialog');
+  banner.setAttribute('aria-label', 'Cookie-Einstellungen');
+  banner.innerHTML = `
+    <div class="cookie-banner__inner">
+      <div class="cookie-banner__text">
+        <p><strong>Wir verwenden Cookies</strong></p>
+        <p>Wir nutzen ausschließlich technisch notwendige Cookies (Warenkorb, Wunschliste), um unsere Website zu betreiben. Keine Tracking- oder Werbe-Cookies. Mehr Infos in unserer <a href="datenschutz.html">Datenschutzerklärung</a>.</p>
+      </div>
+      <div class="cookie-banner__actions">
+        <button class="btn btn-ghost btn-sm" id="cookieDecline">Nur notwendige</button>
+        <button class="btn btn-primary btn-sm" id="cookieAccept">Verstanden</button>
+      </div>
+    </div>`;
+
+  const style = document.createElement('style');
+  style.textContent = `
+    #cookieBanner {
+      position: fixed; bottom: 1.5rem; left: 50%; transform: translateX(-50%);
+      width: min(94vw, 760px); z-index: 9999;
+      background: var(--clr-ink-mid, #141F16);
+      border: 1px solid var(--clr-gold-muted, rgba(200,151,58,.35));
+      border-radius: 1rem;
+      box-shadow: 0 8px 32px rgba(0,0,0,.55);
+      animation: cookie-in .4s cubic-bezier(.22,1,.36,1) forwards;
+    }
+    @keyframes cookie-in { from { opacity:0; transform:translateX(-50%) translateY(20px); } to { opacity:1; transform:translateX(-50%) translateY(0); } }
+    .cookie-banner__inner { display:flex; align-items:center; gap:1.5rem; padding:1rem 1.5rem; flex-wrap:wrap; }
+    .cookie-banner__text { flex:1; min-width:200px; }
+    .cookie-banner__text p { color:var(--clr-text-mid,#a8b8a8); font-size:.82rem; line-height:1.6; margin:0 0 .25rem; }
+    .cookie-banner__text strong { color:var(--clr-text-primary,#e8f0e8); }
+    .cookie-banner__text a { color:var(--clr-gold,#C8973A); }
+    .cookie-banner__actions { display:flex; gap:.75rem; flex-shrink:0; }
+    .newsletter-gdpr.gdpr-error label { color:#e07070!important; }
+    .newsletter-gdpr.gdpr-error a { color:#e09090!important; }
+    input.input-error { border-color: #c0504d!important; box-shadow: 0 0 0 3px rgba(192,80,77,.15)!important; }`;
+  document.head.appendChild(style);
+  document.body.appendChild(banner);
+
+  function dismiss(consent) {
+    localStorage.setItem('mam_cookie_consent', consent ? 'accepted' : 'necessary');
+    banner.style.animation = 'none';
+    banner.style.opacity = '0';
+    banner.style.transition = 'opacity .25s';
+    setTimeout(() => banner.remove(), 300);
   }
+  document.getElementById('cookieAccept')?.addEventListener('click', () => dismiss(true));
+  document.getElementById('cookieDecline')?.addEventListener('click', () => dismiss(false));
 }
 
 /* ── Contact Form ── */
@@ -163,6 +224,230 @@ function initSmoothScroll() {
   });
 }
 
+/* ── Live Search ── */
+function initSearch() {
+  const headerActions = document.querySelector('.header-actions');
+  if (!headerActions) return;
+
+  /* Inject search button */
+  const searchBtn = document.createElement('button');
+  searchBtn.id = 'searchTrigger';
+  searchBtn.className = 'search-trigger-btn';
+  searchBtn.setAttribute('aria-label', 'Suche öffnen');
+  searchBtn.innerHTML = '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>';
+  headerActions.insertBefore(searchBtn, headerActions.firstChild);
+
+  /* Inject overlay */
+  const overlay = document.createElement('div');
+  overlay.id = 'searchOverlay';
+  overlay.setAttribute('aria-modal', 'true');
+  overlay.setAttribute('role', 'dialog');
+  overlay.setAttribute('aria-label', 'Produktsuche');
+  overlay.innerHTML = `
+    <div class="search-overlay__backdrop" id="searchBackdrop"></div>
+    <div class="search-overlay__panel">
+      <div class="search-overlay__bar">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+        <input type="text" id="searchInput" placeholder="Produkt oder Kategorie suchen..." autocomplete="off" spellcheck="false">
+        <button id="searchClose" aria-label="Suche schließen">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 18 18 6M6 6l12 12"/></svg>
+        </button>
+      </div>
+      <div id="searchResults" class="search-overlay__results"></div>
+    </div>`;
+
+  /* Styles */
+  const style = document.createElement('style');
+  style.textContent = `
+    .search-trigger-btn {
+      display:flex; align-items:center; justify-content:center;
+      width:40px; height:40px; border-radius:50%; border:none;
+      background:transparent; color:var(--clr-text-muted); cursor:pointer;
+      transition:color var(--dur-fast) ease, background var(--dur-fast) ease;
+    }
+    .search-trigger-btn:hover { color:var(--clr-gold); background:rgba(200,151,58,.08); }
+    #searchOverlay {
+      position:fixed; inset:0; z-index:9990;
+      display:none; align-items:flex-start; justify-content:center;
+      padding-top:80px;
+    }
+    #searchOverlay.is-open { display:flex; }
+    .search-overlay__backdrop {
+      position:absolute; inset:0;
+      background:rgba(0,0,0,.7);
+      backdrop-filter:blur(4px);
+      animation:fadeIn .2s ease;
+    }
+    @keyframes fadeIn { from{opacity:0} to{opacity:1} }
+    .search-overlay__panel {
+      position:relative; z-index:1;
+      width:min(660px,94vw);
+      background:var(--clr-ink-light);
+      border:1px solid var(--border-mid);
+      border-radius:var(--radius-lg);
+      overflow:hidden;
+      box-shadow:0 24px 64px rgba(0,0,0,.6);
+      animation:slideDown .25s cubic-bezier(.22,1,.36,1);
+    }
+    @keyframes slideDown { from{transform:translateY(-16px);opacity:0} to{transform:translateY(0);opacity:1} }
+    .search-overlay__bar {
+      display:flex; align-items:center; gap:.75rem;
+      padding:.9rem 1.25rem;
+      border-bottom:1px solid var(--border-subtle);
+      color:var(--clr-text-muted);
+    }
+    #searchInput {
+      flex:1; background:transparent; border:none; outline:none;
+      color:var(--clr-text-primary); font-size:1rem; font-family:var(--font-body);
+    }
+    #searchInput::placeholder { color:var(--clr-text-muted); }
+    #searchClose {
+      display:flex; align-items:center; justify-content:center;
+      width:32px; height:32px; border:none; background:transparent;
+      color:var(--clr-text-muted); cursor:pointer; border-radius:50%;
+      transition:color var(--dur-fast) ease, background var(--dur-fast) ease;
+    }
+    #searchClose:hover { color:var(--clr-text-primary); background:var(--clr-ink-mid); }
+    .search-overlay__results { max-height:420px; overflow-y:auto; padding:.5rem; }
+    .search-result-item {
+      display:flex; align-items:center; gap:.9rem;
+      padding:.7rem .9rem; border-radius:var(--radius-md);
+      cursor:pointer; text-decoration:none;
+      transition:background var(--dur-fast) ease;
+    }
+    .search-result-item:hover { background:var(--clr-ink-mid); }
+    .search-result-icon {
+      width:36px; height:36px; border-radius:var(--radius-md);
+      background:rgba(200,151,58,.1);
+      display:flex; align-items:center; justify-content:center;
+      color:var(--clr-gold); flex-shrink:0;
+    }
+    .search-result-name { font-size:var(--text-sm); font-weight:500; color:var(--clr-text-primary); }
+    .search-result-meta { font-size:var(--text-xs); color:var(--clr-text-muted); margin-top:1px; }
+    .search-result-price { margin-left:auto; font-size:var(--text-sm); font-weight:600; color:var(--clr-gold-light); white-space:nowrap; }
+    .search-empty { padding:2rem; text-align:center; color:var(--clr-text-muted); font-size:var(--text-sm); }
+    .search-hint { padding:.75rem 1.4rem; font-size:.7rem; color:var(--clr-text-muted); display:flex; gap:1.5rem; border-top:1px solid var(--border-subtle); }
+    .search-hint kbd { background:var(--clr-ink-mid); border:1px solid var(--border-subtle); border-radius:4px; padding:.1rem .35rem; font-family:monospace; font-size:.65rem; }
+    .search-cat-chip {
+      display:inline-flex; align-items:center; gap:.4rem;
+      padding:.35rem .8rem; border-radius:2rem; font-size:.72rem;
+      background:rgba(200,151,58,.08); border:1px solid var(--border-subtle);
+      color:var(--clr-text-muted); text-decoration:none;
+      transition:all var(--dur-fast) ease;
+      margin:.25rem;
+    }
+    .search-cat-chip:hover { background:rgba(200,151,58,.15); color:var(--clr-gold-light); border-color:var(--clr-gold-muted); }
+    .search-result-highlight { color:var(--clr-gold); }`;
+  document.head.appendChild(style);
+  document.body.appendChild(overlay);
+
+  function fmt(n) { return n.toFixed(2).replace('.', ',') + ' €'; }
+
+  function catLabel(mainCat) {
+    const map = { buecher:'Islamische Bücher', kleidung:'Kleidung & Tradition', duefte:'Düfte & Sunnah' };
+    return map[mainCat] || mainCat;
+  }
+
+  function catIconPath(mainCat) {
+    if (mainCat === 'buecher') return '<path d="M12 6.042A8.967 8.967 0 0 0 6 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 0 1 6 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 0 1 6-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0 0 18 18a8.967 8.967 0 0 0-6 2.292m0-14.25v14.25"/>';
+    if (mainCat === 'kleidung') return '<path d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0"/>';
+    return '<path d="M9.75 3.104v5.714a2.25 2.25 0 0 1-.659 1.591L5 14.5M9.75 3.104A24 24 0 0 1 14.25 3.1m0 0v5.714c0 .597.237 1.17.659 1.591L19.8 15m-15.6-.5c.59 1.24 1.248 2.44 1.96 3.596m13.68-3.097A19.81 19.81 0 0 1 18 18.6M5 19.5h14"/>';
+  }
+
+  function highlight(text, query) {
+    if (!query) return text;
+    const re = new RegExp('(' + query.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + ')', 'gi');
+    return text.replace(re, '<span class="search-result-highlight">$1</span>');
+  }
+
+  function renderDefaultResults() {
+    const cats = [
+      { id:'buecher', label:'Islamische Bücher' },
+      { id:'kleidung', label:'Kleidung & Tradition' },
+      { id:'duefte', label:'Düfte & Sunnah' }
+    ];
+    document.getElementById('searchResults').innerHTML =
+      '<div style="padding:.75rem 1rem .25rem;font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:var(--clr-gold-muted);">Kategorien</div>' +
+      '<div style="padding:.25rem 1rem .75rem;">' +
+        cats.map(c => `<a href="shop.html?cat=${c.id}" class="search-cat-chip">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">${catIconPath(c.id)}</svg>
+          ${c.label}</a>`).join('') +
+      '</div>' +
+      '<div class="search-hint"><span><kbd>↵</kbd> Auswählen</span><span><kbd>Esc</kbd> Schließen</span></div>';
+  }
+
+  function renderSearchResults(query) {
+    const products = window.PRODUCTS || [];
+    const q = query.toLowerCase().trim();
+    if (!q) { renderDefaultResults(); return; }
+
+    const results = products.filter(p =>
+      p.name.toLowerCase().includes(q) ||
+      (p.subtitle || '').toLowerCase().includes(q) ||
+      (p.description || '').toLowerCase().includes(q) ||
+      catLabel(p.mainCat).toLowerCase().includes(q) ||
+      (p.subcat || '').toLowerCase().includes(q)
+    ).slice(0, 8);
+
+    const el = document.getElementById('searchResults');
+    if (!results.length) {
+      el.innerHTML = '<div class="search-empty">Keine Produkte für „' + query + '" gefunden.<br><a href="shop.html" style="color:var(--clr-gold);">Alle Produkte ansehen →</a></div>';
+      return;
+    }
+    el.innerHTML = results.map(p =>
+      `<a href="product.html?id=${p.id}" class="search-result-item">
+        <div class="search-result-icon">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">${catIconPath(p.mainCat)}</svg>
+        </div>
+        <div>
+          <div class="search-result-name">${highlight(p.name, query)}</div>
+          <div class="search-result-meta">${catLabel(p.mainCat)}${p.badge ? ' · <span style="color:var(--clr-gold)">' + p.badge + '</span>' : ''}</div>
+        </div>
+        <span class="search-result-price">${fmt(p.price)}</span>
+      </a>`
+    ).join('') +
+    `<div class="search-hint"><span><kbd>↵</kbd> Öffnen</span><span><kbd>Esc</kbd> Schließen</span></div>`;
+  }
+
+  function openSearch() {
+    overlay.classList.add('is-open');
+    document.body.style.overflow = 'hidden';
+    setTimeout(() => document.getElementById('searchInput').focus(), 50);
+    renderDefaultResults();
+  }
+
+  function closeSearch() {
+    overlay.classList.remove('is-open');
+    document.body.style.overflow = '';
+    document.getElementById('searchInput').value = '';
+  }
+
+  searchBtn.addEventListener('click', openSearch);
+  document.getElementById('searchClose').addEventListener('click', closeSearch);
+  document.getElementById('searchBackdrop').addEventListener('click', closeSearch);
+
+  document.getElementById('searchInput').addEventListener('input', function() {
+    renderSearchResults(this.value);
+  });
+
+  document.getElementById('searchInput').addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') closeSearch();
+    if (e.key === 'Enter') {
+      const first = document.querySelector('.search-result-item');
+      if (first) { first.click(); closeSearch(); }
+    }
+  });
+
+  /* Global shortcut: Ctrl+K or / to open search */
+  document.addEventListener('keydown', function(e) {
+    if ((e.ctrlKey || e.metaKey) && e.key === 'k') { e.preventDefault(); openSearch(); }
+    if (e.key === '/' && !['INPUT','TEXTAREA'].includes(document.activeElement.tagName)) {
+      e.preventDefault(); openSearch();
+    }
+    if (e.key === 'Escape' && overlay.classList.contains('is-open')) closeSearch();
+  });
+}
+
 /* ── Init ── */
 document.addEventListener('DOMContentLoaded', () => {
   initStickyHeader();
@@ -171,4 +456,6 @@ document.addEventListener('DOMContentLoaded', () => {
   initNewsletterForms();
   initContactForm();
   initSmoothScroll();
+  initCookieBanner();
+  initSearch();
 });

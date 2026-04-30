@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Allgemeine Geschäftsbedingungen (AGB) von Maktabah Al Mansurah — Vertragsschluss, Zahlung, Versand, Gewährleistung.">
+  <title>AGB — Maktabah Al Mansurah</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%230D1A0F'/><polygon points='16,3 17.6,11.4 24.5,7.5 20.6,14.4 29,16 20.6,17.6 24.5,24.5 17.6,20.6 16,29 14.4,20.6 7.5,24.5 11.4,17.6 3,16 11.4,14.4 7.5,7.5 14.4,11.4' fill='none' stroke='%23C8973A' stroke-width='0.8'/></svg>">
+  <link rel="stylesheet" href="assets/css/base.css">
+  <link rel="stylesheet" href="assets/css/animations.css">
+  <link rel="stylesheet" href="assets/css/patterns.css">
+  <link rel="stylesheet" href="assets/css/layout.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+  <style>
+    .legal-section { padding-block: var(--sp-7); }
+    .legal-grid { display: grid; grid-template-columns: 1fr; gap: var(--sp-4); max-width: 860px; margin-inline: auto; }
+    .legal-card {
+      background: var(--clr-ink-light);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      padding: var(--sp-4) var(--sp-5);
+      position: relative;
+      overflow: hidden;
+      transition: border-color var(--dur-mid) var(--ease-out), box-shadow var(--dur-mid) var(--ease-out);
+    }
+    .legal-card::before { content: ''; position: absolute; top: 0; left: 0; width: 3px; height: 100%; background: linear-gradient(180deg, var(--clr-gold), var(--clr-gold-light)); border-radius: 0 2px 2px 0; }
+    .legal-card:hover { border-color: var(--border-mid); box-shadow: var(--shadow-glow); }
+    .legal-card__number { font-family: var(--font-display); font-size: var(--text-xs); font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--clr-gold); margin-bottom: var(--sp-1); display: block; }
+    .legal-card h2 { font-size: var(--text-lg); color: var(--clr-text-primary); margin-bottom: var(--sp-3); padding-bottom: var(--sp-2); border-bottom: 1px solid var(--border-subtle); }
+    .legal-card h3 { font-size: var(--text-base); font-family: var(--font-body); font-weight: 600; color: var(--clr-gold-light); margin-top: var(--sp-3); margin-bottom: var(--sp-1); }
+    .legal-card p { color: var(--clr-text-mid); line-height: 1.8; margin-bottom: var(--sp-2); }
+    .legal-card p:last-child { margin-bottom: 0; }
+    .legal-card ul { list-style: none; padding: 0; margin-bottom: var(--sp-2); }
+    .legal-card ul li { color: var(--clr-text-mid); padding: 0.35rem 0 0.35rem 1.4rem; position: relative; line-height: 1.7; }
+    .legal-card ul li::before { content: '–'; position: absolute; left: 0; color: var(--clr-gold-muted); font-weight: 700; }
+    .info-box { background: rgba(200, 151, 58, 0.07); border: 1px solid var(--border-mid); border-radius: var(--radius-md); padding: var(--sp-3) var(--sp-4); margin-block: var(--sp-3); }
+    .info-box p { color: var(--clr-gold-light) !important; font-weight: 500; font-size: var(--text-sm); margin: 0; }
+    .payment-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--sp-2); margin-top: var(--sp-3); }
+    @media (max-width: 640px) { .payment-grid { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 400px) { .payment-grid { grid-template-columns: 1fr; } }
+    .payment-method {
+      background: var(--clr-ink-mid);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: var(--sp-2) var(--sp-3);
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-size: var(--text-sm);
+      color: var(--clr-text-mid);
+    }
+    .payment-method svg { color: var(--clr-gold); flex-shrink: 0; }
+    .page-hero__ornament { position: absolute; top: 50%; right: var(--sp-6); transform: translateY(-50%); font-family: var(--font-arabic); font-size: 6rem; color: rgba(200, 151, 58, 0.06); pointer-events: none; user-select: none; direction: rtl; line-height: 1; }
+    @media (max-width: 640px) { .page-hero__ornament { display: none; } .legal-card { padding: var(--sp-3); } }
+  </style>
+</head>
+<body>
+
+<div id="scrollProgress" aria-hidden="true"></div>
+<header class="site-header" id="siteHeader" role="banner">
+  <div class="header-inner">
+    <a href="index.html" class="brand" aria-label="Maktabah Al Mansurah – Startseite">
+      <span class="brand-logo-wrap"><img src="MAM.logo.png" alt="" class="brand-logo" aria-hidden="true"></span>
+      <span class="brand-text">
+        <span class="brand-arabic brand-shimmer">مكتبة المنصورة</span>
+        <span class="brand-latin">Maktabah Al Mansurah</span>
+      </span>
+    </a>
+    <nav class="nav-primary" role="navigation"><a href="index.html">Startseite</a><a href="shop.html">Shop</a><a href="about.html">Über uns</a><a href="contact.html">Kontakt</a></nav>
+    <div class="header-actions">
+      <button class="cart-trigger" id="cartTrigger" aria-label="Warenkorb öffnen"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 0 0-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 0 0-16.536-1.84M7.5 14.25 5.106 5.272M6 20.25a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Zm12.75 0a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Z"/></svg><span class="cart-badge hidden" id="cartBadge">0</span></button>
+      <button class="nav-toggle" id="navToggle" aria-label="Menü öffnen" aria-expanded="false"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+<div class="mobile-nav-overlay" id="menuOverlay" aria-hidden="true"></div>
+<nav class="mobile-nav" id="mobileNav" aria-hidden="true">
+  <div class="mobile-nav__header"><a href="index.html" class="brand"><span class="brand-arabic" style="font-size:1rem;color:var(--clr-gold-light);">مكتبة المنصورة</span></a><button class="mobile-nav__close" id="mobileNavClose"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 18 18 6M6 6l12 12"/></svg></button></div>
+  <div class="mobile-nav__links"><a href="index.html">Startseite</a><a href="shop.html">Shop</a><a href="about.html">Über uns</a><a href="contact.html">Kontakt</a></div>
+  <div class="mobile-nav__footer"><p class="mobile-nav__arabic">بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ</p></div>
+</nav>
+<div class="cart-overlay" id="cartOverlay" aria-hidden="true"></div>
+<aside class="cart-drawer" id="cartDrawer" aria-hidden="true">
+  <div class="cart-drawer__header"><h2 class="cart-drawer__title">Warenkorb</h2><button class="cart-drawer__close" id="cartClose"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 18 18 6M6 6l12 12"/></svg></button></div>
+  <div class="cart-drawer__items"></div>
+  <div class="cart-drawer__footer"><div class="cart-drawer__subtotal"><span>Zwischensumme</span><strong class="cart-drawer__total-amount">0,00 €</strong></div><a href="checkout.html" class="btn btn-primary btn-full">Zur Kasse</a><p class="cart-drawer__note">Versandkosten werden an der Kasse berechnet.</p></div>
+</aside>
+
+<main id="main-content">
+
+  <section class="page-hero" aria-labelledby="page-hero-title">
+    <div class="page-hero__bg"></div>
+    <div class="page-hero__ornament" aria-hidden="true">عقد</div>
+    <div class="container page-hero__content">
+      <span class="eyebrow">Rechtliche Information</span>
+      <h1 id="page-hero-title">Allgemeine Geschäftsbedingungen</h1>
+      <p style="color:var(--clr-text-muted);margin-top:var(--sp-2);max-width:560px;font-size:var(--text-sm);">
+        AGB für den Online-Shop von Maktabah Al Mansurah — gültig für alle Bestellungen ab April 2026.
+      </p>
+    </div>
+  </section>
+
+  <section class="legal-section" aria-label="AGB">
+    <div class="container">
+      <div class="legal-grid">
+
+        <!-- §1 Geltungsbereich -->
+        <article class="legal-card">
+          <span class="legal-card__number">§1</span>
+          <h2>Geltungsbereich &amp; Anbieter</h2>
+          <p>Diese Allgemeinen Geschäftsbedingungen (AGB) gelten für alle Verträge zwischen Maktabah Al Mansurah (nachfolgend „Anbieter") und dem Kunden (nachfolgend „Kunde"), die über den Online-Shop <strong>maktabah-al-mansurah.vercel.app</strong> geschlossen werden.</p>
+          <div class="info-box">
+            <p>
+              <strong>Maktabah Al Mansurah</strong><br>
+              Betrieben von: Metehan Al Mansurah<br>
+              E-Mail: <a href="mailto:maktaba.al-mansurah@outlook.com" style="color:var(--clr-gold);">maktaba.al-mansurah@outlook.com</a>
+            </p>
+          </div>
+          <p>Abweichende, entgegenstehende oder ergänzende AGB des Kunden werden nicht Vertragsbestandteil, es sei denn, ihrer Geltung wird ausdrücklich schriftlich zugestimmt.</p>
+        </article>
+
+        <!-- §2 Vertragsschluss -->
+        <article class="legal-card">
+          <span class="legal-card__number">§2</span>
+          <h2>Vertragsschluss</h2>
+          <h3>Angebot und Annahme</h3>
+          <p>Die Darstellung der Produkte im Online-Shop stellt kein rechtlich bindendes Angebot, sondern eine unverbindliche Aufforderung zur Bestellung (invitatio ad offerendum) dar.</p>
+          <p>Durch Klicken auf „Bestellung aufgeben" gibt der Kunde ein verbindliches Angebot zum Kauf der im Warenkorb befindlichen Waren ab. Der Anbieter nimmt dieses Angebot durch Zusendung einer Bestellbestätigung per E-Mail an.</p>
+          <h3>Vertragssprache</h3>
+          <p>Die Vertragssprache ist Deutsch. Der Vertragstext wird nach Vertragsschluss nicht gespeichert und ist für den Kunden nach Abschluss des Bestellvorgangs nicht mehr zugänglich.</p>
+          <h3>Minderjährige</h3>
+          <p>Der Abschluss von Kaufverträgen setzt die Volljährigkeit des Kunden voraus. Mit Aufgabe der Bestellung versichert der Kunde, volljährig zu sein.</p>
+        </article>
+
+        <!-- §3 Preise -->
+        <article class="legal-card">
+          <span class="legal-card__number">§3</span>
+          <h2>Preise &amp; Zahlung</h2>
+          <h3>Preisangaben</h3>
+          <p>Alle angegebenen Preise sind Endpreise in Euro (€) und verstehen sich als Gesamtpreise. Gemäß §19 UStG (Kleinunternehmerregelung) enthält der angezeigte Preis keine Umsatzsteuer.</p>
+          <p>Zusätzlich zu den angegebenen Preisen können Versandkosten anfallen. Die Versandkosten sind auf der <a href="versand.html" style="color:var(--clr-gold);">Versandseite</a> und während des Bestellvorgangs angegeben.</p>
+          <h3>Zahlungsmethoden</h3>
+          <p>Folgende Zahlungsarten stehen zur Verfügung:</p>
+          <div class="payment-grid">
+            <div class="payment-method">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+              PayPal
+            </div>
+            <div class="payment-method">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+              Kreditkarte
+            </div>
+            <div class="payment-method">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+              Klarna
+            </div>
+            <div class="payment-method">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+              Sofortüberweisung
+            </div>
+            <div class="payment-method">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+              Apple Pay
+            </div>
+            <div class="payment-method">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+              Banküberweisung
+            </div>
+          </div>
+          <h3>Fälligkeit</h3>
+          <p>Bei Sofortüberweisung, Kreditkarte, PayPal und ähnlichen Zahlungsarten ist der Betrag sofort fällig. Bei Banküberweisung ist der Betrag innerhalb von 5 Werktagen nach Bestellbestätigung zu überweisen. Die Bestellung wird erst nach Zahlungseingang bearbeitet.</p>
+        </article>
+
+        <!-- §4 Lieferung -->
+        <article class="legal-card">
+          <span class="legal-card__number">§4</span>
+          <h2>Lieferung &amp; Versand</h2>
+          <h3>Liefergebiet</h3>
+          <p>Wir liefern nach Deutschland, Österreich und in die Schweiz. Für andere Länder nehmen Sie bitte vorab Kontakt mit uns auf.</p>
+          <h3>Lieferzeiten</h3>
+          <ul>
+            <li><strong>Standardversand (DHL/DPD):</strong> 3–5 Werktage — 3,99 €</li>
+            <li><strong>Expressversand:</strong> 1–2 Werktage — 7,99 €</li>
+            <li><strong>Kostenloser Versand</strong> ab einem Bestellwert von 50,00 €</li>
+          </ul>
+          <p>Bei Bestellungen an Werktagen bis 14:00 Uhr erfolgt die Übergabe an den Versanddienstleister in der Regel am selben Tag. Lieferzeiten gelten ab Zahlung eingang.</p>
+          <h3>Teillieferungen</h3>
+          <p>Der Anbieter ist zu Teillieferungen berechtigt, sofern dies für den Kunden zumutbar ist. Mehrfache Versandkosten entstehen dem Kunden dadurch nicht.</p>
+          <p>Weitere Informationen finden Sie auf der <a href="versand.html" style="color:var(--clr-gold);">Versandseite</a>.</p>
+        </article>
+
+        <!-- §5 Widerruf -->
+        <article class="legal-card">
+          <span class="legal-card__number">§5</span>
+          <h2>Widerrufsrecht</h2>
+          <p>Verbrauchern steht ein gesetzliches Widerrufsrecht zu. Die vollständige Widerrufsbelehrung sowie das Muster-Widerrufsformular finden Sie unter:</p>
+          <div class="info-box">
+            <p><a href="widerruf.html" style="color:var(--clr-gold);">→ Zur vollständigen Widerrufsbelehrung</a></p>
+          </div>
+          <p>Das Widerrufsrecht besteht nicht bei folgenden Waren: versiegelte Hygieneartikel nach Öffnung (z.&thinsp;B. Parfüme, Öle), individuell angefertigte Waren sowie digitale Inhalte nach Lieferbeginn mit Zustimmung.</p>
+        </article>
+
+        <!-- §6 Eigentumsvorbehalt -->
+        <article class="legal-card">
+          <span class="legal-card__number">§6</span>
+          <h2>Eigentumsvorbehalt</h2>
+          <p>Die gelieferte Ware bleibt bis zur vollständigen Bezahlung des Kaufpreises Eigentum des Anbieters (Eigentumsvorbehalt). Der Kunde ist nicht berechtigt, die Vorbehaltsware zu verpfänden oder zur Sicherheit zu übereignen.</p>
+        </article>
+
+        <!-- §7 Gewährleistung -->
+        <article class="legal-card">
+          <span class="legal-card__number">§7</span>
+          <h2>Gewährleistung &amp; Mängelhaftung</h2>
+          <p>Es gelten die gesetzlichen Gewährleistungsrechte. Bei Mängeln der Kaufsache hat der Käufer zunächst das Recht auf Nacherfüllung (Nachbesserung oder Ersatzlieferung). Schlägt die Nacherfüllung fehl, kann der Käufer den Kaufpreis mindern oder vom Vertrag zurücktreten.</p>
+          <h3>Gebrauchte Waren</h3>
+          <p>Bei gebrauchten Waren beträgt die Gewährleistungsfrist 1 Jahr, sofern im Angebot ausdrücklich als gebraucht gekennzeichnet.</p>
+          <h3>Beschädigte Lieferung</h3>
+          <p>Pakete mit äußerlich erkennbaren Schäden bitten wir, unter Vorbehalt anzunehmen und uns innerhalb von 48 Stunden nach Erhalt zu informieren.</p>
+        </article>
+
+        <!-- §8 Haftung -->
+        <article class="legal-card">
+          <span class="legal-card__number">§8</span>
+          <h2>Haftungsbeschränkung</h2>
+          <p>Der Anbieter haftet unbeschränkt für Schäden aus der Verletzung des Lebens, des Körpers oder der Gesundheit, für vorsätzlich oder grob fahrlässig verursachte Schäden sowie nach dem Produkthaftungsgesetz.</p>
+          <p>Im Übrigen ist die Haftung des Anbieters für leicht fahrlässige Pflichtverletzungen ausgeschlossen, sofern diese keine vertragswesentlichen Pflichten (Kardinalpflichten) betreffen.</p>
+        </article>
+
+        <!-- §9 Datenschutz -->
+        <article class="legal-card">
+          <span class="legal-card__number">§9</span>
+          <h2>Datenschutz</h2>
+          <p>Die Erhebung und Verarbeitung personenbezogener Daten erfolgt ausschließlich nach Maßgabe unserer <a href="datenschutz.html" style="color:var(--clr-gold);">Datenschutzerklärung</a>, die Bestandteil dieser AGB ist.</p>
+        </article>
+
+        <!-- §10 Anwendbares Recht -->
+        <article class="legal-card">
+          <span class="legal-card__number">§10</span>
+          <h2>Anwendbares Recht &amp; Gerichtsstand</h2>
+          <p>Es gilt das Recht der Bundesrepublik Deutschland. Für Verbraucher innerhalb der EU gilt zudem das zwingende Verbraucherschutzrecht des Wohnsitzlandes des Kunden.</p>
+          <h3>Streitschlichtung</h3>
+          <p>Die Europäische Kommission stellt eine Plattform zur Online-Streitbeilegung (OS) bereit: <a href="https://ec.europa.eu/consumers/odr/" target="_blank" rel="noopener noreferrer" style="color:var(--clr-gold);">ec.europa.eu/consumers/odr</a></p>
+          <p>Wir sind nicht bereit oder verpflichtet, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.</p>
+          <h3>Salvatorische Klausel</h3>
+          <p>Sollten einzelne Bestimmungen dieser AGB unwirksam sein oder werden, berührt dies die Wirksamkeit der übrigen Bestimmungen nicht.</p>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer" role="contentinfo">
+  <div class="footer-geo-band"></div>
+  <div class="container">
+    <div class="footer-main">
+      <div class="footer-brand">
+        <p class="footer-brand__name">مكتبة المنصورة</p>
+        <p class="footer-brand__tagline">Islamische Bücher, Düfte &amp; mehr — für die muslimische Gemeinschaft in Deutschland.</p>
+        <div class="footer-social">
+          <a href="https://instagram.com/al_mansurah.de" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>
+          <a href="https://tiktok.com/@al.mansurah.de" target="_blank" rel="noopener noreferrer" aria-label="TikTok"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.56a8.28 8.28 0 004.84 1.54V6.64a4.85 4.85 0 01-1.07.05z"/></svg></a>
+          <a href="mailto:maktaba.al-mansurah@outlook.com" aria-label="E-Mail"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg></a>
+        </div>
+      </div>
+      <div><p class="footer-col-title">Shop</p><ul class="footer-nav-list"><li><a href="shop.html?cat=buecher">Islamische Bücher</a></li><li><a href="shop.html?cat=kleidung">Kleidung &amp; Tradition</a></li><li><a href="shop.html?cat=duefte">Düfte &amp; Sunnah</a></li></ul></div>
+      <div><p class="footer-col-title">Seiten</p><ul class="footer-nav-list"><li><a href="index.html">Startseite</a></li><li><a href="about.html">Über uns</a></li><li><a href="contact.html">Kontakt</a></li><li><a href="faq.html">FAQ</a></li><li><a href="versand.html">Versand</a></li></ul></div>
+      <div><p class="footer-col-title">Rechtliches</p><ul class="footer-nav-list"><li><a href="impressum.html">Impressum</a></li><li><a href="datenschutz.html">Datenschutz</a></li><li><a href="agb.html">AGB</a></li><li><a href="widerruf.html">Widerruf</a></li></ul></div>
+      <div><p class="footer-col-title">Kontakt</p><div class="footer-contact-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg><span><a href="mailto:maktaba.al-mansurah@outlook.com">maktaba.al-mansurah@outlook.com</a></span></div><div class="footer-contact-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18Z"/><path d="M12 7v5l3 3"/></svg><span>Mo–Sa: 9:00–18:00 Uhr</span></div></div>
+    </div>
+  </div>
+  <div class="footer-geo-band" style="opacity:0.3;"></div>
+  <div class="container"><div class="footer-legal"><p>© 2026 Maktabah Al Mansurah. Alle Rechte vorbehalten.</p><div class="footer-legal-links"><a href="impressum.html">Impressum</a><a href="datenschutz.html">Datenschutz</a><a href="agb.html">AGB</a><a href="widerruf.html">Widerruf</a><a href="versand.html">Versand</a><a href="faq.html">FAQ</a></div></div></div>
+</footer>
+
+<script src="assets/js/animations.js"></script>
+<script src="assets/js/shop.js"></script>
+<script src="assets/js/cart.js"></script>
+<script src="assets/js/main.js"></script>
+</body>
+</html>

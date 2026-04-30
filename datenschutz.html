@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Datenschutzerklärung von Maktabah Al Mansurah — DSGVO-konforme Informationen zur Verarbeitung personenbezogener Daten.">
+  <title>Datenschutzerklärung — Maktabah Al Mansurah</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%230D1A0F'/><polygon points='16,3 17.6,11.4 24.5,7.5 20.6,14.4 29,16 20.6,17.6 24.5,24.5 17.6,20.6 16,29 14.4,20.6 7.5,24.5 11.4,17.6 3,16 11.4,14.4 7.5,7.5 14.4,11.4' fill='none' stroke='%23C8973A' stroke-width='0.8'/></svg>">
+  <link rel="stylesheet" href="assets/css/base.css">
+  <link rel="stylesheet" href="assets/css/animations.css">
+  <link rel="stylesheet" href="assets/css/patterns.css">
+  <link rel="stylesheet" href="assets/css/layout.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+  <style>
+    .legal-section { padding-block: var(--sp-7); }
+    .legal-grid { display: grid; grid-template-columns: 1fr; gap: var(--sp-4); max-width: 860px; margin-inline: auto; }
+    .legal-card {
+      background: var(--clr-ink-light);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      padding: var(--sp-4) var(--sp-5);
+      position: relative;
+      overflow: hidden;
+      transition: border-color var(--dur-mid) var(--ease-out), box-shadow var(--dur-mid) var(--ease-out);
+    }
+    .legal-card::before { content: ''; position: absolute; top: 0; left: 0; width: 3px; height: 100%; background: linear-gradient(180deg, var(--clr-gold), var(--clr-gold-light)); border-radius: 0 2px 2px 0; }
+    .legal-card:hover { border-color: var(--border-mid); box-shadow: var(--shadow-glow); }
+    .legal-card__number { font-family: var(--font-display); font-size: var(--text-xs); font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--clr-gold); margin-bottom: var(--sp-1); display: block; }
+    .legal-card h2 { font-size: var(--text-lg); color: var(--clr-text-primary); margin-bottom: var(--sp-3); padding-bottom: var(--sp-2); border-bottom: 1px solid var(--border-subtle); }
+    .legal-card h3 { font-size: var(--text-base); font-family: var(--font-body); font-weight: 600; color: var(--clr-gold-light); margin-top: var(--sp-3); margin-bottom: var(--sp-1); }
+    .legal-card p { color: var(--clr-text-mid); line-height: 1.8; margin-bottom: var(--sp-2); }
+    .legal-card p:last-child { margin-bottom: 0; }
+    .legal-card ul { list-style: none; padding: 0; margin-bottom: var(--sp-2); }
+    .legal-card ul li { color: var(--clr-text-mid); padding: 0.35rem 0 0.35rem 1.4rem; position: relative; line-height: 1.7; }
+    .legal-card ul li::before { content: '–'; position: absolute; left: 0; color: var(--clr-gold-muted); font-weight: 700; }
+    .info-box { background: rgba(200, 151, 58, 0.07); border: 1px solid var(--border-mid); border-radius: var(--radius-md); padding: var(--sp-3) var(--sp-4); margin-block: var(--sp-3); }
+    .info-box p { color: var(--clr-gold-light) !important; font-weight: 500; font-size: var(--text-sm); margin: 0; }
+    .rights-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--sp-2); margin-top: var(--sp-3); }
+    @media (max-width: 580px) { .rights-grid { grid-template-columns: 1fr; } }
+    .right-item { background: rgba(200, 151, 58, 0.05); border: 1px solid var(--border-subtle); border-radius: var(--radius-md); padding: var(--sp-2) var(--sp-3); }
+    .right-item__title { font-size: var(--text-sm); font-weight: 600; color: var(--clr-text-primary); margin-bottom: 4px; display: flex; align-items: center; gap: 0.5rem; }
+    .right-item__title svg { color: var(--clr-gold); flex-shrink: 0; }
+    .right-item p { font-size: var(--text-xs); color: var(--clr-text-muted); line-height: 1.6; margin: 0; }
+    .page-hero__ornament { position: absolute; top: 50%; right: var(--sp-6); transform: translateY(-50%); font-family: var(--font-arabic); font-size: 6rem; color: rgba(200, 151, 58, 0.06); pointer-events: none; user-select: none; direction: rtl; line-height: 1; }
+    @media (max-width: 640px) { .page-hero__ornament { display: none; } .legal-card { padding: var(--sp-3); } }
+  </style>
+</head>
+<body>
+
+<div id="scrollProgress" aria-hidden="true"></div>
+<header class="site-header" id="siteHeader" role="banner">
+  <div class="header-inner">
+    <a href="index.html" class="brand" aria-label="Maktabah Al Mansurah – Startseite">
+      <span class="brand-logo-wrap"><img src="MAM.logo.png" alt="" class="brand-logo" aria-hidden="true"></span>
+      <span class="brand-text">
+        <span class="brand-arabic brand-shimmer">مكتبة المنصورة</span>
+        <span class="brand-latin">Maktabah Al Mansurah</span>
+      </span>
+    </a>
+    <nav class="nav-primary" role="navigation"><a href="index.html">Startseite</a><a href="shop.html">Shop</a><a href="about.html">Über uns</a><a href="contact.html">Kontakt</a></nav>
+    <div class="header-actions">
+      <button class="cart-trigger" id="cartTrigger" aria-label="Warenkorb öffnen"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 0 0-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 0 0-16.536-1.84M7.5 14.25 5.106 5.272M6 20.25a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Zm12.75 0a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Z"/></svg><span class="cart-badge hidden" id="cartBadge">0</span></button>
+      <button class="nav-toggle" id="navToggle" aria-label="Menü öffnen" aria-expanded="false"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+<div class="mobile-nav-overlay" id="menuOverlay" aria-hidden="true"></div>
+<nav class="mobile-nav" id="mobileNav" aria-hidden="true">
+  <div class="mobile-nav__header"><a href="index.html" class="brand"><span class="brand-arabic" style="font-size:1rem;color:var(--clr-gold-light);">مكتبة المنصورة</span></a><button class="mobile-nav__close" id="mobileNavClose"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 18 18 6M6 6l12 12"/></svg></button></div>
+  <div class="mobile-nav__links"><a href="index.html">Startseite</a><a href="shop.html">Shop</a><a href="about.html">Über uns</a><a href="contact.html">Kontakt</a></div>
+  <div class="mobile-nav__footer"><p class="mobile-nav__arabic">بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ</p></div>
+</nav>
+<div class="cart-overlay" id="cartOverlay" aria-hidden="true"></div>
+<aside class="cart-drawer" id="cartDrawer" aria-hidden="true">
+  <div class="cart-drawer__header"><h2 class="cart-drawer__title">Warenkorb</h2><button class="cart-drawer__close" id="cartClose"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 18 18 6M6 6l12 12"/></svg></button></div>
+  <div class="cart-drawer__items"></div>
+  <div class="cart-drawer__footer"><div class="cart-drawer__subtotal"><span>Zwischensumme</span><strong class="cart-drawer__total-amount">0,00 €</strong></div><a href="checkout.html" class="btn btn-primary btn-full">Zur Kasse</a><p class="cart-drawer__note">Versandkosten werden an der Kasse berechnet.</p></div>
+</aside>
+
+<main id="main-content">
+
+  <section class="page-hero" aria-labelledby="page-hero-title">
+    <div class="page-hero__bg"></div>
+    <div class="page-hero__ornament" aria-hidden="true">خصوصية</div>
+    <div class="container page-hero__content">
+      <span class="eyebrow">Rechtliche Information</span>
+      <h1 id="page-hero-title">Datenschutzerklärung</h1>
+      <p style="color:var(--clr-text-muted);margin-top:var(--sp-2);max-width:560px;font-size:var(--text-sm);">
+        Informationen zur Verarbeitung Ihrer personenbezogenen Daten gemäß DSGVO (EU) 2016/679.
+      </p>
+    </div>
+  </section>
+
+  <section class="legal-section" aria-label="Datenschutzerklärung">
+    <div class="container">
+      <div class="legal-grid">
+
+        <!-- 1. Verantwortliche Stelle -->
+        <article class="legal-card">
+          <span class="legal-card__number">Art. 13 DSGVO</span>
+          <h2>Verantwortliche Stelle</h2>
+          <p>Verantwortlicher im Sinne der Datenschutz-Grundverordnung (DSGVO) und anderer nationaler Datenschutzgesetze sowie sonstiger datenschutzrechtlicher Bestimmungen ist:</p>
+          <div class="info-box">
+            <p>
+              <strong>Metehan Al Mansurah</strong><br>
+              [Straße und Hausnummer], [PLZ] [Ort]<br>
+              Deutschland<br>
+              E-Mail: <a href="mailto:maktaba.al-mansurah@outlook.com" style="color:var(--clr-gold);">maktaba.al-mansurah@outlook.com</a>
+            </p>
+          </div>
+          <p>Stand dieser Datenschutzerklärung: April 2026</p>
+        </article>
+
+        <!-- 2. Allgemeine Datenverarbeitung -->
+        <article class="legal-card">
+          <span class="legal-card__number">Abschnitt 01</span>
+          <h2>Allgemeine Hinweise zur Datenverarbeitung</h2>
+          <h3>Umfang der Verarbeitung</h3>
+          <p>Wir verarbeiten personenbezogene Daten unserer Nutzer grundsätzlich nur, soweit dies zur Bereitstellung einer funktionsfähigen Website sowie unserer Inhalte und Leistungen erforderlich ist. Die Verarbeitung personenbezogener Daten unserer Nutzer erfolgt regelmäßig nur nach Einwilligung des Nutzers oder wenn eine sonstige Rechtsgrundlage dies erlaubt.</p>
+          <h3>Rechtsgrundlagen</h3>
+          <ul>
+            <li>Art. 6 Abs. 1 lit. a DSGVO — Einwilligung der betroffenen Person</li>
+            <li>Art. 6 Abs. 1 lit. b DSGVO — Vertragserfüllung oder vorvertragliche Maßnahmen</li>
+            <li>Art. 6 Abs. 1 lit. c DSGVO — Rechtliche Verpflichtung</li>
+            <li>Art. 6 Abs. 1 lit. f DSGVO — Berechtigtes Interesse</li>
+          </ul>
+          <h3>Datenlöschung und Speicherdauer</h3>
+          <p>Die personenbezogenen Daten der betroffenen Person werden gelöscht oder gesperrt, sobald der Zweck der Speicherung entfällt. Eine Speicherung kann darüber hinaus erfolgen, wenn dies durch den europäischen oder nationalen Gesetzgeber in unionsrechtlichen Verordnungen, Gesetzen oder sonstigen Vorschriften vorgesehen wurde. Eine Sperrung oder Löschung der Daten erfolgt auch dann, wenn eine durch die genannten Normen vorgeschriebene Speicherfrist abläuft, es sei denn, dass eine Erforderlichkeit zur weiteren Speicherung der Daten für einen Vertragsabschluss oder eine Vertragserfüllung besteht.</p>
+        </article>
+
+        <!-- 3. Hosting / Server -->
+        <article class="legal-card">
+          <span class="legal-card__number">Abschnitt 02</span>
+          <h2>Hosting &amp; Server-Log-Dateien</h2>
+          <h3>Hosting-Anbieter</h3>
+          <p>Diese Website wird auf den Servern von <strong>Vercel Inc.</strong> (340 Pine Street, Suite 701, San Francisco, CA 94104, USA) gehostet. Vercel ist ein Auftragsverarbeiter gemäß Art. 28 DSGVO. Weitere Informationen finden Sie unter <a href="https://vercel.com/legal/privacy-policy" target="_blank" rel="noopener noreferrer" style="color:var(--clr-gold);">vercel.com/legal/privacy-policy</a>.</p>
+          <h3>Server-Log-Dateien</h3>
+          <p>Der Hosting-Anbieter erhebt und speichert automatisch Informationen in sogenannten Server-Log-Dateien, die Ihr Browser automatisch übermittelt. Dies sind:</p>
+          <ul>
+            <li>Browsertyp und -version</li>
+            <li>Verwendetes Betriebssystem</li>
+            <li>Referrer-URL (zuvor besuchte Seite)</li>
+            <li>Hostname des zugreifenden Rechners</li>
+            <li>Uhrzeit der Serveranfrage</li>
+            <li>IP-Adresse (anonymisiert)</li>
+          </ul>
+          <p>Diese Daten werden nicht mit anderen Datenquellen zusammengeführt. Rechtsgrundlage: Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse an der technischen Bereitstellung der Website).</p>
+        </article>
+
+        <!-- 4. Kontaktformular / E-Mail -->
+        <article class="legal-card">
+          <span class="legal-card__number">Abschnitt 03</span>
+          <h2>Kontaktaufnahme &amp; Bestellabwicklung</h2>
+          <h3>Kontaktformular</h3>
+          <p>Wenn Sie uns über das Kontaktformular oder per E-Mail kontaktieren, werden die von Ihnen angegebenen Daten (Name, E-Mail-Adresse, Nachricht) zur Bearbeitung Ihrer Anfrage gespeichert. Diese Daten geben wir nicht ohne Ihre Einwilligung weiter. Rechtsgrundlage: Art. 6 Abs. 1 lit. b oder f DSGVO.</p>
+          <h3>Bestelldaten</h3>
+          <p>Bei einer Bestellung verarbeiten wir folgende Daten zur Vertragserfüllung:</p>
+          <ul>
+            <li>Name, Anschrift, E-Mail-Adresse, Telefonnummer</li>
+            <li>Zahlungsdaten (je nach Zahlungsanbieter)</li>
+            <li>Bestellte Produkte und Lieferdaten</li>
+          </ul>
+          <p>Rechtsgrundlage: Art. 6 Abs. 1 lit. b DSGVO. Bestelldaten werden gemäß gesetzlicher Aufbewahrungsfristen (§ 147 AO, § 257 HGB) bis zu 10 Jahre aufbewahrt.</p>
+          <h3>Zahlungsdienstleister</h3>
+          <p>Wir setzen externe Zahlungsdienstleister ein (z.&thinsp;B. PayPal, Klarna, Stripe). Diese verarbeiten Ihre Zahlungsdaten in eigener Verantwortung. Bitte lesen Sie deren Datenschutzerklärungen.</p>
+        </article>
+
+        <!-- 5. Newsletter -->
+        <article class="legal-card">
+          <span class="legal-card__number">Abschnitt 04</span>
+          <h2>Newsletter</h2>
+          <p>Mit Ihrer Einwilligung können Sie unseren Newsletter abonnieren, der Sie über neue Produkte, Angebote und islamische Inhalte informiert.</p>
+          <h3>Double-Opt-in &amp; Protokollierung</h3>
+          <p>Die Anmeldung zu unserem Newsletter erfolgt nach dem Double-Opt-in-Verfahren: Nach Ihrer Anmeldung erhalten Sie eine Bestätigungs-E-Mail. Erst nach Bestätigung wird Ihre E-Mail-Adresse in unsere Newsletterliste aufgenommen. Rechtsgrundlage: Art. 6 Abs. 1 lit. a DSGVO.</p>
+          <h3>Abmeldung</h3>
+          <p>Sie können den Newsletter jederzeit abbestellen. Einen Abmeldelink finden Sie in jeder Newsletter-E-Mail. Alternativ können Sie sich per E-Mail an <a href="mailto:maktaba.al-mansurah@outlook.com" style="color:var(--clr-gold);">maktaba.al-mansurah@outlook.com</a> abmelden.</p>
+        </article>
+
+        <!-- 6. Cookies -->
+        <article class="legal-card">
+          <span class="legal-card__number">Abschnitt 05</span>
+          <h2>Cookies &amp; lokaler Speicher</h2>
+          <p>Unsere Website verwendet Cookies und den lokalen Speicher (localStorage) des Browsers, um bestimmte Funktionen bereitzustellen. Es werden ausschließlich technisch notwendige Cookies eingesetzt.</p>
+          <h3>Technisch notwendige Daten</h3>
+          <ul>
+            <li><strong>Warenkorb</strong> (localStorage: <code>mam_cart_v2</code>) — Speichert Ihre Warenkorbinhalte lokal in Ihrem Browser. Kein Server-Upload.</li>
+            <li><strong>Wunschliste</strong> (localStorage: <code>mam_wishlist</code>) — Speichert Ihre gemerkten Produkte lokal.</li>
+          </ul>
+          <p>Diese Daten verbleiben ausschließlich in Ihrem Browser und werden nicht an uns übertragen. Sie können diese Daten jederzeit über die Einstellungen Ihres Browsers löschen. Rechtsgrundlage: Art. 6 Abs. 1 lit. f DSGVO.</p>
+          <h3>Keine Tracking-Cookies</h3>
+          <p>Wir setzen keine Analyse-, Werbe- oder Social-Media-Tracking-Cookies ein.</p>
+        </article>
+
+        <!-- 7. Ihre Rechte -->
+        <article class="legal-card">
+          <span class="legal-card__number">Abschnitt 06</span>
+          <h2>Ihre Rechte als betroffene Person</h2>
+          <p>Sie haben gemäß DSGVO folgende Rechte gegenüber uns hinsichtlich der Sie betreffenden personenbezogenen Daten:</p>
+
+          <div class="rights-grid">
+            <div class="right-item">
+              <p class="right-item__title">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+                Auskunft (Art. 15 DSGVO)
+              </p>
+              <p>Recht auf Bestätigung, ob und welche Daten wir verarbeiten.</p>
+            </div>
+            <div class="right-item">
+              <p class="right-item__title">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+                Berichtigung (Art. 16 DSGVO)
+              </p>
+              <p>Recht auf Berichtigung unrichtiger Daten.</p>
+            </div>
+            <div class="right-item">
+              <p class="right-item__title">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2"/></svg>
+                Löschung (Art. 17 DSGVO)
+              </p>
+              <p>Recht auf Löschung Ihrer Daten, sofern keine Aufbewahrungspflicht besteht.</p>
+            </div>
+            <div class="right-item">
+              <p class="right-item__title">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                Einschränkung (Art. 18 DSGVO)
+              </p>
+              <p>Recht auf Einschränkung der Verarbeitung.</p>
+            </div>
+            <div class="right-item">
+              <p class="right-item__title">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+                Datenübertragbarkeit (Art. 20 DSGVO)
+              </p>
+              <p>Recht auf Erhalt Ihrer Daten in maschinenlesbarem Format.</p>
+            </div>
+            <div class="right-item">
+              <p class="right-item__title">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>
+                Widerspruch (Art. 21 DSGVO)
+              </p>
+              <p>Recht auf Widerspruch gegen die Verarbeitung Ihrer Daten.</p>
+            </div>
+          </div>
+
+          <p style="margin-top:var(--sp-3);">Zur Ausübung Ihrer Rechte wenden Sie sich an: <a href="mailto:maktaba.al-mansurah@outlook.com" style="color:var(--clr-gold);">maktaba.al-mansurah@outlook.com</a></p>
+          <h3>Beschwerderecht</h3>
+          <p>Sie haben das Recht, sich bei einer Datenschutz-Aufsichtsbehörde über die Verarbeitung Ihrer personenbezogenen Daten durch uns zu beschweren. Die zuständige Aufsichtsbehörde richtet sich nach Ihrem Bundesland.</p>
+        </article>
+
+        <!-- 8. Datensicherheit -->
+        <article class="legal-card">
+          <span class="legal-card__number">Abschnitt 07</span>
+          <h2>Datensicherheit</h2>
+          <p>Diese Website nutzt aus Sicherheitsgründen und zum Schutz der Übertragung vertraulicher Inhalte, wie zum Beispiel Bestellungen oder Anfragen, die Sie an uns senden, eine SSL- bzw. TLS-Verschlüsselung. Eine verschlüsselte Verbindung erkennen Sie daran, dass die Adresszeile des Browsers von „http://" auf „https://" wechselt und an dem Schloss-Symbol in Ihrer Browserzeile.</p>
+          <p>Wenn die SSL- bzw. TLS-Verschlüsselung aktiviert ist, können die Daten, die Sie an uns übermitteln, nicht von Dritten mitgelesen werden.</p>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer" role="contentinfo">
+  <div class="footer-geo-band"></div>
+  <div class="container">
+    <div class="footer-main">
+      <div class="footer-brand">
+        <p class="footer-brand__name">مكتبة المنصورة</p>
+        <p class="footer-brand__tagline">Islamische Bücher, Düfte &amp; mehr — für die muslimische Gemeinschaft in Deutschland.</p>
+        <div class="footer-social">
+          <a href="https://instagram.com/al_mansurah.de" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>
+          <a href="https://tiktok.com/@al.mansurah.de" target="_blank" rel="noopener noreferrer" aria-label="TikTok"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.56a8.28 8.28 0 004.84 1.54V6.64a4.85 4.85 0 01-1.07.05z"/></svg></a>
+          <a href="mailto:maktaba.al-mansurah@outlook.com" aria-label="E-Mail"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg></a>
+        </div>
+      </div>
+      <div><p class="footer-col-title">Shop</p><ul class="footer-nav-list"><li><a href="shop.html?cat=buecher">Islamische Bücher</a></li><li><a href="shop.html?cat=kleidung">Kleidung &amp; Tradition</a></li><li><a href="shop.html?cat=duefte">Düfte &amp; Sunnah</a></li></ul></div>
+      <div><p class="footer-col-title">Seiten</p><ul class="footer-nav-list"><li><a href="index.html">Startseite</a></li><li><a href="about.html">Über uns</a></li><li><a href="contact.html">Kontakt</a></li><li><a href="faq.html">FAQ</a></li><li><a href="versand.html">Versand</a></li></ul></div>
+      <div><p class="footer-col-title">Rechtliches</p><ul class="footer-nav-list"><li><a href="impressum.html">Impressum</a></li><li><a href="datenschutz.html">Datenschutz</a></li><li><a href="agb.html">AGB</a></li><li><a href="widerruf.html">Widerruf</a></li></ul></div>
+      <div><p class="footer-col-title">Kontakt</p><div class="footer-contact-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg><span><a href="mailto:maktaba.al-mansurah@outlook.com">maktaba.al-mansurah@outlook.com</a></span></div><div class="footer-contact-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18Z"/><path d="M12 7v5l3 3"/></svg><span>Mo–Sa: 9:00–18:00 Uhr</span></div></div>
+    </div>
+  </div>
+  <div class="footer-geo-band" style="opacity:0.3;"></div>
+  <div class="container"><div class="footer-legal"><p>© 2026 Maktabah Al Mansurah. Alle Rechte vorbehalten.</p><div class="footer-legal-links"><a href="impressum.html">Impressum</a><a href="datenschutz.html">Datenschutz</a><a href="agb.html">AGB</a><a href="widerruf.html">Widerruf</a><a href="versand.html">Versand</a><a href="faq.html">FAQ</a></div></div></div>
+</footer>
+
+<script src="assets/js/animations.js"></script>
+<script src="assets/js/shop.js"></script>
+<script src="assets/js/cart.js"></script>
+<script src="assets/js/main.js"></script>
+</body>
+</html>

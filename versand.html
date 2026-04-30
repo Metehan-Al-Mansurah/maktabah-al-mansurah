@@ -1,0 +1,746 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Versandinformationen für Maktabah Al Mansurah — Lieferzeiten, Versandkosten, Liefergebiete und Sendungsverfolgung für Ihren islamischen Online-Shop.">
+  <title>Versand & Lieferung — Maktabah Al Mansurah</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%230D1A0F'/><polygon points='16,3 17.6,11.4 24.5,7.5 20.6,14.4 29,16 20.6,17.6 24.5,24.5 17.6,20.6 16,29 14.4,20.6 7.5,24.5 11.4,17.6 3,16 11.4,14.4 7.5,7.5 14.4,11.4' fill='none' stroke='%23C8973A' stroke-width='0.8'/></svg>">
+  <link rel="stylesheet" href="assets/css/base.css">
+  <link rel="stylesheet" href="assets/css/animations.css">
+  <link rel="stylesheet" href="assets/css/patterns.css">
+  <link rel="stylesheet" href="assets/css/layout.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+  <style>
+    /* ── Versand page styles ── */
+    .versand-section {
+      padding-block: var(--sp-7);
+    }
+    .versand-content {
+      max-width: 960px;
+      margin-inline: auto;
+    }
+
+    /* ── Info Cards ── */
+    .info-cards-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--sp-3);
+      margin-bottom: var(--sp-6);
+    }
+    @media (max-width: 720px) {
+      .info-cards-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 960px) and (min-width: 721px) {
+      .info-cards-grid { grid-template-columns: repeat(3, 1fr); }
+    }
+
+    .stat-card {
+      background: var(--clr-ink-light);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      padding: var(--sp-4) var(--sp-3);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      transition: border-color var(--dur-mid) var(--ease-out),
+                  transform var(--dur-mid) var(--ease-out),
+                  box-shadow var(--dur-mid) var(--ease-out);
+    }
+    .stat-card::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--clr-gold), transparent);
+      opacity: 0;
+      transition: opacity var(--dur-mid) ease;
+    }
+    .stat-card:hover {
+      border-color: var(--border-mid);
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-glow);
+    }
+    .stat-card:hover::after { opacity: 1; }
+    .stat-card__icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      background: rgba(200, 151, 58, 0.10);
+      border: 1px solid var(--border-subtle);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto var(--sp-2);
+      color: var(--clr-gold);
+    }
+    .stat-card__value {
+      font-family: var(--font-display);
+      font-size: var(--text-xl);
+      font-weight: 700;
+      color: var(--clr-gold-light);
+      display: block;
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+    .stat-card__label {
+      font-size: var(--text-xs);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--clr-text-muted);
+    }
+
+    /* ── Section Blocks ── */
+    .versand-block {
+      background: var(--clr-ink-light);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      padding: var(--sp-4) var(--sp-5);
+      margin-bottom: var(--sp-4);
+      position: relative;
+      overflow: hidden;
+    }
+    .versand-block::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%;
+      height: 2px;
+      background: linear-gradient(90deg, var(--clr-gold), var(--clr-gold-light), transparent);
+    }
+    .versand-block__header {
+      display: flex;
+      align-items: center;
+      gap: var(--sp-2);
+      margin-bottom: var(--sp-4);
+      padding-bottom: var(--sp-3);
+      border-bottom: 1px solid var(--border-subtle);
+    }
+    .versand-block__icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      background: rgba(200, 151, 58, 0.10);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--clr-gold);
+      flex-shrink: 0;
+    }
+    .versand-block h2 {
+      font-size: var(--text-lg);
+      color: var(--clr-text-primary);
+      margin: 0;
+    }
+    .versand-block p {
+      color: var(--clr-text-mid);
+      line-height: 1.8;
+      margin-bottom: var(--sp-2);
+    }
+    .versand-block p:last-child { margin-bottom: 0; }
+
+    /* ── Versand Options Table ── */
+    .versand-table-wrap {
+      overflow-x: auto;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border-subtle);
+    }
+    .versand-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: var(--text-sm);
+    }
+    .versand-table thead tr {
+      background: var(--clr-ink-mid);
+    }
+    .versand-table th {
+      padding: 0.85rem 1.25rem;
+      text-align: left;
+      font-size: var(--text-xs);
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--clr-gold);
+      white-space: nowrap;
+    }
+    .versand-table td {
+      padding: 1rem 1.25rem;
+      color: var(--clr-text-mid);
+      border-top: 1px solid var(--border-subtle);
+      vertical-align: middle;
+    }
+    .versand-table tbody tr {
+      transition: background var(--dur-fast) ease;
+    }
+    .versand-table tbody tr:hover {
+      background: rgba(200, 151, 58, 0.04);
+    }
+    .versand-table td:first-child {
+      font-weight: 600;
+      color: var(--clr-text-primary);
+    }
+    .versand-table .price-cell {
+      color: var(--clr-gold-light);
+      font-weight: 700;
+      font-family: var(--font-display);
+      font-size: var(--text-base);
+    }
+    .badge {
+      display: inline-block;
+      padding: 2px 10px;
+      border-radius: 20px;
+      font-size: var(--text-xs);
+      font-weight: 600;
+      letter-spacing: 0.08em;
+    }
+    .badge--green {
+      background: rgba(0, 145, 66, 0.15);
+      color: var(--clr-emerald-glow);
+      border: 1px solid rgba(0, 145, 66, 0.25);
+    }
+    .badge--gold {
+      background: rgba(200, 151, 58, 0.12);
+      color: var(--clr-gold-light);
+      border: 1px solid var(--border-subtle);
+    }
+
+    /* ── Country Grid ── */
+    .country-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--sp-2);
+    }
+    @media (max-width: 640px) {
+      .country-grid { grid-template-columns: 1fr; }
+    }
+    .country-card {
+      background: var(--clr-ink-mid);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: var(--sp-3);
+      transition: border-color var(--dur-mid) ease, box-shadow var(--dur-mid) ease;
+    }
+    .country-card:hover {
+      border-color: var(--border-mid);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+    }
+    .country-card__flag {
+      font-size: 2rem;
+      margin-bottom: var(--sp-1);
+      display: block;
+    }
+    .country-card__name {
+      font-weight: 700;
+      color: var(--clr-text-primary);
+      font-size: var(--text-base);
+      margin-bottom: 4px;
+    }
+    .country-card__cost {
+      color: var(--clr-gold-light);
+      font-size: var(--text-sm);
+      font-weight: 600;
+    }
+    .country-card__note {
+      font-size: var(--text-xs);
+      color: var(--clr-text-muted);
+      margin-top: 4px;
+      line-height: 1.6;
+    }
+    .country-card__free {
+      color: var(--clr-emerald-glow);
+      font-size: var(--text-xs);
+      font-weight: 600;
+      margin-top: 4px;
+    }
+
+    /* ── Partner Logos ── */
+    .partner-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--sp-3);
+    }
+    .partner-card {
+      background: var(--clr-ink-mid);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: var(--sp-3) var(--sp-4);
+      display: flex;
+      align-items: center;
+      gap: var(--sp-2);
+      transition: border-color var(--dur-mid) ease;
+    }
+    .partner-card:hover { border-color: var(--border-mid); }
+    .partner-card__logo {
+      width: 48px;
+      height: 48px;
+      border-radius: 10px;
+      background: rgba(200, 151, 58, 0.10);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.6rem;
+      flex-shrink: 0;
+    }
+    .partner-card__name {
+      font-size: var(--text-md);
+      font-weight: 700;
+      color: var(--clr-text-primary);
+    }
+    .partner-card__desc {
+      font-size: var(--text-xs);
+      color: var(--clr-text-muted);
+      margin-top: 2px;
+    }
+
+    /* ── Step List ── */
+    .step-list {
+      counter-reset: steps;
+    }
+    .step-item {
+      display: flex;
+      gap: var(--sp-2);
+      align-items: flex-start;
+      padding: var(--sp-2) 0;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+    .step-item:last-child { border-bottom: none; }
+    .step-item__num {
+      counter-increment: steps;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: rgba(200, 151, 58, 0.12);
+      border: 1px solid var(--border-mid);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: var(--text-xs);
+      font-weight: 700;
+      color: var(--clr-gold);
+      flex-shrink: 0;
+    }
+    .step-item__text {
+      color: var(--clr-text-mid);
+      font-size: var(--text-sm);
+      line-height: 1.7;
+      padding-top: 4px;
+    }
+    .step-item__text strong {
+      color: var(--clr-text-primary);
+      font-weight: 600;
+    }
+
+    /* ── Alert box ── */
+    .alert-box {
+      display: flex;
+      gap: var(--sp-2);
+      align-items: flex-start;
+      background: rgba(200, 151, 58, 0.07);
+      border: 1px solid var(--border-mid);
+      border-radius: var(--radius-md);
+      padding: var(--sp-3) var(--sp-4);
+      margin-top: var(--sp-3);
+    }
+    .alert-box__icon {
+      color: var(--clr-gold);
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .alert-box p {
+      color: var(--clr-gold-light) !important;
+      font-size: var(--text-sm);
+      margin: 0 !important;
+      line-height: 1.7;
+    }
+
+    /* ── Intl section ── */
+    .intl-note {
+      background: var(--clr-ink-mid);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: var(--sp-3) var(--sp-4);
+      margin-top: var(--sp-3);
+    }
+    .intl-note p {
+      font-size: var(--text-sm);
+      color: var(--clr-text-muted);
+      margin: 0;
+    }
+
+    /* Page hero ornament */
+    .page-hero__ornament {
+      position: absolute;
+      top: 50%;
+      right: var(--sp-6);
+      transform: translateY(-50%);
+      font-size: 5rem;
+      opacity: 0.06;
+      pointer-events: none;
+      user-select: none;
+      color: var(--clr-gold);
+    }
+    @media (max-width: 640px) {
+      .page-hero__ornament { display: none; }
+      .versand-block { padding: var(--sp-3); }
+    }
+  </style>
+</head>
+<body>
+
+<div id="scrollProgress" aria-hidden="true"></div>
+<header class="site-header" id="siteHeader" role="banner">
+  <div class="header-inner">
+    <a href="index.html" class="brand" aria-label="Maktabah Al Mansurah – Startseite">
+      <span class="brand-logo-wrap"><img src="MAM.logo.png" alt="" class="brand-logo" aria-hidden="true"></span>
+      <span class="brand-text">
+        <span class="brand-arabic brand-shimmer">مكتبة المنصورة</span>
+        <span class="brand-latin">Maktabah Al Mansurah</span>
+      </span>
+    </a>
+    <nav class="nav-primary" role="navigation"><a href="index.html">Startseite</a><a href="shop.html">Shop</a><a href="about.html">Über uns</a><a href="contact.html">Kontakt</a></nav>
+    <div class="header-actions">
+      <button class="cart-trigger" id="cartTrigger" aria-label="Warenkorb öffnen"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 0 0-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 0 0-16.536-1.84M7.5 14.25 5.106 5.272M6 20.25a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Zm12.75 0a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Z"/></svg><span class="cart-badge hidden" id="cartBadge">0</span></button>
+      <button class="nav-toggle" id="navToggle" aria-label="Menü öffnen" aria-expanded="false"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+<div class="mobile-nav-overlay" id="menuOverlay" aria-hidden="true"></div>
+<nav class="mobile-nav" id="mobileNav" aria-hidden="true">
+  <div class="mobile-nav__header"><a href="index.html" class="brand"><span class="brand-arabic" style="font-size:1rem;color:var(--clr-gold-light);">مكتبة المنصورة</span></a><button class="mobile-nav__close" id="mobileNavClose"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 18 18 6M6 6l12 12"/></svg></button></div>
+  <div class="mobile-nav__links"><a href="index.html">Startseite</a><a href="shop.html">Shop</a><a href="about.html">Über uns</a><a href="contact.html">Kontakt</a></div>
+  <div class="mobile-nav__footer"><p class="mobile-nav__arabic">بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ</p></div>
+</nav>
+<div class="cart-overlay" id="cartOverlay" aria-hidden="true"></div>
+<aside class="cart-drawer" id="cartDrawer" aria-hidden="true">
+  <div class="cart-drawer__header"><h2 class="cart-drawer__title">Warenkorb</h2><button class="cart-drawer__close" id="cartClose"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 18 18 6M6 6l12 12"/></svg></button></div>
+  <div class="cart-drawer__items"></div>
+  <div class="cart-drawer__footer"><div class="cart-drawer__subtotal"><span>Zwischensumme</span><strong class="cart-drawer__total-amount">0,00 €</strong></div><a href="checkout.html" class="btn btn-primary btn-full">Zur Kasse</a><p class="cart-drawer__note">Versandkosten werden an der Kasse berechnet.</p></div>
+</aside>
+
+<main id="main-content">
+
+  <!-- Page Hero -->
+  <section class="page-hero" aria-labelledby="page-hero-title">
+    <div class="page-hero__bg"></div>
+    <div class="page-hero__ornament" aria-hidden="true">
+      <svg viewBox="0 0 80 60" fill="none" stroke="currentColor" stroke-width="1" width="120" height="90"><rect x="2" y="14" width="58" height="36" rx="4"/><path d="M2 26h58M18 14v36M44 14v36"/><path d="M64 20h12l4 10-4 10H64M68 30h8"/></svg>
+    </div>
+    <div class="container page-hero__content">
+      <span class="eyebrow">Lieferinformationen</span>
+      <h1 id="page-hero-title">Versand &amp; Lieferung</h1>
+      <p style="color:var(--clr-text-muted);margin-top:var(--sp-2);max-width:560px;font-size:var(--text-sm);">
+        Wir versenden Ihre Bestellung sorgfältig verpackt und zuverlässig — mit DHL und DPD nach Deutschland, Österreich und in die Schweiz.
+      </p>
+    </div>
+  </section>
+
+  <!-- Quick Stats -->
+  <section class="versand-section" style="padding-bottom:0;">
+    <div class="container versand-content">
+      <div class="info-cards-grid">
+        <div class="stat-card">
+          <div class="stat-card__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="22" height="22"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+          </div>
+          <span class="stat-card__value">1–2</span>
+          <span class="stat-card__label">Werktage Bearbeitung</span>
+        </div>
+        <div class="stat-card">
+          <div class="stat-card__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="22" height="22"><path d="M3 9h18M3 15h18M9 3v18M15 3v18" stroke-linecap="round"/></svg>
+          </div>
+          <span class="stat-card__value">3,99 €</span>
+          <span class="stat-card__label">Standardversand DE</span>
+        </div>
+        <div class="stat-card">
+          <div class="stat-card__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="22" height="22"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+          </div>
+          <span class="stat-card__value">50 €</span>
+          <span class="stat-card__label">Ab hier kostenlos DE</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Versand Content -->
+  <section class="versand-section">
+    <div class="container versand-content">
+
+      <!-- 1. Versandoptionen -->
+      <div class="versand-block">
+        <div class="versand-block__header">
+          <div class="versand-block__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="20" height="20"><path d="M5 17H3a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11a2 2 0 0 1 2 2v3M9 21H16M12 21H16M16 9h4l3 4v4h-7V9z"/><circle cx="7.5" cy="17.5" r="2.5"/><circle cx="18.5" cy="17.5" r="2.5"/></svg>
+          </div>
+          <h2>Versandoptionen</h2>
+        </div>
+
+        <div class="versand-table-wrap">
+          <table class="versand-table" aria-label="Versandoptionen und Preise">
+            <thead>
+              <tr>
+                <th scope="col">Versandart</th>
+                <th scope="col">Lieferzeit</th>
+                <th scope="col">Kosten</th>
+                <th scope="col">Hinweis</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Standardversand</td>
+                <td>3–5 Werktage</td>
+                <td class="price-cell">3,99 €</td>
+                <td><span class="badge badge--green">Kostenlos ab 50 €</span></td>
+              </tr>
+              <tr>
+                <td>Expressversand</td>
+                <td>1–2 Werktage</td>
+                <td class="price-cell">7,99 €</td>
+                <td><span class="badge badge--gold">Priorität</span></td>
+              </tr>
+              <tr>
+                <td>Österreich (Standard)</td>
+                <td>4–7 Werktage</td>
+                <td class="price-cell">6,99 €</td>
+                <td><span class="badge badge--green">Kostenlos ab 70 €</span></td>
+              </tr>
+              <tr>
+                <td>Schweiz (Standard)</td>
+                <td>5–8 Werktage</td>
+                <td class="price-cell">9,99 €</td>
+                <td><span class="badge badge--gold">inkl. Zollpauschale</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="alert-box">
+          <div class="alert-box__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="20" height="20"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>
+          </div>
+          <p>Alle angegebenen Lieferzeiten sind Werktage (Mo–Sa) und beginnen ab dem Tag der Versandbestätigung, nicht ab dem Bestelldatum.</p>
+        </div>
+      </div>
+
+      <!-- 2. Liefergebiete -->
+      <div class="versand-block">
+        <div class="versand-block__header">
+          <div class="versand-block__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="20" height="20"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+          </div>
+          <h2>Liefergebiete</h2>
+        </div>
+
+        <p>Wir liefern derzeit in folgende Länder. Die Versandkosten werden automatisch im Warenkorb berechnet.</p>
+
+        <div class="country-grid">
+          <div class="country-card">
+            <span class="country-card__flag">🇩🇪</span>
+            <div class="country-card__name">Deutschland</div>
+            <div class="country-card__cost">3,99 € Standardversand</div>
+            <div class="country-card__free">Kostenlos ab 50 €</div>
+            <div class="country-card__note">Express: 7,99 € | 1–2 Werktage</div>
+          </div>
+          <div class="country-card">
+            <span class="country-card__flag">🇦🇹</span>
+            <div class="country-card__name">Österreich</div>
+            <div class="country-card__cost">6,99 € Standardversand</div>
+            <div class="country-card__free">Kostenlos ab 70 €</div>
+            <div class="country-card__note">4–7 Werktage | EU-Paketversand</div>
+          </div>
+          <div class="country-card">
+            <span class="country-card__flag">🇨🇭</span>
+            <div class="country-card__name">Schweiz</div>
+            <div class="country-card__cost">9,99 € inkl. Zoll</div>
+            <div class="country-card__note">5–8 Werktage | Zollanmeldung inklusive | ggf. zusätzliche Einfuhrsteuern möglich</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 3. Bearbeitungszeit -->
+      <div class="versand-block">
+        <div class="versand-block__header">
+          <div class="versand-block__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="20" height="20"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l3 3"/></svg>
+          </div>
+          <h2>Bearbeitungszeit</h2>
+        </div>
+
+        <p>Nach Eingang Ihrer Bestellung und Zahlungsbestätigung benötigen wir in der Regel <strong style="color:var(--clr-gold-light);">1–2 Werktage</strong> zur Bearbeitung und Verpackung. Wir arbeiten Montag bis Samstag (ausgenommen gesetzliche Feiertage).</p>
+
+        <div class="step-list" role="list">
+          <div class="step-item" role="listitem">
+            <div class="step-item__num">1</div>
+            <div class="step-item__text"><strong>Bestelleingang & Zahlungsbestätigung</strong> — Sie erhalten umgehend eine Bestätigungs-E-Mail mit Ihrer Bestellnummer.</div>
+          </div>
+          <div class="step-item" role="listitem">
+            <div class="step-item__num">2</div>
+            <div class="step-item__text"><strong>Kommissionierung & Verpackung</strong> — Wir prüfen Ihre Bestellung und verpacken die Waren sorgfältig (1–2 Werktage).</div>
+          </div>
+          <div class="step-item" role="listitem">
+            <div class="step-item__num">3</div>
+            <div class="step-item__text"><strong>Übergabe an den Versanddienstleister</strong> — Sie erhalten eine Versandbestätigung mit Ihrer Sendungsnummer per E-Mail.</div>
+          </div>
+          <div class="step-item" role="listitem">
+            <div class="step-item__num">4</div>
+            <div class="step-item__text"><strong>Zustellung</strong> — Je nach gewählter Versandoption trifft Ihr Paket innerhalb von 3–5 Werktagen bei Ihnen ein.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 4. Versandpartner -->
+      <div class="versand-block">
+        <div class="versand-block__header">
+          <div class="versand-block__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="20" height="20"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          </div>
+          <h2>Versandpartner</h2>
+        </div>
+
+        <p>Wir arbeiten mit zuverlässigen Versanddienstleistern zusammen, um eine sichere und pünktliche Lieferung zu gewährleisten.</p>
+
+        <div class="partner-grid">
+          <div class="partner-card">
+            <div class="partner-card__logo">📦</div>
+            <div>
+              <div class="partner-card__name">DHL Paket</div>
+              <div class="partner-card__desc">Unser Hauptversandpartner für Deutschland und internationale Lieferungen. Zuverlässig und flächendeckend.</div>
+            </div>
+          </div>
+          <div class="partner-card">
+            <div class="partner-card__logo">🚚</div>
+            <div>
+              <div class="partner-card__name">DPD</div>
+              <div class="partner-card__desc">Alternativpartner für Expresslieferungen und bei erhöhtem Bestellaufkommen. Flexibel und schnell.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 5. Sendungsverfolgung -->
+      <div class="versand-block">
+        <div class="versand-block__header">
+          <div class="versand-block__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="20" height="20"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          </div>
+          <h2>Sendungsverfolgung</h2>
+        </div>
+
+        <p>Sobald Ihre Bestellung versendet wurde, erhalten Sie eine Versandbestätigung per E-Mail. Diese enthält:</p>
+
+        <ul style="list-style:none;padding:0;margin-bottom:var(--sp-3);">
+          <li style="display:flex;align-items:flex-start;gap:0.75rem;padding:0.4rem 0;color:var(--clr-text-mid);font-size:var(--text-sm);">
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16" style="color:var(--clr-gold);flex-shrink:0;margin-top:3px;"><path d="M2 8l4 4 8-8"/></svg>
+            Ihre persönliche Tracking-Nummer
+          </li>
+          <li style="display:flex;align-items:flex-start;gap:0.75rem;padding:0.4rem 0;color:var(--clr-text-mid);font-size:var(--text-sm);">
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16" style="color:var(--clr-gold);flex-shrink:0;margin-top:3px;"><path d="M2 8l4 4 8-8"/></svg>
+            Einen direkten Link zum Tracking-Portal des Versanddienstleisters
+          </li>
+          <li style="display:flex;align-items:flex-start;gap:0.75rem;padding:0.4rem 0;color:var(--clr-text-mid);font-size:var(--text-sm);">
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16" style="color:var(--clr-gold);flex-shrink:0;margin-top:3px;"><path d="M2 8l4 4 8-8"/></svg>
+            Das voraussichtliche Lieferdatum
+          </li>
+          <li style="display:flex;align-items:flex-start;gap:0.75rem;padding:0.4rem 0;color:var(--clr-text-mid);font-size:var(--text-sm);">
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16" style="color:var(--clr-gold);flex-shrink:0;margin-top:3px;"><path d="M2 8l4 4 8-8"/></svg>
+            Den verwendeten Versanddienstleister
+          </li>
+        </ul>
+
+        <p>Bitte beachten Sie, dass Tracking-Informationen nach Versand bis zu 24 Stunden benötigen können, um im System des Versanddienstleisters zu erscheinen.</p>
+      </div>
+
+      <!-- 6. Internationale Lieferung -->
+      <div class="versand-block">
+        <div class="versand-block__header">
+          <div class="versand-block__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="20" height="20"><path d="M3 12a9 9 0 1 0 18 0 9 9 0 0 0-18 0"/><path d="M3.6 9h16.8M3.6 15h16.8M11.5 3a17 17 0 0 0 0 18M12.5 3a17 17 0 0 1 0 18"/></svg>
+          </div>
+          <h2>Internationale Lieferung</h2>
+        </div>
+
+        <p>Derzeit liefern wir regulär nach <strong style="color:var(--clr-text-primary);">Deutschland, Österreich und in die Schweiz</strong>. Für Lieferungen in andere Länder bitten wir Sie, uns direkt zu kontaktieren — wir prüfen dann individuell die Möglichkeiten.</p>
+
+        <div class="intl-note">
+          <p>Für internationale Bestellungen außerhalb dieser Länder wenden Sie sich bitte an: <a href="mailto:maktaba.al-mansurah@outlook.com" style="color:var(--clr-gold);">maktaba.al-mansurah@outlook.com</a>. Wir erstellen Ihnen gerne ein individuelles Versandangebot.</p>
+        </div>
+
+        <div class="alert-box">
+          <div class="alert-box__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="20" height="20"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><path d="M12 9v4M12 17h.01"/></svg>
+          </div>
+          <p>Bei Lieferungen in die Schweiz können zusätzlich Einfuhrsteuern und Zollgebühren durch den Schweizer Zoll anfallen. Diese Kosten sind vom Käufer zu tragen und werden nicht von uns erhoben.</p>
+        </div>
+      </div>
+
+      <!-- 7. Beschädigte / Verlorene Pakete -->
+      <div class="versand-block">
+        <div class="versand-block__header">
+          <div class="versand-block__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="20" height="20"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <h2>Beschädigte oder verlorene Pakete</h2>
+        </div>
+
+        <p>Obwohl wir jede Bestellung sorgfältig verpacken und zuverlässige Versandpartner nutzen, kann es in seltenen Fällen zu Beschädigungen oder Verlust auf dem Versandweg kommen. In diesem Fall helfen wir Ihnen sofort.</p>
+
+        <h3 style="font-size:var(--text-sm);font-family:var(--font-body);font-weight:600;color:var(--clr-gold-light);margin-top:var(--sp-3);margin-bottom:var(--sp-1);">Bei beschädigten Paketen:</h3>
+        <div class="step-list" role="list">
+          <div class="step-item" role="listitem">
+            <div class="step-item__num">1</div>
+            <div class="step-item__text"><strong>Nicht wegwerfen</strong> — Bewahren Sie das Paket und alle Verpackungsmaterialien auf. Diese werden für die Schadensaufnahme benötigt.</div>
+          </div>
+          <div class="step-item" role="listitem">
+            <div class="step-item__num">2</div>
+            <div class="step-item__text"><strong>Fotos machen</strong> — Dokumentieren Sie die Beschädigungen am Paket und den Waren mit Fotos.</div>
+          </div>
+          <div class="step-item" role="listitem">
+            <div class="step-item__num">3</div>
+            <div class="step-item__text"><strong>Innerhalb von 48 Stunden melden</strong> — Schreiben Sie uns an <a href="mailto:maktaba.al-mansurah@outlook.com" style="color:var(--clr-gold);">maktaba.al-mansurah@outlook.com</a> mit Fotos und Ihrer Bestellnummer.</div>
+          </div>
+        </div>
+
+        <h3 style="font-size:var(--text-sm);font-family:var(--font-body);font-weight:600;color:var(--clr-gold-light);margin-top:var(--sp-3);margin-bottom:var(--sp-1);">Bei verlorenen Paketen:</h3>
+        <p style="margin-top:0;">Wenn Ihr Paket laut Tracking seit mehr als <strong style="color:var(--clr-text-primary);">7 Werktagen</strong> ohne Bewegung ist oder als "zugestellt" gilt, Sie es aber nicht erhalten haben, kontaktieren Sie uns umgehend. Wir leiten dann eine Nachforschung beim Versanddienstleister ein und klären die Situation schnellstmöglich.</p>
+
+        <div class="alert-box">
+          <div class="alert-box__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="20" height="20"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+          </div>
+          <p>Kontakt für alle Versandprobleme: <a href="mailto:maktaba.al-mansurah@outlook.com" style="color:var(--clr-gold-light);font-weight:600;">maktaba.al-mansurah@outlook.com</a> — bitte immer Bestellnummer und Tracking-Nummer angeben.</p>
+        </div>
+      </div>
+
+    </div><!-- /.versand-content -->
+  </section>
+
+</main>
+
+<footer class="site-footer" role="contentinfo">
+  <div class="footer-geo-band"></div>
+  <div class="container">
+    <div class="footer-main">
+      <div class="footer-brand">
+        <p class="footer-brand__name">مكتبة المنصورة</p>
+        <p class="footer-brand__tagline">Islamische Bücher, Düfte & mehr — für die muslimische Gemeinschaft in Deutschland.</p>
+        <div class="footer-social">
+          <a href="https://instagram.com/al_mansurah.de" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>
+          <a href="https://tiktok.com/@al.mansurah.de" target="_blank" rel="noopener noreferrer" aria-label="TikTok"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.56a8.28 8.28 0 004.84 1.54V6.64a4.85 4.85 0 01-1.07.05z"/></svg></a>
+        </div>
+      </div>
+      <div><p class="footer-col-title">Shop</p><ul class="footer-nav-list"><li><a href="shop.html?cat=buecher">Islamische Bücher</a></li><li><a href="shop.html?cat=kleidung">Kleidung & Tradition</a></li><li><a href="shop.html?cat=duefte">Düfte & Sunnah</a></li></ul></div>
+      <div><p class="footer-col-title">Seiten</p><ul class="footer-nav-list"><li><a href="index.html">Startseite</a></li><li><a href="about.html">Über uns</a></li><li><a href="contact.html">Kontakt</a></li><li><a href="faq.html">FAQ</a></li><li><a href="versand.html">Versand</a></li></ul></div>
+      <div><p class="footer-col-title">Rechtliches</p><ul class="footer-nav-list"><li><a href="impressum.html">Impressum</a></li><li><a href="datenschutz.html">Datenschutz</a></li><li><a href="agb.html">AGB</a></li><li><a href="widerruf.html">Widerruf</a></li></ul></div>
+      <div><p class="footer-col-title">Kontakt</p><div class="footer-contact-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg><span><a href="mailto:maktaba.al-mansurah@outlook.com">maktaba.al-mansurah@outlook.com</a></span></div><div class="footer-contact-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18Z"/><path d="M12 7v5l3 3"/></svg><span>Mo–Sa: 9:00–18:00 Uhr</span></div></div>
+    </div>
+  </div>
+  <div class="footer-geo-band" style="opacity:0.3;"></div>
+  <div class="container"><div class="footer-legal"><p>© 2026 Maktabah Al Mansurah. Alle Rechte vorbehalten.</p><div class="footer-legal-links"><a href="impressum.html">Impressum</a><a href="datenschutz.html">Datenschutz</a><a href="agb.html">AGB</a><a href="widerruf.html">Widerruf</a><a href="versand.html">Versand</a><a href="faq.html">FAQ</a></div></div></div>
+</footer>
+<script src="assets/js/animations.js"></script>
+<script src="assets/js/shop.js"></script>
+<script src="assets/js/cart.js"></script>
+<script src="assets/js/main.js"></script>
+</body>
+</html>

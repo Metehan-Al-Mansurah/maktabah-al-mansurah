@@ -1,0 +1,1158 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Häufig gestellte Fragen (FAQ) zu Maktabah Al Mansurah — Bestellung, Versand, Zahlung, Rückgabe und unsere islamischen Produkte.">
+  <title>FAQ — Maktabah Al Mansurah</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%230D1A0F'/><polygon points='16,3 17.6,11.4 24.5,7.5 20.6,14.4 29,16 20.6,17.6 24.5,24.5 17.6,20.6 16,29 14.4,20.6 7.5,24.5 11.4,17.6 3,16 11.4,14.4 7.5,7.5 14.4,11.4' fill='none' stroke='%23C8973A' stroke-width='0.8'/></svg>">
+  <link rel="stylesheet" href="assets/css/base.css">
+  <link rel="stylesheet" href="assets/css/animations.css">
+  <link rel="stylesheet" href="assets/css/patterns.css">
+  <link rel="stylesheet" href="assets/css/layout.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+  <style>
+    /* ── FAQ page styles ── */
+    .faq-section {
+      padding-block: var(--sp-7);
+    }
+    .faq-content {
+      max-width: 860px;
+      margin-inline: auto;
+    }
+
+    /* ── Category nav tabs ── */
+    .faq-nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--sp-1);
+      margin-bottom: var(--sp-5);
+      padding-bottom: var(--sp-3);
+      border-bottom: 1px solid var(--border-subtle);
+    }
+    .faq-nav__btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.5rem 1rem;
+      border-radius: 30px;
+      background: var(--clr-ink-light);
+      border: 1px solid var(--border-subtle);
+      color: var(--clr-text-muted);
+      font-size: var(--text-sm);
+      font-weight: 500;
+      cursor: pointer;
+      transition: background var(--dur-fast) ease,
+                  border-color var(--dur-fast) ease,
+                  color var(--dur-fast) ease,
+                  box-shadow var(--dur-fast) ease;
+    }
+    .faq-nav__btn:hover {
+      background: var(--clr-ink-lifted);
+      border-color: var(--border-mid);
+      color: var(--clr-text-primary);
+    }
+    .faq-nav__btn.is-active {
+      background: rgba(200, 151, 58, 0.12);
+      border-color: var(--clr-gold-muted);
+      color: var(--clr-gold-light);
+      box-shadow: 0 0 16px rgba(200, 151, 58, 0.12);
+    }
+    .faq-nav__count {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: rgba(200, 151, 58, 0.15);
+      font-size: 0.65rem;
+      font-weight: 700;
+      color: var(--clr-gold);
+    }
+
+    /* ── FAQ Category block ── */
+    .faq-category {
+      margin-bottom: var(--sp-5);
+    }
+    .faq-category[data-hidden="true"] {
+      display: none;
+    }
+    .faq-category__header {
+      display: flex;
+      align-items: center;
+      gap: var(--sp-2);
+      margin-bottom: var(--sp-3);
+    }
+    .faq-category__icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 9px;
+      background: rgba(200, 151, 58, 0.10);
+      border: 1px solid var(--border-subtle);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--clr-gold);
+      flex-shrink: 0;
+    }
+    .faq-category__title {
+      font-family: var(--font-display);
+      font-size: var(--text-lg);
+      color: var(--clr-text-primary);
+    }
+
+    /* ── Accordion items ── */
+    .accordion {
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      border: 1px solid var(--border-subtle);
+    }
+    .accordion-item {
+      border-bottom: 1px solid var(--border-subtle);
+    }
+    .accordion-item:last-child {
+      border-bottom: none;
+    }
+
+    .accordion-trigger {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--sp-2);
+      padding: 1.1rem 1.5rem;
+      background: var(--clr-ink-light);
+      border: none;
+      cursor: pointer;
+      text-align: left;
+      color: var(--clr-text-primary);
+      font-size: var(--text-sm);
+      font-weight: 500;
+      font-family: var(--font-body);
+      line-height: 1.5;
+      transition: background var(--dur-fast) ease,
+                  color var(--dur-fast) ease;
+    }
+    .accordion-trigger:hover {
+      background: var(--clr-ink-lifted);
+    }
+    .accordion-trigger.is-open {
+      background: rgba(200, 151, 58, 0.07);
+      color: var(--clr-gold-light);
+    }
+    .accordion-trigger__text {
+      flex: 1;
+    }
+    .accordion-trigger__icon {
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background: var(--clr-ink-mid);
+      border: 1px solid var(--border-subtle);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      color: var(--clr-text-muted);
+      transition: background var(--dur-fast) ease,
+                  border-color var(--dur-fast) ease,
+                  color var(--dur-fast) ease,
+                  transform var(--dur-mid) var(--ease-out);
+    }
+    .accordion-trigger.is-open .accordion-trigger__icon {
+      background: rgba(200, 151, 58, 0.14);
+      border-color: var(--clr-gold-muted);
+      color: var(--clr-gold);
+      transform: rotate(45deg);
+    }
+
+    .accordion-body {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.38s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .accordion-body.is-open {
+      max-height: 600px;
+    }
+    .accordion-body__inner {
+      padding: 1rem 1.5rem 1.4rem;
+      background: var(--clr-ink-mid);
+      border-top: 1px solid var(--border-subtle);
+    }
+    .accordion-body__inner p {
+      color: var(--clr-text-mid);
+      font-size: var(--text-sm);
+      line-height: 1.8;
+      margin-bottom: var(--sp-2);
+    }
+    .accordion-body__inner p:last-child {
+      margin-bottom: 0;
+    }
+    .accordion-body__inner a {
+      color: var(--clr-gold);
+      text-decoration: underline;
+      text-decoration-color: rgba(200, 151, 58, 0.4);
+      text-underline-offset: 3px;
+      transition: color var(--dur-fast) ease,
+                  text-decoration-color var(--dur-fast) ease;
+    }
+    .accordion-body__inner a:hover {
+      color: var(--clr-gold-light);
+      text-decoration-color: var(--clr-gold-light);
+    }
+    .accordion-body__inner ul {
+      list-style: none;
+      padding: 0;
+      margin-bottom: var(--sp-2);
+    }
+    .accordion-body__inner ul li {
+      padding: 0.3rem 0 0.3rem 1.2rem;
+      position: relative;
+      color: var(--clr-text-mid);
+      font-size: var(--text-sm);
+      line-height: 1.7;
+    }
+    .accordion-body__inner ul li::before {
+      content: '•';
+      position: absolute;
+      left: 0;
+      color: var(--clr-gold);
+    }
+    .answer-note {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      margin-top: var(--sp-2);
+      padding: 0.5rem 0.85rem;
+      border-radius: var(--radius-md);
+      background: rgba(200, 151, 58, 0.07);
+      border: 1px solid var(--border-subtle);
+      font-size: var(--text-xs);
+      color: var(--clr-gold-light);
+    }
+
+    /* ── Contact CTA ── */
+    .faq-cta {
+      background: var(--clr-ink-light);
+      border: 1px solid var(--border-mid);
+      border-radius: var(--radius-lg);
+      padding: var(--sp-5) var(--sp-6);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      margin-top: var(--sp-6);
+    }
+    .faq-cta::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 60% 50% at 50% 0%, rgba(200, 151, 58, 0.07) 0%, transparent 70%);
+    }
+    .faq-cta__content {
+      position: relative;
+    }
+    .faq-cta h2 {
+      font-size: var(--text-xl);
+      margin-bottom: var(--sp-2);
+    }
+    .faq-cta p {
+      color: var(--clr-text-muted);
+      max-width: 480px;
+      margin-inline: auto;
+      margin-bottom: var(--sp-4);
+    }
+    .faq-cta__actions {
+      display: flex;
+      gap: var(--sp-2);
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .btn-outline-gold {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.7rem 1.5rem;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border-mid);
+      background: transparent;
+      color: var(--clr-gold-light);
+      font-size: var(--text-sm);
+      font-weight: 500;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background var(--dur-fast) ease,
+                  border-color var(--dur-fast) ease,
+                  color var(--dur-fast) ease;
+    }
+    .btn-outline-gold:hover {
+      background: rgba(200, 151, 58, 0.10);
+      border-color: var(--clr-gold);
+      color: var(--clr-gold-pale);
+    }
+    .btn-filled-gold {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.7rem 1.5rem;
+      border-radius: var(--radius-md);
+      background: var(--clr-gold);
+      color: var(--clr-ink);
+      font-size: var(--text-sm);
+      font-weight: 600;
+      cursor: pointer;
+      text-decoration: none;
+      border: none;
+      transition: background var(--dur-fast) ease,
+                  transform var(--dur-fast) ease,
+                  box-shadow var(--dur-fast) ease;
+    }
+    .btn-filled-gold:hover {
+      background: var(--clr-gold-light);
+      transform: translateY(-1px);
+      box-shadow: 0 4px 20px rgba(200, 151, 58, 0.3);
+    }
+    .btn-filled-gold:active {
+      transform: translateY(0);
+    }
+
+    /* Page hero ornament */
+    .page-hero__ornament {
+      position: absolute;
+      top: 50%;
+      right: var(--sp-6);
+      transform: translateY(-50%);
+      font-family: var(--font-arabic);
+      font-size: 5rem;
+      color: rgba(200, 151, 58, 0.06);
+      pointer-events: none;
+      user-select: none;
+    }
+
+    @media (max-width: 640px) {
+      .page-hero__ornament { display: none; }
+      .accordion-trigger { padding: 0.9rem 1rem; }
+      .accordion-body__inner { padding: 0.85rem 1rem 1rem; }
+      .faq-cta { padding: var(--sp-4) var(--sp-3); }
+    }
+
+    /* Search bar */
+    .faq-search {
+      margin-bottom: var(--sp-4);
+      position: relative;
+    }
+    .faq-search__icon {
+      position: absolute;
+      left: 1rem;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--clr-text-muted);
+      pointer-events: none;
+    }
+    .faq-search input {
+      width: 100%;
+      background: var(--clr-ink-light);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: 0.8rem 1rem 0.8rem 2.75rem;
+      color: var(--clr-text-primary);
+      font-size: var(--text-sm);
+      transition: border-color var(--dur-fast) ease,
+                  box-shadow var(--dur-fast) ease;
+    }
+    .faq-search input::placeholder {
+      color: var(--clr-text-muted);
+    }
+    .faq-search input:focus {
+      outline: none;
+      border-color: var(--clr-gold-muted);
+      box-shadow: 0 0 0 3px rgba(200, 151, 58, 0.09);
+    }
+    .faq-no-results {
+      text-align: center;
+      padding: var(--sp-5) 0;
+      color: var(--clr-text-muted);
+      display: none;
+    }
+    .faq-no-results.is-visible {
+      display: block;
+    }
+    .faq-no-results p {
+      font-size: var(--text-sm);
+    }
+  </style>
+</head>
+<body>
+
+<div id="scrollProgress" aria-hidden="true"></div>
+<header class="site-header" id="siteHeader" role="banner">
+  <div class="header-inner">
+    <a href="index.html" class="brand" aria-label="Maktabah Al Mansurah – Startseite">
+      <span class="brand-logo-wrap"><img src="MAM.logo.png" alt="" class="brand-logo" aria-hidden="true"></span>
+      <span class="brand-text">
+        <span class="brand-arabic brand-shimmer">مكتبة المنصورة</span>
+        <span class="brand-latin">Maktabah Al Mansurah</span>
+      </span>
+    </a>
+    <nav class="nav-primary" role="navigation"><a href="index.html">Startseite</a><a href="shop.html">Shop</a><a href="about.html">Über uns</a><a href="contact.html">Kontakt</a></nav>
+    <div class="header-actions">
+      <button class="cart-trigger" id="cartTrigger" aria-label="Warenkorb öffnen"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 0 0-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 0 0-16.536-1.84M7.5 14.25 5.106 5.272M6 20.25a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Zm12.75 0a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Z"/></svg><span class="cart-badge hidden" id="cartBadge">0</span></button>
+      <button class="nav-toggle" id="navToggle" aria-label="Menü öffnen" aria-expanded="false"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+<div class="mobile-nav-overlay" id="menuOverlay" aria-hidden="true"></div>
+<nav class="mobile-nav" id="mobileNav" aria-hidden="true">
+  <div class="mobile-nav__header"><a href="index.html" class="brand"><span class="brand-arabic" style="font-size:1rem;color:var(--clr-gold-light);">مكتبة المنصورة</span></a><button class="mobile-nav__close" id="mobileNavClose"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 18 18 6M6 6l12 12"/></svg></button></div>
+  <div class="mobile-nav__links"><a href="index.html">Startseite</a><a href="shop.html">Shop</a><a href="about.html">Über uns</a><a href="contact.html">Kontakt</a></div>
+  <div class="mobile-nav__footer"><p class="mobile-nav__arabic">بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ</p></div>
+</nav>
+<div class="cart-overlay" id="cartOverlay" aria-hidden="true"></div>
+<aside class="cart-drawer" id="cartDrawer" aria-hidden="true">
+  <div class="cart-drawer__header"><h2 class="cart-drawer__title">Warenkorb</h2><button class="cart-drawer__close" id="cartClose"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 18 18 6M6 6l12 12"/></svg></button></div>
+  <div class="cart-drawer__items"></div>
+  <div class="cart-drawer__footer"><div class="cart-drawer__subtotal"><span>Zwischensumme</span><strong class="cart-drawer__total-amount">0,00 €</strong></div><a href="checkout.html" class="btn btn-primary btn-full">Zur Kasse</a><p class="cart-drawer__note">Versandkosten werden an der Kasse berechnet.</p></div>
+</aside>
+
+<main id="main-content">
+
+  <!-- Page Hero -->
+  <section class="page-hero" aria-labelledby="page-hero-title">
+    <div class="page-hero__bg"></div>
+    <div class="page-hero__ornament" aria-hidden="true">؟</div>
+    <div class="container page-hero__content">
+      <span class="eyebrow">Hilfe & Support</span>
+      <h1 id="page-hero-title">Häufig gestellte Fragen</h1>
+      <p style="color:var(--clr-text-muted);margin-top:var(--sp-2);max-width:560px;font-size:var(--text-sm);">
+        Antworten auf die häufigsten Fragen zu Bestellung, Versand, Produkten und mehr. Nicht fündig? Schreiben Sie uns!
+      </p>
+    </div>
+  </section>
+
+  <!-- FAQ Content -->
+  <section class="faq-section" aria-label="FAQ">
+    <div class="container faq-content">
+
+      <!-- Search -->
+      <div class="faq-search" role="search">
+        <div class="faq-search__icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="18" height="18"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+        </div>
+        <input type="search" id="faqSearch" placeholder="FAQ durchsuchen…" aria-label="FAQ Fragen durchsuchen" autocomplete="off">
+      </div>
+
+      <!-- Category Nav -->
+      <nav class="faq-nav" aria-label="FAQ Kategorien" id="faqNav">
+        <button class="faq-nav__btn is-active" data-filter="all">
+          Alle Fragen
+          <span class="faq-nav__count" id="countAll">25</span>
+        </button>
+        <button class="faq-nav__btn" data-filter="bestellung">
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" width="14" height="14"><path d="M2 3h12v10H2zM5 3V1M11 3V1M2 7h12"/></svg>
+          Bestellprozess
+          <span class="faq-nav__count">5</span>
+        </button>
+        <button class="faq-nav__btn" data-filter="versand">
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" width="14" height="14"><path d="M1 4h10v8H1zM11 6h2l2 2v4h-4"/><circle cx="4" cy="12" r="1.5"/><circle cx="13" cy="12" r="1.5"/></svg>
+          Versand
+          <span class="faq-nav__count">5</span>
+        </button>
+        <button class="faq-nav__btn" data-filter="zahlung">
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" width="14" height="14"><rect x="1" y="3" width="14" height="10" rx="1"/><path d="M1 7h14"/></svg>
+          Zahlung
+          <span class="faq-nav__count">4</span>
+        </button>
+        <button class="faq-nav__btn" data-filter="rueckgabe">
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" width="14" height="14"><path d="M3 8a5 5 0 1 0 1-3M1 3l2 2-2 2"/></svg>
+          Rückgabe
+          <span class="faq-nav__count">4</span>
+        </button>
+        <button class="faq-nav__btn" data-filter="produkte">
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" width="14" height="14"><path d="M8 2l1.5 4H14l-3.5 2.5L12 13 8 10l-4 3 1.5-4.5L2 6h4.5z"/></svg>
+          Produkte
+          <span class="faq-nav__count">4</span>
+        </button>
+        <button class="faq-nav__btn" data-filter="halal">
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" width="14" height="14"><path d="M8 1l1.8 5.6H15l-4.7 3.4 1.8 5.6L8 12.2l-4.1 3.4 1.8-5.6L1 6.6h5.2z"/></svg>
+          Halal & Qualität
+          <span class="faq-nav__count">3</span>
+        </button>
+      </nav>
+
+      <!-- No Results -->
+      <div class="faq-no-results" id="faqNoResults" role="status" aria-live="polite">
+        <p>Keine Fragen zu Ihrer Suche gefunden. Bitte versuchen Sie einen anderen Suchbegriff oder <a href="contact.html" style="color:var(--clr-gold);">kontaktieren Sie uns direkt</a>.</p>
+      </div>
+
+      <!-- CATEGORY 1: Bestellprozess -->
+      <div class="faq-category" data-category="bestellung" id="cat-bestellung">
+        <div class="faq-category__header">
+          <div class="faq-category__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="18" height="18"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+          </div>
+          <h2 class="faq-category__title">Bestellprozess</h2>
+        </div>
+
+        <div class="accordion" role="list">
+
+          <div class="accordion-item" role="listitem" data-question="Wie gebe ich eine Bestellung auf?">
+            <button class="accordion-trigger" aria-expanded="false">
+              <span class="accordion-trigger__text">Wie gebe ich eine Bestellung auf?</span>
+              <span class="accordion-trigger__icon" aria-hidden="true">
+                <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" width="12" height="12"><path d="M6 1v10M1 6h10"/></svg>
+              </span>
+            </button>
+            <div class="accordion-body" role="region">
+              <div class="accordion-body__inner">
+                <p>Das Aufgeben einer Bestellung ist ganz einfach: Wählen Sie Ihre gewünschten Produkte im <a href="shop.html">Shop</a>, legen Sie sie in den Warenkorb und klicken Sie oben rechts auf das Warenkorb-Symbol. Überprüfen Sie Ihre Auswahl und gehen Sie dann zur Kasse.</p>
+                <p>Im Kassenprozess geben Sie Ihre Lieferadresse, Kontaktdaten und bevorzugte Zahlungsart ein. Nach Abschluss der Bestellung erhalten Sie umgehend eine Bestätigungs-E-Mail mit Ihrer Bestellnummer.</p>
+                <span class="answer-note">
+                  <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" width="13" height="13"><path d="M8 1a7 7 0 1 0 0 14A7 7 0 0 0 8 1zm0 3v4m0 2v1"/></svg>
+                  Keine Registrierung notwendig — Gastbestellung ist möglich!
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item" role="listitem" data-question="Kann ich meine Bestellung nach der Aufgabe noch ändern?">
+            <button class="accordion-trigger" aria-expanded="false">
+              <span class="accordion-trigger__text">Kann ich meine Bestellung nach der Aufgabe noch ändern?</span>
+              <span class="accordion-trigger__icon" aria-hidden="true">
+                <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" width="12" height="12"><path d="M6 1v10M1 6h10"/></svg>
+              </span>
+            </button>
+            <div class="accordion-body" role="region">
+              <div class="accordion-body__inner">
+                <p>Bestelländerungen sind nur möglich, solange die Bestellung noch nicht in Bearbeitung genommen wurde. Bitte schreiben Sie uns so schnell wie möglich an <a href="mailto:maktaba.al-mansurah@outlook.com">maktaba.al-mansurah@outlook.com</a> mit Ihrer Bestellnummer und dem gewünschten Änderungswunsch.</p>
+                <p>Da wir Bestellungen in der Regel innerhalb von 1–2 Werktagen bearbeiten, empfehlen wir, Änderungsanfragen spätestens am selben Tag der Bestellung zu stellen.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item" role="listitem" data-question="Wie erfahre ich, ob meine Bestellung erfolgreich aufgegeben wurde?">
+            <button class="accordion-trigger" aria-expanded="false">
+              <span class="accordion-trigger__text">Wie erfahre ich, ob meine Bestellung erfolgreich aufgegeben wurde?</span>
+              <span class="accordion-trigger__icon" aria-hidden="true">
+                <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" width="12" height="12"><path d="M6 1v10M1 6h10"/></svg>
+              </span>
+            </button>
+            <div class="accordion-body" role="region">
+              <div class="accordion-body__inner">
+                <p>Nach erfolgreichem Bestellabschluss erhalten Sie innerhalb weniger Minuten eine Bestätigungs-E-Mail an die von Ihnen angegebene E-Mail-Adresse. Diese enthält:</p>
+                <ul>
+                  <li>Ihre Bestellnummer</li>
+                  <li>Eine Auflistung Ihrer bestellten Artikel</li>
+                  <li>Ihre Lieferadresse</li>
+                  <li>Den Gesamtbetrag inkl. Versandkosten</li>
+                </ul>
+                <p>Falls Sie keine E-Mail erhalten, prüfen Sie bitte Ihren Spam-Ordner oder kontaktieren Sie uns.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item" role="listitem" data-question="Kann ich auch telefonisch oder per E-Mail bestellen?">
+            <button class="accordion-trigger" aria-expanded="false">
+              <span class="accordion-trigger__text">Kann ich auch telefonisch oder per E-Mail bestellen?</span>
+              <span class="accordion-trigger__icon" aria-hidden="true">
+                <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" width="12" height="12"><path d="M6 1v10M1 6h10"/></svg>
+              </span>
+            </button>
+            <div class="accordion-body" role="region">
+              <div class="accordion-body__inner">
+                <p>Derzeit ist die Bestellung ausschließlich über unseren Online-Shop möglich. Dies stellt einen reibungslosen und sicheren Bestellprozess für alle Kunden sicher.</p>
+                <p>Bei Fragen zu bestimmten Produkten oder für besondere Anfragen können Sie uns aber gerne unter <a href="mailto:maktaba.al-mansurah@outlook.com">maktaba.al-mansurah@outlook.com</a> kontaktieren — wir helfen Ihnen gerne weiter.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item" role="listitem" data-question="Gibt es eine Mindestbestellmenge oder einen Mindestbestellwert?">
+            <button class="accordion-trigger" aria-expanded="false">
+              <span class="accordion-trigger__text">Gibt es eine Mindestbestellmenge oder einen Mindestbestellwert?</span>
+              <span class="accordion-trigger__icon" aria-hidden="true">
+                <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" width="12" height="12"><path d="M6 1v10M1 6h10"/></svg>
+              </span>
+            </button>
+            <div class="accordion-body" role="region">
+              <div class="accordion-body__inner">
+                <p>Nein, es gibt weder eine Mindestbestellmenge noch einen Mindestbestellwert. Sie können bereits ab einem Artikel bestellen. Beachten Sie jedoch, dass ab einem Bestellwert von <strong>50 € (Deutschland)</strong> bzw. <strong>70 € (Österreich)</strong> der Versand kostenlos ist.</p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- CATEGORY 2: Versand & Lieferung -->
+      <div class="faq-category" data-category="versand" id="cat-versand">
+        <div class="faq-category__header">
+          <div class="faq-category__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="18" height="18"><path d="M5 17H3a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11a2 2 0 0 1 2 2v3M9 21H16M12 21H16M16 9h4l3 4v4h-7V9z"/><circle cx="7.5" cy="17.5" r="2.5"/><circle cx="18.5" cy="17.5" r="2.5"/></svg>
+          </div>
+          <h2 class="faq-category__title">Versand &amp; Lieferung</h2>
+        </div>
+
+        <div class="accordion" role="list">
+
+          <div class="accordion-item" role="listitem" data-question="Wie lange dauert die Lieferung?">
+            <button class="accordion-trigger" aria-expanded="false">
+              <span class="accordion-trigger__text">Wie lange dauert die Lieferung?</span>
+              <span class="accordion-trigger__icon" aria-hidden="true">
+                <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" width="12" height="12"><path d="M6 1v10M1 6h10"/></svg>
+              </span>
+            </button>
+            <div class="accordion-body" role="region">
+              <div class="accordion-body__inner">
+                <p>Nach Bestelleingang und Zahlungsbestätigung dauert die Bearbeitung 1–2 Werktage. Danach gelten folgende Lieferzeiten:</p>
+                <ul>
+                  <li><strong>Deutschland (Standard):</strong> 3–5 Werktage</li>
+                  <li><strong>Deutschland (Express):</strong> 1–2 Werktage</li>
+                  <li><strong>Österreich:</strong> 4–7 Werktage</li>
+                  <li><strong>Schweiz:</strong> 5–8 Werktage</li>
+                </ul>
+                <p>Ausführliche Informationen finden Sie auf unserer <a href="versand.html">Versandseite</a>.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item" role="listitem" data-question="Wie kann ich mein Paket verfolgen?">
+            <button class="accordion-trigger" aria-expanded="false">
+              <span class="accordion-trigger__text">Wie kann ich mein Paket verfolgen?</span>
+              <span class="accordion-trigger__icon" aria-hidden="true">
+                <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" width="12" height="12"><path d="M6 1v10M1 6h10"/></svg>
+              </span>
+            </button>
+            <div class="accordion-body" role="region">
+              <div class="accordion-body__inner">
+                <p>Sobald Ihr Paket versendet wird, erhalten Sie eine Versandbestätigung per E-Mail mit Ihrer persönlichen Tracking-Nummer und einem direkten Link zum Tracking-Portal. Sie können Ihr Paket dort in Echtzeit verfolgen.</p>
+                <p>Bitte beachten Sie: Es kann bis zu 24 Stunden dauern, bis Tracking-Informationen im System erscheinen.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item" role="listitem" data-question="Liefern Sie auch in die Schweiz und nach Österreich?">
+            <button class="accordion-trigger" aria-expanded="false">
+              <span class="accordion-trigger__text">Liefern Sie auch in die Schweiz und nach Österreich?</span>
+              <span class="accordion-trigger__icon" aria-hidden="true">
+                <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" width="12" height="12"><path d="M6 1v10M1 6h10"/></svg>
+              </span>
+            </button>
+            <div class="accordion-body" role="region">
+              <div class="accordion-body__inner">
+                <p>Ja, wir liefern nach Deutschland, Österreich und in die Schweiz. Die Versandkosten betragen:</p>
+                <ul>
+                  <li><strong>Österreich:</strong> 6,99 € (kostenlos ab 70 €)</li>
+                  <li><strong>Schweiz:</strong> 9,99 € inkl. Zollpauschale (ggf. zusätzliche Einfuhrsteuern)</li>
+                </ul>
+                <p>Für Lieferungen in andere Länder kontaktieren Sie uns bitte direkt unter <a href="mailto:maktaba.al-mansurah@outlook.com">maktaba.al-mansurah@outlook.com</a>.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item" role="listitem" data-question="Was passiert, wenn mein Paket beschädigt ankommt?">
+            <button class="accordion-trigger" aria-expanded="false">
+              <span class="accordion-trigger__text">Was passiert, wenn mein Paket beschädigt ankommt?</span>
+              <span class="accordion-trigger__icon" aria-hidden="true">
+                <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" width="12" height="12"><path d="M6 1v10M1 6h10"/></svg>
+              </span>
+            </button>
+            <div class="accordion-body" role="region">
+              <div class="accordion-body__inner">
+                <p>Wenn Ihr Paket beschädigt ankommt, gehen Sie bitte wie folgt vor:</p>
+                <ul>
+                  <li>Bewahren Sie das Paket und alle Verpackungsmaterialien auf</li>
+                  <li>Fotografieren Sie die Beschädigungen am Paket und den Waren</li>
+                  <li>Melden Sie den Schaden innerhalb von 48 Stunden unter <a href="mailto:maktaba.al-mansurah@outlook.com">maktaba.al-mansurah@outlook.com</a></li>
+                  <li>Geben Sie dabei Ihre Bestellnummer und die Fotos an</li>
+                </ul>
+                <p>Wir kümmern uns umgehend um eine Lösung — entweder durch Ersatzlieferung oder Rückerstattung.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item" role="listitem" data-question="Mein Paket wurde als zugestellt markiert, ich habe es aber nicht erhalten.">
+            <button class="accordion-trigger" aria-expanded="false">
+              <span class="accordion-trigger__text">Mein Paket wurde als zugestellt markiert, ich habe es aber nicht erhalten.</span>
+              <span class="accordion-trigger__icon" aria-hidden="true">
+                <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" width="12" height="12"><path d="M6 1v10M1 6h10"/></svg>
+              </span>
+            </button>
+            <div class="accordion-body" role="region">
+              <div class="accordion-body__inner">
+                <p>Bitte prüfen Sie zunächst: den Briefkasten (auch bei Nachbarn), einen möglichen Abholschein des Paketdienstleisters sowie die Paketstation/Packstation, falls eine solche hinterlegt ist.</p>
+                <p>Ist das Paket trotzdem nicht auffindbar, schreiben Sie uns umgehend an <a href="mailto:maktaba.al-mansurah@outlook.com">maktaba.al-mansurah@outlook.com</a> mit Ihrer Bestellnummer und Tracking-Nummer. Wir leiten dann sofort eine Nachforschung beim Versanddienstleister ein.</p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- CATEGORY 3: Zahlung -->
+      <div class="faq-category" data-category="zahlung" id="cat-zahlung">
+        <div class="faq-category__header">
+          <div class="faq-category__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="18" height="18"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg>
+          </div>
+          <h2 class="faq-category__title">Zahlung</h2>
+        </div>
+
+        <div class="accordion" role="list">
+
+          <div class="accordion-item" role="listitem" data-question="Welche Zahlungsmethoden werden akzeptiert?">
+            <button class="accordion-trigger" aria-expanded="false">
+              <span class="accordion-trigger__text">Welche Zahlungsmethoden werden akzeptiert?</span>
+              <span class="accordion-trigger__icon" aria-hidden="true">
+                <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" width="12" height="12"><path d="M6 1v10M1 6h10"/></svg>
+              </span>
+            </button>
+            <div class="accordion-body" role="region">
+              <div class="accordion-body__inner">
+                <p>Wir bieten folgende Zahlungsarten an:</p>
+                <ul>
+                  <li>PayPal</li>
+                  <li>Kreditkarte (Visa, Mastercard)</li>
+                  <li>SEPA-Lastschrift</li>
+                  <li>Sofortüberweisung (Klarna)</li>
+                  <li>Vorkasse (Banküberweisung)</li>
+                </ul>
+                <p>Alle Zahlungen werden sicher verschlüsselt über unseren Zahlungsdienstleister abgewickelt.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item" role="listitem" data-question="Ist die Bezahlung in Ihrem Shop sicher?">
+            <button class="accordion-trigger" aria-expanded="false">
+              <span class="accordion-trigger__text">Ist die Bezahlung in Ihrem Shop sicher?</span>
+              <span class="accordion-trigger__icon" aria-hidden="true">
+                <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" width="12" height="12"><path d="M6 1v10M1 6h10"/></svg>
+              </span>
+            </button>
+            <div class="accordion-body" role="region">
+              <div class="accordion-body__inner">
+                <p>Ja, absolut. Alle Zahlungstransaktionen werden über SSL-verschlüsselte Verbindungen abgewickelt. Wir speichern keinerlei Zahlungsdaten (Kreditkartennummern, Bankdaten) auf unseren Servern — diese werden ausschließlich vom zertifizierten Zahlungsdienstleister verarbeitet.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item" role="listitem" data-question="Wann wird meine Zahlung abgebucht?">
+            <button class="accordion-trigger" aria-expanded="false">
+              <span class="accordion-trigger__text">Wann wird meine Zahlung abgebucht?</span>
+              <span class="accordion-trigger__icon" aria-hidden="true">
+                <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" width="12" height="12"><path d="M6 1v10M1 6h10"/></svg>
+              </span>
+            </button>
+            <div class="accordion-body" role="region">
+              <div class="accordion-body__inner">
+                <p>Bei Kreditkarte, PayPal und Sofortüberweisung erfolgt die Abbuchung unmittelbar bei Bestellabschluss. Bei Vorkasse (Banküberweisung) beginnen wir mit der Bearbeitung Ihrer Bestellung erst nach Zahlungseingang, der üblicherweise 1–3 Bankarbeitstage dauert.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item" role="listitem" data-question="Erhalte ich eine Rechnung für meine Bestellung?">
+            <button class="accordion-trigger" aria-expanded="false">
+              <span class="accordion-trigger__text">Erhalte ich eine Rechnung für meine Bestellung?</span>
+              <span class="accordion-trigger__icon" aria-hidden="true">
+                <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" width="12" height="12"><path d="M6 1v10M1 6h10"/></svg>
+              </span>
+            </button>
+            <div class="accordion-body" role="region">
+              <div class="accordion-body__inner">
+                <p>Ja, Sie erhalten eine digitale Rechnung per E-Mail nach Abschluss Ihrer Bestellung. Diese enthält alle gesetzlich vorgeschriebenen Angaben. Die Rechnung liegt außerdem Ihrer Paketsendung bei.</p>
+                <p>Wenn Sie eine Rechnung mit abweichenden Daten (z. B. für Geschäftszwecke) benötigen, teilen Sie uns dies bitte bei der Bestellung in einer Nachricht mit.</p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- CATEGORY 4: Rückgabe & Widerruf -->
+      <div class="faq-category" data-category="rueckgabe" id="cat-rueckgabe">
+        <div class="faq-category__header">
+          <div class="faq-category__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="18" height="18"><path d="M3 12a9 9 0 1 0 2-5.7M3 3v5h5"/></svg>
+          </div>
+          <h2 class="faq-category__title">Rückgabe &amp; Widerruf</h2>
+        </div>
+
+        <div class="accordion" role="list">
+
+          <div class="accordion-item" role="listitem" data-question="Wie lange habe ich Zeit, einen Kauf zu widerrufen?">
+            <button class="accordion-trigger" aria-expanded="false">
+              <span class="accordion-trigger__text">Wie lange habe ich Zeit, einen Kauf zu widerrufen?</span>
+              <span class="accordion-trigger__icon" aria-hidden="true">
+                <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" width="12" height="12"><path d="M6 1v10M1 6h10"/></svg>
+              </span>
+            </button>
+            <div class="accordion-body" role="region">
+              <div class="accordion-body__inner">
+                <p>Sie haben das gesetzliche Recht, Ihre Bestellung innerhalb von <strong>14 Tagen</strong> ab Erhalt der Ware ohne Angabe von Gründen zu widerrufen. Der Widerruf muss uns vor Ablauf der Frist mitgeteilt werden.</p>
+                <p>Die vollständige Widerrufsbelehrung sowie das Muster-Widerrufsformular finden Sie auf unserer <a href="widerruf.html">Widerrufsseite</a>.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item" role="listitem" data-question="Wie funktioniert die Rücksendung?">
+            <button class="accordion-trigger" aria-expanded="false">
+              <span class="accordion-trigger__text">Wie funktioniert die Rücksendung?</span>
+              <span class="accordion-trigger__icon" aria-hidden="true">
+                <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" width="12" height="12"><path d="M6 1v10M1 6h10"/></svg>
+              </span>
+            </button>
+            <div class="accordion-body" role="region">
+              <div class="accordion-body__inner">
+                <p>Informieren Sie uns zunächst per E-Mail über Ihren Widerruf. Verpacken Sie die Ware dann sorgfältig und senden Sie sie innerhalb von 14 Tagen nach Ihrer Widerrufserklärung zurück. Die Rücksendekosten tragen Sie als Käufer.</p>
+                <p>Unsere Rücksendeadresse erhalten Sie nach Ihrer Widerrufserklärung per E-Mail. Bitte legen Sie der Rücksendung Ihre Bestellnummer bei.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item" role="listitem" data-question="Kann ich geöffnete Düfte oder Hygieneartikel zurückgeben?">
+            <button class="accordion-trigger" aria-expanded="false">
+              <span class="accordion-trigger__text">Kann ich geöffnete Düfte oder Hygieneartikel zurückgeben?</span>
+              <span class="accordion-trigger__icon" aria-hidden="true">
+                <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" width="12" height="12"><path d="M6 1v10M1 6h10"/></svg>
+              </span>
+            </button>
+            <div class="accordion-body" role="region">
+              <div class="accordion-body__inner">
+                <p>Leider nein. Gemäß § 312g Abs. 2 Nr. 3 BGB besteht für Waren, die aus Gesundheitsschutz- oder Hygienegründen nicht zur Rückgabe geeignet sind und deren Versiegelung nach der Lieferung entfernt wurde, kein Widerrufsrecht.</p>
+                <p>Dazu zählen bei uns: offene Parfüme, Körperöle, Duftkerzen (wenn verwendet) und ähnliche Hygieneartikel. Ungeöffnete und versiegelte Produkte können selbstverständlich zurückgegeben werden.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item" role="listitem" data-question="Wann erhalte ich mein Geld nach einem Widerruf zurück?">
+            <button class="accordion-trigger" aria-expanded="false">
+              <span class="accordion-trigger__text">Wann erhalte ich mein Geld nach einem Widerruf zurück?</span>
+              <span class="accordion-trigger__icon" aria-hidden="true">
+                <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" width="12" height="12"><path d="M6 1v10M1 6h10"/></svg>
+              </span>
+            </button>
+            <div class="accordion-body" role="region">
+              <div class="accordion-body__inner">
+                <p>Nach Eingang der zurückgesendeten Waren prüfen wir diese und erstatten Ihnen den Kaufpreis inklusive der ursprünglichen Versandkosten (Standardversand) innerhalb von <strong>14 Tagen</strong> über dieselbe Zahlungsart, die Sie bei der Bestellung verwendet haben.</p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- CATEGORY 5: Produkte -->
+      <div class="faq-category" data-category="produkte" id="cat-produkte">
+        <div class="faq-category__header">
+          <div class="faq-category__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="18" height="18"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+          </div>
+          <h2 class="faq-category__title">Produkte</h2>
+        </div>
+
+        <div class="accordion" role="list">
+
+          <div class="accordion-item" role="listitem" data-question="Welche Produktkategorien bieten Sie an?">
+            <button class="accordion-trigger" aria-expanded="false">
+              <span class="accordion-trigger__text">Welche Produktkategorien bieten Sie an?</span>
+              <span class="accordion-trigger__icon" aria-hidden="true">
+                <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" width="12" height="12"><path d="M6 1v10M1 6h10"/></svg>
+              </span>
+            </button>
+            <div class="accordion-body" role="region">
+              <div class="accordion-body__inner">
+                <p>Unser Sortiment umfasst fünf Hauptkategorien:</p>
+                <ul>
+                  <li><strong>Islamische Bücher</strong> — Quran-Ausgaben, Tafsir, Hadith-Sammlungen, Bücher zur islamischen Praxis und Spiritualität</li>
+                  <li><strong>Kleidung &amp; Tradition</strong> — Thobes, Abayas, Kufiya und traditionelle islamische Bekleidung</li>
+                  <li><strong>Düfte &amp; Sunnah</strong> — Oud, Misk, Attar-Öle und naturbasierte Düfte nach der Sunnah</li>
+                  <li><strong>Gebetszubehör</strong> — Gebetsmatten, Misbaha (Tasbih), Iqra-Sets</li>
+                  <li><strong>Heimdekoration</strong> — Islamische Kalligraphie, Wanddekor und Geschenkartikel</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item" role="listitem" data-question="Sind die Bücher auch auf Arabisch oder nur auf Deutsch?">
+            <button class="accordion-trigger" aria-expanded="false">
+              <span class="accordion-trigger__text">Sind die Bücher auch auf Arabisch oder nur auf Deutsch?</span>
+              <span class="accordion-trigger__icon" aria-hidden="true">
+                <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" width="12" height="12"><path d="M6 1v10M1 6h10"/></svg>
+              </span>
+            </button>
+            <div class="accordion-body" role="region">
+              <div class="accordion-body__inner">
+                <p>Wir führen Bücher in verschiedenen Sprachen. Unser Hauptfokus liegt auf deutschsprachigen islamischen Büchern, aber wir bieten auch Titel auf Arabisch, zweisprachige Ausgaben (Arabisch/Deutsch) sowie ausgewählte englische Werke an.</p>
+                <p>Die Sprache ist jeweils in der Produktbeschreibung angegeben. Schauen Sie auch im <a href="shop.html?cat=buecher">Buchbereich unseres Shops</a> vorbei.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item" role="listitem" data-question="Haben Sie Produkte für Kinder und islamische Erziehung?">
+            <button class="accordion-trigger" aria-expanded="false">
+              <span class="accordion-trigger__text">Haben Sie Produkte für Kinder und islamische Erziehung?</span>
+              <span class="accordion-trigger__icon" aria-hidden="true">
+                <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" width="12" height="12"><path d="M6 1v10M1 6h10"/></svg>
+              </span>
+            </button>
+            <div class="accordion-body" role="region">
+              <div class="accordion-body__inner">
+                <p>Ja! Wir führen eine Auswahl an Büchern und Materialien speziell für Kinder und zur islamischen Erziehung, darunter Kinderbücher über Propheten, Lernmaterialien zum Quran-Lernen sowie kindgerechte Gebetszubehöre. Das Sortiment wird stetig erweitert.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item" role="listitem" data-question="Kann ich Produkte als Geschenk verpacken lassen?">
+            <button class="accordion-trigger" aria-expanded="false">
+              <span class="accordion-trigger__text">Kann ich Produkte als Geschenk verpacken lassen?</span>
+              <span class="accordion-trigger__icon" aria-hidden="true">
+                <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" width="12" height="12"><path d="M6 1v10M1 6h10"/></svg>
+              </span>
+            </button>
+            <div class="accordion-body" role="region">
+              <div class="accordion-body__inner">
+                <p>Derzeit bieten wir keinen offiziellen Geschenkverpackungsservice an. Alle Bestellungen werden jedoch sorgfältig und ansprechend verpackt — viele Kunden nutzen unsere Bestellungen direkt als Geschenke, besonders zu Eid, Ramadan oder anderen Anlässen.</p>
+                <p>Für persönliche Wünsche (z. B. eine handgeschriebene Notiz) kontaktieren Sie uns gerne vor der Bestellung unter <a href="mailto:maktaba.al-mansurah@outlook.com">maktaba.al-mansurah@outlook.com</a> — wir versuchen zu helfen, soweit es möglich ist.</p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- CATEGORY 6: Halal & Qualität -->
+      <div class="faq-category" data-category="halal" id="cat-halal">
+        <div class="faq-category__header">
+          <div class="faq-category__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="18" height="18"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <h2 class="faq-category__title">Halal &amp; Qualität</h2>
+        </div>
+
+        <div class="accordion" role="list">
+
+          <div class="accordion-item" role="listitem" data-question="Sind Ihre Düfte und Parfüme alkoholfrei (Halal)?">
+            <button class="accordion-trigger" aria-expanded="false">
+              <span class="accordion-trigger__text">Sind Ihre Düfte und Parfüme alkoholfrei (Halal)?</span>
+              <span class="accordion-trigger__icon" aria-hidden="true">
+                <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" width="12" height="12"><path d="M6 1v10M1 6h10"/></svg>
+              </span>
+            </button>
+            <div class="accordion-body" role="region">
+              <div class="accordion-body__inner">
+                <p>Ja, alle unsere Düfte und Parfüme sind auf Öl- oder Wasserbasis und enthalten keinen Ethanol (Trinkalkohol). Wir führen ausschließlich alkoholfreie Düfte, die der Sunnah entsprechen — darunter natürliche Oud-Öle, Misk (Moschus), Attar und andere traditionelle islamische Düfte.</p>
+                <p>Dies ist uns als islamisches Unternehmen besonders wichtig. Alle Produktbeschreibungen enthalten Angaben zu den Inhaltsstoffen.</p>
+                <span class="answer-note">
+                  <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" width="13" height="13"><path d="M8 1a7 7 0 1 0 0 14A7 7 0 0 0 8 1zm3 5-4 4-1.5-1.5"/></svg>
+                  100% alkoholfrei — entspricht der islamischen Ethik
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item" role="listitem" data-question="Woher beziehen Sie Ihre Produkte?">
+            <button class="accordion-trigger" aria-expanded="false">
+              <span class="accordion-trigger__text">Woher beziehen Sie Ihre Produkte?</span>
+              <span class="accordion-trigger__icon" aria-hidden="true">
+                <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" width="12" height="12"><path d="M6 1v10M1 6h10"/></svg>
+              </span>
+            </button>
+            <div class="accordion-body" role="region">
+              <div class="accordion-body__inner">
+                <p>Wir beziehen unsere Produkte von sorgfältig ausgewählten Lieferanten und Verlagen. Islamische Bücher kommen überwiegend von renommierten islamischen Verlagen aus Deutschland, dem arabischen Raum und der Türkei. Unsere Düfte stammen aus traditionellen Herstellungsländern wie dem Oman, Saudi-Arabien und Ägypten.</p>
+                <p>Als muslimisch geführtes Unternehmen liegt uns die Integrität unserer Lieferkette am Herzen. Wir prüfen jeden Lieferanten sorgfältig auf Qualität und Vertrauenswürdigkeit.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item" role="listitem" data-question="Sind die islamischen Bücher von anerkannten Gelehrten?">
+            <button class="accordion-trigger" aria-expanded="false">
+              <span class="accordion-trigger__text">Sind die islamischen Bücher von anerkannten Gelehrten?</span>
+              <span class="accordion-trigger__icon" aria-hidden="true">
+                <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" width="12" height="12"><path d="M6 1v10M1 6h10"/></svg>
+              </span>
+            </button>
+            <div class="accordion-body" role="region">
+              <div class="accordion-body__inner">
+                <p>Ja, wir führen ausschließlich Werke, die von anerkannten islamischen Gelehrten verfasst oder übersetzt wurden. Unser Buchsortiment umfasst klassische Werke der islamischen Literatur (z. B. Riyadus-Salihin, Al-Bukhari, Ibn Kathir) sowie zeitgenössische deutschsprachige Werke von qualifizierten Autoren und Übersetzern.</p>
+                <p>Bei Fragen zur Authentizität oder dem Inhalt eines bestimmten Buches stehen wir Ihnen gerne beratend zur Seite.</p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Contact CTA -->
+      <div class="faq-cta">
+        <div class="faq-cta__content">
+          <span class="eyebrow" style="margin-bottom:var(--sp-2);">Weitere Fragen?</span>
+          <h2>Wir helfen Ihnen gerne</h2>
+          <p>Haben Sie Ihre Antwort nicht gefunden? Unser Team steht Ihnen Montag bis Samstag von 9:00 bis 18:00 Uhr zur Verfügung.</p>
+          <div class="faq-cta__actions">
+            <a href="contact.html" class="btn-filled-gold">
+              <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" width="16" height="16"><rect x="2" y="4" width="16" height="12" rx="1.5"/><path d="m18 5-8 6-8-6"/></svg>
+              Kontakt aufnehmen
+            </a>
+            <a href="mailto:maktaba.al-mansurah@outlook.com" class="btn-outline-gold">
+              maktaba.al-mansurah@outlook.com
+            </a>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /.faq-content -->
+  </section>
+
+</main>
+
+<footer class="site-footer" role="contentinfo">
+  <div class="footer-geo-band"></div>
+  <div class="container">
+    <div class="footer-main">
+      <div class="footer-brand">
+        <p class="footer-brand__name">مكتبة المنصورة</p>
+        <p class="footer-brand__tagline">Islamische Bücher, Düfte & mehr — für die muslimische Gemeinschaft in Deutschland.</p>
+        <div class="footer-social">
+          <a href="https://instagram.com/al_mansurah.de" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>
+          <a href="https://tiktok.com/@al.mansurah.de" target="_blank" rel="noopener noreferrer" aria-label="TikTok"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.56a8.28 8.28 0 004.84 1.54V6.64a4.85 4.85 0 01-1.07.05z"/></svg></a>
+        </div>
+      </div>
+      <div><p class="footer-col-title">Shop</p><ul class="footer-nav-list"><li><a href="shop.html?cat=buecher">Islamische Bücher</a></li><li><a href="shop.html?cat=kleidung">Kleidung & Tradition</a></li><li><a href="shop.html?cat=duefte">Düfte & Sunnah</a></li></ul></div>
+      <div><p class="footer-col-title">Seiten</p><ul class="footer-nav-list"><li><a href="index.html">Startseite</a></li><li><a href="about.html">Über uns</a></li><li><a href="contact.html">Kontakt</a></li><li><a href="faq.html">FAQ</a></li><li><a href="versand.html">Versand</a></li></ul></div>
+      <div><p class="footer-col-title">Rechtliches</p><ul class="footer-nav-list"><li><a href="impressum.html">Impressum</a></li><li><a href="datenschutz.html">Datenschutz</a></li><li><a href="agb.html">AGB</a></li><li><a href="widerruf.html">Widerruf</a></li></ul></div>
+      <div><p class="footer-col-title">Kontakt</p><div class="footer-contact-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg><span><a href="mailto:maktaba.al-mansurah@outlook.com">maktaba.al-mansurah@outlook.com</a></span></div><div class="footer-contact-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18Z"/><path d="M12 7v5l3 3"/></svg><span>Mo–Sa: 9:00–18:00 Uhr</span></div></div>
+    </div>
+  </div>
+  <div class="footer-geo-band" style="opacity:0.3;"></div>
+  <div class="container"><div class="footer-legal"><p>© 2026 Maktabah Al Mansurah. Alle Rechte vorbehalten.</p><div class="footer-legal-links"><a href="impressum.html">Impressum</a><a href="datenschutz.html">Datenschutz</a><a href="agb.html">AGB</a><a href="widerruf.html">Widerruf</a><a href="versand.html">Versand</a><a href="faq.html">FAQ</a></div></div></div>
+</footer>
+
+<script src="assets/js/animations.js"></script>
+<script src="assets/js/shop.js"></script>
+<script src="assets/js/cart.js"></script>
+<script src="assets/js/main.js"></script>
+
+<script>
+/* ── FAQ Accordion ── */
+(function () {
+  'use strict';
+
+  // Accordion toggle
+  document.querySelectorAll('.accordion-trigger').forEach(function (trigger) {
+    trigger.addEventListener('click', function () {
+      var item   = trigger.closest('.accordion-item');
+      var body   = item.querySelector('.accordion-body');
+      var isOpen = trigger.classList.contains('is-open');
+
+      // Close all siblings in the same accordion
+      var siblings = item.closest('.accordion').querySelectorAll('.accordion-item');
+      siblings.forEach(function (sib) {
+        if (sib !== item) {
+          sib.querySelector('.accordion-trigger').classList.remove('is-open');
+          sib.querySelector('.accordion-trigger').setAttribute('aria-expanded', 'false');
+          sib.querySelector('.accordion-body').classList.remove('is-open');
+        }
+      });
+
+      // Toggle current
+      if (isOpen) {
+        trigger.classList.remove('is-open');
+        trigger.setAttribute('aria-expanded', 'false');
+        body.classList.remove('is-open');
+      } else {
+        trigger.classList.add('is-open');
+        trigger.setAttribute('aria-expanded', 'true');
+        body.classList.add('is-open');
+      }
+    });
+  });
+
+  /* ── Category Filter ── */
+  var navBtns     = document.querySelectorAll('.faq-nav__btn');
+  var categories  = document.querySelectorAll('.faq-category');
+
+  navBtns.forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      navBtns.forEach(function (b) { b.classList.remove('is-active'); });
+      btn.classList.add('is-active');
+
+      var filter = btn.getAttribute('data-filter');
+
+      categories.forEach(function (cat) {
+        if (filter === 'all' || cat.getAttribute('data-category') === filter) {
+          cat.removeAttribute('data-hidden');
+        } else {
+          cat.setAttribute('data-hidden', 'true');
+        }
+      });
+
+      // Clear search when switching tabs
+      document.getElementById('faqSearch').value = '';
+      document.getElementById('faqNoResults').classList.remove('is-visible');
+      document.querySelectorAll('.accordion-item').forEach(function (item) {
+        item.style.display = '';
+      });
+    });
+  });
+
+  /* ── Search ── */
+  var searchInput = document.getElementById('faqSearch');
+  var noResults   = document.getElementById('faqNoResults');
+
+  searchInput.addEventListener('input', function () {
+    var query = this.value.trim().toLowerCase();
+
+    if (query === '') {
+      // Reset
+      document.querySelectorAll('.accordion-item').forEach(function (item) {
+        item.style.display = '';
+      });
+      categories.forEach(function (cat) {
+        var activeFilter = document.querySelector('.faq-nav__btn.is-active').getAttribute('data-filter');
+        if (activeFilter === 'all' || cat.getAttribute('data-category') === activeFilter) {
+          cat.removeAttribute('data-hidden');
+        }
+      });
+      noResults.classList.remove('is-visible');
+      return;
+    }
+
+    // Show all categories when searching
+    categories.forEach(function (cat) {
+      cat.removeAttribute('data-hidden');
+    });
+
+    var totalVisible = 0;
+
+    document.querySelectorAll('.accordion-item').forEach(function (item) {
+      var question = (item.getAttribute('data-question') || '').toLowerCase();
+      var answerEl = item.querySelector('.accordion-body__inner');
+      var answer   = answerEl ? answerEl.textContent.toLowerCase() : '';
+
+      if (question.includes(query) || answer.includes(query)) {
+        item.style.display = '';
+        totalVisible++;
+      } else {
+        item.style.display = 'none';
+      }
+    });
+
+    // Hide empty categories
+    categories.forEach(function (cat) {
+      var visible = cat.querySelectorAll('.accordion-item:not([style*="display: none"])').length;
+      if (visible === 0) {
+        cat.setAttribute('data-hidden', 'true');
+      } else {
+        cat.removeAttribute('data-hidden');
+      }
+    });
+
+    if (totalVisible === 0) {
+      noResults.classList.add('is-visible');
+    } else {
+      noResults.classList.remove('is-visible');
+    }
+  });
+}());
+</script>
+</body>
+</html>

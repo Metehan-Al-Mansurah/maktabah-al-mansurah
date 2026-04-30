@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Widerrufsbelehrung und Muster-Widerrufsformular für Maktabah Al Mansurah — Ihr Recht auf 14-tägigen Widerruf bei Bestellungen in unserem islamischen Online-Shop.">
+  <title>Widerruf & Rückgabe — Maktabah Al Mansurah</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%230D1A0F'/><polygon points='16,3 17.6,11.4 24.5,7.5 20.6,14.4 29,16 20.6,17.6 24.5,24.5 17.6,20.6 16,29 14.4,20.6 7.5,24.5 11.4,17.6 3,16 11.4,14.4 7.5,7.5 14.4,11.4' fill='none' stroke='%23C8973A' stroke-width='0.8'/></svg>">
+  <link rel="stylesheet" href="assets/css/base.css">
+  <link rel="stylesheet" href="assets/css/animations.css">
+  <link rel="stylesheet" href="assets/css/patterns.css">
+  <link rel="stylesheet" href="assets/css/layout.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+  <style>
+    /* ── Page-specific legal styles ── */
+    .legal-section {
+      padding-block: var(--sp-7);
+    }
+    .legal-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: var(--sp-4);
+      max-width: 860px;
+      margin-inline: auto;
+    }
+    .legal-card {
+      background: var(--clr-ink-light);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      padding: var(--sp-4) var(--sp-5);
+      position: relative;
+      overflow: hidden;
+      transition: border-color var(--dur-mid) var(--ease-out),
+                  box-shadow var(--dur-mid) var(--ease-out);
+    }
+    .legal-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 3px;
+      height: 100%;
+      background: linear-gradient(180deg, var(--clr-gold), var(--clr-gold-light));
+      border-radius: 0 2px 2px 0;
+    }
+    .legal-card:hover {
+      border-color: var(--border-mid);
+      box-shadow: var(--shadow-glow);
+    }
+    .legal-card__number {
+      font-family: var(--font-display);
+      font-size: var(--text-xs);
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--clr-gold);
+      margin-bottom: var(--sp-1);
+      display: block;
+    }
+    .legal-card h2 {
+      font-size: var(--text-lg);
+      color: var(--clr-text-primary);
+      margin-bottom: var(--sp-3);
+      padding-bottom: var(--sp-2);
+      border-bottom: 1px solid var(--border-subtle);
+    }
+    .legal-card h3 {
+      font-size: var(--text-base);
+      font-family: var(--font-body);
+      font-weight: 600;
+      color: var(--clr-gold-light);
+      margin-top: var(--sp-3);
+      margin-bottom: var(--sp-1);
+    }
+    .legal-card p {
+      color: var(--clr-text-mid);
+      line-height: 1.8;
+      margin-bottom: var(--sp-2);
+    }
+    .legal-card p:last-child {
+      margin-bottom: 0;
+    }
+    .legal-card ul {
+      list-style: none;
+      padding: 0;
+      margin-bottom: var(--sp-2);
+    }
+    .legal-card ul li {
+      color: var(--clr-text-mid);
+      padding: 0.35rem 0 0.35rem 1.4rem;
+      position: relative;
+      line-height: 1.7;
+    }
+    .legal-card ul li::before {
+      content: '–';
+      position: absolute;
+      left: 0;
+      color: var(--clr-gold-muted);
+      font-weight: 700;
+    }
+
+    /* Highlight box */
+    .info-box {
+      background: rgba(200, 151, 58, 0.07);
+      border: 1px solid var(--border-mid);
+      border-radius: var(--radius-md);
+      padding: var(--sp-3) var(--sp-4);
+      margin-block: var(--sp-3);
+    }
+    .info-box--warning {
+      background: rgba(200, 151, 58, 0.05);
+      border-color: rgba(200, 151, 58, 0.22);
+    }
+    .info-box p {
+      color: var(--clr-gold-light) !important;
+      font-weight: 500;
+      font-size: var(--text-sm);
+      margin: 0;
+    }
+    .info-box .info-icon {
+      color: var(--clr-gold);
+      margin-right: 0.5rem;
+    }
+
+    /* Form card */
+    .form-card {
+      background: var(--clr-ink-mid);
+      border: 1px solid var(--border-mid);
+      border-radius: var(--radius-lg);
+      padding: var(--sp-5);
+    }
+    .form-card__header {
+      text-align: center;
+      padding-bottom: var(--sp-3);
+      margin-bottom: var(--sp-4);
+      border-bottom: 1px solid var(--border-subtle);
+    }
+    .form-card__header h3 {
+      font-family: var(--font-display);
+      font-size: var(--text-xl);
+      color: var(--clr-text-primary);
+      margin-bottom: var(--sp-1);
+    }
+    .form-card__header p {
+      color: var(--clr-text-muted);
+      font-size: var(--text-sm);
+    }
+    .form-field {
+      margin-bottom: var(--sp-3);
+    }
+    .form-field label {
+      display: block;
+      font-size: var(--text-sm);
+      font-weight: 500;
+      color: var(--clr-text-mid);
+      margin-bottom: 0.4rem;
+      letter-spacing: 0.04em;
+    }
+    .form-field input,
+    .form-field textarea {
+      width: 100%;
+      background: var(--clr-ink-lifted);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: 0.75rem 1rem;
+      color: var(--clr-text-primary);
+      font-size: var(--text-sm);
+      line-height: 1.6;
+      transition: border-color var(--dur-fast) ease,
+                  box-shadow var(--dur-fast) ease;
+    }
+    .form-field input:focus,
+    .form-field textarea:focus {
+      outline: none;
+      border-color: var(--clr-gold-muted);
+      box-shadow: 0 0 0 3px rgba(200, 151, 58, 0.10);
+    }
+    .form-field textarea {
+      min-height: 80px;
+      resize: vertical;
+    }
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--sp-2);
+    }
+    @media (max-width: 560px) {
+      .form-grid { grid-template-columns: 1fr; }
+    }
+    .form-note {
+      font-size: var(--text-xs);
+      color: var(--clr-text-muted);
+      margin-top: var(--sp-3);
+      line-height: 1.7;
+    }
+    .checkbox-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      margin-bottom: var(--sp-2);
+      cursor: pointer;
+    }
+    .checkbox-row input[type="checkbox"] {
+      width: 18px;
+      height: 18px;
+      flex-shrink: 0;
+      margin-top: 2px;
+      accent-color: var(--clr-gold);
+    }
+    .checkbox-row span {
+      font-size: var(--text-sm);
+      color: var(--clr-text-mid);
+      line-height: 1.6;
+    }
+    .form-submit-note {
+      background: var(--clr-ink-light);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: var(--sp-3) var(--sp-4);
+      margin-top: var(--sp-4);
+    }
+    .form-submit-note p {
+      font-size: var(--text-sm);
+      color: var(--clr-text-muted);
+      margin: 0;
+      line-height: 1.7;
+    }
+    .form-submit-note strong {
+      color: var(--clr-gold-light);
+    }
+
+    /* Exception badges */
+    .exception-list {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--sp-2);
+      margin-top: var(--sp-3);
+    }
+    @media (max-width: 560px) {
+      .exception-list { grid-template-columns: 1fr; }
+    }
+    .exception-item {
+      background: rgba(200, 151, 58, 0.05);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: var(--sp-2) var(--sp-3);
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+    }
+    .exception-item__icon {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: rgba(200, 151, 58, 0.12);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      color: var(--clr-gold);
+      font-size: 0.9rem;
+    }
+    .exception-item__text {
+      font-size: var(--text-sm);
+      color: var(--clr-text-mid);
+      line-height: 1.6;
+    }
+    .exception-item__text strong {
+      display: block;
+      color: var(--clr-text-primary);
+      font-weight: 600;
+      margin-bottom: 2px;
+    }
+
+    /* Timeline / Steps */
+    .timeline {
+      margin-top: var(--sp-3);
+    }
+    .timeline-step {
+      display: flex;
+      gap: var(--sp-2);
+      margin-bottom: var(--sp-2);
+      align-items: flex-start;
+    }
+    .timeline-step__dot {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: var(--clr-ink-lifted);
+      border: 2px solid var(--clr-gold-muted);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: var(--text-xs);
+      font-weight: 700;
+      color: var(--clr-gold);
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .timeline-step__content {
+      font-size: var(--text-sm);
+      color: var(--clr-text-mid);
+      line-height: 1.7;
+    }
+    .timeline-step__content strong {
+      color: var(--clr-text-primary);
+      font-weight: 600;
+    }
+
+    /* Page hero decoration */
+    .page-hero__ornament {
+      position: absolute;
+      top: 50%;
+      right: var(--sp-6);
+      transform: translateY(-50%);
+      font-family: var(--font-arabic);
+      font-size: 6rem;
+      color: rgba(200, 151, 58, 0.06);
+      pointer-events: none;
+      user-select: none;
+      direction: rtl;
+      line-height: 1;
+    }
+    @media (max-width: 640px) {
+      .page-hero__ornament { display: none; }
+      .legal-card { padding: var(--sp-3); }
+    }
+  </style>
+</head>
+<body>
+
+<div id="scrollProgress" aria-hidden="true"></div>
+<header class="site-header" id="siteHeader" role="banner">
+  <div class="header-inner">
+    <a href="index.html" class="brand" aria-label="Maktabah Al Mansurah – Startseite">
+      <span class="brand-logo-wrap"><img src="MAM.logo.png" alt="" class="brand-logo" aria-hidden="true"></span>
+      <span class="brand-text">
+        <span class="brand-arabic brand-shimmer">مكتبة المنصورة</span>
+        <span class="brand-latin">Maktabah Al Mansurah</span>
+      </span>
+    </a>
+    <nav class="nav-primary" role="navigation"><a href="index.html">Startseite</a><a href="shop.html">Shop</a><a href="about.html">Über uns</a><a href="contact.html">Kontakt</a></nav>
+    <div class="header-actions">
+      <button class="cart-trigger" id="cartTrigger" aria-label="Warenkorb öffnen"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 0 0-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 0 0-16.536-1.84M7.5 14.25 5.106 5.272M6 20.25a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Zm12.75 0a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Z"/></svg><span class="cart-badge hidden" id="cartBadge">0</span></button>
+      <button class="nav-toggle" id="navToggle" aria-label="Menü öffnen" aria-expanded="false"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+<div class="mobile-nav-overlay" id="menuOverlay" aria-hidden="true"></div>
+<nav class="mobile-nav" id="mobileNav" aria-hidden="true">
+  <div class="mobile-nav__header"><a href="index.html" class="brand"><span class="brand-arabic" style="font-size:1rem;color:var(--clr-gold-light);">مكتبة المنصورة</span></a><button class="mobile-nav__close" id="mobileNavClose"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 18 18 6M6 6l12 12"/></svg></button></div>
+  <div class="mobile-nav__links"><a href="index.html">Startseite</a><a href="shop.html">Shop</a><a href="about.html">Über uns</a><a href="contact.html">Kontakt</a></div>
+  <div class="mobile-nav__footer"><p class="mobile-nav__arabic">بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ</p></div>
+</nav>
+<div class="cart-overlay" id="cartOverlay" aria-hidden="true"></div>
+<aside class="cart-drawer" id="cartDrawer" aria-hidden="true">
+  <div class="cart-drawer__header"><h2 class="cart-drawer__title">Warenkorb</h2><button class="cart-drawer__close" id="cartClose"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 18 18 6M6 6l12 12"/></svg></button></div>
+  <div class="cart-drawer__items"></div>
+  <div class="cart-drawer__footer"><div class="cart-drawer__subtotal"><span>Zwischensumme</span><strong class="cart-drawer__total-amount">0,00 €</strong></div><a href="checkout.html" class="btn btn-primary btn-full">Zur Kasse</a><p class="cart-drawer__note">Versandkosten werden an der Kasse berechnet.</p></div>
+</aside>
+
+<main id="main-content">
+
+  <!-- Page Hero -->
+  <section class="page-hero" aria-labelledby="page-hero-title">
+    <div class="page-hero__bg"></div>
+    <div class="page-hero__ornament" aria-hidden="true">رد</div>
+    <div class="container page-hero__content">
+      <span class="eyebrow">Rechtliche Information</span>
+      <h1 id="page-hero-title">Widerruf &amp; Rückgabe</h1>
+      <p style="color:var(--clr-text-muted);margin-top:var(--sp-2);max-width:560px;font-size:var(--text-sm);">
+        Sie haben das Recht, Ihre Bestellung innerhalb von 14 Tagen ohne Angabe von Gründen zu widerrufen.
+      </p>
+    </div>
+  </section>
+
+  <!-- Legal Content -->
+  <section class="legal-section" aria-label="Widerrufsbelehrung">
+    <div class="container">
+      <div class="legal-grid">
+
+        <!-- 1. Widerrufsrecht -->
+        <article class="legal-card">
+          <span class="legal-card__number">Abschnitt 01</span>
+          <h2>Widerrufsrecht</h2>
+
+          <p>Sie haben das Recht, binnen vierzehn Tagen ohne Angabe von Gründen diesen Vertrag zu widerrufen.</p>
+
+          <h3>Widerrufsfrist</h3>
+          <p>Die Widerrufsfrist beträgt <strong style="color:var(--clr-gold-light);">vierzehn Tage</strong> ab dem Tag, an dem Sie oder ein von Ihnen benannter Dritter, der nicht der Beförderer ist, die Waren in Besitz genommen haben bzw. hat.</p>
+          <p>Bei einem Vertrag über mehrere Waren, die Sie im Rahmen einer einheitlichen Bestellung bestellt haben und die getrennt geliefert werden: ab dem Tag, an dem Sie oder ein von Ihnen benannter Dritter die letzte Ware in Besitz genommen haben.</p>
+
+          <h3>Ausübung des Widerrufsrechts</h3>
+          <p>Um Ihr Widerrufsrecht auszuüben, müssen Sie uns:</p>
+
+          <div class="info-box">
+            <p>
+              <strong>Maktabah Al Mansurah</strong><br>
+              E-Mail: <a href="mailto:maktaba.al-mansurah@outlook.com" style="color:var(--clr-gold);">maktaba.al-mansurah@outlook.com</a>
+            </p>
+          </div>
+
+          <p>mittels einer eindeutigen Erklärung (z. B. ein mit der Post versandter Brief oder eine E-Mail) über Ihren Entschluss, diesen Vertrag zu widerrufen, informieren. Sie können dafür das beigefügte Muster-Widerrufsformular verwenden, das jedoch nicht vorgeschrieben ist.</p>
+
+          <p>Zur Wahrung der Widerrufsfrist reicht es aus, dass Sie die Mitteilung über die Ausübung des Widerrufsrechts vor Ablauf der Widerrufsfrist absenden.</p>
+        </article>
+
+        <!-- 2. Widerrufsfolgen -->
+        <article class="legal-card">
+          <span class="legal-card__number">Abschnitt 02</span>
+          <h2>Widerrufsfolgen</h2>
+
+          <p>Wenn Sie diesen Vertrag widerrufen, haben wir Ihnen alle Zahlungen, die wir von Ihnen erhalten haben, einschließlich der Lieferkosten (mit Ausnahme der zusätzlichen Kosten, die sich daraus ergeben, dass Sie eine andere Art der Lieferung als die von uns angebotene, günstigste Standardlieferung gewählt haben), unverzüglich und spätestens binnen vierzehn Tagen ab dem Tag zurückzuzahlen, an dem die Mitteilung über Ihren Widerruf dieses Vertrags bei uns eingegangen ist.</p>
+
+          <h3>Rückzahlungsmethode</h3>
+          <p>Für diese Rückzahlung verwenden wir dasselbe Zahlungsmittel, das Sie bei der ursprünglichen Transaktion eingesetzt haben, es sei denn, mit Ihnen wurde ausdrücklich etwas anderes vereinbart. In keinem Fall werden Ihnen wegen dieser Rückzahlung Entgelte berechnet.</p>
+
+          <h3>Rücksendung der Waren</h3>
+          <div class="info-box info-box--warning">
+            <p>Wir können die Rückzahlung verweigern, bis wir die Waren wieder zurückerhalten haben oder bis Sie den Nachweis erbracht haben, dass Sie die Waren zurückgesandt haben, je nachdem, welches der frühere Zeitpunkt ist.</p>
+          </div>
+
+          <p>Sie haben die Waren unverzüglich und in jedem Fall spätestens binnen <strong style="color:var(--clr-gold-light);">vierzehn Tagen</strong> ab dem Tag, an dem Sie uns über den Widerruf dieses Vertrags unterrichten, an uns zurückzusenden oder zu übergeben. Die Frist ist gewahrt, wenn Sie die Waren vor Ablauf der Frist von vierzehn Tagen absenden.</p>
+
+          <h3>Rücksendekosten</h3>
+          <p>Sie tragen die unmittelbaren Kosten der Rücksendung der Waren.</p>
+
+          <h3>Wertersatz</h3>
+          <p>Sie müssen für einen etwaigen Wertverlust der Waren nur aufkommen, wenn dieser Wertverlust auf einen zur Prüfung der Beschaffenheit, Eigenschaften und Funktionsweise der Waren nicht notwendigen Umgang mit ihnen zurückzuführen ist.</p>
+
+          <div class="timeline">
+            <div class="timeline-step">
+              <div class="timeline-step__dot">1</div>
+              <div class="timeline-step__content"><strong>Widerruf erklären</strong> — Per E-Mail oder Formular innerhalb von 14 Tagen nach Warenerhalt.</div>
+            </div>
+            <div class="timeline-step">
+              <div class="timeline-step__dot">2</div>
+              <div class="timeline-step__content"><strong>Ware zurücksenden</strong> — Innerhalb von 14 Tagen nach Widerrufserklärung.</div>
+            </div>
+            <div class="timeline-step">
+              <div class="timeline-step__dot">3</div>
+              <div class="timeline-step__content"><strong>Rückerstattung</strong> — Innerhalb von 14 Tagen nach Wareneingang bei uns.</div>
+            </div>
+          </div>
+        </article>
+
+        <!-- 3. Ausnahmen -->
+        <article class="legal-card">
+          <span class="legal-card__number">Abschnitt 03</span>
+          <h2>Ausnahmen vom Widerrufsrecht</h2>
+
+          <p>Das Widerrufsrecht besteht nicht bzw. erlischt vorzeitig bei folgenden Verträgen:</p>
+
+          <div class="exception-list">
+            <div class="exception-item">
+              <div class="exception-item__icon">
+                <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" width="16" height="16"><path d="M10 2L3 7v9a1 1 0 001 1h12a1 1 0 001-1V7L10 2z"/></svg>
+              </div>
+              <div class="exception-item__text">
+                <strong>Digitale Inhalte</strong>
+                Digitale Produkte (E-Books, Downloads), die nach Beginn der Lieferung mit Zustimmung des Verbrauchers bereitgestellt wurden.
+              </div>
+            </div>
+            <div class="exception-item">
+              <div class="exception-item__icon">
+                <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" width="16" height="16"><circle cx="10" cy="10" r="8"/><path d="M7 10l2 2 4-4"/></svg>
+              </div>
+              <div class="exception-item__text">
+                <strong>Hygieneartikel geöffnet</strong>
+                Waren, die aus Gründen des Gesundheitsschutzes oder der Hygiene nicht zur Rückgabe geeignet sind und deren Versiegelung nach der Lieferung entfernt wurde (z. B. Düfte, Parfüme, Ölprodukte).
+              </div>
+            </div>
+            <div class="exception-item">
+              <div class="exception-item__icon">
+                <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" width="16" height="16"><path d="M4 4h12v12H4z"/><path d="M4 8h12M8 4v12"/></svg>
+              </div>
+              <div class="exception-item__text">
+                <strong>Individuell angefertigte Waren</strong>
+                Waren, die nach Kundenspezifikation angefertigt wurden oder eindeutig auf die persönlichen Bedürfnisse zugeschnitten sind.
+              </div>
+            </div>
+            <div class="exception-item">
+              <div class="exception-item__icon">
+                <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" width="16" height="16"><path d="M3 10h14M10 3l7 7-7 7"/></svg>
+              </div>
+              <div class="exception-item__text">
+                <strong>Schnell verderbliche Waren</strong>
+                Waren, die schnell verderben können oder deren Verfallsdatum überschritten würde.
+              </div>
+            </div>
+          </div>
+
+          <p style="margin-top:var(--sp-3);">
+            Bei Fragen zu den Ausnahmen kontaktieren Sie uns bitte vor Ihrer Bestellung unter <a href="mailto:maktaba.al-mansurah@outlook.com" style="color:var(--clr-gold);">maktaba.al-mansurah@outlook.com</a>.
+          </p>
+        </article>
+
+        <!-- 4. Muster-Widerrufsformular -->
+        <article class="legal-card" id="widerrufsformular">
+          <span class="legal-card__number">Abschnitt 04</span>
+          <h2>Muster-Widerrufsformular</h2>
+
+          <p>Wenn Sie den Vertrag widerrufen wollen, füllen Sie bitte dieses Formular aus und senden Sie es per E-Mail an <a href="mailto:maktaba.al-mansurah@outlook.com" style="color:var(--clr-gold);">maktaba.al-mansurah@outlook.com</a>.</p>
+
+          <div class="form-card">
+            <div class="form-card__header">
+              <h3>Widerrufserklärung</h3>
+              <p>Maktabah Al Mansurah — maktaba.al-mansurah@outlook.com</p>
+            </div>
+
+            <form id="widerrufsForm" novalidate>
+              <div class="info-box" style="margin-top:0;margin-bottom:var(--sp-3);">
+                <p style="color:var(--clr-text-muted) !important;font-weight:400;">
+                  Hiermit widerrufe(n) ich/wir (*) den von mir/uns (*) abgeschlossenen Vertrag über den Kauf der folgenden Waren (*):
+                </p>
+              </div>
+
+              <div class="form-field">
+                <label for="produkte">Bezeichnung der Waren / Bestellnummer</label>
+                <textarea id="produkte" name="produkte" placeholder="z. B. Riyadus-Salihin, Bestellnummer #12345" rows="3"></textarea>
+              </div>
+
+              <div class="form-grid">
+                <div class="form-field">
+                  <label for="bestelldatum">Bestellt am (*)</label>
+                  <input type="date" id="bestelldatum" name="bestelldatum">
+                </div>
+                <div class="form-field">
+                  <label for="erhalten">Erhalten am (*)</label>
+                  <input type="date" id="erhalten" name="erhalten">
+                </div>
+              </div>
+
+              <div class="form-field">
+                <label for="name">Name des/der Verbraucher(s)</label>
+                <input type="text" id="name" name="name" placeholder="Vor- und Nachname" autocomplete="name">
+              </div>
+
+              <div class="form-field">
+                <label for="adresse">Anschrift des/der Verbraucher(s)</label>
+                <textarea id="adresse" name="adresse" placeholder="Straße, Hausnummer&#10;PLZ, Ort" rows="3" autocomplete="street-address"></textarea>
+              </div>
+
+              <div class="form-field">
+                <label for="email">E-Mail-Adresse</label>
+                <input type="email" id="email" name="email" placeholder="ihre@email.de" autocomplete="email">
+              </div>
+
+              <div class="form-field">
+                <label for="grund">Grund für den Widerruf (optional)</label>
+                <textarea id="grund" name="grund" placeholder="Optionale Angabe des Widerrufsgrundes..." rows="3"></textarea>
+              </div>
+
+              <div class="form-field">
+                <label for="iban">IBAN für Rückerstattung (optional)</label>
+                <input type="text" id="iban" name="iban" placeholder="DE00 0000 0000 0000 0000 00">
+              </div>
+
+              <div class="form-field">
+                <label class="checkbox-row">
+                  <input type="checkbox" id="bestaetigung" name="bestaetigung">
+                  <span>Ich bestätige, dass die oben gemachten Angaben korrekt sind und ich den Widerruf meiner Bestellung hiermit erkläre.</span>
+                </label>
+              </div>
+
+              <div class="form-submit-note">
+                <p>
+                  Dieses Formular dient als <strong>Vorlage</strong>. Bitte kopieren Sie den ausgefüllten Inhalt und senden Sie ihn per E-Mail an <strong>maktaba.al-mansurah@outlook.com</strong>. Eine Online-Einreichung ist derzeit nicht möglich.
+                </p>
+              </div>
+
+              <p class="form-note">(*) Unzutreffendes streichen. Stand: April 2026. Dieses Formular entspricht dem gesetzlichen Muster gemäß Anlage 2 zu Art. 246a § 1 Abs. 2 Satz 1 Nr. 1 EGBGB.</p>
+            </form>
+          </div>
+        </article>
+
+      </div><!-- /.legal-grid -->
+    </div><!-- /.container -->
+  </section>
+
+</main>
+
+<footer class="site-footer" role="contentinfo">
+  <div class="footer-geo-band"></div>
+  <div class="container">
+    <div class="footer-main">
+      <div class="footer-brand">
+        <p class="footer-brand__name">مكتبة المنصورة</p>
+        <p class="footer-brand__tagline">Islamische Bücher, Düfte & mehr — für die muslimische Gemeinschaft in Deutschland.</p>
+        <div class="footer-social">
+          <a href="https://instagram.com/al_mansurah.de" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>
+          <a href="https://tiktok.com/@al.mansurah.de" target="_blank" rel="noopener noreferrer" aria-label="TikTok"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.56a8.28 8.28 0 004.84 1.54V6.64a4.85 4.85 0 01-1.07.05z"/></svg></a>
+        </div>
+      </div>
+      <div><p class="footer-col-title">Shop</p><ul class="footer-nav-list"><li><a href="shop.html?cat=buecher">Islamische Bücher</a></li><li><a href="shop.html?cat=kleidung">Kleidung & Tradition</a></li><li><a href="shop.html?cat=duefte">Düfte & Sunnah</a></li></ul></div>
+      <div><p class="footer-col-title">Seiten</p><ul class="footer-nav-list"><li><a href="index.html">Startseite</a></li><li><a href="about.html">Über uns</a></li><li><a href="contact.html">Kontakt</a></li><li><a href="faq.html">FAQ</a></li><li><a href="versand.html">Versand</a></li></ul></div>
+      <div><p class="footer-col-title">Rechtliches</p><ul class="footer-nav-list"><li><a href="impressum.html">Impressum</a></li><li><a href="datenschutz.html">Datenschutz</a></li><li><a href="agb.html">AGB</a></li><li><a href="widerruf.html">Widerruf</a></li></ul></div>
+      <div><p class="footer-col-title">Kontakt</p><div class="footer-contact-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg><span><a href="mailto:maktaba.al-mansurah@outlook.com">maktaba.al-mansurah@outlook.com</a></span></div><div class="footer-contact-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18Z"/><path d="M12 7v5l3 3"/></svg><span>Mo–Sa: 9:00–18:00 Uhr</span></div></div>
+    </div>
+  </div>
+  <div class="footer-geo-band" style="opacity:0.3;"></div>
+  <div class="container"><div class="footer-legal"><p>© 2026 Maktabah Al Mansurah. Alle Rechte vorbehalten.</p><div class="footer-legal-links"><a href="impressum.html">Impressum</a><a href="datenschutz.html">Datenschutz</a><a href="agb.html">AGB</a><a href="widerruf.html">Widerruf</a><a href="versand.html">Versand</a><a href="faq.html">FAQ</a></div></div></div>
+</footer>
+<script src="assets/js/animations.js"></script>
+<script src="assets/js/shop.js"></script>
+<script src="assets/js/cart.js"></script>
+<script src="assets/js/main.js"></script>
+</body>
+</html>
