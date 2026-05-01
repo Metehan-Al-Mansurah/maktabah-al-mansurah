@@ -155,6 +155,46 @@
       badge: null,
       coverFrom: '#111111', coverTo: '#050505',
       description: 'Der schwarz-weiße Saudi Shemagh — modern, edel und zeitlos. Das dezente Schwarz-Weiß-Muster macht diesen Shemagh zum vielseitigsten der Kollektion. Lässt sich zu vielen Outfits kombinieren und verleiht jedem Look eine islamisch-traditionelle Note. Aus hochwertigem Gewebe für angenehmen Tragekomfort.'
+    },
+    {
+      id: 14,
+      mainCat: 'buecher', subcat: 'arabisch',
+      name: 'Erläuterung der Zusammenfassung der Beschreibung des Gebets (Al-Albani)',
+      subtitle: 'Scheich Sulayman Ar-Ruhayli · Arabisch',
+      price: 12.99,
+      badge: null,
+      coverFrom: '#1A1205', coverTo: '#0A0803',
+      description: 'Die arabischsprachige Erläuterung von Scheich Ar-Ruhayli zur Zusammenfassung der Gebetsbeschreibung auf Basis der Werke des Muhaddith Al-Albani. Ein tiefgründiges Werk für Studierende der arabischen islamischen Wissenschaften, das die prophetische Art des Gebets präzise und quellenbasiert erklärt.'
+    },
+    {
+      id: 15,
+      mainCat: 'buecher', subcat: 'arabisch',
+      name: 'Al-ʿUmdah fil-Aḥkām',
+      subtitle: 'Dar Al-Mirath An-Nabawi · Arabisch · Taschenformat',
+      price: 7.99,
+      badge: null,
+      coverFrom: '#0D1A20', coverTo: '#060B0E',
+      description: 'Die arabische Originalausgabe des klassischen Werkes Al-Umdah fil-Ahkam im praktischen Taschenformat — sorgfältig ausgewählte authentische Hadithe zu Ibadah, Reinheit, Gebet und islamischen Rechtsfragen. Ideal für das tägliche Studium im arabischen Original.'
+    },
+    {
+      id: 16,
+      mainCat: 'buecher', subcat: 'arabisch',
+      name: 'Erläuterung der Gedichtsammlung der Rechtsgrundsätze des Gelehrten As-Saʿdī',
+      subtitle: 'Scheich Sulayman Ar-Ruhayli · Arabisch',
+      price: 12.99,
+      badge: null,
+      coverFrom: '#0E1A10', coverTo: '#060A07',
+      description: 'Die arabischsprachige Erläuterung von Scheich Ar-Ruhayli zur Gedichtsammlung der islamischen Rechtsgrundsätze (Al-Qawa\'id al-Fiqhiyyah) des Gelehrten As-Sa\'di. Für Fortgeschrittene im arabischen Islamstudium — tiefgründig, quellenbasiert und praxisnah.'
+    },
+    {
+      id: 17,
+      mainCat: 'buecher', subcat: 'arabisch',
+      name: 'Erläuterung der feinen Abhandlung über Uṣūl al-Fiqh des Gelehrten As-Saʿdī',
+      subtitle: 'Scheich Sulayman Ar-Ruhayli · Arabisch',
+      price: 12.99,
+      badge: null,
+      coverFrom: '#1A1018', coverTo: '#0A080D',
+      description: 'Die arabische Erläuterung der feinen Abhandlung über die Grundlagen der islamischen Rechtswissenschaft (Usul al-Fiqh) des Gelehrten As-Sa\'di durch Scheich Ar-Ruhayli. Ein unverzichtbares Werk für Studierende der arabischen Rechtswissenschaft — klar strukturiert und methodisch präzise.'
     }
   ];
 
