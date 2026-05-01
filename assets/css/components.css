@@ -2821,6 +2821,86 @@ a.product-card__img { display:flex; text-decoration:none; }
 }
 .footer-legal-vat a:hover { color: var(--clr-gold); }
 
+/* ════════════════════════════════════════════════
+   MOBILE FIXES — Homepage-Optimierungen
+   ════════════════════════════════════════════════ */
+
+/* ── Footer: Brand-Bereich auf Mobile zentrieren ──
+   direction:rtl drückt den arabischen Namen auf 1-Spalten-Layout
+   nach rechts — Tagline blieb links → sah kaputt aus */
+@media (max-width: 540px) {
+  .footer-brand {
+    text-align: center;
+  }
+  .footer-brand__name {
+    /* Arabisch zentriert statt rechts-aligned */
+    direction: rtl;
+    display: block;
+    text-align: center;
+  }
+  .footer-brand__tagline {
+    max-width: 100%;
+    text-align: center;
+  }
+  .footer-social {
+    justify-content: center;
+  }
+  /* Footer-Navigation: weniger vertikaler Abstand auf Mobile */
+  .footer-nav-list li {
+    margin-bottom: 6px;
+  }
+  .footer-col-title {
+    margin-bottom: var(--sp-2);
+  }
+  /* Footer-Spalten auf Mobile enger zusammen */
+  .footer-main {
+    padding-block: var(--sp-5);
+    gap: var(--sp-4);
+  }
+}
+
+/* ── Bestseller: 1-Spalte auf sehr kleinen Screens ──
+   Bei ≤ 480px ist 2×2 zu gedrängt für lesbare Produktkarten */
+@media (max-width: 480px) {
+  .hp-product-grid {
+    grid-template-columns: 1fr;
+    gap: var(--sp-3);
+  }
+  .hp-product-card__visual {
+    height: 120px;
+  }
+  /* Vollbreite-Button statt verkleinertem "+" */
+  .btn-label-full { display: inline !important; }
+  .btn-label-short { display: none !important; }
+  .hp-product-card__footer {
+    padding: var(--sp-2) var(--sp-3);
+  }
+}
+
+/* ── Allgemeines Seiten-Padding auf Mobile ──
+   Mehr horizontalen Atem in Sections und Container */
+@media (max-width: 480px) {
+  .section {
+    padding-block: var(--sp-5);
+  }
+  .section--sm {
+    padding-block: var(--sp-4);
+  }
+  /* Newsletter: weniger seitliches Padding */
+  .newsletter-inner {
+    padding-inline: var(--sp-3);
+  }
+}
+
+/* ── Footer-Legal-Links: auf Mobile umbrechen ── */
+@media (max-width: 480px) {
+  .footer-legal-links {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--sp-2);
+  }
+}
+
 /* ────────────────────────────────────────────────
    MOBILE SIDEBAR SLIDE-IN
    ──────────────────────────────────────────────── */
