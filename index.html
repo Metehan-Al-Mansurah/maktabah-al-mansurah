@@ -118,8 +118,21 @@
   </div>
   <div class="hero-vignette" aria-hidden="true"></div>
 
+  <!-- Corner ornaments -->
+  <div class="hero-corner-tl" aria-hidden="true"></div>
+  <div class="hero-corner-br" aria-hidden="true"></div>
+  <div class="hero-corner-tr" aria-hidden="true"></div>
+  <div class="hero-corner-bl" aria-hidden="true"></div>
+
   <div class="hero__content" style="position:relative;z-index:3;">
-    <span class="hero__eyebrow-arabic hero-eyebrow" aria-hidden="true">بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ</span>
+
+    <div class="hero-ornament-row hero-eyebrow" aria-hidden="true">
+      <span class="hero-ornament-line"></span>
+      <svg width="12" height="12" viewBox="0 0 12 12" fill="currentColor" style="color:var(--clr-gold);opacity:0.7;flex-shrink:0;"><polygon points="6,0 7.5,4.5 12,6 7.5,7.5 6,12 4.5,7.5 0,6 4.5,4.5"/></svg>
+      <span class="hero-ornament-arabic">بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ</span>
+      <svg width="12" height="12" viewBox="0 0 12 12" fill="currentColor" style="color:var(--clr-gold);opacity:0.7;flex-shrink:0;"><polygon points="6,0 7.5,4.5 12,6 7.5,7.5 6,12 4.5,7.5 0,6 4.5,4.5"/></svg>
+      <span class="hero-ornament-line"></span>
+    </div>
 
     <h1 class="hero-title" style="color:var(--clr-gold-pale);">
       Maktabah<br>Al Mansurah
@@ -134,9 +147,21 @@
     </div>
 
     <div class="hero-cta-group hero-cta">
-      <a href="shop.html" class="btn btn-primary">Zum Shop</a>
+      <a href="shop.html" class="btn btn-primary">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right:4px;"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+        Zum Shop
+      </a>
       <a href="about.html" class="btn btn-ghost">Über uns</a>
     </div>
+
+    <div class="hero-stats hero-cta" style="animation-delay:.62s;" aria-hidden="true">
+      <div class="hero-stat"><strong>27+</strong><span>Produkte</span></div>
+      <div class="hero-stat-divider"></div>
+      <div class="hero-stat"><strong>100%</strong><span>Halal</span></div>
+      <div class="hero-stat-divider"></div>
+      <div class="hero-stat"><strong>DE</strong><span>Versand</span></div>
+    </div>
+
   </div>
 
   <div class="hero-scroll-indicator hero-scroll" aria-hidden="true">
@@ -150,20 +175,56 @@
 
 <style>
 .hero-title {
+  letter-spacing: -0.025em;
   transition: text-shadow 0.5s cubic-bezier(.25,.8,.25,1);
+  text-shadow: 0 2px 40px rgba(0,0,0,0.5);
 }
 .hero-title:hover {
   text-shadow: 0 0 28px rgba(200,151,58,0.5), 0 0 70px rgba(200,151,58,0.18), 0 0 120px rgba(200,151,58,0.08);
   cursor: default;
 }
+
+/* Ornament row */
+.hero-ornament-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: var(--sp-3);
+}
+.hero-ornament-line {
+  display: block;
+  height: 1px;
+  width: 60px;
+  background: linear-gradient(90deg, transparent, rgba(200,151,58,0.5));
+}
+.hero-ornament-row .hero-ornament-line:last-of-type {
+  background: linear-gradient(270deg, transparent, rgba(200,151,58,0.5));
+}
+.hero-ornament-arabic {
+  font-family: var(--font-arabic);
+  font-size: 0.9rem;
+  color: var(--clr-gold-muted);
+  direction: rtl;
+  letter-spacing: 0.06em;
+  white-space: nowrap;
+}
+
+/* Verse block */
 .hero-verse-block {
   text-align: center;
   margin: 0 auto;
-  max-width: 500px;
+  max-width: 520px;
+  padding: var(--sp-3) var(--sp-4);
+  border: 1px solid rgba(200,151,58,0.12);
+  border-radius: 12px;
+  background: rgba(0,0,0,0.2);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
 }
 .hero-verse-ar {
   font-family: var(--font-arabic);
-  font-size: clamp(1.5rem, 3.5vw, 2.1rem);
+  font-size: clamp(1.4rem, 3.2vw, 2rem);
   color: var(--clr-gold-light);
   direction: rtl;
   margin: 0 0 0.55em;
@@ -171,83 +232,172 @@
   letter-spacing: 0.02em;
 }
 .hero-verse-de {
-  font-size: clamp(0.82rem, 1.6vw, 0.97rem);
+  font-size: clamp(0.8rem, 1.5vw, 0.92rem);
   color: var(--clr-text-mid);
   font-style: italic;
   margin: 0 0 0.45em;
   line-height: 1.7;
 }
 .hero-verse-src {
-  font-size: 0.68rem;
+  font-size: 0.65rem;
   color: var(--clr-text-faint);
-  letter-spacing: 0.12em;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
   margin: 0;
+}
+
+/* Hero stats bar */
+.hero-stats {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--sp-3);
+  margin-top: var(--sp-3);
+  padding: var(--sp-2) var(--sp-4);
+  border-radius: 100px;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(200,151,58,0.1);
+  width: fit-content;
+  margin-inline: auto;
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+.hero-stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1px;
+}
+.hero-stat strong {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--clr-gold-pale);
+  line-height: 1;
+}
+.hero-stat span {
+  font-size: 0.6rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--clr-text-faint);
+}
+.hero-stat-divider {
+  width: 1px;
+  height: 28px;
+  background: rgba(200,151,58,0.2);
 }
 </style>
 
 <!-- ═══════════════════════════════════════════
+     TRUST BAND
+════════════════════════════════════════════════ -->
+<div class="trust-band" aria-label="Unsere Versprechen">
+  <div class="container">
+    <div class="trust-band__grid">
+      <div class="trust-item">
+        <div class="trust-item__icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+        </div>
+        <span class="trust-item__label">Islamisch<br>Authentisch</span>
+      </div>
+      <div class="trust-item">
+        <div class="trust-item__icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="m9 12 2 2 4-4"/><path d="M5 7c0-1.1.9-2 2-2h10a2 2 0 0 1 2 2v12H5V7z"/><path d="M22 19H2"/></svg>
+        </div>
+        <span class="trust-item__label">100%<br>Halal</span>
+      </div>
+      <div class="trust-item">
+        <div class="trust-item__icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="m1 3 4 1 .72 3.59M6 8l3 9 8-4-2-8L6 8z"/><circle cx="9" cy="20" r="1"/><circle cx="18" cy="20" r="1"/></svg>
+        </div>
+        <span class="trust-item__label">Versand<br>2–4 Tage</span>
+      </div>
+      <div class="trust-item">
+        <div class="trust-item__icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+        </div>
+        <span class="trust-item__label">Persönliche<br>Beratung</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════
      BESTSELLER
 ════════════════════════════════════════════════ -->
-<section class="section" aria-label="Bestseller">
+<section class="section" aria-label="Bestseller" style="background:var(--clr-ink-mid);">
   <div class="container">
-    <div class="section-header" data-reveal>
+    <div class="section-header text-center" data-reveal style="text-align:center;">
       <span class="eyebrow">Empfohlen</span>
       <h2>Bestseller</h2>
       <div class="gold-line gold-line--center"></div>
+      <p style="color:var(--clr-text-muted);font-size:.9rem;margin-top:var(--sp-2);max-width:480px;margin-inline:auto;">Unsere meistverkauften Titel — handverlesen für Klarheit, Vertiefung und Wachstum.</p>
     </div>
     <div class="hp-product-grid" data-reveal>
 
-      <div class="hp-product-card">
-        <div class="hp-product-card__badge hp-badge--bestseller">Bestseller</div>
-        <div class="hp-product-card__icon">
-          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+      <div class="hp-product-card" data-reveal-delay="1">
+        <div class="hp-product-card__visual hp-visual--emerald">
+          <span class="hp-product-card__badge hp-badge--bestseller">Bestseller</span>
+          <div class="hp-visual__icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+          </div>
+          <span class="hp-visual__arabic" aria-hidden="true">الأربعون النووية</span>
         </div>
         <div class="hp-product-card__body">
-          <p class="hp-product-card__subtitle">Imam Abū Zakariyyā an-Nawawī</p>
+          <p class="hp-product-card__subtitle">Imam an-Nawawī</p>
           <h3 class="hp-product-card__name">An-Nawawīs vierzig Ḥadīṯe</h3>
           <p class="hp-product-card__desc">Die berühmteste Hadithsammlung — mit Notizfeldern für persönliche Reflexion.</p>
         </div>
         <div class="hp-product-card__footer">
           <span class="hp-product-card__price">14,99 €</span>
-          <button class="btn btn-primary btn-sm hp-add-btn" data-product-id="2"><span class="btn-label-full">In den Warenkorb</span><span class="btn-label-short">Kaufen</span></button>
+          <button class="btn btn-primary btn-sm hp-add-btn" data-product-id="2"><span class="btn-label-full">Kaufen</span><span class="btn-label-short">+</span></button>
         </div>
       </div>
 
-      <div class="hp-product-card">
-        <div class="hp-product-card__badge hp-badge--premium">Premium</div>
-        <div class="hp-product-card__icon">
-          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+      <div class="hp-product-card" data-reveal-delay="2">
+        <div class="hp-product-card__visual hp-visual--gold">
+          <span class="hp-product-card__badge hp-badge--premium">Premium</span>
+          <div class="hp-visual__icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+          </div>
+          <span class="hp-visual__arabic" aria-hidden="true">كتاب التوحيد</span>
         </div>
         <div class="hp-product-card__body">
-          <p class="hp-product-card__subtitle">Muḥammad Ibn ʿAbd-il Wahhāb</p>
+          <p class="hp-product-card__subtitle">Ibn ʿAbd-il Wahhāb</p>
           <h3 class="hp-product-card__name">Kitāb-ut Tauḥīd</h3>
           <p class="hp-product-card__desc">Das wichtigste Werk zur Glaubenslehre des Tawhid — Standardwerk jeder Bibliothek.</p>
         </div>
         <div class="hp-product-card__footer">
           <span class="hp-product-card__price">27,99 €</span>
-          <button class="btn btn-primary btn-sm hp-add-btn" data-product-id="6"><span class="btn-label-full">In den Warenkorb</span><span class="btn-label-short">Kaufen</span></button>
+          <button class="btn btn-primary btn-sm hp-add-btn" data-product-id="6"><span class="btn-label-full">Kaufen</span><span class="btn-label-short">+</span></button>
         </div>
       </div>
 
-      <div class="hp-product-card">
-        <div class="hp-product-card__icon">
-          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+      <div class="hp-product-card" data-reveal-delay="3">
+        <div class="hp-product-card__visual hp-visual--teal">
+          <span class="hp-product-card__badge hp-badge--neu">Neu</span>
+          <div class="hp-visual__icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+          </div>
+          <span class="hp-visual__arabic" aria-hidden="true">الأصول الثلاثة</span>
         </div>
         <div class="hp-product-card__body">
-          <p class="hp-product-card__subtitle">Muhammad ibn Abdulwahhab</p>
+          <p class="hp-product-card__subtitle">Ibn Abdulwahhab</p>
           <h3 class="hp-product-card__name">Die drei fundamentalen Grundlagen</h3>
           <p class="hp-product-card__desc">Die drei fundamentalen Fragen des Glaubens mit Beweisen aus Quran und Sunnah.</p>
         </div>
         <div class="hp-product-card__footer">
           <span class="hp-product-card__price">8,99 €</span>
-          <button class="btn btn-primary btn-sm hp-add-btn" data-product-id="5"><span class="btn-label-full">In den Warenkorb</span><span class="btn-label-short">Kaufen</span></button>
+          <button class="btn btn-primary btn-sm hp-add-btn" data-product-id="5"><span class="btn-label-full">Kaufen</span><span class="btn-label-short">+</span></button>
         </div>
       </div>
 
-      <div class="hp-product-card">
-        <div class="hp-product-card__icon">
-          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+      <div class="hp-product-card" data-reveal-delay="4">
+        <div class="hp-product-card__visual hp-visual--sienna">
+          <div class="hp-visual__icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+          </div>
+          <span class="hp-visual__arabic" aria-hidden="true">الصبر</span>
         </div>
         <div class="hp-product-card__body">
           <p class="hp-product-card__subtitle">Ibn Taymiyyah</p>
@@ -256,7 +406,7 @@
         </div>
         <div class="hp-product-card__footer">
           <span class="hp-product-card__price">7,99 €</span>
-          <button class="btn btn-primary btn-sm hp-add-btn" data-product-id="1"><span class="btn-label-full">In den Warenkorb</span><span class="btn-label-short">Kaufen</span></button>
+          <button class="btn btn-primary btn-sm hp-add-btn" data-product-id="1"><span class="btn-label-full">Kaufen</span><span class="btn-label-short">+</span></button>
         </div>
       </div>
 
@@ -268,6 +418,7 @@
 </section>
 
 <style>
+/* ── Homepage Product Grid ── */
 .hp-product-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -284,73 +435,191 @@
   .hp-product-grid { grid-template-columns: repeat(2, 1fr); }
 }
 @media (max-width: 500px) {
-  .hp-product-grid { grid-template-columns: repeat(2, 1fr); gap: var(--sp-2); }
-  .hp-product-card { padding: var(--sp-3) var(--sp-2) var(--sp-3); gap: var(--sp-1); }
-  .hp-product-card__name { font-size: 0.82rem; }
-  .hp-product-card__subtitle { font-size: 0.68rem; }
-  .hp-product-card__desc { font-size: 0.72rem; }
-  .hp-product-card__price { font-size: 0.95rem; }
-  .hp-product-card__icon { width: 38px; height: 38px; }
-  .btn-sm { padding: .32rem .55rem; font-size: .7rem; }
+  .hp-product-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
 }
 @media (max-width: 680px) { .hp-product-grid--2 { grid-template-columns: 1fr; } }
+
 .btn-label-short { display: none; }
 @media (max-width: 900px) {
   .btn-label-full { display: none; }
   .btn-label-short { display: inline; }
 }
+
+/* ── Card base ── */
 .hp-product-card {
   position: relative;
   display: flex;
   flex-direction: column;
   background: var(--clr-ink-light);
   border: 1px solid var(--border-subtle);
-  border-radius: var(--radius-xl, 1.25rem);
-  padding: var(--sp-5) var(--sp-4) var(--sp-4);
-  gap: var(--sp-2);
-  transition: border-color .2s, transform .2s;
-  min-width: 0;
+  border-radius: var(--radius-xl);
   overflow: hidden;
+  gap: 0;
+  transition: border-color .28s var(--ease-out),
+              transform .28s var(--ease-out),
+              box-shadow .28s var(--ease-out);
+  min-width: 0;
+  cursor: default;
+  box-shadow: var(--shadow-card);
 }
-.hp-product-card:hover { border-color: var(--clr-gold-muted); transform: translateY(-3px); }
-.hp-product-card__badge {
-  position: absolute;
-  top: var(--sp-3);
-  right: var(--sp-3);
-  font-size: .65rem;
-  font-weight: 700;
-  letter-spacing: .06em;
-  text-transform: uppercase;
-  padding: .2rem .5rem;
-  border-radius: 99px;
+.hp-product-card:hover {
+  border-color: var(--clr-gold-muted);
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-glow), var(--shadow-lg), 0 0 0 1px rgba(200,151,58,0.12);
 }
-.hp-badge--bestseller { background: rgba(200,151,58,.18); color: var(--clr-gold-light); border: 1px solid var(--clr-gold-muted); }
-.hp-badge--premium { background: rgba(200,151,58,.25); color: var(--clr-gold-pale); border: 1px solid rgba(200,151,58,.5); }
-.hp-product-card__icon {
-  width: 48px; height: 48px;
-  border-radius: 50%;
-  background: rgba(200,151,58,.08);
-  border: 1px solid var(--border-subtle);
-  display: flex; align-items: center; justify-content: center;
-  color: var(--clr-gold);
+
+/* ── Visual zone at top ── */
+.hp-product-card__visual {
+  position: relative;
+  height: 130px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
   flex-shrink: 0;
 }
-.hp-product-card__body { flex: 1; min-width: 0; }
-.hp-product-card__subtitle { font-size: .72rem; color: var(--clr-text-muted); margin: 0 0 .2rem; text-transform: uppercase; letter-spacing: .06em; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-.hp-product-card__name { font-family: var(--font-display); font-size: var(--text-base); color: var(--clr-text-primary); margin: 0 0 var(--sp-1); line-height: 1.35; }
-.hp-product-card__desc { font-size: var(--text-sm); color: var(--clr-text-mid); line-height: 1.55; margin: 0; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.hp-visual--emerald { background: linear-gradient(145deg, #003D18 0%, #001A0A 100%); }
+.hp-visual--gold    { background: linear-gradient(145deg, #3A2200 0%, #1A0F00 100%); }
+.hp-visual--teal    { background: linear-gradient(145deg, #002830 0%, #00101A 100%); }
+.hp-visual--sienna  { background: linear-gradient(145deg, #2C1A0A 0%, #130900 100%); }
+
+/* Subtle dot pattern in visual zone */
+.hp-product-card__visual::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(circle, rgba(200,151,58,0.12) 1px, transparent 1px);
+  background-size: 20px 20px;
+  opacity: 0.6;
+}
+/* Bottom fade into card */
+.hp-product-card__visual::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 60px;
+  background: linear-gradient(to bottom, transparent, var(--clr-ink-light));
+  pointer-events: none;
+}
+
+/* Arabic watermark in visual */
+.hp-visual__arabic {
+  position: absolute;
+  bottom: 8px;
+  right: 10px;
+  font-family: var(--font-arabic);
+  font-size: 0.75rem;
+  color: rgba(200,151,58,0.28);
+  direction: rtl;
+  z-index: 1;
+  letter-spacing: 0.05em;
+  pointer-events: none;
+  line-height: 1;
+}
+
+/* Icon in visual zone */
+.hp-visual__icon {
+  width: 52px; height: 52px;
+  border-radius: 50%;
+  background: rgba(200,151,58,0.1);
+  border: 1px solid rgba(200,151,58,0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--clr-gold-light);
+  position: relative;
+  z-index: 2;
+  transition: transform .28s var(--ease-out), background .28s ease;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+}
+.hp-product-card:hover .hp-visual__icon {
+  transform: scale(1.08);
+  background: rgba(200,151,58,0.18);
+}
+
+/* ── Badge ── */
+.hp-product-card__badge {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  font-size: .6rem;
+  font-weight: 700;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  padding: .22rem .6rem;
+  border-radius: 99px;
+  z-index: 3;
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+.hp-badge--bestseller { background: rgba(200,151,58,0.2); color: var(--clr-gold-pale); border: 1px solid rgba(200,151,58,0.4); }
+.hp-badge--premium    { background: rgba(200,151,58,0.28); color: var(--clr-gold-pale); border: 1px solid rgba(200,151,58,0.55); }
+.hp-badge--neu        { background: rgba(0,180,90,0.18); color: #6ee8a8; border: 1px solid rgba(0,180,90,0.4); }
+
+/* ── Body ── */
+.hp-product-card__body {
+  flex: 1;
+  min-width: 0;
+  padding: var(--sp-3) var(--sp-3) var(--sp-2);
+}
+.hp-product-card__subtitle {
+  font-size: .68rem;
+  color: var(--clr-gold);
+  margin: 0 0 .3rem;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-weight: 600;
+}
+.hp-product-card__name {
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  color: var(--clr-text-primary);
+  margin: 0 0 var(--sp-1);
+  line-height: 1.3;
+  transition: color .2s;
+}
+.hp-product-card:hover .hp-product-card__name { color: var(--clr-gold-pale); }
+.hp-product-card__desc {
+  font-size: .75rem;
+  color: var(--clr-text-muted);
+  line-height: 1.55;
+  margin: 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* ── Footer ── */
 .hp-product-card__footer {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: var(--sp-1);
-  margin-top: var(--sp-2);
-  padding-top: var(--sp-2);
+  padding: var(--sp-2) var(--sp-3) var(--sp-3);
   border-top: 1px solid var(--border-subtle);
-  flex-wrap: wrap;
 }
-.hp-product-card__price { font-size: var(--text-lg); font-weight: 700; color: var(--clr-gold-light); white-space: nowrap; }
-.btn-sm { padding: .42rem .85rem; font-size: var(--text-sm); }
+.hp-product-card__price {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--clr-gold-light);
+  white-space: nowrap;
+  font-family: var(--font-display);
+}
+.btn-sm { padding: .45rem 1rem; font-size: .72rem; }
+
+/* Mobile refinements */
+@media (max-width: 500px) {
+  .hp-product-card__visual { height: 100px; }
+  .hp-visual__icon { width: 42px; height: 42px; }
+  .hp-product-card__body { padding: var(--sp-2); }
+  .hp-product-card__footer { padding: var(--sp-1) var(--sp-2) var(--sp-2); }
+  .hp-product-card__name { font-size: 0.82rem; }
+  .hp-product-card__price { font-size: 0.95rem; }
+}
 </style>
 
 <script>
@@ -382,74 +651,210 @@
 ════════════════════════════════════════════════ -->
 <section class="section" aria-label="Kategorien">
   <div class="container">
-    <div class="section-header" data-reveal>
+    <div class="section-header" data-reveal style="text-align:center;">
       <span class="eyebrow">Sortiment</span>
       <h2>Kategorien entdecken</h2>
       <div class="gold-line gold-line--center"></div>
+      <p style="color:var(--clr-text-muted);font-size:.9rem;margin-top:var(--sp-2);max-width:420px;margin-inline:auto;">Von islamischen Büchern über edle Düfte bis hin zu traditioneller Kleidung.</p>
     </div>
     <div class="cat-grid" data-reveal>
-      <a href="shop.html?cat=buecher" class="cat-card">
-        <div class="cat-card__icon">
-          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+
+      <a href="shop.html?cat=buecher" class="cat-card cat-card--books" style="background-image:url('bilder/IMG_IB.jpg');background-size:cover;background-position:center;">
+        <div class="cat-card__overlay" aria-hidden="true"></div>
+        <div class="cat-card__glow" aria-hidden="true"></div>
+        <div class="cat-card__top">
+          <div class="cat-card__icon">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+          </div>
+          <span class="cat-card__count">14 Artikel</span>
         </div>
-        <h3 class="cat-card__title">Bücher</h3>
-        <p class="cat-card__desc">Islamische Literatur, Arabisch-Kurse, Kinderbücher & Quran-Tafsir</p>
-        <span class="cat-card__cta">Bücher ansehen →</span>
+        <h3 class="cat-card__title">Islamische Bücher</h3>
+        <p class="cat-card__desc">Aqeedah, Fiqh, Arabisch-Kurse, Kinderbücher & Quran-Tafsir</p>
+        <span class="cat-card__cta">
+          Entdecken
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </span>
       </a>
-      <a href="shop.html?cat=kleidung" class="cat-card">
-        <div class="cat-card__icon">
-          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M20.38 3.46 16 2a4 4 0 0 1-8 0L3.62 3.46a2 2 0 0 0-1.34 2.23l.58 3.57a1 1 0 0 0 .99.84H6v10c0 1.1.9 2 2 2h8a2 2 0 0 0 2-2V10h2.15a1 1 0 0 0 .99-.84l.58-3.57a2 2 0 0 0-1.34-2.23z"/></svg>
+
+      <a href="shop.html?cat=kleidung" class="cat-card cat-card--kleidung" style="background-image:url('bilder/IMG_SB.jpg');background-size:cover;background-position:center top;">
+        <div class="cat-card__overlay" aria-hidden="true"></div>
+        <div class="cat-card__glow" aria-hidden="true"></div>
+        <div class="cat-card__top">
+          <div class="cat-card__icon">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M20.38 3.46 16 2a4 4 0 0 1-8 0L3.62 3.46a2 2 0 0 0-1.34 2.23l.58 3.57a1 1 0 0 0 .99.84H6v10c0 1.1.9 2 2 2h8a2 2 0 0 0 2-2V10h2.15a1 1 0 0 0 .99-.84l.58-3.57a2 2 0 0 0-1.34-2.23z"/></svg>
+          </div>
+          <span class="cat-card__count">8 Artikel</span>
         </div>
-        <h3 class="cat-card__title">Kleidung</h3>
+        <h3 class="cat-card__title">Kleidung & Tradition</h3>
         <p class="cat-card__desc">Shemaghs, Thobes, Abayas & traditionelle islamische Bekleidung</p>
-        <span class="cat-card__cta">Kleidung ansehen →</span>
+        <span class="cat-card__cta">
+          Entdecken
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </span>
       </a>
-      <a href="shop.html?cat=duefte" class="cat-card">
-        <div class="cat-card__icon">
-          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M9 2h6l3 7H6L9 2z"/><path d="M6 9c0 6.627 2.686 12 6 12s6-5.373 6-12"/><line x1="12" y1="9" x2="12" y2="21"/></svg>
+
+      <a href="shop.html?cat=duefte" class="cat-card cat-card--duefte" style="background-image:url('bilder/IMG_fb.jpg');background-size:cover;background-position:center;">
+        <div class="cat-card__overlay" aria-hidden="true"></div>
+        <div class="cat-card__glow" aria-hidden="true"></div>
+        <div class="cat-card__top">
+          <div class="cat-card__icon">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M9 2h6l3 7H6L9 2z"/><path d="M6 9c0 6.627 2.686 12 6 12s6-5.373 6-12"/><line x1="12" y1="9" x2="12" y2="21"/></svg>
+          </div>
+          <span class="cat-card__count">5 Artikel</span>
         </div>
-        <h3 class="cat-card__title">Düfte</h3>
-        <p class="cat-card__desc">Halal-Parfüme, Misk, Oud, Bakhoor & arabische Körperpflegeprodukte</p>
-        <span class="cat-card__cta">Düfte ansehen →</span>
+        <h3 class="cat-card__title">Düfte & Misk</h3>
+        <p class="cat-card__desc">Halal-Parfüme, Misk, Oud & arabische Körperpflegeprodukte</p>
+        <span class="cat-card__cta">
+          Entdecken
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </span>
       </a>
+
     </div>
   </div>
 </section>
 
 <style>
+/* ── Category Section ── */
 .cat-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: var(--sp-3);
   margin-top: var(--sp-5);
 }
-@media (max-width: 680px) { .cat-grid { grid-template-columns: 1fr; } }
+@media (max-width: 760px) { .cat-grid { grid-template-columns: 1fr; gap: var(--sp-2); } }
+@media (max-width: 500px) and (min-width: 421px) { .cat-grid { grid-template-columns: repeat(2, 1fr); } }
+
 .cat-card {
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  background: var(--clr-ink-light);
-  border: 1px solid var(--border-subtle);
-  border-radius: var(--radius-xl, 1.25rem);
-  padding: var(--sp-5) var(--sp-4);
+  border-radius: var(--radius-xl);
+  padding: var(--sp-5) var(--sp-4) var(--sp-4);
   text-decoration: none;
   color: inherit;
-  transition: border-color .2s, transform .2s;
+  border: 1px solid var(--border-subtle);
   gap: var(--sp-2);
+  overflow: hidden;
+  min-height: 260px;
+  transition: border-color .28s var(--ease-out),
+              transform .28s var(--ease-out),
+              box-shadow .28s var(--ease-out);
+  box-shadow: var(--shadow-card);
 }
-.cat-card:hover { border-color: var(--clr-gold-muted); transform: translateY(-3px); }
-.cat-card__icon {
-  width: 56px; height: 56px;
+.cat-card--books   { background: linear-gradient(145deg, #0D2018 0%, #091410 100%); }
+.cat-card--kleidung{ background: linear-gradient(145deg, #16102A 0%, #0D0A1C 100%); }
+.cat-card--duefte  { background: linear-gradient(145deg, #1E1408 0%, #120D04 100%); }
+
+/* Photo overlay — darkens image for text legibility */
+.cat-card__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(0,0,0,0.5) 0%,
+    rgba(0,0,0,0.25) 40%,
+    rgba(0,0,0,0.75) 100%
+  );
+  z-index: 0;
+  pointer-events: none;
+}
+.cat-card__glow,
+.cat-card__top,
+.cat-card__title,
+.cat-card__desc,
+.cat-card__cta {
+  position: relative;
+  z-index: 1;
+}
+
+.cat-card:hover {
+  border-color: var(--clr-gold-muted);
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-glow), var(--shadow-lg);
+}
+
+/* Glow orb per card */
+.cat-card__glow {
+  position: absolute;
+  bottom: -40px;
+  left: -20px;
+  width: 180px;
+  height: 180px;
   border-radius: 50%;
-  background: rgba(200,151,58,.1);
-  border: 1px solid var(--clr-gold-muted);
-  display: flex; align-items: center; justify-content: center;
-  color: var(--clr-gold);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity .4s ease;
+  filter: blur(40px);
+}
+.cat-card--books .cat-card__glow   { background: rgba(0,120,60,0.3); }
+.cat-card--kleidung .cat-card__glow{ background: rgba(80,40,160,0.25); }
+.cat-card--duefte .cat-card__glow  { background: rgba(200,151,58,0.25); }
+.cat-card:hover .cat-card__glow { opacity: 1; }
+
+.cat-card__top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
   margin-bottom: var(--sp-1);
 }
-.cat-card__title { font-family: var(--font-display); font-size: var(--text-xl); color: var(--clr-text-primary); margin: 0; }
-.cat-card__desc { font-size: var(--text-sm); color: var(--clr-text-muted); line-height: 1.6; margin: 0; }
-.cat-card__cta { font-size: var(--text-sm); color: var(--clr-gold); margin-top: auto; padding-top: var(--sp-2); }
+.cat-card__icon {
+  width: 52px; height: 52px;
+  border-radius: 14px;
+  background: rgba(0,0,0,0.4);
+  border: 1px solid rgba(200,151,58,0.35);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--clr-gold-light);
+  transition: background .28s ease, transform .28s var(--ease-out);
+  flex-shrink: 0;
+}
+.cat-card:hover .cat-card__icon {
+  background: rgba(200,151,58,0.2);
+  border-color: rgba(200,151,58,0.6);
+  transform: scale(1.05) rotate(-3deg);
+}
+.cat-card__count {
+  font-size: .65rem;
+  color: var(--clr-text-faint);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+.cat-card__title {
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  color: #ffffff;
+  margin: 0;
+  line-height: 1.2;
+  transition: color .2s;
+  text-shadow: 0 2px 12px rgba(0,0,0,0.8);
+}
+.cat-card:hover .cat-card__title { color: var(--clr-gold-pale); }
+.cat-card__desc {
+  font-size: .78rem;
+  color: rgba(220,210,195,0.85);
+  line-height: 1.6;
+  margin: 0;
+  flex: 1;
+  text-shadow: 0 1px 8px rgba(0,0,0,0.7);
+}
+.cat-card__cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: .72rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--clr-gold);
+  margin-top: var(--sp-1);
+  transition: gap .2s var(--ease-out), color .2s;
+}
+.cat-card:hover .cat-card__cta { gap: 10px; color: var(--clr-gold-light); }
 </style>
 
 <!-- ═══════════════════════════════════════════
@@ -529,29 +934,65 @@
 <!-- ═══════════════════════════════════════════
      ABOUT TEASER
 ════════════════════════════════════════════════ -->
-<section class="section section--sm" aria-label="Über uns">
+<section class="section section--sm" aria-label="Über uns" style="background:var(--clr-warm-base);">
   <div class="container">
     <div class="about-teaser" data-reveal>
 
-      <div class="about-teaser__panel about-geo-panel" style="background-image:url('bilder/IMG_2b.jpg');background-size:cover;background-position:center 50%;">
-        <div style="position:absolute;inset:0;background:linear-gradient(135deg,rgba(4,8,6,0.45) 0%,rgba(4,8,6,0.25) 55%,rgba(4,8,6,0.55) 100%);border-radius:inherit;"></div>
+      <div class="about-teaser__panel about-geo-panel" style="background-image:url('bilder/IMG_2b.jpg');background-size:cover;background-position:center 45%;">
+        <!-- Photo overlay is handled by .about-teaser__panel::after in CSS -->
+        <div class="about-panel-badge" aria-hidden="true">
+          <span class="about-panel-badge__ar">مكتبة المنصورة</span>
+          <span class="about-panel-badge__de">Seit 2024</span>
+        </div>
       </div>
 
       <div class="about-teaser__content">
         <span class="eyebrow">Über uns</span>
         <h2>Al Mansurah — Die Bibliothek der Siegreichen</h2>
+        <div class="gold-line"></div>
         <p>
           Diese Plattform entstand nicht aus einem Businessplan — sie entstand aus einem Bedürfnis. Dem Bedürfnis, authentisches islamisches Wissen zugänglich zu machen. Für Familien. Für Suchende. Für die Gemeinde.
         </p>
-        <p style="margin-top:var(--sp-2);">
+        <p>
           Wir glauben, dass Wissen verpflichtet — und dass der Zugang dazu ein Geschenk ist, das weitergegeben werden muss.
         </p>
-        <a href="about.html" class="btn btn-ghost" style="margin-top:var(--sp-4);">Mehr erfahren</a>
+        <a href="about.html" class="btn btn-ghost">Mehr erfahren</a>
       </div>
 
     </div>
   </div>
 </section>
+
+<style>
+.about-panel-badge {
+  position: absolute;
+  bottom: var(--sp-4);
+  left: var(--sp-4);
+  z-index: 3;
+  background: rgba(6,6,10,0.75);
+  border: 1px solid rgba(200,151,58,0.25);
+  border-radius: 10px;
+  padding: 10px 14px;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+.about-panel-badge__ar {
+  display: block;
+  font-family: var(--font-arabic);
+  font-size: 1rem;
+  color: var(--clr-gold-light);
+  direction: rtl;
+  line-height: 1.4;
+}
+.about-panel-badge__de {
+  display: block;
+  font-size: 0.6rem;
+  color: var(--clr-text-faint);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  margin-top: 2px;
+}
+</style>
 
 <!-- ═══════════════════════════════════════════
      NEWSLETTER
@@ -559,22 +1000,61 @@
 <section class="newsletter-section section" aria-label="Newsletter">
   <div class="container">
     <div class="newsletter-inner" data-reveal>
+
+      <div class="newsletter-icon" aria-hidden="true">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+      </div>
+
       <span class="eyebrow">Newsletter</span>
       <h2>Neuigkeiten &amp; Angebote</h2>
       <div class="gold-line gold-line--center"></div>
       <p>Erhalte als Erster Informationen über neue Produkte, exklusive Angebote und islamische Inhalte.</p>
+
       <form class="newsletter-form-row" novalidate aria-label="Newsletter-Anmeldung">
         <input class="form-input" type="email" placeholder="deine@email.de" required aria-label="E-Mail-Adresse">
         <button class="btn btn-primary" type="submit">Abonnieren</button>
       </form>
-      <label class="newsletter-gdpr" style="display:flex;align-items:flex-start;gap:.6rem;margin-top:.75rem;cursor:pointer;max-width:500px;margin-inline:auto;">
-        <input type="checkbox" required style="width:16px;height:16px;flex-shrink:0;margin-top:2px;accent-color:var(--clr-gold);">
-        <span style="font-size:.78rem;color:var(--clr-text-muted);line-height:1.6;text-align:left;">Ich stimme zu, dass meine E-Mail-Adresse zur Newsletter-Zusendung gespeichert wird. Abmeldung jederzeit möglich. Details in der <a href="datenschutz.html" style="color:var(--clr-gold);">Datenschutzerklärung</a>.</span>
+
+      <label class="newsletter-gdpr" style="display:flex;align-items:flex-start;gap:.6rem;margin-top:var(--sp-3);cursor:pointer;max-width:500px;margin-inline:auto;">
+        <input type="checkbox" required style="width:15px;height:15px;flex-shrink:0;margin-top:3px;accent-color:var(--clr-gold);">
+        <span style="font-size:.75rem;color:var(--clr-text-muted);line-height:1.65;text-align:left;">Ich stimme zu, dass meine E-Mail-Adresse zur Newsletter-Zusendung gespeichert wird. Abmeldung jederzeit möglich. Details in der <a href="datenschutz.html" style="color:var(--clr-gold);">Datenschutzerklärung</a>.</span>
       </label>
-      <span class="newsletter-note">Kein Spam. Jederzeit abmeldbar. Kein Alkohol, keine Haram-Produkte.</span>
+
+      <div class="newsletter-trust" aria-hidden="true">
+        <span>✦ Kein Spam</span>
+        <span>✦ Jederzeit abmeldbar</span>
+        <span>✦ 100% Halal</span>
+      </div>
+
     </div>
   </div>
 </section>
+
+<style>
+.newsletter-icon {
+  width: 48px; height: 48px;
+  border-radius: 50%;
+  background: var(--clr-gold-dim);
+  border: 1px solid var(--clr-gold-muted);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--clr-gold-light);
+  margin: 0 auto var(--sp-3);
+}
+.newsletter-trust {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--sp-3);
+  margin-top: var(--sp-3);
+  flex-wrap: wrap;
+}
+.newsletter-trust span {
+  font-size: .65rem;
+  color: var(--clr-text-faint);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+</style>
 
 </main>
 

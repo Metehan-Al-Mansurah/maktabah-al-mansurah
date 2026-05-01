@@ -5,18 +5,25 @@
    ================================================================ */
 
 :root {
-  /* ── Surfaces (Saudi-Green Palette) ── */
-  --clr-ink:         #0D1A0F;
-  --clr-ink-mid:     #122016;
-  --clr-ink-light:   #1A2E1C;
-  --clr-ink-lifted:  #243D26;
+  /* ── Surfaces (Luxury Charcoal Palette) ── */
+  --clr-ink:         #06060A;
+  --clr-ink-mid:     #0C0C14;
+  --clr-ink-light:   #131322;
+  --clr-ink-lifted:  #1C1C2E;
+
+  /* ── Warm Dark (alternating sections) ── */
+  --clr-warm-base:   #0A0806;
+  --clr-warm-mid:    #14100A;
+  --clr-warm-light:  #1E1A12;
 
   /* ── Gold System ── */
   --clr-gold:        #C8973A;
-  --clr-gold-light:  #DFB060;
-  --clr-gold-pale:   #F2D98A;
-  --clr-gold-muted:  rgba(200, 151, 58, 0.32);
-  --clr-gold-ghost:  rgba(200, 151, 58, 0.09);
+  --clr-gold-light:  #E0B860;
+  --clr-gold-pale:   #F5E098;
+  --clr-gold-muted:  rgba(200, 151, 58, 0.30);
+  --clr-gold-ghost:  rgba(200, 151, 58, 0.07);
+  --clr-gold-dim:    rgba(200, 151, 58, 0.12);
+  --clr-copper:      #A87830;
 
   /* ── Jewel Accents (Saudi Flag Green #006C35) ── */
   --clr-emerald:     #005228;
@@ -72,13 +79,17 @@
   --radius-sm: 2px;
   --radius-md: 6px;
   --radius-lg: 14px;
+  --radius-xl: 20px;
+  --radius-2xl: 28px;
 
   /* ── Shadows ── */
-  --shadow-sm:         0 2px 8px rgba(0,0,0,0.45);
-  --shadow-md:         0 4px 24px rgba(0,0,0,0.55), 0 1px 4px rgba(0,0,0,0.35);
-  --shadow-lg:         0 8px 48px rgba(0,0,0,0.65), 0 2px 10px rgba(0,0,0,0.4);
-  --shadow-glow:       0 0 32px rgba(200, 151, 58, 0.16);
-  --shadow-glow-strong:0 0 56px rgba(200, 151, 58, 0.28);
+  --shadow-sm:         0 2px 12px rgba(0,0,0,0.55);
+  --shadow-md:         0 6px 32px rgba(0,0,0,0.65), 0 2px 8px rgba(0,0,0,0.4);
+  --shadow-lg:         0 12px 64px rgba(0,0,0,0.75), 0 4px 16px rgba(0,0,0,0.5);
+  --shadow-xl:         0 24px 80px rgba(0,0,0,0.85), 0 8px 32px rgba(0,0,0,0.55);
+  --shadow-card:       0 4px 28px rgba(0,0,0,0.65), 0 1px 4px rgba(0,0,0,0.45), inset 0 1px 0 rgba(255,255,255,0.04);
+  --shadow-glow:       0 0 40px rgba(200, 151, 58, 0.22), 0 0 80px rgba(200, 151, 58, 0.08);
+  --shadow-glow-strong:0 0 60px rgba(200, 151, 58, 0.38), 0 0 120px rgba(200, 151, 58, 0.15);
 
   /* ── Motion ── */
   --ease-out:    cubic-bezier(0.16, 1, 0.3, 1);
@@ -120,6 +131,18 @@ body {
 body.menu-open,
 body.cart-open {
   overflow: hidden;
+}
+
+/* Grain texture overlay — adds premium depth */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9998;
+  opacity: 0.038;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23g)'/%3E%3C/svg%3E");
+  background-size: 200px 200px;
 }
 
 img { display: block; max-width: 100%; height: auto; }
