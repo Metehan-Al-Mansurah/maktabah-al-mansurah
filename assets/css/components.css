@@ -17,8 +17,12 @@
               border-color var(--dur-mid) var(--ease-out);
   border-bottom: 1px solid transparent;
 }
+.site-header {
+  /* Eigener Compositing-Layer — Header scrollt nicht mit, GPU kann ihn cachen */
+  will-change: transform;
+}
 .site-header.scrolled {
-  background: rgba(8, 14, 10, 0.92);
+  background: rgba(8, 14, 10, 0.96);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   border-bottom-color: var(--border-subtle);
@@ -549,11 +553,14 @@
   position: fixed;
   top: 0; left: 0;
   height: 2px;
-  width: 0%;
+  /* Volle Breite, Skalierung per transform — kein Layout-Reflow */
+  width: 100%;
+  transform: scaleX(0);
+  transform-origin: left center;
   background: linear-gradient(90deg, var(--clr-emerald-glow), var(--clr-gold), var(--clr-emerald-glow));
   background-size: 200% 100%;
   z-index: 500;
-  transition: width 0.1s linear;
+  will-change: transform;
   animation: progress-shimmer 3s linear infinite;
 }
 @keyframes progress-shimmer {
@@ -2959,3 +2966,77 @@ a.product-card__img { display:flex; text-decoration:none; }
 }
 .wishlist-toggle:hover, .wishlist-toggle.is-active { color:#e05555; border-color:rgba(220,60,60,.4); background:rgba(220,60,60,.08); }
 .wishlist-toggle.is-active svg { fill:#e05555; }
+
+/* ════════════════════════════════════════════════
+   MOBILE PERFORMANCE — Scroll-Jank reduzieren
+   Quelle: backdrop-filter, fixed-Layer, Animations
+   ════════════════════════════════════════════════ */
+
+@media (max-width: 768px) {
+  /* ── backdrop-filter deaktivieren ──────────────
+     Teuerster GPU-Effekt auf Mobile: entfernen und
+     durch opaken Hintergrund ersetzen */
+  .site-header.scrolled {
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    background: rgba(6, 12, 8, 0.98);
+  }
+  .mobile-nav {
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    background: var(--clr-ink-mid);
+  }
+  .cart-drawer {
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+  }
+  /* Badge-Blur deaktivieren */
+  .cat-card__icon,
+  .hp-product-card__badge,
+  .about-panel-badge {
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+  }
+  /* Toast-Blur vereinfachen */
+  .mam-toast {
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    background: rgba(6, 12, 8, 0.97);
+  }
+  /* Sidebar-Blur deaktivieren */
+  .sidebar-overlay {
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+  }
+
+  /* ── Grain-Textur auf Mobile vereinfachen ───────
+     position:fixed + SVG-Filter = teurer Composite-
+     Layer der bei jedem Frame neu gerendert wird */
+  body::after {
+    display: none;
+  }
+
+  /* ── Blatt-Animationen auf Mobile reduzieren ────
+     10 gleichzeitige Animationen → 0 auf Mobile */
+  .book-leaf {
+    display: none;
+  }
+
+  /* ── Logo-Float-Animation pausieren ────────────
+     Endlos-Animation verbraucht GPU auch wenn off-screen */
+  .brand-logo-wrap {
+    animation: none;
+  }
+
+  /* ── Hintergrund-Parallax ausschalten ───────────
+     img-break hover-Effekt ist auf Touch nicht sinnvoll */
+  .img-break__bg {
+    transition: none;
+  }
+
+  /* ── Scroll-Progress-Bar auf Mobile verstecken ──
+     Spart einen fixed-Layer + Scroll-Event-Handler */
+  #scrollProgress {
+    display: none;
+  }
+}

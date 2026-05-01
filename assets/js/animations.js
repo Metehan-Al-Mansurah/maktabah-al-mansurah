@@ -74,10 +74,21 @@ function initMagneticButtons() {
 function initScrollProgress() {
   const bar = document.getElementById('scrollProgress');
   if (!bar) return;
+
+  /* transform:scaleX statt width — kein Layout-Reflow, nur Composite-Layer */
+  bar.style.transformOrigin = 'left center';
+  bar.style.transform = 'scaleX(0)';
+
+  let ticking = false;
   window.addEventListener('scroll', () => {
-    const scrolled = window.scrollY;
-    const total = document.documentElement.scrollHeight - window.innerHeight;
-    bar.style.width = (total > 0 ? (scrolled / total) * 100 : 0) + '%';
+    if (ticking) return;
+    requestAnimationFrame(() => {
+      const total = document.documentElement.scrollHeight - window.innerHeight;
+      const ratio = total > 0 ? window.scrollY / total : 0;
+      bar.style.transform = 'scaleX(' + ratio + ')';
+      ticking = false;
+    });
+    ticking = true;
   }, { passive: true });
 }
 
