@@ -5,16 +5,16 @@
    ================================================================ */
 
 :root {
-  /* ── Surfaces (Luxury Charcoal Palette) ── */
-  --clr-ink:         #06060A;
-  --clr-ink-mid:     #0C0C14;
-  --clr-ink-light:   #131322;
-  --clr-ink-lifted:  #1C1C2E;
+  /* ── Surfaces (Deep Forest Green Palette) ── */
+  --clr-ink:         #060C08;
+  --clr-ink-mid:     #0B1610;
+  --clr-ink-light:   #112018;
+  --clr-ink-lifted:  #182C20;
 
-  /* ── Warm Dark (alternating sections) ── */
-  --clr-warm-base:   #0A0806;
-  --clr-warm-mid:    #14100A;
-  --clr-warm-light:  #1E1A12;
+  /* ── Alternating section tones ── */
+  --clr-warm-base:   #07100A;
+  --clr-warm-mid:    #0E1C14;
+  --clr-warm-light:  #162618;
 
   /* ── Gold System ── */
   --clr-gold:        #C8973A;

@@ -154,13 +154,6 @@
       <a href="about.html" class="btn btn-ghost">Über uns</a>
     </div>
 
-    <div class="hero-stats hero-cta" style="animation-delay:.62s;" aria-hidden="true">
-      <div class="hero-stat"><strong>27+</strong><span>Produkte</span></div>
-      <div class="hero-stat-divider"></div>
-      <div class="hero-stat"><strong>100%</strong><span>Halal</span></div>
-      <div class="hero-stat-divider"></div>
-      <div class="hero-stat"><strong>DE</strong><span>Versand</span></div>
-    </div>
 
   </div>
 
@@ -246,86 +239,12 @@
   margin: 0;
 }
 
-/* Hero stats bar */
-.hero-stats {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: var(--sp-3);
-  margin-top: var(--sp-3);
-  padding: var(--sp-2) var(--sp-4);
-  border-radius: 100px;
-  background: rgba(255,255,255,0.03);
-  border: 1px solid rgba(200,151,58,0.1);
-  width: fit-content;
-  margin-inline: auto;
-  backdrop-filter: blur(6px);
-  -webkit-backdrop-filter: blur(6px);
-}
-.hero-stat {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 1px;
-}
-.hero-stat strong {
-  font-family: var(--font-display);
-  font-size: 1.1rem;
-  font-weight: 700;
-  color: var(--clr-gold-pale);
-  line-height: 1;
-}
-.hero-stat span {
-  font-size: 0.6rem;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--clr-text-faint);
-}
-.hero-stat-divider {
-  width: 1px;
-  height: 28px;
-  background: rgba(200,151,58,0.2);
-}
 </style>
-
-<!-- ═══════════════════════════════════════════
-     TRUST BAND
-════════════════════════════════════════════════ -->
-<div class="trust-band" aria-label="Unsere Versprechen">
-  <div class="container">
-    <div class="trust-band__grid">
-      <div class="trust-item">
-        <div class="trust-item__icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
-        </div>
-        <span class="trust-item__label">Islamisch<br>Authentisch</span>
-      </div>
-      <div class="trust-item">
-        <div class="trust-item__icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="m9 12 2 2 4-4"/><path d="M5 7c0-1.1.9-2 2-2h10a2 2 0 0 1 2 2v12H5V7z"/><path d="M22 19H2"/></svg>
-        </div>
-        <span class="trust-item__label">100%<br>Halal</span>
-      </div>
-      <div class="trust-item">
-        <div class="trust-item__icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="m1 3 4 1 .72 3.59M6 8l3 9 8-4-2-8L6 8z"/><circle cx="9" cy="20" r="1"/><circle cx="18" cy="20" r="1"/></svg>
-        </div>
-        <span class="trust-item__label">Versand<br>2–4 Tage</span>
-      </div>
-      <div class="trust-item">
-        <div class="trust-item__icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
-        </div>
-        <span class="trust-item__label">Persönliche<br>Beratung</span>
-      </div>
-    </div>
-  </div>
-</div>
 
 <!-- ═══════════════════════════════════════════
      BESTSELLER
 ════════════════════════════════════════════════ -->
-<section class="section" aria-label="Bestseller" style="background:var(--clr-ink-mid);">
+<section class="section" aria-label="Bestseller" style="background:var(--clr-warm-mid);">
   <div class="container">
     <div class="section-header text-center" data-reveal style="text-align:center;">
       <span class="eyebrow">Empfohlen</span>
@@ -478,10 +397,10 @@
   overflow: hidden;
   flex-shrink: 0;
 }
-.hp-visual--emerald { background: linear-gradient(145deg, #003D18 0%, #001A0A 100%); }
-.hp-visual--gold    { background: linear-gradient(145deg, #3A2200 0%, #1A0F00 100%); }
-.hp-visual--teal    { background: linear-gradient(145deg, #002830 0%, #00101A 100%); }
-.hp-visual--sienna  { background: linear-gradient(145deg, #2C1A0A 0%, #130900 100%); }
+.hp-visual--emerald { background: linear-gradient(145deg, #003D1E 0%, #001810 100%); }
+.hp-visual--gold    { background: linear-gradient(145deg, #1A3A20 0%, #0A1C10 100%); }
+.hp-visual--teal    { background: linear-gradient(145deg, #003028 0%, #001418 100%); }
+.hp-visual--sienna  { background: linear-gradient(145deg, #0A2A14 0%, #040E08 100%); }
 
 /* Subtle dot pattern in visual zone */
 .hp-product-card__visual::before {
@@ -934,7 +853,7 @@
 <!-- ═══════════════════════════════════════════
      ABOUT TEASER
 ════════════════════════════════════════════════ -->
-<section class="section section--sm" aria-label="Über uns" style="background:var(--clr-warm-base);">
+<section class="section section--sm" aria-label="Über uns" style="background:var(--clr-ink-mid);">
   <div class="container">
     <div class="about-teaser" data-reveal>
 
