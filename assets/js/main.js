@@ -78,18 +78,57 @@ function initMobileMenu() {
   });
 }
 
-/* ── Newsletter forms ── */
+/* ── Toast-Benachrichtigung (Punkt 2 + 8) ── */
+function showToast(message, type) {
+  /* type: 'success' | 'error' | 'info' */
+  type = type || 'info';
+
+  let container = document.getElementById('mam-toast-container');
+  if (!container) {
+    container = document.createElement('div');
+    container.id = 'mam-toast-container';
+    document.body.appendChild(container);
+  }
+
+  const icons = {
+    success: '✓',
+    error:   '✕',
+    info:    '✦'
+  };
+
+  const toast = document.createElement('div');
+  toast.className = 'mam-toast mam-toast--' + type;
+  toast.setAttribute('role', 'status');
+  toast.setAttribute('aria-live', 'polite');
+  toast.innerHTML =
+    '<span class="mam-toast__icon" aria-hidden="true">' + icons[type] + '</span>' +
+    '<span>' + message + '</span>';
+
+  container.appendChild(toast);
+
+  /* Nach 2,5 s ausblenden und entfernen */
+  setTimeout(function () {
+    toast.classList.add('is-exiting');
+    setTimeout(function () { toast.remove(); }, 250);
+  }, 2500);
+}
+
+/* Globaler Zugriff für Inline-Skripte */
+window.showToast = showToast;
+
+/* ── Newsletter forms (Punkt 2) ── */
 function initNewsletterForms() {
   document.querySelectorAll('.newsletter-form-row, .footer-newsletter-form').forEach(form => {
-    form.addEventListener('submit', e => {
+    form.addEventListener('submit', function (e) {
       e.preventDefault();
       const input    = form.querySelector('input[type="email"]');
       const checkbox = form.querySelector('input[type="checkbox"]');
       const btn      = form.querySelector('button[type="submit"]');
-      if (!input) return;
+      if (!input || !btn) return;
 
+      /* Validierung */
       let valid = true;
-      if (!input.value.trim() || !input.value.includes('@')) {
+      if (!input.value.trim() || !/^\S+@\S+\.\S+$/.test(input.value)) {
         input.classList.add('input-error');
         valid = false;
       } else {
@@ -97,20 +136,42 @@ function initNewsletterForms() {
       }
       if (checkbox && !checkbox.checked) {
         checkbox.closest('.newsletter-gdpr')?.classList.add('gdpr-error');
+        showToast('Bitte bestätige die Datenschutz-Einwilligung.', 'error');
         valid = false;
       } else {
         checkbox?.closest('.newsletter-gdpr')?.classList.remove('gdpr-error');
       }
-      if (!valid || !btn) return;
+      if (!valid) return;
 
-      const orig = btn.textContent;
-      btn.textContent = 'Angemeldet ✓';
+      /* Lade-Zustand */
+      btn.classList.add('is-loading');
       btn.disabled = true;
-      input.value = '';
-      if (checkbox) checkbox.checked = false;
-      setTimeout(() => { btn.textContent = orig; btn.disabled = false; }, 4000);
+
+      /* Fetch an Platzhalter-Endpoint — später durch echten Service ersetzen */
+      fetch('/api/newsletter', {
+        method:  'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body:    JSON.stringify({ email: input.value.trim() })
+      })
+      .then(function (res) {
+        if (!res.ok) throw new Error('server');
+        showToast('Erfolgreich angemeldet! Barakallahu fik.', 'success');
+        input.value = '';
+        if (checkbox) checkbox.checked = false;
+      })
+      .catch(function () {
+        /* Fallback: Bei fehlendem Backend gilt Anmeldung lokal als erfolgreich */
+        showToast('Anmeldung vorgemerkt. Wir melden uns bald!', 'info');
+        input.value = '';
+        if (checkbox) checkbox.checked = false;
+      })
+      .finally(function () {
+        btn.classList.remove('is-loading');
+        btn.disabled = false;
+      });
     });
-    /* Clear error on input */
+
+    /* Fehler-Klasse beim Tippen zurücksetzen */
     form.querySelector('input[type="email"]')?.addEventListener('input', function () {
       this.classList.remove('input-error');
     });
@@ -208,6 +269,79 @@ function initContactForm() {
       const group = field.closest('.form-group');
       if (group) group.classList.remove('has-error');
     });
+  });
+}
+
+/* ── Lazy Loading für CSS-Background-Images (Punkt 4) ── */
+function initLazyBackgrounds() {
+  /* Elemente mit data-bg="url(...)" werden erst geladen wenn sichtbar.
+     Verwendung im HTML: style="" entfernen, stattdessen data-bg="url('pfad.jpg')"
+     setzen — dieser Code setzt es dann per IntersectionObserver. */
+  const lazyBgs = document.querySelectorAll('[data-bg]');
+  if (!lazyBgs.length) return;
+
+  if (!('IntersectionObserver' in window)) {
+    /* Fallback für ältere Browser: sofort laden */
+    lazyBgs.forEach(el => { el.style.backgroundImage = el.dataset.bg; });
+    return;
+  }
+
+  const obs = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (!entry.isIntersecting) return;
+      entry.target.style.backgroundImage = entry.target.dataset.bg;
+      obs.unobserve(entry.target);
+    });
+  }, { rootMargin: '200px 0px' });
+
+  lazyBgs.forEach(el => obs.observe(el));
+}
+
+/* ── Dynamische Kategorie-Zähler (Punkt 9) ── */
+function initCategoryCounters() {
+  const counters = document.querySelectorAll('[data-count-category]');
+  if (!counters.length || !window.PRODUCTS) return;
+
+  counters.forEach(function (el) {
+    const cat   = el.dataset.countCategory;
+    const count = window.PRODUCTS.filter(function (p) {
+      return p.mainCat === cat;
+    }).length;
+    if (count > 0) {
+      el.textContent = count + ' Artikel';
+    }
+  });
+}
+
+/* ── Hero-Scroll-Indikator Tastatur-Handler (Punkt 13) ── */
+function initHeroScrollBtn() {
+  const btn = document.getElementById('heroScrollBtn');
+  if (!btn) return;
+
+  btn.addEventListener('keydown', function (e) {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      const target = document.getElementById('bestseller');
+      if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  });
+}
+
+/* ── Warenkorb-Button Toast + Badge-Puls (Punkt 8) ── */
+function initCartButtonFeedback() {
+  /* Ergänzt den bestehenden Inline-Handler: Toast + Badge-Puls */
+  document.addEventListener('mam:cart-updated', function () {
+    showToast('Zum Warenkorb hinzugefügt', 'success');
+
+    const badge = document.getElementById('cartBadge');
+    if (!badge) return;
+    badge.classList.remove('is-pulsing');
+    /* Reflow erzwingen damit die Animation neu startet */
+    void badge.offsetWidth;
+    badge.classList.add('is-pulsing');
+    badge.addEventListener('animationend', function () {
+      badge.classList.remove('is-pulsing');
+    }, { once: true });
   });
 }
 
@@ -458,4 +592,8 @@ document.addEventListener('DOMContentLoaded', () => {
   initSmoothScroll();
   initCookieBanner();
   initSearch();
+  initLazyBackgrounds();
+  initCategoryCounters();
+  initHeroScrollBtn();
+  initCartButtonFeedback();
 });

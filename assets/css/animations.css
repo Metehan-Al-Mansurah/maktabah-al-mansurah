@@ -179,4 +179,30 @@
     -webkit-text-fill-color: var(--clr-gold-light);
     color: var(--clr-gold-light);
   }
+
+  /* Blätter komplett verstecken — bewegte Elemente,
+     die keinen Informationswert haben */
+  .book-leaf {
+    visibility: hidden !important;
+  }
+
+  /* Kaligraphie-Hintergrund und Grid-Muster: keine Drift-Animation,
+     statisch sichtbar lassen (kein visibility:hidden, da Designelement) */
+  .hero-calligraphy,
+  .hero-grid {
+    animation: none !important;
+    transform: none !important;
+    transition: none !important;
+  }
+
+  /* Hero-Stagger-Animationen: sofort sichtbar ohne Verzögerung */
+  .hero-eyebrow,
+  .hero-title,
+  .hero-tagline,
+  .hero-cta,
+  .hero-scroll {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
 }

@@ -2681,6 +2681,147 @@ a.product-card__img { display:flex; text-decoration:none; }
 .cat-group-label:first-child { border-top:none; margin-top:4px; }
 
 /* ────────────────────────────────────────────────
+   KAUFEN-BUTTON — Loading State (Punkt 8)
+   ──────────────────────────────────────────────── */
+
+/* Spinner-Animation für Ladeindikator */
+@keyframes btn-spin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+/* Klasse wird per JS beim Klick gesetzt und nach Abschluss entfernt */
+.btn.is-loading {
+  pointer-events: none;
+  opacity: 0.75;
+  position: relative;
+}
+.btn.is-loading .btn-label-full,
+.btn.is-loading .btn-label-short {
+  visibility: hidden;
+}
+.btn.is-loading::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  width: 14px;
+  height: 14px;
+  border: 2px solid rgba(255, 255, 255, 0.35);
+  border-top-color: #fff;
+  border-radius: 50%;
+  animation: btn-spin 0.6s linear infinite;
+}
+
+/* Badge-Puls beim Cart-Update (ergänzt den bestehenden cart-badge-pop Keyframe) */
+.cart-badge.is-pulsing {
+  animation: cart-badge-pop 0.45s var(--ease-bounce) both;
+}
+
+/* ────────────────────────────────────────────────
+   TOAST NOTIFICATION (Punkt 2 + 8)
+   ──────────────────────────────────────────────── */
+
+@keyframes toast-in {
+  from { opacity: 0; transform: translateY(12px) scale(0.96); }
+  to   { opacity: 1; transform: translateY(0)    scale(1); }
+}
+@keyframes toast-out {
+  from { opacity: 1; transform: translateY(0)    scale(1); }
+  to   { opacity: 0; transform: translateY(8px)  scale(0.97); }
+}
+
+/* Container für alle Toasts — rechts unten, stapelbar */
+#mam-toast-container {
+  position: fixed;
+  bottom: 1.5rem;
+  right: 1.5rem;
+  z-index: 9997;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  pointer-events: none;
+}
+
+.mam-toast {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem 1.1rem;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-mid);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  font-size: 0.82rem;
+  font-family: var(--font-body);
+  color: var(--clr-text-primary);
+  background: rgba(12, 22, 16, 0.92);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.55);
+  animation: toast-in 0.28s var(--ease-out) both;
+  pointer-events: auto;
+  max-width: 340px;
+  min-width: 220px;
+}
+.mam-toast--success { border-color: rgba(0, 180, 90, 0.4); }
+.mam-toast--error   { border-color: rgba(200, 60, 60, 0.4); }
+.mam-toast--info    { border-color: var(--border-mid); }
+
+.mam-toast__icon {
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  font-size: 0.75rem;
+}
+.mam-toast--success .mam-toast__icon { background: rgba(0,180,90,0.15); color: #5de096; }
+.mam-toast--error   .mam-toast__icon { background: rgba(200,60,60,0.15); color: #e07070; }
+.mam-toast--info    .mam-toast__icon { background: var(--clr-gold-dim); color: var(--clr-gold-light); }
+
+.mam-toast.is-exiting {
+  animation: toast-out 0.22s var(--ease-out) forwards;
+}
+
+@media (max-width: 500px) {
+  #mam-toast-container {
+    bottom: 1rem;
+    right: 0.75rem;
+    left: 0.75rem;
+  }
+  .mam-toast { max-width: 100%; }
+}
+
+/* ────────────────────────────────────────────────
+   PREIS — MwSt.-Label (Punkt 10)
+   ──────────────────────────────────────────────── */
+
+/* Kleines MwSt.-Label unter dem Preis in Produktkarten */
+.hp-product-card__vat {
+  display: block;
+  font-size: 0.58rem;
+  color: var(--clr-text-faint);
+  letter-spacing: 0.06em;
+  margin-top: 1px;
+  font-weight: 400;
+  font-family: var(--font-body);
+}
+
+/* MwSt.-Hinweis im Footer-Legal-Bereich */
+.footer-legal-vat {
+  font-size: 0.68rem;
+  color: var(--clr-text-faint);
+  margin-top: 0.2rem;
+}
+.footer-legal-vat a {
+  color: var(--clr-gold-muted);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+.footer-legal-vat a:hover { color: var(--clr-gold); }
+
+/* ────────────────────────────────────────────────
    MOBILE SIDEBAR SLIDE-IN
    ──────────────────────────────────────────────── */
 @media (max-width:900px) {
