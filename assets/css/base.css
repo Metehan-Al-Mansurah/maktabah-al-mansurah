@@ -110,6 +110,9 @@
 }
 
 html {
+  /* Nur auf Desktop: smooth scroll für Anker-Links.
+     Auf Mobile kollidiert es mit dem nativen Momentum-Scroll
+     und verursacht einen Ruckel beim Richtungswechsel. */
   scroll-behavior: smooth;
   font-size: 16px;
   -webkit-font-smoothing: antialiased;
@@ -220,4 +223,11 @@ p {
   clip: rect(0,0,0,0);
   white-space: nowrap;
   border: 0;
+}
+
+/* Scroll-Behavior: auf Mobile deaktivieren um Richtungswechsel-Ruckel zu vermeiden */
+@media (max-width: 768px) {
+  html {
+    scroll-behavior: auto;
+  }
 }
