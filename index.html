@@ -112,6 +112,27 @@
       <path d="M6 9c0 6.627 2.686 12 6 12s6-5.373 6-12"/>
       <line x1="12" y1="9" x2="12" y2="21"/>
     </symbol>
+    <!-- Einkaufstasche-Icon (Hero-CTA) -->
+    <symbol id="icon-bag" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/>
+      <line x1="3" y1="6" x2="21" y2="6"/>
+      <path d="M16 10a4 4 0 0 1-8 0"/>
+    </symbol>
+    <!-- Instagram-Icon (Footer Social) -->
+    <symbol id="icon-instagram" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+      <rect x="2" y="2" width="20" height="20" rx="5"/>
+      <circle cx="12" cy="12" r="5"/>
+      <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/>
+    </symbol>
+    <!-- TikTok-Icon (Footer Social) -->
+    <symbol id="icon-tiktok" viewBox="0 0 24 24" fill="currentColor">
+      <path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.56a8.28 8.28 0 004.84 1.54V6.64a4.85 4.85 0 01-1.07.05z"/>
+    </symbol>
+    <!-- Uhr-Icon (Footer Kontakt Öffnungszeiten) -->
+    <symbol id="icon-clock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+      <path d="M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18Z"/>
+      <path d="M12 7v5l3 3"/>
+    </symbol>
   </defs>
 </svg>
 <!-- Beispiel-Verwendung: <svg width="26" height="26"><use href="#icon-book"/></svg> -->
@@ -144,9 +165,7 @@
 
     <div class="header-actions">
       <button class="cart-trigger" id="cartTrigger" aria-label="Warenkorb öffnen">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
-          <path d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 0 0-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 0 0-16.536-1.84M7.5 14.25 5.106 5.272M6 20.25a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Zm12.75 0a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Z"/>
-        </svg>
+        <svg width="22" height="22" aria-hidden="true"><use href="#icon-cart"/></svg>
         <span class="cart-badge hidden" id="cartBadge" aria-live="polite" aria-atomic="true"><span class="visually-hidden">Artikel im Warenkorb:</span>0</span>
       </button>
       <button class="nav-toggle" id="navToggle" aria-label="Menü öffnen" aria-expanded="false" aria-controls="mobileNav">
@@ -164,7 +183,7 @@
 <nav class="mobile-nav" id="mobileNav" aria-label="Mobile Navigation" aria-hidden="true">
   <div class="mobile-nav__header">
     <a href="index.html" class="brand">
-      <span class="brand-arabic" style="font-size:1rem;color:var(--clr-gold-light);">مكتبة المنصورة</span>
+      <span class="brand-arabic mobile-nav__brand-arabic">مكتبة المنصورة</span>
     </a>
     <button class="mobile-nav__close" id="mobileNavClose" aria-label="Menü schließen">
       <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-x"/></svg>
@@ -191,9 +210,7 @@
   <div class="cart-drawer__items">
     <!-- Leer-Zustand: wird per JS ausgeblendet sobald Items vorhanden sind -->
     <div class="cart-drawer__empty" id="cartEmptyState">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" aria-hidden="true">
-        <path d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 0 0-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 0 0-16.536-1.84M7.5 14.25 5.106 5.272M6 20.25a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Zm12.75 0a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Z"/>
-      </svg>
+      <svg width="44" height="44" aria-hidden="true"><use href="#icon-cart"/></svg>
       <p>Dein Warenkorb ist leer</p>
       <a href="shop.html" class="btn btn-ghost btn-sm">Zum Shop</a>
     </div>
@@ -215,16 +232,16 @@
   <div class="hero-grid" aria-hidden="true"></div>
   <div class="hero-calligraphy" aria-hidden="true">المنصورة</div>
   <div class="book-leaves" aria-hidden="true">
-    <span class="book-leaf" style="left:14%;bottom:-30px;animation:leaf-up 10s ease-in-out infinite;animation-delay:0s;width:22px;height:30px;"></span>
-    <span class="book-leaf" style="left:35%;bottom:-30px;animation:leaf-up 12s ease-in-out infinite;animation-delay:3.5s;width:18px;height:24px;"></span>
-    <span class="book-leaf" style="left:55%;bottom:-30px;animation:leaf-up 9.5s ease-in-out infinite;animation-delay:1.2s;width:28px;height:38px;"></span>
-    <span class="book-leaf" style="left:74%;bottom:-30px;animation:leaf-up 11.5s ease-in-out infinite;animation-delay:5.8s;width:20px;height:28px;"></span>
-    <span class="book-leaf" style="left:6%;top:68%;animation:leaf-from-left 11s ease-in-out infinite;animation-delay:2.0s;width:28px;height:38px;"></span>
-    <span class="book-leaf" style="left:4%;top:44%;animation:leaf-from-left 9.2s ease-in-out infinite;animation-delay:6.5s;width:22px;height:30px;"></span>
-    <span class="book-leaf" style="left:8%;top:26%;animation:leaf-from-left 13s ease-in-out infinite;animation-delay:4.0s;width:24px;height:34px;"></span>
-    <span class="book-leaf" style="left:86%;top:62%;animation:leaf-from-right 10.5s ease-in-out infinite;animation-delay:1.5s;width:26px;height:36px;"></span>
-    <span class="book-leaf" style="left:90%;top:38%;animation:leaf-from-right 12s ease-in-out infinite;animation-delay:7.2s;width:20px;height:28px;"></span>
-    <span class="book-leaf" style="left:84%;top:74%;animation:leaf-from-right 8.8s ease-in-out infinite;animation-delay:3.8s;width:24px;height:32px;"></span>
+    <span class="book-leaf"></span>
+    <span class="book-leaf"></span>
+    <span class="book-leaf"></span>
+    <span class="book-leaf"></span>
+    <span class="book-leaf"></span>
+    <span class="book-leaf"></span>
+    <span class="book-leaf"></span>
+    <span class="book-leaf"></span>
+    <span class="book-leaf"></span>
+    <span class="book-leaf"></span>
   </div>
   <div class="hero-vignette" aria-hidden="true"></div>
 
@@ -234,17 +251,20 @@
   <div class="hero-corner-tr" aria-hidden="true"></div>
   <div class="hero-corner-bl" aria-hidden="true"></div>
 
-  <div class="hero__content" style="position:relative;z-index:3;">
+  <div class="hero__content">
 
     <div class="hero-ornament-row hero-eyebrow" aria-hidden="true">
       <span class="hero-ornament-line"></span>
-      <svg width="12" height="12" viewBox="0 0 12 12" fill="currentColor" style="color:var(--clr-gold);opacity:0.7;flex-shrink:0;"><polygon points="6,0 7.5,4.5 12,6 7.5,7.5 6,12 4.5,7.5 0,6 4.5,4.5"/></svg>
+      <svg width="12" height="12" viewBox="0 0 12 12" fill="currentColor" class="hero-ornament-star" aria-hidden="true"><polygon points="6,0 7.5,4.5 12,6 7.5,7.5 6,12 4.5,7.5 0,6 4.5,4.5"/></svg>
       <span class="hero-ornament-arabic">بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ</span>
-      <svg width="12" height="12" viewBox="0 0 12 12" fill="currentColor" style="color:var(--clr-gold);opacity:0.7;flex-shrink:0;"><polygon points="6,0 7.5,4.5 12,6 7.5,7.5 6,12 4.5,7.5 0,6 4.5,4.5"/></svg>
+      <svg width="12" height="12" viewBox="0 0 12 12" fill="currentColor" class="hero-ornament-star" aria-hidden="true"><polygon points="6,0 7.5,4.5 12,6 7.5,7.5 6,12 4.5,7.5 0,6 4.5,4.5"/></svg>
       <span class="hero-ornament-line"></span>
     </div>
 
-    <h1 class="hero-title" style="color:var(--clr-gold-pale);"><span style="display:block">Maktabah</span><span style="display:block">Al Mansurah</span></h1>
+    <h1 class="hero-title">
+  <span class="visually-hidden">Maktabah Al Mansurah</span>
+  <span aria-hidden="true">Maktabah<br>Al Mansurah</span>
+</h1>
 
     <span class="hero-gold-line" aria-hidden="true"></span>
 
@@ -256,7 +276,7 @@
 
     <div class="hero-cta-group hero-cta">
       <a href="shop.html" class="btn btn-primary">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right:4px;"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+        <svg width="16" height="16" class="btn__icon" aria-hidden="true"><use href="#icon-bag"/></svg>
         Zum Shop
       </a>
       <a href="about.html" class="btn btn-ghost">Über uns</a>
@@ -280,13 +300,13 @@
 <!-- ═══════════════════════════════════════════
      BESTSELLER
 ════════════════════════════════════════════════ -->
-<section class="section" id="bestseller" aria-label="Bestseller" style="background:var(--clr-warm-mid);">
+<section class="section" id="bestseller" aria-label="Bestseller">
   <div class="container">
-    <div class="section-header text-center" data-reveal style="text-align:center;">
+    <div class="section-header text-center" data-reveal>
       <span class="eyebrow">Empfohlen</span>
       <h2>Bestseller</h2>
       <div class="gold-line gold-line--center"></div>
-      <p style="color:var(--clr-text-muted);font-size:.9rem;margin-top:var(--sp-2);max-width:480px;margin-inline:auto;">Unsere meistverkauften Titel — handverlesen für Klarheit, Vertiefung und Wachstum.</p>
+      <p class="section-header__lead">Unsere meistverkauften Titel — handverlesen für Klarheit, Vertiefung und Wachstum.</p>
     </div>
     <div class="hp-product-grid" data-reveal>
 
@@ -308,7 +328,7 @@
             <span class="hp-product-card__price">14,99 €</span>
             <span class="hp-product-card__vat">inkl. MwSt.</span>
           </div>
-          <button class="btn btn-primary btn-sm hp-add-btn" data-product-id="2"><span class="btn-label-full">Kaufen</span><span class="btn-label-short">+</span></button>
+          <button class="btn btn-primary btn-sm hp-add-btn" data-product-id="2">Kaufen</button>
         </div>
       </div>
 
@@ -330,7 +350,7 @@
             <span class="hp-product-card__price">27,99 €</span>
             <span class="hp-product-card__vat">inkl. MwSt.</span>
           </div>
-          <button class="btn btn-primary btn-sm hp-add-btn" data-product-id="6"><span class="btn-label-full">Kaufen</span><span class="btn-label-short">+</span></button>
+          <button class="btn btn-primary btn-sm hp-add-btn" data-product-id="6">Kaufen</button>
         </div>
       </div>
 
@@ -352,7 +372,7 @@
             <span class="hp-product-card__price">8,99 €</span>
             <span class="hp-product-card__vat">inkl. MwSt.</span>
           </div>
-          <button class="btn btn-primary btn-sm hp-add-btn" data-product-id="5"><span class="btn-label-full">Kaufen</span><span class="btn-label-short">+</span></button>
+          <button class="btn btn-primary btn-sm hp-add-btn" data-product-id="5">Kaufen</button>
         </div>
       </div>
 
@@ -373,12 +393,12 @@
             <span class="hp-product-card__price">7,99 €</span>
             <span class="hp-product-card__vat">inkl. MwSt.</span>
           </div>
-          <button class="btn btn-primary btn-sm hp-add-btn" data-product-id="1"><span class="btn-label-full">Kaufen</span><span class="btn-label-short">+</span></button>
+          <button class="btn btn-primary btn-sm hp-add-btn" data-product-id="1">Kaufen</button>
         </div>
       </div>
 
     </div>
-    <div style="text-align:center;margin-top:var(--sp-5);" data-reveal>
+    <div class="section-footer-cta" data-reveal>
       <a href="shop.html" class="btn btn-ghost">Alle Produkte ansehen</a>
     </div>
   </div>
@@ -392,11 +412,11 @@
 ════════════════════════════════════════════════ -->
 <section class="section" aria-label="Kategorien">
   <div class="container">
-    <div class="section-header" data-reveal style="text-align:center;">
+    <div class="section-header text-center" data-reveal>
       <span class="eyebrow">Sortiment</span>
       <h2>Kategorien entdecken</h2>
       <div class="gold-line gold-line--center"></div>
-      <p style="color:var(--clr-text-muted);font-size:.9rem;margin-top:var(--sp-2);max-width:420px;margin-inline:auto;">Von islamischen Büchern über edle Düfte bis hin zu traditioneller Kleidung.</p>
+      <p class="section-header__lead">Von islamischen Büchern über edle Düfte bis hin zu traditioneller Kleidung.</p>
     </div>
     <div class="cat-grid" data-reveal>
 
@@ -475,11 +495,11 @@
 <!-- ═══════════════════════════════════════════
      ABOUT TEASER
 ════════════════════════════════════════════════ -->
-<section class="section section--sm" aria-label="Über uns" style="background:var(--clr-ink-mid);">
+<section class="section section--sm section--ink-mid" aria-label="Über uns">
   <div class="container">
     <div class="about-teaser" data-reveal>
 
-      <div class="about-teaser__panel about-geo-panel" data-bg="url('bilder/IMG_2b.jpg")">
+      <div class="about-teaser__panel about-geo-panel" data-bg="url('bilder/IMG_2b.jpg')">
         <!-- Photo overlay is handled by .about-teaser__panel::after in CSS -->
         <div class="about-panel-badge" aria-hidden="true">
           <span class="about-panel-badge__ar">مكتبة المنصورة</span>
@@ -526,9 +546,9 @@
         <button class="btn btn-primary" type="submit">Abonnieren</button>
       </form>
 
-      <label class="newsletter-gdpr" style="display:flex;align-items:flex-start;gap:.6rem;margin-top:var(--sp-3);cursor:pointer;max-width:500px;margin-inline:auto;">
-        <input type="checkbox" required style="width:15px;height:15px;flex-shrink:0;margin-top:3px;accent-color:var(--clr-gold);">
-        <span style="font-size:.75rem;color:var(--clr-text-muted);line-height:1.65;text-align:left;">Ich stimme zu, dass meine E-Mail-Adresse zur Newsletter-Zusendung gespeichert wird. Abmeldung jederzeit möglich. Details in der <a href="datenschutz.html" style="color:var(--clr-gold);">Datenschutzerklärung</a>.</span>
+      <label class="newsletter-gdpr">
+        <input type="checkbox" required class="newsletter-gdpr__checkbox">
+        <span class="newsletter-gdpr__text">Ich stimme zu, dass meine E-Mail-Adresse zur Newsletter-Zusendung gespeichert wird. Abmeldung jederzeit möglich. Details in der <a href="datenschutz.html">Datenschutzerklärung</a>.</span>
       </label>
 
       <div class="newsletter-trust" aria-hidden="true">
@@ -557,20 +577,20 @@
         <p class="footer-brand__name">مكتبة المنصورة</p>
         <p class="footer-brand__tagline">Islamische Bücher, Düfte &amp; mehr — für die muslimische Gemeinschaft in Deutschland.</p>
         <div class="footer-social">
-          <a href="https://instagram.com/al_mansurah.de" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>
-          <a href="https://tiktok.com/@al.mansurah.de" target="_blank" rel="noopener noreferrer" aria-label="TikTok"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.56a8.28 8.28 0 004.84 1.54V6.64a4.85 4.85 0 01-1.07.05z"/></svg></a>
-          <a href="mailto:maktaba.al-mansurah@outlook.com" aria-label="E-Mail"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg></a>
+          <a href="https://instagram.com/al_mansurah.de" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-instagram"/></svg></a>
+          <a href="https://tiktok.com/@al.mansurah.de" target="_blank" rel="noopener noreferrer" aria-label="TikTok"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-tiktok"/></svg></a>
+          <a href="mailto:maktaba.al-mansurah@outlook.com" aria-label="E-Mail"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-mail"/></svg></a>
         </div>
       </div>
       <div><p class="footer-col-title">Shop</p><ul class="footer-nav-list"><li><a href="shop.html?cat=buecher">Islamische Bücher</a></li><li><a href="shop.html?cat=kleidung">Kleidung &amp; Tradition</a></li><li><a href="shop.html?cat=duefte">Düfte &amp; Sunnah</a></li></ul></div>
       <div><p class="footer-col-title">Seiten</p><ul class="footer-nav-list"><li><a href="index.html">Startseite</a></li><li><a href="about.html">Über uns</a></li><li><a href="contact.html">Kontakt</a></li><li><a href="faq.html">FAQ</a></li><li><a href="versand.html">Versand</a></li></ul></div>
       <div><p class="footer-col-title">Rechtliches</p><ul class="footer-nav-list"><li><a href="impressum.html">Impressum</a></li><li><a href="datenschutz.html">Datenschutz</a></li><li><a href="agb.html">AGB</a></li><li><a href="widerruf.html">Widerruf</a></li></ul></div>
-      <div><p class="footer-col-title">Kontakt</p><div class="footer-contact-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg><span><a href="mailto:maktaba.al-mansurah@outlook.com">maktaba.al-mansurah@outlook.com</a></span></div><div class="footer-contact-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18Z"/><path d="M12 7v5l3 3"/></svg><span>Mo–Sa: 9:00–18:00 Uhr</span></div></div>
+      <div><p class="footer-col-title">Kontakt</p><div class="footer-contact-item"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-mail"/></svg><span><a href="mailto:maktaba.al-mansurah@outlook.com">maktaba.al-mansurah@outlook.com</a></span></div><div class="footer-contact-item"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-clock"/></svg><span>Mo–Sa: 9:00–18:00 Uhr</span></div></div>
 
     </div>
   </div>
 
-  <div class="footer-geo-band" style="opacity:0.3;"></div>
+  <div class="footer-geo-band footer-geo-band--faded"></div>
 
   <div class="container">
     <div class="footer-legal">

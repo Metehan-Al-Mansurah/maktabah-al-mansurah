@@ -5,6 +5,7 @@
 
 /* ── Hero ── */
 .hero-title {
+  color: var(--clr-gold-pale);
   letter-spacing: -0.025em;
   transition: text-shadow 0.5s cubic-bezier(.25,.8,.25,1);
   text-shadow: 0 2px 40px rgba(0,0,0,0.5);
@@ -95,12 +96,6 @@
   .hp-product-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
 }
 @media (max-width: 680px) { .hp-product-grid--2 { grid-template-columns: 1fr; } }
-
-.btn-label-short { display: none; }
-@media (max-width: 900px) {
-  .btn-label-full { display: none; }
-  .btn-label-short { display: inline; }
-}
 
 /* ── Produkt-Karte ── */
 .hp-product-card {
@@ -260,10 +255,17 @@
 }
 .btn-sm { padding: .45rem 1rem; font-size: .72rem; }
 
-/* Mobile-Kaufen-Button: Padding reduziert (Point 7) */
+/* Mobile-Kaufen-Button: kompakter, kein Umbruch */
 @media (max-width: 900px) {
   .hp-product-card__btn,
-  .hp-add-btn.btn-sm { padding-top: 0.4rem; padding-bottom: 0.4rem; }
+  .hp-add-btn.btn-sm {
+    padding-top: 0.4rem;
+    padding-bottom: 0.4rem;
+    padding-left: 0.7rem;
+    padding-right: 0.7rem;
+    font-size: 0.68rem;
+    white-space: nowrap;
+  }
 }
 
 @media (max-width: 500px) {
@@ -532,3 +534,83 @@
   letter-spacing: 0.1em;
   text-transform: uppercase;
 }
+
+/* ── Mobile Nav ── */
+.mobile-nav__brand-arabic {
+  font-size: 1rem;
+  color: var(--clr-gold-light);
+}
+
+/* ── Hero content z-index override ── */
+.hero__content { z-index: 3; }
+
+/* ── Hero ornament star (inline SVGs in eyebrow row) ── */
+.hero-ornament-star {
+  color: var(--clr-gold);
+  opacity: 0.7;
+  flex-shrink: 0;
+}
+
+/* ── Book leaves: per-leaf positions & animations ── */
+.book-leaf:nth-child(1)  { left: 14%; bottom: -30px; animation: leaf-up 10s ease-in-out infinite; animation-delay: 0s; width: 22px; height: 30px; }
+.book-leaf:nth-child(2)  { left: 35%; bottom: -30px; animation: leaf-up 12s ease-in-out infinite; animation-delay: 3.5s; width: 18px; height: 24px; }
+.book-leaf:nth-child(3)  { left: 55%; bottom: -30px; animation: leaf-up 9.5s ease-in-out infinite; animation-delay: 1.2s; width: 28px; height: 38px; }
+.book-leaf:nth-child(4)  { left: 74%; bottom: -30px; animation: leaf-up 11.5s ease-in-out infinite; animation-delay: 5.8s; width: 20px; height: 28px; }
+.book-leaf:nth-child(5)  { left: 6%; top: 68%; animation: leaf-from-left 11s ease-in-out infinite; animation-delay: 2.0s; width: 28px; height: 38px; }
+.book-leaf:nth-child(6)  { left: 4%; top: 44%; animation: leaf-from-left 9.2s ease-in-out infinite; animation-delay: 6.5s; width: 22px; height: 30px; }
+.book-leaf:nth-child(7)  { left: 8%; top: 26%; animation: leaf-from-left 13s ease-in-out infinite; animation-delay: 4.0s; width: 24px; height: 34px; }
+.book-leaf:nth-child(8)  { left: 86%; top: 62%; animation: leaf-from-right 10.5s ease-in-out infinite; animation-delay: 1.5s; width: 26px; height: 36px; }
+.book-leaf:nth-child(9)  { left: 90%; top: 38%; animation: leaf-from-right 12s ease-in-out infinite; animation-delay: 7.2s; width: 20px; height: 28px; }
+.book-leaf:nth-child(10) { left: 84%; top: 74%; animation: leaf-from-right 8.8s ease-in-out infinite; animation-delay: 3.8s; width: 24px; height: 32px; }
+
+/* ── Hero CTA icon spacing ── */
+.btn__icon { margin-right: 4px; }
+
+/* ── Bestseller section background ── */
+#bestseller { background: var(--clr-warm-mid); }
+
+/* ── Section lead text ── */
+.section-header__lead {
+  color: var(--clr-text-muted);
+  font-size: .9rem;
+  margin-top: var(--sp-2);
+  max-width: 480px;
+  margin-inline: auto;
+}
+
+/* ── Section footer CTA wrapper ── */
+.section-footer-cta {
+  text-align: center;
+  margin-top: var(--sp-5);
+}
+
+/* ── About / ink-mid section background ── */
+.section--ink-mid { background: var(--clr-ink-mid); }
+
+/* ── Newsletter GDPR consent block ── */
+.newsletter-gdpr {
+  display: flex;
+  align-items: flex-start;
+  gap: .6rem;
+  margin-top: var(--sp-3);
+  cursor: pointer;
+  max-width: 500px;
+  margin-inline: auto;
+}
+.newsletter-gdpr__checkbox {
+  width: 15px;
+  height: 15px;
+  flex-shrink: 0;
+  margin-top: 3px;
+  accent-color: var(--clr-gold);
+}
+.newsletter-gdpr__text {
+  font-size: .75rem;
+  color: var(--clr-text-muted);
+  line-height: 1.65;
+  text-align: left;
+}
+.newsletter-gdpr a { color: var(--clr-gold); }
+
+/* ── Footer geo-band (faded second instance) ── */
+.footer-geo-band--faded { opacity: 0.3; }
