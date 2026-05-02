@@ -22,8 +22,9 @@
     var cart = getCart();
     var count = cart.reduce(function (s, i) { return s + i.qty; }, 0);
     document.querySelectorAll('#cartBadge').forEach(function (el) {
-      el.textContent = count;
+      el.innerHTML = '<span class="visually-hidden">Artikel im Warenkorb: </span>' + count;
       el.classList.toggle('hidden', count === 0);
+      el.setAttribute('aria-hidden', count === 0 ? 'true' : 'false');
     });
   }
 

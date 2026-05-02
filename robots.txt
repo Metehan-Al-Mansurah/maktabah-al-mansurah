@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://maktabah-al-mansurah.vercel.app/sitemap.xml
