@@ -72,8 +72,6 @@
 
 /* ── Hero Minimal (Point 8) ── */
 .hero--minimal .hero-grid { display: none; }
-.hero--minimal .hero-corner-tr,
-.hero--minimal .hero-corner-bl { display: none; }
 .hero--minimal .book-leaf:nth-child(n+3) { display: none; }
 
 /* ── Bestseller Produkt-Grid ── */

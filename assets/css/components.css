@@ -2076,7 +2076,7 @@
 
 /* Header brand: hide latin subtitle on mobile to prevent fixed-header overflow */
 @media (max-width: 540px) {
-  .brand-latin { display: none; }
+  .brand-latin { font-size: 0.55rem; }
   .header-inner { gap: var(--sp-2); }
 }
 @media (max-width: 380px) {
