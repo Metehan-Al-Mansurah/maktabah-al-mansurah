@@ -57,7 +57,9 @@
 }
 
 .hero-corner-tl,
-.hero-corner-br {
+.hero-corner-br,
+.hero-corner-tr,
+.hero-corner-bl {
   position: absolute;
   width: 140px;
   height: 140px;
@@ -67,8 +69,8 @@
   transition: opacity 0.5s ease;
 }
 .hero-corner-tl {
-  top: var(--sp-5);
-  left: var(--sp-5);
+  top: 3.5rem;
+  left: 3.5rem;
   border-top: 1px solid var(--clr-gold);
   border-left: 1px solid var(--clr-gold);
 }
@@ -87,8 +89,8 @@
   left: -3px;
 }
 .hero-corner-br {
-  bottom: var(--sp-5);
-  right: var(--sp-5);
+  bottom: 3.5rem;
+  right: 3.5rem;
   border-bottom: 1px solid var(--clr-gold);
   border-right: 1px solid var(--clr-gold);
 }
@@ -96,28 +98,17 @@
   bottom: -3px;
   right: -3px;
 }
-
-/* Hero top-right and bottom-left corners */
-.hero-corner-tr,
-.hero-corner-bl {
-  position: absolute;
-  width: 140px;
-  height: 140px;
-  pointer-events: none;
-  z-index: 2;
-  opacity: 0.35;
-}
 .hero-corner-tr {
-  top: var(--sp-5);
-  right: var(--sp-5);
-  border-top: 1px solid var(--clr-gold-muted);
-  border-right: 1px solid var(--clr-gold-muted);
+  top: 3.5rem;
+  right: 3.5rem;
+  border-top: 1px solid var(--clr-gold);
+  border-right: 1px solid var(--clr-gold);
 }
 .hero-corner-bl {
-  bottom: var(--sp-5);
-  left: var(--sp-5);
-  border-bottom: 1px solid var(--clr-gold-muted);
-  border-left: 1px solid var(--clr-gold-muted);
+  bottom: 3.5rem;
+  left: 3.5rem;
+  border-bottom: 1px solid var(--clr-gold);
+  border-left: 1px solid var(--clr-gold);
 }
 @media (max-width: 600px) {
   .hero-corner-tl, .hero-corner-br,
